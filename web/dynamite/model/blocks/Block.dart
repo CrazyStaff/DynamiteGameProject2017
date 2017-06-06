@@ -3,7 +3,12 @@ import '../Position.dart';
 
 abstract class Block extends Entity {
 
-   Block(String type, Position position) : super(type, position);
+   Block(String type, Position position) : super(type, position){
+      isWalkable = false;
+   }
 
-   void atDestroy();
+   @override
+   void atDestroy(List<List< List<Entity>>> _gameField) {
+
+   }
 }

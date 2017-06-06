@@ -21,6 +21,14 @@ html, body {
     background-color: green !important;
 }
 
+.DYNAMITE{
+    background-color: black !important;
+}
+
+.FIRE{
+    background-color: red !important;
+}
+
 .PLAYER {
     background-color: orange !important;
 }

@@ -7,7 +7,8 @@ class Player extends Entity {
 
   Player(Position position) : super(ENTITY_TYPE, position) {
       this.nextPostion = position.clone();
-      setMoveable(100); // speed = 20
+      updateLastMoveTime(); // speed = 20
+      setSpeed(100);
   }
 
   // TODO: Constructor with startPosition and other variables of Entity

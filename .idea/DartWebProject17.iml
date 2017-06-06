@@ -36,14 +36,13 @@
     <orderEntry type="module-library">
       <library name="PHP">
         <CLASSES>
-          <root url="file://$MODULE_DIR$/../../../php/pear" />
+          <root url="file://F:/../../php/pear" />
         </CLASSES>
         <SOURCES>
-          <root url="file://$MODULE_DIR$/../../../php/pear" />
+          <root url="file://F:/../../php/pear" />
         </SOURCES>
       </library>
     </orderEntry>
-    <orderEntry type="library" name="Dart SDK" level="application" />
     <orderEntry type="library" name="Dart Packages" level="project" />
   </component>
 </module>

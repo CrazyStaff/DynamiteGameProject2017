@@ -4,33 +4,37 @@ abstract class Entity {
 
   Position _position;
   String _type;
-  int _lastMoveTime; // TODO: should be long? => no long in dart
-  int _speed;
+  int lastMoveTime; // TODO: should be long? => no long in dart
+  int speed;
 
   int _team;
   int _strength;
-  bool _alive;
-  bool _isWalkable;
+  bool _alive = true;
+  bool isWalkable = true;
 
   String getHTMLClass() => "class='$_type'";
 
-  void setMoveable(int speed) {
-      this._lastMoveTime = 0;
-      this._speed = speed;
+
+  void updateLastMoveTime() {
+    this.lastMoveTime = new DateTime.now().millisecondsSinceEpoch;
+  }
+
+  void setLastMoveTime(int m) {
+    this.lastMoveTime = m;
+  }
+
+  void setSpeed(int speed) {
+      this.speed = speed;
   }
 
   bool isAllowedToMove(int time) {
-    if(_lastMoveTime == null) return false; // auf == null hier prüfen?
-    return _lastMoveTime + _speed <= time;
+    if(lastMoveTime == null) return false; // auf == null hier prüfen?
+    if(!isWalkable) return false;
+    return lastMoveTime + speed <= time;
   }
   bool get isAlive => this._alive;
 
   Position get position => _position;
-
-  // TODO: Konstruktor einbauen
-  /*Entity(Position position) { // TODO: Alle Instanzvariablen uebergeben
-      this._position = position;
-  }*/
 
   Entity(String type, Position position) {
     this._type = type;
@@ -45,7 +49,7 @@ abstract class Entity {
     if(!isAlive) return false; // TODO: notwendig?
 
     for(Entity otherEntity in entityField) {
-      if(!otherEntity._isWalkable) {
+      if(!otherEntity.isWalkable) {
           return false;
       }
     }
@@ -65,14 +69,23 @@ abstract class Entity {
               _alive = false;
           }
       }
-      _lastMoveTime = new DateTime.now().millisecondsSinceEpoch;
+      lastMoveTime = new DateTime.now().millisecondsSinceEpoch;
   }
 
   // need to be override by implementation
   Position getNextMove(List<List< List<Entity>>> gameField) {
-    return null;
+    return _position;
   }
 
+  // need to be override by implementation
+  void action(List<List< List<Entity>>> _gameField, int time) {
+
+  }
+
+  // need to be override by implementation
+  void atDestroy(List<List< List<Entity>>> gameField) {
+
+  }
   /**
    * Other entity is not in my team and is stronger than me
    */

@@ -1,3 +1,4 @@
+import '../Entity.dart';
 import '../Position.dart';
 import 'Block.dart';
 
@@ -8,7 +9,7 @@ class DestroyableBlock extends Block {
   DestroyableBlock(Position position) : super(ENTITY_TYPE, position);
 
   @override
-  void atDestroy() {
+  void atDestroy(List<List< List<Entity>>> gameField) {
     // TODO: implement atDestroy
   }
 }

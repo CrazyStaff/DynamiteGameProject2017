@@ -9,6 +9,9 @@ class DynamiteGame {
   int _fieldWidth;
   int _fieldHeight;
   int _level;
+  static final int DYNAMITE_EXPLODE_TIME = 4000;
+  static final int FIRE_DURATION = 1000;
+  static final int DYNAMITE_RADIUS = 2;
 
   List<List< List<Entity>>> _gameField;
   Player _player;
@@ -76,11 +79,13 @@ class DynamiteGame {
         for(List<Entity> allFieldEntities in allPositions) {
           var toRemove = [];
 
-          for(Entity entity in allFieldEntities) { // TODO iterator statt for each =>  removen und adden nur mit iterator aufrufbar
-
+          for(Entity entity in allFieldEntities) {
               if(!entity.isAlive) { // Wenn nicht lebend => löschen
+                entity.atDestroy(_gameField);
                 toRemove.add(entity);
-              } else if(entity.isAllowedToMove(time)) { // Wenn entity sich bewegen kann => bewege auf nächstes Feld
+                continue;
+              }
+              if(entity.isAllowedToMove(time)) { // Wenn entity sich bewegen kann => bewege auf nächstes Feld
                 Position nextMove = entity.getNextMove(_gameField);
                 List<Entity> nextField = _gameField[nextMove.getX][nextMove.getY];
 
@@ -93,6 +98,9 @@ class DynamiteGame {
                 } else {
                   // TODO: nextField move not possible
                 }
+              } else {
+                // TODO: nextField move not possible
+                entity.action(_gameField, time);
               }
             }
           // Modify entity list only after iteration

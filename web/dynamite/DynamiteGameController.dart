@@ -10,7 +10,7 @@ const configLevel = "data/level/level1.json"; //
 class DynamiteGameController {
 
   Timer gameTrigger;
-  final gameSpeed = const Duration(seconds: 10);// milliseconds: 30); // TODO: read from constants file
+  final gameSpeed = const Duration(milliseconds: 30); // TODO: read from constants file
 
   var game = new DynamiteGame(10, 7); // TODO read from level file 'fieldWidth' and 'fieldHeight'
   final view = new DynamiteView();

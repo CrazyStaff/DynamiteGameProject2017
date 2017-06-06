@@ -1,0 +1,42 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto);
+
+html, body {
+    width: 100%;
+    height: 100%;
+    font-family: 'Roboto', sans-serif;
+}
+
+#gameField {
+    width: 500px;
+    margin: 0 auto;
+}
+#gameField tr td{
+    background-color: #FFF0A5;
+    width: 25px;
+    height: 25px;
+    border: 1px solid #B64926;
+}
+
+.UNDESTROYABLE_BLOCK{
+    background-color: green !important;
+}
+
+.PLAYER {
+    background-color: orange !important;
+}
+
+#gameField tr td:hover {
+    background-color: #B64926 !important;
+}
+
+.buttons input {
+    display:block;
+    margin: 10px auto 0 auto;
+    padding: 10px;
+    background: #468966;
+    color: white;
+    font-family: 'Open Sans', sans-serif;
+    border: none;
+}
+
+

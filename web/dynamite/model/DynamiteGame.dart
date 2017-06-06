@@ -42,10 +42,12 @@ class DynamiteGame {
     for (int idElement = 0; idElement < fieldSize; idElement++) {
       // calculate the position of each block in 'gameField'
       int xPos = idElement % fieldWidth;
-      int yPos = (idElement / fieldHeight).toInt();
+      int yPos = (idElement / fieldWidth).toInt();
       Position currentPostion = new Position(xPos, yPos);
 
-      List<Entity> currentField = _gameField[yPos][xPos];
+      List<Entity> currentField = _gameField[xPos][yPos];
+
+      print("$xPos and $yPos");
 
       // clear old field state
       currentField.clear();
@@ -79,7 +81,7 @@ class DynamiteGame {
                 toRemove.add(entity);
               } else if(entity.isAllowedToMove(time)) { // Wenn entity sich bewegen kann => bewege auf nächstes Feld
                 Position nextMove = entity.getNextMove(_gameField);
-                List<Entity> nextField = _gameField[nextMove.getY][nextMove.getX];
+                List<Entity> nextField = _gameField[nextMove.getX][nextMove.getY];
 
                 print("isAllowedToMove entity");
                 if (entity.isMovePossible(nextField)) {
@@ -104,13 +106,13 @@ class DynamiteGame {
 
   String getHTML() {
     String html = "<table>";
-    for (int row = 0; row < _gameField.length; row++) {
+    for (int height = 0; height < _fieldHeight; height++) {
       html += "<tr>";
-      for (int col = 0; col < _gameField[row].length; col++) {
-        List<Entity> currentField = _gameField[row][col];
+      for (int width = 0; width < _fieldWidth; width++) {
+        List<Entity> currentField = _gameField[width][height];
 
         //final assignment = field[row][col];
-        final pos = "field_${row}_${col}";
+        final pos = "field_${width}_${height}";
         final entityClasses = _getHTMLEntities(currentField);
         html += "<td id='$pos'$entityClasses></td>"; //  class='$assignment'
       }

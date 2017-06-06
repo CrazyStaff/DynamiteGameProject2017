@@ -2,6 +2,7 @@ import 'Entity.dart';
 import 'Player.dart';
 import 'Position.dart';
 import './blocks/UndestroyableBlock.dart';
+import 'blocks/Dynamite.dart';
 
 class DynamiteGame {
 
@@ -132,5 +133,11 @@ class DynamiteGame {
         htmlEntities += " ${entity.getHTMLClass()}";
       }
       return htmlEntities;
+  }
+
+  void placeDynamite() {
+    Position pos = _player.position;
+    List<Entity> gameField = _gameField[pos.getX][pos.getY];
+    gameField.add(new Dynamite(pos));
   }
 }

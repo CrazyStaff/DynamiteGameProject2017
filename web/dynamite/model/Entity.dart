@@ -94,4 +94,7 @@ abstract class Entity {
 
   }
 
+  String getType() {
+    return this._type;
+  }
 }

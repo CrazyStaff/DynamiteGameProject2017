@@ -1,4 +1,5 @@
 import 'Entity.dart';
+import 'Modificator.dart';
 import 'Position.dart';
 
 class Player extends Entity {
@@ -7,7 +8,8 @@ class Player extends Entity {
 
   Player(Position position) : super(ENTITY_TYPE, position) {
       this.nextPostion = position.clone();
-      setMoveable(100); // speed = 20
+      updateLastMoveTime();
+      setSpeed(100);
   }
 
   // TODO: Constructor with startPosition and other variables of Entity

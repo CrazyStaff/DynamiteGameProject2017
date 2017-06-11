@@ -1,0 +1,40 @@
+import '../DynamiteGame.dart';
+import '../Entity.dart';
+import '../Modificator.dart';
+import '../Position.dart';
+import 'Block.dart';
+
+class Fire extends Block {
+
+  static final ENTITY_TYPE = "FIRE";
+
+  Fire(Position position) : super(ENTITY_TYPE, position) {
+    updateLastMoveTime();
+    setSpeed(DynamiteGame.FIRE_DURATION);
+  }
+
+  static bool isSpawnPossible(List<List<List<Entity>>> gameField, Position spawnPoint) {
+      int fieldWidth = gameField[0].length;
+      int fieldHeight = gameField.length;
+      bool isSpawnPossible = false;
+
+      if(spawnPoint.getX >= 0 && spawnPoint.getX < fieldWidth && spawnPoint.getY >= 0 && spawnPoint.getY < fieldHeight) {
+        isSpawnPossible = true;
+        for(Entity entity  in gameField[spawnPoint.getX][spawnPoint.getY]) {
+          switch(entity.getType()) {
+            case "UNDESTROYABLE_BLOCK":
+              return false;
+          }
+        }
+      }
+      return isSpawnPossible;
+  }
+
+  // @override
+  void action(List<List< List<Entity>>> gameField, int time) {
+    // TODO gleiche wie in Dynamite => gemeinsam auslagern
+    if ((this.lastMoveTime + this.speed) < time){
+      setAlive(false);
+    }
+  }
+}

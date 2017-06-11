@@ -4,6 +4,12 @@ class Position {
   int get getX => _x;
   int get getY => _y;
 
+  static final Position RIGHT = new Position(1, 0);
+  static final Position LEFT = new Position(-1, 0);
+  static final Position DOWN = new Position(0, -1);
+  static final Position UP = new Position(0, 1);
+
+
   Position(this._x, this._y);
 
   void addOffset(int offsetX, int offsetY) {

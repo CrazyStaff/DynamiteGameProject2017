@@ -25,6 +25,14 @@ html, body {
     background-color: orange !important;
 }
 
+.DYNAMITE {
+    background-color: black !important;
+}
+
+.FIRE {
+    background-color: red !important;
+}
+
 #gameField tr td:hover {
     background-color: #B64926 !important;
 }

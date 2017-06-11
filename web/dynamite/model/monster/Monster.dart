@@ -1,4 +1,5 @@
 import '../Entity.dart';
+import '../Modificator.dart';
 import '../Position.dart';
 import '../Target.dart';
 

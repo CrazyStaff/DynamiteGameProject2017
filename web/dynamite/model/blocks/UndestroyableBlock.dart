@@ -1,3 +1,5 @@
+import '../Entity.dart';
+import '../Modificator.dart';
 import '../Position.dart';
 import 'Block.dart';
 
@@ -8,7 +10,7 @@ class UndestroyableBlock extends Block {
   UndestroyableBlock(Position position) : super(ENTITY_TYPE, position);
 
   @override
-  void atDestroy() {
-    // TODO: implement atDestroy
+  Modificator atDestroy(List<List<List<Entity>>> gameField) {
+    return null;
   }
 }

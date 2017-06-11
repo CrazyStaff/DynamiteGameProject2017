@@ -1,36 +1,48 @@
+import 'Modificator.dart';
 import 'Position.dart';
 
 abstract class Entity {
 
   Position _position;
   String _type;
-  int _lastMoveTime; // TODO: should be long? => no long in dart
-  int _speed;
+  int lastMoveTime; // TODO: should be long? => no long in dart
+  int lastActionTime;
+  int walkingSpeed;
 
   int _team;
   int _strength;
   bool _alive;
-  bool _isWalkable;
+  bool isWalkable = false; // dont change - collision baut auf isWalkable auf!!
 
   String getHTMLClass() => "class='$_type'";
 
-  void setMoveable(int speed) {
-      this._lastMoveTime = 0;
-      this._speed = speed;
+  void updateLastMoveTime() {
+    this.lastMoveTime = new DateTime.now().millisecondsSinceEpoch;
   }
 
-  bool isAllowedToMove(int time) {
-    if(_lastMoveTime == null) return false; // auf == null hier prüfen?
-    return _lastMoveTime + _speed <= time;
+  void updateLastActionTime() {
+    this.lastActionTime = new DateTime.now().millisecondsSinceEpoch;
   }
+
+  void setLastMoveTime(int lastMoveTime) {
+    this.lastMoveTime = lastMoveTime;
+  }
+
+  void setWalkingSpeed(int walkingSpeed) {
+    this.walkingSpeed = walkingSpeed;
+  }
+
+  /*
+   * Checks ONLY if it is allowed to move based on the given time
+   */
+  bool isAllowedToMove(int time) {
+    if(lastMoveTime == null) return false;
+    return lastMoveTime + walkingSpeed <= time;
+  }
+
   bool get isAlive => this._alive;
 
   Position get position => _position;
-
-  // TODO: Konstruktor einbauen
-  /*Entity(Position position) { // TODO: Alle Instanzvariablen uebergeben
-      this._position = position;
-  }*/
 
   Entity(String type, Position position) {
     this._type = type;
@@ -45,7 +57,7 @@ abstract class Entity {
     if(!isAlive) return false; // TODO: notwendig?
 
     for(Entity otherEntity in entityField) {
-      if(!otherEntity._isWalkable) {
+      if(!otherEntity.isWalkable) {
           return false;
       }
     }
@@ -53,24 +65,28 @@ abstract class Entity {
   }
 
 
-  void moveTo(List<Entity> entityField) { // long
+  // sollte immer nur zu einem neuen Feld bewegen!! -> wenn entity Field gleich bleibt kommt es zur concurrency Exception
+  void moveTo(List<Entity> entityField) {
       // Move to the new field
       entityField.add(this);
       _position = getNextMove(null).clone(); // TODO null is evil for monster?
 
       for(Entity otherEntities in entityField) {
           if(this.collision(otherEntities)) {
-              // TODO: 1) Bewege entity das letzte mal => beim nächsten Move aus Liste entfernen
-              // TODO: ODER 2) Lösche entity bei Kollision direkt => also kein 'entityField.add(this);'
-              _alive = false;
+            // TODO Entities die auf diesem Feld stehen und strength_enemy < self => enemy töten
+            _alive = false;
           }
       }
-      _lastMoveTime = new DateTime.now().millisecondsSinceEpoch;
+      lastMoveTime = new DateTime.now().millisecondsSinceEpoch;
   }
 
   // need to be override by implementation
+  /**
+   * Calculate the next position
+   * @return NULL indicates that the position stays the same
+   */
   Position getNextMove(List<List< List<Entity>>> gameField) {
-    return null;
+    return null; // DO NOT CHANGE TO "position"
   }
 
   /**
@@ -96,5 +112,14 @@ abstract class Entity {
 
   String getType() {
     return this._type;
+  }
+
+  // need to be overriden by implementation
+  Modificator atDestroy(List<List<List<Entity>>> gameField) {
+    return null;
+  }
+
+   // need to be override by implementation
+  void action(List<List< List<Entity>>> _gameField, int time) {
   }
 }

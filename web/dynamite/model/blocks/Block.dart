@@ -1,9 +1,11 @@
 import '../Entity.dart';
+import '../Modificator.dart';
 import '../Position.dart';
 
 abstract class Block extends Entity {
 
    Block(String type, Position position) : super(type, position);
 
-   void atDestroy();
+   // needs to be overriden by each superclass of 'Block'
+   Modificator atDestroy(List<List<List<Entity>>> gameField);
 }

@@ -1,10 +1,15 @@
 import 'Entity.dart';
+import 'Modificator.dart';
 import 'Player.dart';
 import 'Position.dart';
 import './blocks/UndestroyableBlock.dart';
 import 'blocks/Dynamite.dart';
 
 class DynamiteGame {
+
+  static final int DYNAMITE_EXPLODE_TIME = 4000;
+  static final int FIRE_DURATION = 1000;
+  static final int DYNAMITE_RADIUS = 2;
 
   int _fieldWidth;
   int _fieldHeight;
@@ -44,7 +49,7 @@ class DynamiteGame {
       // calculate the position of each block in 'gameField'
       int xPos = idElement % fieldWidth;
       int yPos = (idElement / fieldWidth).toInt();
-      Position currentPostion = new Position(xPos, yPos);
+      Position currentPosition = new Position(xPos, yPos);
 
       List<Entity> currentField = _gameField[xPos][yPos];
 
@@ -59,11 +64,11 @@ class DynamiteGame {
           // not needed
           break;
         case "B": /* block */
-          currentField.add(new UndestroyableBlock(currentPostion));
+          currentField.add(new UndestroyableBlock(currentPosition));
           break;
         case "P": /* starting point of player */
           if(_player == null) { // TODO only one player currently?
-            _player = new Player(currentPostion);
+            _player = new Player(currentPosition);
             currentField.add(_player);
           }
           break;
@@ -75,12 +80,19 @@ class DynamiteGame {
       for(List<List<Entity>> allPositions in _gameField) {
         for(List<Entity> allFieldEntities in allPositions) {
           var toRemove = [];
+          List<Modificator> toModificate = new List<Modificator>();
 
           for(Entity entity in allFieldEntities) { // TODO iterator statt for each =>  removen und adden nur mit iterator aufrufbar
-
               if(!entity.isAlive) { // Wenn nicht lebend => löschen
-                toRemove.add(entity);
-              } else if(entity.isAllowedToMove(time)) { // Wenn entity sich bewegen kann => bewege auf nächstes Feld
+                Modificator mod = entity.atDestroy(_gameField);
+                if(mod != null) {
+                  toModificate.add(mod);
+                }
+                toRemove.add(entity); // Lösche entity hier
+                continue;
+              }
+
+              if(entity.isAllowedToMove(time)) { // Wenn entity sich bewegen kann => bewege auf nächstes Feld
                 Position nextMove = entity.getNextMove(_gameField);
                 List<Entity> nextField = _gameField[nextMove.getX][nextMove.getY];
 
@@ -94,7 +106,18 @@ class DynamiteGame {
                   // TODO: nextField move not possible
                 }
               }
+              // auch während des Bewegens darf die Action ausgeführt werden?! =>  sonst else
+              entity.action(_gameField, time);
             }
+
+          // Modify entity list only after iteration
+          for(Modificator mod in toModificate) {
+            if(mod != null) {
+              mod.executeChangesTo(_gameField);
+            }
+          }
+          toModificate.clear();
+
           // Modify entity list only after iteration
           allFieldEntities.removeWhere((e) => toRemove.contains(e));
         }

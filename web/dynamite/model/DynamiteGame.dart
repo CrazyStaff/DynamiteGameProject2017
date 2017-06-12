@@ -102,7 +102,6 @@ class DynamiteGame {
                   // First of all remove entity from currentField
                   toRemove.add(entity);
                   entity.moveTo(nextField);
-                  if (!entity.isAlive) toRemove.add(entity);
                 } else {
                   // TODO: nextField move not possible
                 }

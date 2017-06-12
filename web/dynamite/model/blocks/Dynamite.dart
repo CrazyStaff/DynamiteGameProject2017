@@ -36,10 +36,26 @@ class Dynamite extends Block {
       pos.addOffset(direction.getX, direction.getY);
       if(Fire.isSpawnPossible(gameField, pos)) {
         Position positionFire = pos.clone();
-        modificator.addAddable(new Fire(positionFire), positionFire);
+
+        Fire fire = new Fire(positionFire);
+        modificator.addAddable(fire, positionFire);
+
+        _collisionWithEntities(fire, gameField, pos);
       } else {
         return; // Do not spawn fire in this row after a not possible spawn fire block
       }
+    }
+  }
+
+  /**
+   * Do collision on fire spawning field directly after fire is spawned
+   */
+  void _collisionWithEntities(Fire fire, List<List<List<Entity>>> gameField, Position pos) {
+    List<Entity> allFieldEntities = gameField[pos.getX][pos.getY];
+    for(Entity entity in allFieldEntities) {
+        if (entity.collision(fire)) {
+          entity.setAlive(false);
+        }
     }
   }
 

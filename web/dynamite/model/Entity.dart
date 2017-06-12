@@ -48,6 +48,7 @@ abstract class Entity {
     this._type = type;
     this._position = position;
     this._alive = true;
+    this.strength = 0;
   }
 
   /**

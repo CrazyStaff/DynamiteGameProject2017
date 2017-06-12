@@ -40,6 +40,7 @@ class DynamiteGameController {
 
       gameTrigger = new Timer.periodic(gameSpeed, (_) => _moveEntities());
 
+      view.startButton.setAttribute("value", "Pause Game");
       // game.start(); // TODO?? !!!!!!!!!!!!!!!!!
        view.update(game.getHTML());
     });

@@ -20,15 +20,16 @@ class Dynamite extends Block {
   Modificator atDestroy(List<List<List<Entity>>> gameField) {
     Modificator mod = Modificator.buildModificator(gameField);
 
-    _spawnFireInDirection(gameField, position, Position.UP, mod);
-    _spawnFireInDirection(gameField, position, Position.DOWN, mod);
-    _spawnFireInDirection(gameField, position, Position.LEFT, mod);
-    _spawnFireInDirection(gameField, position, Position.RIGHT, mod);
+    _spawnFireInDirection(gameField, new Position(0, 0), mod);
+    _spawnFireInDirection(gameField, Position.UP, mod);
+    _spawnFireInDirection(gameField, Position.DOWN, mod);
+    _spawnFireInDirection(gameField, Position.LEFT, mod);
+    _spawnFireInDirection(gameField, Position.RIGHT, mod);
 
     return mod;
   }
 
-  void _spawnFireInDirection(List<List<List<Entity>>> gameField, Position pos, final Position direction, Modificator modificator) {
+  void _spawnFireInDirection(List<List<List<Entity>>> gameField, final Position direction, Modificator modificator) {
     Position pos = position.clone();
 
     for(int i=1; i <= DynamiteGame.DYNAMITE_RADIUS; i++) {

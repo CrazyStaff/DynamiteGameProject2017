@@ -9,6 +9,8 @@ class Player extends Entity {
       this.nextPostion = position.clone();
       updateLastMoveTime();
       setWalkingSpeed(100);
+      team = 1;
+      strength = 42;
   }
 
   // TODO: Constructor with startPosition and other variables of Entity

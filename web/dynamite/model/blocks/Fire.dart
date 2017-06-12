@@ -9,6 +9,9 @@ class Fire extends Block {
   static final ENTITY_TYPE = "FIRE";
 
   Fire(Position position) : super(ENTITY_TYPE, position) {
+    isWalkable = true;
+    team = 3;
+    strength = 99;
     updateLastActionTime();
     // Feuer bewegt sich erstmal nicht!!!
     // updateLastMoveTime();

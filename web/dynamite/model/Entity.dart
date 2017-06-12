@@ -8,9 +8,9 @@ abstract class Entity {
   int lastMoveTime; // TODO: should be long? => no long in dart
   int lastActionTime;
   int walkingSpeed;
+  int team;
+  int strength;
 
-  int _team;
-  int _strength;
   bool _alive;
   bool isWalkable = false; // dont change - collision baut auf isWalkable auf!!
 
@@ -93,9 +93,9 @@ abstract class Entity {
    * Other entity is not in my team and is stronger than me
    */
   bool collision(Entity entity) {
-      if(entity._team != this._team) {
+      if(entity.team != this.team) {
         // Entities are enemies
-        if(entity._strength > entity._strength)  { // TODO: >= ? - Was passiert wenn beide gleich stark sind?
+        if(entity.strength > this.strength)  { // TODO: >= ? - Was passiert wenn beide gleich stark sind?
           return true;
         }
       }
@@ -104,10 +104,6 @@ abstract class Entity {
 
   void setAlive(bool alive) {
       this._alive = alive;
-  }
-
-  void setStrength(int x) { // add oder set ?
-
   }
 
   String getType() {

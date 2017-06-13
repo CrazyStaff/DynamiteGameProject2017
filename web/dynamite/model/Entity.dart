@@ -2,6 +2,9 @@ import 'Modificator.dart';
 import 'Position.dart';
 
 abstract class Entity {
+  static int destroyableBlockCount = 0;
+  static int monsterCounter = 0;
+
 
   Position _position;
   Position nextPosition;

@@ -1,4 +1,5 @@
 import '../Entity.dart';
+import '../Modificator.dart';
 import '../Position.dart';
 import '../Target.dart';
 import 'dart:math';
@@ -12,8 +13,9 @@ class Monster extends Entity {
 
 
   Monster(Position position) : super(ENTITY_TYPE, position) {
-    this._target = new Target();
+    Entity.monsterCounter += 1;
 
+    this._target = new Target();
     this.isWalkable = true;
     this.strength = 43;
     this.team = 2;
@@ -33,6 +35,12 @@ class Monster extends Entity {
       // TODO: Testen ob sich im View_Field_Range der Player befindet (mithilfe von direction => wo man hinguckt)
       // TODO => und die neue Position dann in Target '_target' updaten
       // if player found use => List<Position> path = PathFinder.findPath(gameField, this.position, TARGET_POSITION_PLAYER);
+  }
+
+  @override
+  Modificator atDestroy(List<List<List<Entity>>> gameField) {
+        Entity.monsterCounter -= 1;
+        return null;
   }
 
   @override

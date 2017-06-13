@@ -3,7 +3,9 @@ import 'Modificator.dart';
 import 'Player.dart';
 import 'Position.dart';
 import './blocks/UndestroyableBlock.dart';
+import 'blocks/DestroyableBlock.dart';
 import 'blocks/Dynamite.dart';
+import 'items/Portal.dart';
 import 'monster/Monster.dart';
 
 class DynamiteGame {
@@ -76,6 +78,12 @@ class DynamiteGame {
         /* block */
           currentField.add(new UndestroyableBlock(currentPosition));
           break;
+        case "D":
+          currentField.add(new DestroyableBlock(currentPosition));
+          break;
+        case "Z": /* Portal */
+          currentField.add(new Portal(currentPosition));
+          break;
         case "P":
         /* starting point of player */
           if (_player == null) { // TODO only one player currently?
@@ -109,14 +117,17 @@ class DynamiteGame {
             if(nextMove == null) { // if there is not a next move
                 entity.standStillStrategy();
             } else { // if there is a move to another field
-              List<Entity> nextField = _gameField[nextMove.getX][nextMove.getY];
+              if(_proofIfNextPositionIsValid(nextMove)) {
+                List<Entity> nextField = _gameField[nextMove.getX][nextMove
+                    .getY];
 
-              if (entity.isMovePossible(nextField)) {
-                // First of all remove entity from currentField
-                toRemove.add(entity);
-                entity.moveTo(nextField);
-              } else {
-                // TODO: nextField move not possible
+                if (entity.isMovePossible(nextField)) {
+                  // First of all remove entity from currentField
+                  toRemove.add(entity);
+                  entity.moveTo(nextField);
+                } else {
+                  // TODO: nextField move not possible
+                }
               }
             }
           }
@@ -136,6 +147,17 @@ class DynamiteGame {
         allFieldEntities.removeWhere((e) => toRemove.contains(e));
       }
     }
+  }
+
+  bool _proofIfNextPositionIsValid(Position position) {
+    if(position == null) return false;
+
+    int fieldWidth = _gameField.length;
+    int fieldHeight = _gameField[0].length;
+    if(position.getX >= 0 && position.getX < fieldWidth && position.getY >= 0 && position.getY < fieldHeight) {
+      return true;
+    }
+    return false;
   }
 
   void setNextMovePlayer(int offsetX, int offsetY) {

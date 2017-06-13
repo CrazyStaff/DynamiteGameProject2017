@@ -29,6 +29,9 @@ html, body {
     background-color: green !important;
 }
 
+.DESTROYABLE_BLOCK {
+    background-color: brown !important;
+}
 
 .DYNAMITE {
     background-color: black !important;

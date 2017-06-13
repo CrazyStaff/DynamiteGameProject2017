@@ -40,6 +40,10 @@ html, body {
     background-color: red !important;
 }
 
+.DESTROYABLE_BLOCK {
+    background-color: saddlebrown !important;
+}
+
 .MONSTER {
     background-color: purple !important;
 }

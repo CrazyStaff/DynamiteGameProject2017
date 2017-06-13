@@ -5,6 +5,7 @@ import 'Position.dart';
 import './blocks/UndestroyableBlock.dart';
 import 'blocks/Dynamite.dart';
 import 'monster/Monster.dart';
+import './blocks/DestroyableBlock.dart';
 
 class DynamiteGame {
 
@@ -66,6 +67,9 @@ class DynamiteGame {
           break;
         case "B": /* block */
           currentField.add(new UndestroyableBlock(currentPosition));
+          break;
+        case "K": /* block */
+          currentField.add(new DestroyableBlock(currentPosition));
           break;
         case "M": /* block */
           currentField.add(new Monster(currentPosition));

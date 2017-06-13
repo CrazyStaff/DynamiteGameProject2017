@@ -28,8 +28,6 @@ class Fire extends Block {
       for(Entity entity  in gameField[spawnPoint.getX][spawnPoint.getY]) {
         switch(entity.getType()) {
           case "UNDESTROYABLE_BLOCK":
-            return false;
-            break;
           case "PORTAL":
             return false;
         }

@@ -3,6 +3,7 @@ import 'Position.dart';
 
 abstract class Entity {
   static int MonsterCounter = 0;
+  static int KistenCount = 0;
 
   Position _position;
   String _type;

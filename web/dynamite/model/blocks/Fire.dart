@@ -1,6 +1,5 @@
 import '../DynamiteGame.dart';
 import '../Entity.dart';
-import '../Modificator.dart';
 import '../Position.dart';
 import 'Block.dart';
 

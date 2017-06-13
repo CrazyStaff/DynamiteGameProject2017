@@ -5,6 +5,11 @@ class DynamiteView {
 
   final game = querySelector("#gameField");
   HtmlElement get startButton => querySelector('#startButton');
+  HtmlElement get arrowUp => querySelector('#arrowUp');
+  HtmlElement get arrowDown => querySelector('#arrowDown');
+  HtmlElement get arrowLeft => querySelector('#arrowLeft');
+  HtmlElement get arrowRight => querySelector('#arrowRight');
+  HtmlElement get arrowDynamite => querySelector('#arrowDynamite');
 
   void update(String gameField) { //
     game.innerHtml = gameField; // TODO: generate in view

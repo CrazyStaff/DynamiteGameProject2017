@@ -96,9 +96,7 @@ class DynamiteGame {
                 Position nextMove = entity.getNextMove(_gameField);
                 List<Entity> nextField = _gameField[nextMove.getX][nextMove.getY];
 
-                print("isAllowedToMove entity");
                 if (entity.isMovePossible(nextField)) {
-                  print("move entity");
                   // First of all remove entity from currentField
                   toRemove.add(entity);
                   entity.moveTo(nextField);

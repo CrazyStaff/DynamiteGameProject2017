@@ -48,6 +48,10 @@ html, body {
     background-color: purple !important;
 }
 
+.PORTAL {
+    background-color: blue !important;
+}
+
 #gameField tr td:hover {
     background-color: #B64926 !important;
 }

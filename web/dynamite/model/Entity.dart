@@ -2,6 +2,7 @@ import 'Modificator.dart';
 import 'Position.dart';
 
 abstract class Entity {
+  static int MonsterCounter = 0;
 
   Position _position;
   String _type;
@@ -61,12 +62,6 @@ abstract class Entity {
       if(!otherEntity.isWalkable) {
           return false;
       }
-      if (otherEntity.team != this.team) {
-        if (otherEntity.strength > this.strength) {
-          this.setAlive(false);
-        } else
-          otherEntity.setAlive(false);
-      }
     }
     return true;
   }
@@ -79,10 +74,7 @@ abstract class Entity {
       _position = getNextMove(null).clone(); // TODO null is evil for monster?
 
       for(Entity otherEntities in entityField) {
-          if(this.collision(otherEntities)) {
-            // TODO Entities die auf diesem Feld stehen und strength_enemy < self => enemy töten
-            _alive = false;
-          }
+          this.collision(otherEntities);
       }
       lastMoveTime = new DateTime.now().millisecondsSinceEpoch;
   }
@@ -100,13 +92,28 @@ abstract class Entity {
    * Other entity is not in my team and is stronger than me
    */
   bool collision(Entity entity) {
-      if(entity.team != this.team) {
-        // Entities are enemies
-        if(entity.strength > this.strength)  { // TODO: >= ? - Was passiert wenn beide gleich stark sind?
+    switch(entity.getType()) {
+      case "MONSTER":
+        if (entity.team != this.team) {
+          if (entity.strength > this.strength) {
+            this.setAlive(false);
+            return false;
+          } else
+            entity.setAlive(false);
           return true;
         }
-      }
-      return false;
+        break;
+      case "FIRE":
+            setAlive(false);
+            break;
+      case "PORTAL":
+        if (getType() == "PLAYER") {
+          if (Entity.MonsterCounter == 0) {
+            setAlive(false);
+          }
+        }
+        break;
+    }
   }
 
   void setAlive(bool alive) {

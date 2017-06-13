@@ -6,6 +6,7 @@ import './blocks/UndestroyableBlock.dart';
 import 'blocks/Dynamite.dart';
 import 'monster/Monster.dart';
 import './blocks/DestroyableBlock.dart';
+import './items/Portal.dart';
 
 class DynamiteGame {
 
@@ -73,6 +74,9 @@ class DynamiteGame {
           break;
         case "M": /* block */
           currentField.add(new Monster(currentPosition));
+          break;
+        case "Z": /* block */
+          currentField.add(new Portal(currentPosition));
           break;
         case "P": /* starting point of player */
           if(_player == null) { // TODO only one player currently?

@@ -1,6 +1,7 @@
 import '../Entity.dart';
 import '../Position.dart';
 import '../Target.dart';
+import '../Modificator.dart';
 
 class Monster extends Entity {
   static const int VIEW_FIELD_RANGE = 3;
@@ -11,6 +12,7 @@ class Monster extends Entity {
   Position nextPosition;
 
   Monster(Position position) : super(ENTITY_TYPE, position) {
+    Entity.MonsterCounter++;
      _target = new Target();
      this.isWalkable = true;
      updateLastMoveTime();
@@ -21,6 +23,12 @@ class Monster extends Entity {
 
   void setNextMove(Position nextPosition) {
      this.nextPosition = nextPosition;
+  }
+
+  @override
+  Modificator atDestroy(List<List<List<Entity>>> gameField) {
+    Entity.MonsterCounter--;
+    return null;
   }
 
   @override

@@ -29,6 +29,9 @@ class Fire extends Block {
         switch(entity.getType()) {
           case "UNDESTROYABLE_BLOCK":
             return false;
+            break;
+          case "PORTAL":
+            return false;
         }
       }
     }

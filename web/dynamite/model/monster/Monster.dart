@@ -12,6 +12,11 @@ class Monster extends Entity {
 
   Monster(Position position) : super(ENTITY_TYPE, position) {
      _target = new Target();
+     this.isWalkable = true;
+     updateLastMoveTime();
+     setWalkingSpeed(1000);
+     this.strength = 43;
+     this.team = 2;
   }
 
   void setNextMove(Position nextPosition) {
@@ -28,14 +33,49 @@ class Monster extends Entity {
 
   @override
   Position getNextMove(List<List< List<Entity>>> gameField) {
-    if(!_target.hasPathToTarget()) {
+    /*if(!_target.hasPathToTarget()) {
       // 1) TODO: use random movement
       // 2) TODO: use defined path ( read from file -> monster path )
       // =>  nextPosition = ...
     } else {
       // TODO: Lauf zum Punkt wo du den Helden das letzte mal gesehen hast
       nextPosition = _target.nextStepToTarget();
+    }*/
+    String random = (new DateTime.now().millisecondsSinceEpoch).toString();
+    random = random.substring(random.length-4, random.length-3);
+    switch (random) {
+      case "0":
+        nextPosition = new Position(position.getX+1, position.getY);
+        break;
+      case "1":
+        nextPosition = new Position(position.getX, position.getY+1);
+        break;
+      case "2":
+        nextPosition = new Position(position.getX, position.getY-1);
+        break;
+      case "3":
+        nextPosition = new Position(position.getX-1, position.getY);
+        break;
+      case "4":
+        nextPosition = new Position(position.getX-1, position.getY);
+        break;
+      case "5":
+        nextPosition = new Position(position.getX+1, position.getY);
+        break;
+      case "6":
+        nextPosition = new Position(position.getX, position.getY+1);
+        break;
+      case "7":
+        nextPosition = new Position(position.getX, position.getY-1);
+        break;
+      case "8":
+        nextPosition = new Position(position.getX+1, position.getY);
+        break;
+      case "9":
+        nextPosition = new Position(position.getX, position.getY+1);
+        break;
     }
+    updateLastMoveTime();
     return nextPosition;
   }
 }

@@ -1,6 +1,5 @@
 import '../DynamiteGame.dart';
 import '../Entity.dart';
-import '../Modificator.dart';
 import '../Position.dart';
 import 'Block.dart';
 
@@ -28,7 +27,6 @@ class Fire extends Block {
       for(Entity entity  in gameField[spawnPoint.getX][spawnPoint.getY]) {
         switch(entity.getType()) {
           case "UNDESTROYABLE_BLOCK":
-          case "PORTAL":
             return false;
         }
       }

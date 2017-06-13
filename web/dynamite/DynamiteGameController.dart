@@ -56,6 +56,14 @@ class DynamiteGameController {
         case KeyCode.SPACE: placeDynamite(); break;
       }
     });
+
+    // listen on smartphone arrows
+    view.arrowUp.onClick.listen((_) => up());
+    view.arrowRight.onClick.listen((_) => right());
+    view.arrowDown.onClick.listen((_) => down());
+    view.arrowLeft.onClick.listen((_) => left());
+    view.arrowDynamite.onClick.listen((_) => placeDynamite());
+
   }
 
   /*

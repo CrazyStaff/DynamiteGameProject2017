@@ -2,10 +2,9 @@ import 'Modificator.dart';
 import 'Position.dart';
 
 abstract class Entity {
-  static int MonsterCounter = 0;
-  static int KistenCount = 0;
 
   Position _position;
+  Position nextPosition;
   String _type;
   int lastMoveTime; // TODO: should be long? => no long in dart
   int lastActionTime;
@@ -51,6 +50,7 @@ abstract class Entity {
     this._position = position;
     this._alive = true;
     this.strength = 0;
+    this.team = 0;
   }
 
   /**
@@ -67,15 +67,24 @@ abstract class Entity {
     return true;
   }
 
-
-  // sollte immer nur zu einem neuen Feld bewegen!! -> wenn entity Field gleich bleibt kommt es zur concurrency Exception
+  /* Should only move to a DIFFERENT field */
   void moveTo(List<Entity> entityField) {
+    if(this.position == this.nextPosition) {
+      throw new Exception("FATAL - Entity.moveTo: nextPosition should BE 'NULL' if you dont move."
+          "=> dont give the 'nextPosition' the same position like 'position'"
+          "=> it causes concurrencyException!!");
+    }
       // Move to the new field
       entityField.add(this);
-      _position = getNextMove(null).clone(); // TODO null is evil for monster?
+
+      _position = nextPosition;
+      nextPosition = null; // nextPosition ist jetzt nicht mehr vorhanden
 
       for(Entity otherEntities in entityField) {
-          this.collision(otherEntities);
+          if(this.collision(otherEntities)) {
+            // TODO Entities die auf diesem Feld stehen und strength_enemy < self => enemy töten
+            this._alive = false;
+          }
       }
       lastMoveTime = new DateTime.now().millisecondsSinceEpoch;
   }
@@ -93,28 +102,13 @@ abstract class Entity {
    * Other entity is not in my team and is stronger than me
    */
   bool collision(Entity entity) {
-    switch(entity.getType()) {
-      case "MONSTER":
-        if (entity.team != this.team) {
-          if (entity.strength > this.strength) {
-            this.setAlive(false);
-            return false;
-          } else
-            entity.setAlive(false);
+      if(entity.team != this.team) {
+        // Entities are enemies
+        if(entity.strength > this.strength)  {
           return true;
         }
-        break;
-      case "FIRE":
-            setAlive(false);
-            break;
-      case "PORTAL":
-        if (getType() == "PLAYER") {
-          if (Entity.MonsterCounter == 0) {
-            setAlive(false);
-          }
-        }
-        break;
-    }
+      }
+      return false;
   }
 
   void setAlive(bool alive) {
@@ -132,5 +126,15 @@ abstract class Entity {
 
    // need to be override by implementation
   void action(List<List< List<Entity>>> _gameField, int time) {
+  }
+
+  /* this strategy decides what to do if the entity is not moving
+     1) in this method implemented:
+        -> stand still for "walkingSpeed" time => so standing still is like a real move
+     2) override method empty!
+        -> allow entity (f.e. player) to move directly in the game tact after f.e. no input of user
+   */
+  void standStillStrategy() {
+    this.updateLastMoveTime();
   }
 }

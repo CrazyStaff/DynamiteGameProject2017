@@ -1,7 +1,7 @@
 import '../Entity.dart';
 import '../Position.dart';
 import '../Target.dart';
-import '../Modificator.dart';
+import 'dart:math';
 
 class Monster extends Entity {
   static const int VIEW_FIELD_RANGE = 3;
@@ -9,16 +9,17 @@ class Monster extends Entity {
   static final ENTITY_TYPE = "MONSTER";
 
   Target _target;
-  Position nextPosition;
+
 
   Monster(Position position) : super(ENTITY_TYPE, position) {
-    Entity.MonsterCounter++;
-     _target = new Target();
-     this.isWalkable = true;
-     updateLastMoveTime();
-     setWalkingSpeed(1000);
-     this.strength = 43;
-     this.team = 2;
+    this._target = new Target();
+
+    this.isWalkable = true;
+    this.strength = 43;
+    this.team = 2;
+
+    this.setWalkingSpeed(1000);
+    this.updateLastMoveTime();
   }
 
   void setNextMove(Position nextPosition) {
@@ -26,14 +27,9 @@ class Monster extends Entity {
   }
 
   @override
-  Modificator atDestroy(List<List<List<Entity>>> gameField) {
-    Entity.MonsterCounter--;
-    return null;
-  }
-
-  @override
   void moveTo(List<Entity> entityField) {
       super.moveTo(entityField);
+
       // TODO: Testen ob sich im View_Field_Range der Player befindet (mithilfe von direction => wo man hinguckt)
       // TODO => und die neue Position dann in Target '_target' updaten
       // if player found use => List<Position> path = PathFinder.findPath(gameField, this.position, TARGET_POSITION_PLAYER);
@@ -41,49 +37,83 @@ class Monster extends Entity {
 
   @override
   Position getNextMove(List<List< List<Entity>>> gameField) {
-    /*if(!_target.hasPathToTarget()) {
-      // 1) TODO: use random movement
-      // 2) TODO: use defined path ( read from file -> monster path )
-      // =>  nextPosition = ...
+    if(!_target.hasPathToTarget()) {
+      return _moveRandom(gameField);
+      // 1) TODO - other strategy -> use defined path ( read from file -> monster path ) instead of random movement
     } else {
       // TODO: Lauf zum Punkt wo du den Helden das letzte mal gesehen hast
       nextPosition = _target.nextStepToTarget();
-    }*/
-    String random = (new DateTime.now().millisecondsSinceEpoch).toString();
-    random = random.substring(random.length-4, random.length-3);
-    switch (random) {
-      case "0":
-        nextPosition = new Position(position.getX+1, position.getY);
-        break;
-      case "1":
-        nextPosition = new Position(position.getX, position.getY+1);
-        break;
-      case "2":
-        nextPosition = new Position(position.getX, position.getY-1);
-        break;
-      case "3":
-        nextPosition = new Position(position.getX-1, position.getY);
-        break;
-      case "4":
-        nextPosition = new Position(position.getX-1, position.getY);
-        break;
-      case "5":
-        nextPosition = new Position(position.getX+1, position.getY);
-        break;
-      case "6":
-        nextPosition = new Position(position.getX, position.getY+1);
-        break;
-      case "7":
-        nextPosition = new Position(position.getX, position.getY-1);
-        break;
-      case "8":
-        nextPosition = new Position(position.getX+1, position.getY);
-        break;
-      case "9":
-        nextPosition = new Position(position.getX, position.getY+1);
-        break;
     }
-    updateLastMoveTime();
     return nextPosition;
   }
+
+  Position _moveRandom(List<List< List<Entity>>> gameField) {
+    //if(position == null) return null;
+
+    /*Position newPosition = _proofIfPossibleToKillEnemy(gameField); // // doesnt work yet :/
+    if(newPosition != null)
+      return newPosition; */
+
+    Random random = new Random();
+    for (int versuch = 0; versuch < 4; versuch++) {
+      switch (random.nextInt(4)) {
+        case 0:
+          nextPosition = new Position(position.getX + 1, position.getY);
+          break;
+        case 1:
+          nextPosition = new Position(position.getX - 1, position.getY);
+          break;
+        case 2:
+          nextPosition = new Position(position.getX, position.getY + 1);
+          break;
+        case 3:
+          nextPosition = new Position(position.getX, position.getY - 1);
+          break;
+      }
+      if (isMovePossible(gameField[nextPosition.getX][nextPosition.getY])){
+        return nextPosition;
+      }
+    }
+    updateLastMoveTime();
+    return null; /* returns null to stand still on the same field */
+  }
+
+  /* Position _proofIfPossibleToKillEnemy(List<List< List<Entity>>> gameField) {
+    List<Position> possibleFields = new List<Position>();
+    possibleFields.add(_proofIfEnemyOnField(gameField, Position.RIGHT));
+    possibleFields.add(_proofIfEnemyOnField(gameField, Position.LEFT));
+    possibleFields.add(_proofIfEnemyOnField(gameField, Position.DOWN));
+    possibleFields.add(_proofIfEnemyOnField(gameField, Position.UP));
+
+    for(Position possibleField in possibleFields) {
+        if(possibleField != null) {
+          return possibleField;
+        }
+    }
+    return null;
+  }
+
+  Position _proofIfEnemyOnField(List<List< List<Entity>>> gameField, Position proofDirection) {
+    if(position ==  null) return null;
+
+    int newX = position.getX+proofDirection.getX;
+    int newY = position.getY+proofDirection.getY;
+
+    List<Entity> entityField = gameField[newX][newY];
+
+    if(isMovePossible(entityField) && isLowerEnemyOnField(entityField) ) {
+      return new Position(newX, newY);
+    }
+    return null;
+  }
+
+  bool isLowerEnemyOnField(List<Entity> entityField) {
+      for(Entity enemy in entityField) {
+        if(enemy.collision(this)) { // we are stronger than enemy
+            return true;
+        }
+      }
+      return false;
+  }*/
+
 }

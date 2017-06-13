@@ -9,6 +9,7 @@ html, body {
 #gameField {
     width: 500px;
     margin: 100px auto 0 auto;
+    float:left;
 }
 
 #gameField table {
@@ -28,9 +29,6 @@ html, body {
     background-color: green !important;
 }
 
-.PLAYER {
-    background-color: orange !important;
-}
 
 .DYNAMITE {
     background-color: black !important;
@@ -40,17 +38,18 @@ html, body {
     background-color: red !important;
 }
 
-.DESTROYABLE_BLOCK {
-    background-color: saddlebrown !important;
+.PORTAL {
+    background-color: lightblue !important;
 }
 
 .MONSTER {
     background-color: purple !important;
+ }
+
+.PLAYER {
+    background-color: orange !important;
 }
 
-.PORTAL {
-    background-color: blue !important;
-}
 
 #gameField tr td:hover {
     background-color: #B64926 !important;
@@ -66,4 +65,30 @@ html, body {
     border: none;
 }
 
+#arrows {
+
+}
+
+#arrows table {
+    margin-left: auto;
+    margin-right: auto;
+    float: right;
+}
+
+#arrows input {
+    display: block;
+    margin: 0 auto;
+    padding: 10px;
+    height: 100%;
+    width: 100%;
+    font-size: 1em;
+    background: #468966;
+    color: white;
+    font-family: 'Open Sans', sans-serif;
+    border: none;
+}
+
+.emptyField {
+    visibility: hidden; /* do not show empty field! */
+}
 

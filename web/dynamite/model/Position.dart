@@ -21,6 +21,10 @@ class Position {
   }
 
   Position clone() {
+    if(this == null) {
+      print("FATAL: You cloned a position == null! => return null");
+      return null;
+    }
     return new Position(this._x, this._y);
   }
 

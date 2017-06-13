@@ -4,6 +4,7 @@ import 'Position.dart';
 abstract class Entity {
 
   Position _position;
+  Position nextPosition;
   String _type;
   int lastMoveTime; // TODO: should be long? => no long in dart
   int lastActionTime;
@@ -70,7 +71,7 @@ abstract class Entity {
   void moveTo(List<Entity> entityField) {
       // Move to the new field
       entityField.add(this);
-      _position = getNextMove(null).clone(); // TODO null is evil for monster?
+      _position = nextPosition; // TODO null is evil for monster?
 
       for(Entity otherEntities in entityField) {
           if(this.collision(otherEntities)) {

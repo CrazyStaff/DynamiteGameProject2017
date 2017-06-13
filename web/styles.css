@@ -29,8 +29,8 @@ html, body {
     background-color: green !important;
 }
 
-.PLAYER {
-    background-color: orange !important;
+.DESTROYABLE_BLOCK {
+    background-color: sandybrown !important;
 }
 
 .DYNAMITE {
@@ -39,6 +39,18 @@ html, body {
 
 .FIRE {
     background-color: red !important;
+}
+
+.PORTAL {
+    background-color: lightblue !important;
+}
+
+.MONSTER {
+    background-color: purple !important;
+}
+
+.PLAYER {
+    background-color: orange !important;
 }
 
 #gameField tr td:hover {

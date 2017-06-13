@@ -40,6 +40,10 @@ html, body {
     background-color: red !important;
 }
 
+.MONSTER {
+    background-color: purple !important;
+}
+
 #gameField tr td:hover {
     background-color: #B64926 !important;
 }

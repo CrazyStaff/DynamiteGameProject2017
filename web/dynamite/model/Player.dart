@@ -11,6 +11,7 @@ class Player extends Entity {
       setWalkingSpeed(100);
       team = 1;
       strength = 42;
+      this.isWalkable =  true;
   }
 
   // TODO: Constructor with startPosition and other variables of Entity

@@ -61,6 +61,12 @@ abstract class Entity {
       if(!otherEntity.isWalkable) {
           return false;
       }
+      if (otherEntity.team != this.team) {
+        if (otherEntity.strength > this.strength) {
+          this.setAlive(false);
+        } else
+          otherEntity.setAlive(false);
+      }
     }
     return true;
   }

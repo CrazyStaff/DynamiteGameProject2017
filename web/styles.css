@@ -7,9 +7,16 @@ html, body {
 }
 
 #gameField {
-    width: 500px;
-    margin: 100px auto 0 auto;
-    float:left;
+    position: absolute;
+    left: 1px;
+    top: 1px;
+}
+
+#output {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    background: white;
 }
 
 #gameField table {
@@ -18,12 +25,43 @@ html, body {
 
 #gameField tr td{
     background-color: #FFF0A5;
+    height: 34px;
     width: 34px; /* 25px */
-    height: 34px; /* 25px */
+    /*height: 34px; /* 25px */
     border: 1px solid #B64926;
 }
 
+.buttons input {
+    position: absolute;
+    right: 1px;
+    top: 1px;
+    display:block;
+    margin: auto;
+    padding: 10px;
+    background: #468966;
+    color: white;
+    font-family: 'Open Sans', sans-serif;
+    border: none;
+}
 
+#arrows table {
+    position: absolute;
+    right: 1px;
+    bottom: 1px;
+}
+
+#arrows input {
+    display: block;
+    margin: 0 auto;
+    padding: 10px;
+    height: 100%;
+    width: 100%;
+    font-size: 1em;
+    background: #468966;
+    color: white;
+    font-family: 'Open Sans', sans-serif;
+    border: none;
+}
 
 .UNDESTROYABLE_BLOCK{
     background-color: green !important;
@@ -53,43 +91,15 @@ html, body {
     background-color: orange !important;
 }
 
-
 #gameField tr td:hover {
     background-color: #B64926 !important;
-}
-
-.buttons input {
-    display:block;
-    margin: 10px auto 0 auto;
-    padding: 10px;
-    background: #468966;
-    color: white;
-    font-family: 'Open Sans', sans-serif;
-    border: none;
 }
 
 #arrows {
 
 }
 
-#arrows table {
-    margin-left: auto;
-    margin-right: auto;
-    float: right;
-}
 
-#arrows input {
-    display: block;
-    margin: 0 auto;
-    padding: 10px;
-    height: 100%;
-    width: 100%;
-    font-size: 1em;
-    background: #468966;
-    color: white;
-    font-family: 'Open Sans', sans-serif;
-    border: none;
-}
 
 .emptyField {
     visibility: hidden; /* do not show empty field! */

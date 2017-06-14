@@ -83,12 +83,20 @@ abstract class Entity {
       _position = nextPosition;
       nextPosition = null; // nextPosition ist jetzt nicht mehr vorhanden
 
-      for(Entity otherEntities in entityField) {
-          if(this.collision(otherEntities)) {
-            // TODO Entities die auf diesem Feld stehen und strength_enemy < self => enemy töten
-            this._alive = false;
-          }
+
+
+
+  if(this.getType() == "MONSTER") {
+    for (Entity otherEntities in entityField) {
+        print("Collision with: ${otherEntities.getType()}" );
+      if (this.collision(otherEntities)) {
+        // TODO Entities die auf diesem Feld stehen und strength_enemy < self => enemy töten
+        this._alive = false;
+      } else if(otherEntities.collision(this)) {
+        otherEntities._alive = false;
       }
+    }
+  }
       lastMoveTime = new DateTime.now().millisecondsSinceEpoch;
   }
 

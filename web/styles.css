@@ -24,7 +24,6 @@ html, body {
 }
 
 
-
 .UNDESTROYABLE_BLOCK{
     background-color: green !important;
 }
@@ -37,25 +36,21 @@ html, body {
     background-color: black !important;
 }
 
-.FIRE {
-    background-color: red !important;
-}
-
 .PORTAL {
     background-color: lightblue !important;
 }
 
+
 .MONSTER {
     background-color: purple !important;
- }
+}
+
+.FIRE {
+    background-color: red !important;
+}
 
 .PLAYER {
     background-color: orange !important;
-}
-
-
-#gameField tr td:hover {
-    background-color: #B64926 !important;
 }
 
 .buttons input {

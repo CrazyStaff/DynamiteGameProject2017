@@ -59,26 +59,21 @@ class DynamiteGame {
 
       List<Entity> currentField = _gameField[xPos][yPos];
 
-      print("$xPos and $yPos");
-
       // clear old field state
       currentField.clear();
 
       // generate level
       switch (gameField[idElement]) {
-        case "E":
-        /* emptyField */
+        case "E": /* emptyField */
         // not needed
           break;
-        case "M":
-        /* monster */
+        case "M": /* monster */
           currentField.add(new Monster(currentPosition));
           break;
-        case "B":
-        /* block */
+        case "B": /* block */
           currentField.add(new UndestroyableBlock(currentPosition));
           break;
-        case "D":
+        case "D": /* destroyable block */
           currentField.add(new DestroyableBlock(currentPosition));
           break;
         case "Z": /* Portal */
@@ -103,6 +98,7 @@ class DynamiteGame {
 
         for (Entity entity in allFieldEntities) { // TODO iterator statt for each =>  removen und adden nur mit iterator aufrufbar
           if (!entity.isAlive) { // Wenn nicht lebend => löschen
+            print("Killed ${entity.getType()}");
             Modificator mod = entity.atDestroy(_gameField);
             if (mod != null) {
               toModificate.add(mod);
@@ -118,8 +114,7 @@ class DynamiteGame {
                 entity.standStillStrategy();
             } else { // if there is a move to another field
               if(_proofIfNextPositionIsValid(nextMove)) {
-                List<Entity> nextField = _gameField[nextMove.getX][nextMove
-                    .getY];
+                List<Entity> nextField = _gameField[nextMove.getX][nextMove.getY];
 
                 if (entity.isMovePossible(nextField)) {
                   // First of all remove entity from currentField
@@ -173,12 +168,12 @@ class DynamiteGame {
 
         //final assignment = field[row][col];
         final pos = "field_${width}_${height}";
-        final entityClasses = _getHTMLEntities(currentField);
+        var entityClasses = _getHTMLEntities(currentField);
         html += "<td id='$pos'$entityClasses></td>"; //  class='$assignment'
       }
       html += "</tr>";
     }
-    print("html");
+    print("------  html ----------");
     html += "</table>";
     return html;
   }
@@ -187,10 +182,11 @@ class DynamiteGame {
       Return all Entity classes
    */
   String _getHTMLEntities(List<Entity> allEntities) {
-    String htmlEntities = "";
+    String htmlEntities = " class='";
     for (Entity entity in allEntities) {
-      htmlEntities += " ${entity.getHTMLClass()}";
+      htmlEntities += "${entity.getType()} ";
     }
+    htmlEntities += "'";
     return htmlEntities;
   }
 

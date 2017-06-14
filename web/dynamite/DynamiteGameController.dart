@@ -10,30 +10,29 @@ const configLevel = "data/level/level1.json"; //
 class DynamiteGameController {
 
   Timer gameTrigger;
-  final gameSpeed = const Duration(milliseconds: 30);// milliseconds: 30); // TODO: read from constants file
-
-  var game = new DynamiteGame(10, 7); // TODO read from level file 'fieldWidth' and 'fieldHeight'
+  static Duration gameSpeed;
+  static int maxLvl = 0;
+  static DynamiteGame game = new DynamiteGame(1, 1);
   final view = new DynamiteView();
 
   DynamiteGameController()  {
-    view.generateField(game);
-
-
+   /*view.generateField(game);*/
     print("LOAD FILES");
-    Future.wait([
-      _loadConfigs(),
+    Future.wait([ _loadConfigs(),
       _loadLevel()
     ]).then(_initGame);
+
   }
 
   void _initGame(List<bool> result)  {
+    print("initGame");
     for(bool r in result) {
       if(r == false) {
         // TODO some resources could'nt load properly
         return;
       }
     }
-
+    view.generateField(game);
     // New game is started by user
     view.startButton.onClick.listen((_) {
       if (gameTrigger != null) gameTrigger.cancel();
@@ -72,9 +71,8 @@ class DynamiteGameController {
   Future<bool> _loadConfigs() async {
     HttpRequest.getString(configFile).then((json) {
       final configs = JSON.decode(json);
-
-      // TODO set all constants to variables
-      // gameSpeed = configs["gameSpeed"];
+      maxLvl = configs["maxLvl"];
+      gameSpeed = new Duration(milliseconds: configs["gameSpeed"]);
       return true;
     }).catchError((error) => {
       // return false; // TODO return false
@@ -92,10 +90,11 @@ class DynamiteGameController {
       int fieldWidth = int.parse(parsedMap["level"]["field_width"]);
       int fieldHeight = int.parse(parsedMap["level"]["field_height"]);
       List blocks = parsedMap["level"]["blocks"];
-
+      game = new DynamiteGame(fieldWidth, fieldHeight);
       game.initLevel(blocks, fieldWidth, fieldHeight);
       view.update(game.getHTML());
     });
+    print("Lvl Geladen");
   }
 
   void _moveEntities() {

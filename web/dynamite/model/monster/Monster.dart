@@ -11,13 +11,12 @@ class Monster extends Entity {
 
   Target _target;
 
-
   Monster(Position position) : super(ENTITY_TYPE, position) {
     Entity.monsterCounter += 1;
 
     this._target = new Target();
     this.isWalkable = true;
-    this.strength = 43;
+    this.strength = 50;
     this.team = 2;
 
     this.setWalkingSpeed(1000);
@@ -32,7 +31,7 @@ class Monster extends Entity {
   void moveTo(List<Entity> entityField) {
       super.moveTo(entityField);
 
-      // TODO: Testen ob sich im View_Field_Range der Player befindet (mithilfe von direction => wo man hinguckt)
+      // TODO: Testen ob sich im , der Player befindet (mithilfe von direction => wo man hinguckt)
       // TODO => und die neue Position dann in Target '_target' updaten
       // if player found use => List<Position> path = PathFinder.findPath(gameField, this.position, TARGET_POSITION_PLAYER);
   }
@@ -49,8 +48,9 @@ class Monster extends Entity {
       return _moveRandom(gameField);
       // 1) TODO - other strategy -> use defined path ( read from file -> monster path ) instead of random movement
     } else {
+
       // TODO: Lauf zum Punkt wo du den Helden das letzte mal gesehen hast
-      nextPosition = _target.nextStepToTarget();
+      //nextPosition = _target.nextStepToTarget();
     }
     return nextPosition;
   }
@@ -78,15 +78,28 @@ class Monster extends Entity {
           nextPosition = new Position(position.getX, position.getY - 1);
           break;
       }
-      if (isMovePossible(gameField[nextPosition.getX][nextPosition.getY])){
-        return nextPosition;
+      if( _proofIfNextPositionIsValid(nextPosition, gameField)) {
+        if (isMovePossible(gameField[nextPosition.getX][nextPosition.getY])) {
+          return nextPosition;
+        }
       }
     }
-    updateLastMoveTime();
+    //updateLastMoveTime();
     return null; /* returns null to stand still on the same field */
   }
 
-  /* Position _proofIfPossibleToKillEnemy(List<List< List<Entity>>> gameField) {
+  bool _proofIfNextPositionIsValid(Position position, List<List< List<Entity>>> gameField) {
+    if(position == null) return false;
+
+    int fieldWidth = gameField.length;
+    int fieldHeight = gameField[0].length;
+    if(position.getX >= 0 && position.getX < fieldWidth && position.getY >= 0 && position.getY < fieldHeight) {
+      return true;
+    }
+    return false;
+  }
+
+/* Position _proofIfPossibleToKillEnemy(List<List< List<Entity>>> gameField) {
     List<Position> possibleFields = new List<Position>();
     possibleFields.add(_proofIfEnemyOnField(gameField, Position.RIGHT));
     possibleFields.add(_proofIfEnemyOnField(gameField, Position.LEFT));
@@ -123,5 +136,4 @@ class Monster extends Entity {
       }
       return false;
   }*/
-
 }

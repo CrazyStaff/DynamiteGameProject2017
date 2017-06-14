@@ -5,7 +5,7 @@ import 'dart:html';
 import 'model/DynamiteGame.dart';
 
 const configFile = "data/config/config.json";
-const configLevel = "data/level/level1.json"; //
+const configLevel = "data/level/level"; //
 
 class DynamiteGameController {
 
@@ -14,6 +14,7 @@ class DynamiteGameController {
   static int maxLvl = 0;
   static DynamiteGame game = new DynamiteGame(1, 1);
   final view = new DynamiteView();
+  static int lvl = 1;
 
   DynamiteGameController()  {
    /*view.generateField(game);*/
@@ -21,7 +22,6 @@ class DynamiteGameController {
     Future.wait([ _loadConfigs(),
       _loadLevel()
     ]).then(_initGame);
-
   }
 
   void _initGame(List<bool> result)  {
@@ -84,7 +84,7 @@ class DynamiteGameController {
       TODO load next levels later too
    */
   Future<bool> _loadLevel() async {
-    HttpRequest.getString(configLevel).then((json) {
+    HttpRequest.getString(configLevel + lvl.toString() + ".json").then((json) {
       Map parsedMap = JSON.decode(json);
 
       int fieldWidth = int.parse(parsedMap["level"]["field_width"]);

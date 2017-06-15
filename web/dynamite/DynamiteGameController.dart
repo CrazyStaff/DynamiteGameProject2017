@@ -102,14 +102,17 @@ class DynamiteGameController {
         game.moveAllEntites(new DateTime.now().millisecondsSinceEpoch);
         view.update(game.getHTML());
       }else if (DynamiteGame.gameStatus == 2){
+        DynamiteGame.gameStatus = 1;
         lvl+=1;
         if (lvl > maxLvl){
           view.update("<h1 id='gewonnen'>GEWONNEN!</h1>");
+          DynamiteGame.gameStatus = 2;
         }else {
           Future.wait([_loadLevel()
           ]).then(_initGame);
         }
       }else { //Verloren oder so
+        DynamiteGame.gameStatus = 1;
         Future.wait([_loadLevel()
         ]).then(_initGame);
       }

@@ -35,6 +35,8 @@ class DynamiteGame {
 
 
   DynamiteGame(this._fieldWidth, this._fieldHeight) {
+    Entity.monsterCounter = 0;
+    Entity.destroyableBlockCount = 0;
     gameStatus = 1;
     _generateEmptyGameField();
   }

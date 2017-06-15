@@ -102,25 +102,33 @@ class DynamiteGameController {
         game.moveAllEntites(new DateTime.now().millisecondsSinceEpoch);
         view.update(game.getHTML());
       }else if (DynamiteGame.gameStatus == 2){
-        DynamiteGame.gameStatus = 1;
-        lvl+=1;
-        if (lvl > maxLvl){
-          view.update("<h1 id='gewonnen'>GEWONNEN!</h1>");
-          DynamiteGame.gameStatus = 2;
-        }else {
-          Future.wait([_loadLevel()
-          ]).then(_initGame);
-        }
+        nextLvl();
       }else if (DynamiteGame.gameStatus == 0){
-        DynamiteGame.gameStatus = 1;
-        Future.wait([_loadLevel()
-        ]).then(_initGame);
+        retry();
       }else { //Verloren oder so
-
+        noMoreLvl();
       }
   }
 
-  void _newGame() {
+  void retry(){
+    DynamiteGame.gameStatus = 1;
+    Future.wait([_loadLevel()
+    ]).then(_initGame);
+  }
+
+  void nextLvl() {
+    DynamiteGame.gameStatus = 1;
+    lvl+=1;
+    if (lvl > maxLvl){
+      view.update("<h1 id='gewonnen'>GEWONNEN!</h1>");
+      DynamiteGame.gameStatus = 3;
+    }else {
+      Future.wait([_loadLevel()
+      ]).then(_initGame);
+    }
+  }
+
+  void noMoreLvl(){
 
   }
 

@@ -12,7 +12,7 @@ class DynamiteGame {
 
   static final int DYNAMITE_EXPLODE_TIME = 4000;
   static final int FIRE_DURATION = 1000;
-  static final int DYNAMITE_RADIUS = 2;
+  static int DYNAMITE_RADIUS = 1;
   static int gameStatus = 1; //0 Verloren, 1 Läuft, 2 Gewonnen
 
   int _fieldWidth;

@@ -1,5 +1,6 @@
 import 'Modificator.dart';
 import 'Position.dart';
+import 'DynamiteGame.dart';
 
 abstract class Entity {
   static int destroyableBlockCount = 0;
@@ -34,6 +35,10 @@ abstract class Entity {
 
   void setWalkingSpeed(int walkingSpeed) {
     this.walkingSpeed = walkingSpeed;
+  }
+
+  int getWalkingSpeed() {
+    return walkingSpeed;
   }
 
   /*
@@ -83,17 +88,15 @@ abstract class Entity {
       _position = nextPosition;
       nextPosition = null; // nextPosition ist jetzt nicht mehr vorhanden
 
-
-
-
-  if(this.getType() == "MONSTER") {
+  if(this.getType() == "MONSTER" || this.getType() == "PLAYER") {
     for (Entity otherEntities in entityField) {
         print("Collision with: ${otherEntities.getType()}" );
       if (this.collision(otherEntities)) {
         // TODO Entities die auf diesem Feld stehen und strength_enemy < self => enemy töten
-        this._alive = false;
-      } else if(otherEntities.collision(this)) {
-        otherEntities._alive = false;
+        this.setAlive(false);
+      }
+      if(otherEntities.collision(this)) {
+        otherEntities.setAlive(false);;
       }
     }
   }
@@ -113,9 +116,16 @@ abstract class Entity {
    * Other entity is not in my team and is stronger than me
    */
   bool collision(Entity entity) {
+    print(Entity.monsterCounter);
       if(entity.team != this.team) {
         // Entities are enemies
-        if(entity.strength > this.strength)  {
+        if (this.getType() == "PLAYER" && entity.getType() == "PORTAL" && Entity.monsterCounter == 0){
+          DynamiteGame.gameStatus = 2;
+        }
+        if (this.getType() == "PORTAL" && entity.getType() == "PLAYER" && Entity.monsterCounter == 0){
+          DynamiteGame.gameStatus = 2;
+        }
+        if(entity.strength > this.strength) {
           return true;
         }
       }
@@ -123,7 +133,10 @@ abstract class Entity {
   }
 
   void setAlive(bool alive) {
-      this._alive = alive;
+    if (this.getType() == "PORTAL") {
+      return;
+    }
+    this._alive = alive;
   }
 
   String getType() {
@@ -148,4 +161,6 @@ abstract class Entity {
   void standStillStrategy() {
     this.updateLastMoveTime();
   }
+
+
 }

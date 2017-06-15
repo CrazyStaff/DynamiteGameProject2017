@@ -1,3 +1,4 @@
 {
-  "gameSpeed" : 20
+  "gameSpeed" : 30,
+  "maxLvl" : 3
 }

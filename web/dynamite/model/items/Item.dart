@@ -4,12 +4,9 @@ import '../Position.dart';
 
 class Item extends Entity {
 
-  static final ENTITY_TYPE = "ITEM";
-  int _spawnPercentage;
+  //static final ENTITY_TYPE = "ITEM";
 
-
-
-  Item(Position position) : super(ENTITY_TYPE, position){
-
+  Item(String type, Position position) : super(type, position){
   }
+
 }

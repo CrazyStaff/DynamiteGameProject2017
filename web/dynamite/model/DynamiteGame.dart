@@ -12,11 +12,11 @@ class DynamiteGame {
 
   static final int DYNAMITE_EXPLODE_TIME = 4000;
   static final int FIRE_DURATION = 1000;
-  static final int DYNAMITE_RADIUS = 2;
+  static int DYNAMITE_RADIUS = 1;
+  static int gameStatus = 1; //0 Verloren, 1 Läuft, 2 Gewonnen
 
   int _fieldWidth;
   int _fieldHeight;
-  int _level;
 
   List<List<List<Entity>>> _gameField;
   Player _player;
@@ -29,8 +29,15 @@ class DynamiteGame {
     _isStopped = true;
   }
 
+  static int getStatus(){
+    return gameStatus;
+  }
+
 
   DynamiteGame(this._fieldWidth, this._fieldHeight) {
+    Entity.monsterCounter = 0;
+    Entity.destroyableBlockCount = 0;
+    gameStatus = 1;
     _generateEmptyGameField();
   }
 
@@ -91,6 +98,9 @@ class DynamiteGame {
   }
 
   void moveAllEntites(int time) {
+    if (!_player.isAlive){
+      gameStatus = 0;
+    }
     for (List<List<Entity>> allPositions in _gameField) {
       for (List<Entity> allFieldEntities in allPositions) {
         var toRemove = [];

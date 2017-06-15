@@ -1,73 +1,22 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto);
 
 html, body {
+    /*width: 100%;
+    height: 100%;*/
     font-family: 'Roboto', sans-serif;
 }
 
-#header {
-    width: 100%;
-    height: 10%;
-    padding: 1em 0;
-    background-color: #468966;
-    color: white;
-}
-
-#scores {
-    width: 100%;
-    height: 0.5em;
-    background-color: white;
-    border-bottom: 1px #468966 solid;
-}
-
-#scores div {
-    background-color: lightgreen;
-    height: 0.5em;
-    width: 40%;
-}
-
-#header table {
-    margin: 0 auto;
-}
-
-#header table td {
-    display: inline-block;
-    text-align: center;
-    font-family: 'Open Sans', sans-serif;
-    font-size: 1.1em;
-}
-
-.unselectable {
-    -webkit-touch-callout: none;
-    -webkit-user-select: none;
-    -khtml-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    user-drag: none;
-    cursor:default;
-
-}
-
-.header_lives {
-    margin-left: 1.5em;
-}
-
-.header_leftTime {
-    margin: 0 1.5em;
-}
-
-.header_level {
-    margin-right: 1.5em;
-}
-
-.header_lives span {
-    color: white; /* heart color */
-    margin-right: 0.5em;
-}
-
 #gameField {
-    width: 100%;
-    margin: 2em auto 0 auto;
+    position: absolute;
+    left: 1px;
+    top: 1px;
+}
+
+#output {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    background: white;
 }
 
 #gameField table {
@@ -76,55 +25,29 @@ html, body {
 
 #gameField tr td{
     background-color: #FFF0A5;
-    width: 2em; /* 25px */
-    height: 2em; /* 25px */
+    height: 34px;
+    width: 34px; /* 25px */
+    /*height: 34px; /* 25px */
     border: 1px solid #B64926;
 }
 
-.UNDESTROYABLE_BLOCK{
-    background-color: green !important;
-}
-
-.DESTROYABLE_BLOCK {
-    background-color: brown !important;
-}
-
-.DYNAMITE {
-    background-color: black !important;
-}
-
-.PORTAL {
-    background-color: lightblue !important;
-}
-
-.MONSTER {
-    background-color: purple !important;
-}
-
-.FIRE {
-    background-color: red !important;
-}
-
-.PLAYER {
-    background-color: orange !important;
-}
-
 .buttons input {
+    position: absolute;
+    right: 1px;
+    top: 1px;
     display:block;
-    padding: 0.5em 0.5em;
+    margin: auto;
+    padding: 10px;
     background: #468966;
     color: white;
     font-family: 'Open Sans', sans-serif;
     border: none;
 }
 
-#arrows {
-    display: none;
-}
-
 #arrows table {
-    margin-left: auto;
-    margin-right: auto;
+    position: absolute;
+    right: 1px;
+    bottom: 1px;
 }
 
 #arrows input {
@@ -140,25 +63,53 @@ html, body {
     border: none;
 }
 
-.emptyField {
-    visibility: hidden; /* do not show empty field! */
+.UNDESTROYABLE_BLOCK{
+    background-color: green !important;
 }
 
-@media only screen and (max-device-width:480px) {
+.DESTROYABLE_BLOCK {
+    background-color: brown !important;
+}
 
-    #header {
-        background-color: brown;
-    }
-    
-    #arrows {
-        display: block;
-        margin-top: 1em;
-    }
+.DYNAMITE {
+    background-color: black !important;
+}
 
-    #arrows input {
-        font-size: 2em;
+.FIRE {
+    background-color: red !important;
+}
 
-    }
+.PORTAL {
+    background-color: lightblue !important;
+}
 
+.MONSTER {
+    background-color: purple !important;
+ }
+
+.PLAYER {
+    background-color: orange !important;
+}
+
+.DYNAMITERANGE {
+    background-color: darksalmon !important;
+}
+
+.SPEEDBUFF {
+    background-color: aqua !important;
+}
+
+#gameField tr td:hover {
+    background-color: #B64926 !important;
+}
+
+#arrows {
+
+}
+
+
+
+.emptyField {
+    visibility: hidden; /* do not show empty field! */
 }
 

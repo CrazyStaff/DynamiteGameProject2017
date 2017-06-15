@@ -14,26 +14,15 @@
     <title>Dynamite Game Alpha</title>
     <link rel="stylesheet" href="reset.css">
     <link rel="stylesheet" href="styles.css">
+
+    <link rel="stylesheet" media="all and (orientation:portrait) and (min-device-width 600:px)" href="styles_portrait.css">
+    <link rel="stylesheet" media="all and (orientation:landscape)" href="styles_landscape.css">
+
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:700" rel="stylesheet">
 </head>
 
 <body>
-<div id="output"></div>
-
-<div id="header" class="unselectable">
-    <table >
-        <tr >
-            <td class="header_level unselectable">Level 1</td>
-            <td class="header_leftTime"><div class="buttons"><input id="startButton" type="submit" value="Start Game"></div></td> <!-- 03:00 -->
-            <td class="header_lives unselectable"><span>❤</span>3</td>
-        </tr>
-    </table>
-</div>
-<div id="scores">
-    <div></div> <!-- show score in percentage -->
-</div>
-
-
+<div id="output">Lade Spiel</div>
 <div id="gameField">
 
 </div>
@@ -60,6 +49,8 @@
         </tbody>
     </table>
 </div>
+
+<div class="buttons"><input id="startButton" type="submit" value="Start Game"></div>
 
 <script type="application/dart" src="main.dart" ></script>
 <script src="packages/browser/dart.js"></script>

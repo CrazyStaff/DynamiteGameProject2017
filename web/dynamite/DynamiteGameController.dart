@@ -103,8 +103,12 @@ class DynamiteGameController {
         view.update(game.getHTML());
       }else if (DynamiteGame.gameStatus == 2){
         lvl+=1;
-        Future.wait([_loadLevel()
-        ]).then(_initGame);
+        if (lvl > maxLvl){
+          view.update("<h1 id='gewonnen'>GEWONNEN!</h1>");
+        }else {
+          Future.wait([_loadLevel()
+          ]).then(_initGame);
+        }
       }else { //Verloren oder so
         Future.wait([_loadLevel()
         ]).then(_initGame);

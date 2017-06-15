@@ -89,10 +89,10 @@ abstract class Entity {
         print("Collision with: ${otherEntities.getType()}" );
       if (this.collision(otherEntities)) {
         // TODO Entities die auf diesem Feld stehen und strength_enemy < self => enemy töten
-        this._alive = false;
+        this.setAlive(false);
       }
       if(otherEntities.collision(this)) {
-        otherEntities._alive = false;
+        otherEntities.setAlive(false);;
       }
     }
   }
@@ -112,6 +112,7 @@ abstract class Entity {
    * Other entity is not in my team and is stronger than me
    */
   bool collision(Entity entity) {
+    print(Entity.monsterCounter);
       if(entity.team != this.team) {
         // Entities are enemies
         if (this.getType() == "PLAYER" && entity.getType() == "PORTAL" && Entity.monsterCounter == 0){
@@ -128,7 +129,10 @@ abstract class Entity {
   }
 
   void setAlive(bool alive) {
-      this._alive = alive;
+    if (this.getType() == "PORTAL") {
+      return;
+    }
+    this._alive = alive;
   }
 
   String getType() {

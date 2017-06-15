@@ -37,6 +37,10 @@ abstract class Entity {
     this.walkingSpeed = walkingSpeed;
   }
 
+  int getWalkingSpeed() {
+    return walkingSpeed;
+  }
+
   /*
    * Checks ONLY if it is allowed to move based on the given time
    */
@@ -157,4 +161,6 @@ abstract class Entity {
   void standStillStrategy() {
     this.updateLastMoveTime();
   }
+
+
 }

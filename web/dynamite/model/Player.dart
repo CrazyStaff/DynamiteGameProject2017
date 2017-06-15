@@ -10,7 +10,7 @@ class Player extends Entity {
       this.isWalkable = true;
 
       updateLastMoveTime();
-      setWalkingSpeed(100);
+      setWalkingSpeed(500);
   }
 
   // TODO: Constructor with startPosition and other variables of Entity

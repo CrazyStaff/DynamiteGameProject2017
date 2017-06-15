@@ -91,6 +91,10 @@ html, body {
     background-color: orange !important;
 }
 
+.SPEEDBUFF {
+    background-color: aqua !important;
+}
+
 #gameField tr td:hover {
     background-color: #B64926 !important;
 }

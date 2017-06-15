@@ -18,8 +18,6 @@ class DynamiteGameController {
   DynamiteGameController()  {
     view.generateField(game);
 
-
-    print("LOAD FILES");
     Future.wait([
       _loadConfigs(),
       _loadLevel()

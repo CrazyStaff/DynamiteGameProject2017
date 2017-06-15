@@ -10,6 +10,7 @@ class DynamiteView {
   HtmlElement get arrowLeft => querySelector('#arrowLeft');
   HtmlElement get arrowRight => querySelector('#arrowRight');
   HtmlElement get arrowDynamite => querySelector('#arrowDynamite');
+  HtmlElement get tooltip => querySelector('#output');
 
   void update(String gameField) { //
     game.innerHtml = gameField; // TODO: generate in view

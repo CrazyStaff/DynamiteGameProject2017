@@ -12,7 +12,6 @@ class SpeedBuff extends Item {
     this.isWalkable = true;
     this.team = 3;
     this.strength = 0;
-
   }
 
   bool collision(Entity entity) {

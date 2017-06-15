@@ -62,7 +62,7 @@ class DynamiteGameController {
     view.arrowDown.onClick.listen((_) => down());
     view.arrowLeft.onClick.listen((_) => left());
     view.arrowDynamite.onClick.listen((_) => placeDynamite());
-
+    view.tooltip.innerHtml = "";
   }
 
   /*
@@ -111,10 +111,12 @@ class DynamiteGameController {
           Future.wait([_loadLevel()
           ]).then(_initGame);
         }
-      }else { //Verloren oder so
+      }else if (DynamiteGame.gameStatus == 0){
         DynamiteGame.gameStatus = 1;
         Future.wait([_loadLevel()
         ]).then(_initGame);
+      }else { //Verloren oder so
+
       }
   }
 

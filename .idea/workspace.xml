@@ -1,14 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="22a5614c-87a3-4d0b-bb80-0b966c29e495" name="Default" comment="Buxxy mit feuer und momben">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/Dart_SDK.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_SDK.xml" />
+    <list default="true" id="22a5614c-87a3-4d0b-bb80-0b966c29e495" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/data/level/level2.json" afterPath="$PROJECT_DIR$/web/data/level/level2.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/dynamite/DynamiteGameController.dart" afterPath="$PROJECT_DIR$/web/dynamite/DynamiteGameController.dart" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/dynamite/model/DynamiteGame.dart" afterPath="$PROJECT_DIR$/web/dynamite/model/DynamiteGame.dart" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/dynamite/model/Entity.dart" afterPath="$PROJECT_DIR$/web/dynamite/model/Entity.dart" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -654,7 +648,7 @@
       <workItem from="1497343374686" duration="2495000" />
       <workItem from="1497345962393" duration="388000" />
       <workItem from="1497346705269" duration="627000" />
-      <workItem from="1497523223437" duration="2817000" />
+      <workItem from="1497523223437" duration="2843000" />
     </task>
     <task id="LOCAL-00001" summary="changed kommentar">
       <created>1495737393363</created>
@@ -803,11 +797,18 @@
       <option name="project" value="LOCAL" />
       <updated>1497458888348</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="LVL neu ladne und nächstes">
+      <created>1497526057556</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1497526057556</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="152346000" />
+    <option name="totallyTimeSpent" value="152372000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -889,7 +890,8 @@
     <MESSAGE value="Lvl Nachträglich erst laden" />
     <MESSAGE value="Buxxy mit feuer und momben" />
     <MESSAGE value="Lvl steuerbar" />
-    <option name="LAST_COMMIT_MESSAGE" value="Lvl steuerbar" />
+    <MESSAGE value="LVL neu ladne und nächstes" />
+    <option name="LAST_COMMIT_MESSAGE" value="LVL neu ladne und nächstes" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

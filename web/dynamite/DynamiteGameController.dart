@@ -98,9 +98,17 @@ class DynamiteGameController {
   }
 
   void _moveEntities() {
-      // TODO zeig alles an
-      game.moveAllEntites(new DateTime.now().millisecondsSinceEpoch);
-      view.update(game.getHTML());
+      if (DynamiteGame.gameStatus == 1) {
+        game.moveAllEntites(new DateTime.now().millisecondsSinceEpoch);
+        view.update(game.getHTML());
+      }else if (DynamiteGame.gameStatus == 2){
+        lvl+=1;
+        Future.wait([_loadLevel()
+        ]).then(_initGame);
+      }else { //Verloren oder so
+        Future.wait([_loadLevel()
+        ]).then(_initGame);
+      }
   }
 
   void _newGame() {

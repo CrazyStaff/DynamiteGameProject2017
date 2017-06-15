@@ -23,6 +23,20 @@
 
 <body>
 <div id="output">Lade Spiel</div>
+
+<div id="header" class="unselectable">
+    <table >
+        <tr >
+            <td class="header_level unselectable">Level 1</td>
+            <td class="header_leftTime"><div class="buttons"><input id="startButton" type="submit" value="Start Game"></div></td> <!-- 03:00 -->
+            <td class="header_lives unselectable"><span>❤</span>3</td>
+        </tr>
+    </table>
+</div>
+<div id="scores">
+    <div></div> <!-- show score in percentage -->
+</div>
+
 <div id="gameField">
 
 </div>
@@ -50,7 +64,12 @@
     </table>
 </div>
 
-<div class="buttons"><input id="startButton" type="submit" value="Start Game"></div>
+<div id="level"> <!-- shows level success -->
+    <div id="level_header">Level completed</div>
+    <div id="level_announcement">Good job!</div>
+    <div id="level_result">2</div>
+    <input id="level_accept" type="submit" value="Next level">
+</div>
 
 <script type="application/dart" src="main.dart" ></script>
 <script src="packages/browser/dart.js"></script>

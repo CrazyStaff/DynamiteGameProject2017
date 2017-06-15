@@ -1,8 +1,4 @@
-#gameField tr td {
-    /*background-color: chartreuse; */ /* Just a test */
-}
-
-#header {
+#header { /* nur ein test kann gelöscht werden */
     height: 20%;
     background-color: #B64926;
 }

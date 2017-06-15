@@ -6,17 +6,80 @@ html, body {
     font-family: 'Roboto', sans-serif;
 }
 
+#header {
+    width: 100%;
+    height: 10%;
+    padding: 1em 0;
+    background-color: #468966;
+    color: white;
+}
+
+#scores {
+    width: 100%;
+    height: 0.5em;
+    background-color: white;
+    border-bottom: 1px #468966 solid;
+}
+
+#scores div {
+    background-color: lightgreen;
+    height: 0.5em;
+    width: 40%;
+}
+
+#header table {
+    margin: 0 auto;
+}
+
+#header table td {
+    display: inline-block;
+    text-align: center;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1.1em;
+}
+
+.unselectable {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    user-drag: none;
+    cursor:default;
+
+}
+
+.header_lives {
+    margin-left: 1.5em;
+}
+
+.header_leftTime {
+    margin: 0 1.5em;
+}
+
+.header_level {
+    margin-right: 1.5em;
+}
+
+.header_lives span {
+    color: white; /* heart color */
+    margin-right: 0.5em;
+}
+
 #gameField {
-    position: absolute;
-    left: 1px;
-    top: 1px;
+    width: 100%;
+    margin: 2em auto 0 auto;
 }
 
 #output {
     position: absolute;
     left: 50%;
-    top: 50%;
-    background: white;
+    top: 60%;
+    margin: 2em auto 0 auto;
+    padding: 1em;
+    background-color: white;
+
 }
 
 #gameField table {
@@ -25,29 +88,27 @@ html, body {
 
 #gameField tr td{
     background-color: #FFF0A5;
-    height: 34px;
-    width: 34px; /* 25px */
-    /*height: 34px; /* 25px */
+    width: 2em; /* 25px */
+    height: 2em; /* 25px */
     border: 1px solid #B64926;
 }
 
 .buttons input {
-    position: absolute;
-    right: 1px;
-    top: 1px;
     display:block;
-    margin: auto;
-    padding: 10px;
+    padding: 0.5em 0.5em;
     background: #468966;
     color: white;
     font-family: 'Open Sans', sans-serif;
     border: none;
 }
 
+#arrows {
+    display: none;
+}
+
 #arrows table {
-    position: absolute;
-    right: 1px;
-    bottom: 1px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 #arrows input {
@@ -62,6 +123,60 @@ html, body {
     font-family: 'Open Sans', sans-serif;
     border: none;
 }
+
+#level {
+    visibility: hidden; /* remove here */
+    position: fixed;
+    background-color: white;
+    border: 1px black solid;
+    position: fixed;
+    top: 25%;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
+}
+
+#level_header {
+    background-color: #468966;
+    color: white;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1rem;
+    text-align: center;
+    vertical-align: middle;
+    padding: 1em 0;
+}
+
+#level_announcement {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 2rem;
+    text-align: center;
+    margin-top: 1em;
+    margin-left: 3rem;
+    margin-right: 3rem;
+}
+
+#level_result  {
+    font-size: 5rem;
+    text-align: center;
+    margin-top: 2rem;
+}
+
+#level_accept {
+    display: block;
+    margin: 1rem auto 1rem auto;
+    padding: 0.6rem 0.6rem;
+    background: #468966;
+    color: white;
+    font-family: 'Open Sans', sans-serif;
+    border: none;
+}
+
+/*
+<div id="level_header">Level completed</div>
+    <div id="level_announcement">Good job!</div>
+    <div id="level_result">2</div>
+    <input id="level_accept" type="submit" value="Start Game">*/
+
 
 .UNDESTROYABLE_BLOCK{
     background-color: green !important;
@@ -85,7 +200,7 @@ html, body {
 
 .MONSTER {
     background-color: purple !important;
- }
+}
 
 .PLAYER {
     background-color: orange !important;
@@ -111,5 +226,23 @@ html, body {
 
 .emptyField {
     visibility: hidden; /* do not show empty field! */
+}
+
+@media only screen and (max-device-width:480px) {
+
+    #header {
+        background-color: brown;
+    }
+
+    #arrows {
+        display: block;
+        margin-top: 1em;
+    }
+
+    #arrows input {
+        font-size: 2em;
+
+    }
+
 }
 

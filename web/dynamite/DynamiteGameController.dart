@@ -35,11 +35,27 @@ class DynamiteGameController {
     view.generateField(game);
     // New game is started by user
     view.startButton.onClick.listen((_) {
-      if (gameTrigger != null) gameTrigger.cancel();
+      //if (gameTrigger != null) gameTrigger.cancel();
 
-      gameTrigger = new Timer.periodic(gameSpeed, (_) => _moveEntities());
+      switch(view.startButton.getAttribute("value")) {
+        case "Start Game":
+          view.startButton.setAttribute("value", "Pause Game");
+          gameTrigger = new Timer.periodic(gameSpeed, (_) => _moveEntities());
+          break;
+        case "Pause Game":
+          view.startButton.setAttribute("value", "Continue Game");
+          gameTrigger.cancel();
+          pauseGame();
+          break;
+        case "Continue Game":
+          view.startButton.setAttribute("value", "Pause Game");
+          continueGame();
+          gameTrigger = new Timer.periodic(gameSpeed, (_) => _moveEntities());
+          break;
+      }
 
-      view.startButton.setAttribute("value", "Pause Game");
+
+
       // game.start(); // TODO?? !!!!!!!!!!!!!!!!!
        view.update(game.getHTML());
     });
@@ -154,6 +170,10 @@ class DynamiteGameController {
 
   void pauseGame() {
     game.pauseGame();
+  }
+
+  void continueGame() {
+    game.continueGame();
   }
 
   void placeDynamite() {

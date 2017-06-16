@@ -28,7 +28,7 @@
     <table >
         <tr >
             <td class="header_level unselectable">Level 1</td>
-            <td class="header_leftTime"><div class="buttons"><input id="startButton" type="submit" value="Start Game"></div></td> <!-- 03:00 -->
+            <td class="header_leftTime"><div class="buttons"><input id="startButton" type="button" value="Start Game"></div></td> <!-- 03:00 -->
             <td class="header_lives unselectable"><span>❤</span>3</td>
         </tr>
     </table>
@@ -70,6 +70,8 @@
     <div id="level_result">2</div>
     <input id="level_accept" type="submit" value="Next level">
 </div>
+
+<script type="text/javascript"> document.addEventListener('click', function(e) { if(document.activeElement.id == 'startButton'){ document.activeElement.blur(); } }); </script>
 
 <script type="application/dart" src="main.dart" ></script>
 <script src="packages/browser/dart.js"></script>

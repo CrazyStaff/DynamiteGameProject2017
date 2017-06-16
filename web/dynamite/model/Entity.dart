@@ -162,5 +162,11 @@ abstract class Entity {
     this.updateLastMoveTime();
   }
 
-
+  /*
+      Update all the times used by entity to guarantee a pause method
+   */
+  void updateTimes(int offsetAddTime) {
+    if(this.lastMoveTime != null) this.lastMoveTime += offsetAddTime;
+    if(this.lastActionTime != null) this.lastActionTime += offsetAddTime;
+  }
 }

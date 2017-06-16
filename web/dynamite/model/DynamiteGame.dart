@@ -23,10 +23,27 @@ class DynamiteGame {
 
   bool _isStopped;
 
+  int pausedGameAtTime;
+
   bool get isGameStopped => _isStopped;
 
   void pauseGame() {
     _isStopped = true;
+    this.pausedGameAtTime = new DateTime.now().millisecondsSinceEpoch;
+  }
+
+  void continueGame() {
+    int currentTime = new DateTime.now().millisecondsSinceEpoch;
+    int offsetAddTime = currentTime - pausedGameAtTime;
+
+    for (List<List<Entity>> allPositions in _gameField) {
+      for (List<Entity> allFieldEntities in allPositions) {
+        for (Entity entity in allFieldEntities) {
+            entity.updateTimes(offsetAddTime);
+        }
+      }
+    }
+    _isStopped = false;
   }
 
   static int getStatus(){
@@ -98,6 +115,8 @@ class DynamiteGame {
   }
 
   void moveAllEntites(int time) {
+    if(_isStopped) return;
+
     if (!_player.isAlive){
       gameStatus = 0;
     }
@@ -108,7 +127,6 @@ class DynamiteGame {
 
         for (Entity entity in allFieldEntities) { // TODO iterator statt for each =>  removen und adden nur mit iterator aufrufbar
           if (!entity.isAlive) { // Wenn nicht lebend => löschen
-            print("Killed ${entity.getType()}");
             Modificator mod = entity.atDestroy(_gameField);
             if (mod != null) {
               toModificate.add(mod);

@@ -1,16 +1,17 @@
 import 'Entity.dart';
 import 'Position.dart';
+import 'pathfinding/FieldNode.dart';
 
 class Modificator {
-  List<List<List<Entity>>> _addEntities;
-  List<List<List<Entity>>> _removeEntities;
+  List<List<FieldNode>> _addEntities;
+  List<List<FieldNode>> _removeEntities;
 
   Modificator._construct(int fieldWidth, int fieldHeight) {
     _addEntities = _generateEmptyGameField(fieldWidth, fieldHeight);
     _removeEntities = _generateEmptyGameField(fieldWidth, fieldHeight);
   }
 
-  static Modificator buildModificator(List<List<List<Entity>>> gameField) {
+  static Modificator buildModificator(List<List< FieldNode >> gameField) {
     int fieldWidth = gameField.length;
     int fieldHeight = gameField[0].length;
 
@@ -20,14 +21,14 @@ class Modificator {
   void addRemovable(Entity entity, Position position) {
    if(!_proofIfPositionIsValid(position)) return;
 
-    List<Entity> entityField = _removeEntities[position.getX][position.getY];
+    List<Entity> entityField = _removeEntities[position.getX][position.getY].getEntities;
     entityField.add(entity);
   }
 
   void addAddable(Entity entity, Position position) {
     if(!_proofIfPositionIsValid(position)) return;
 
-    List<Entity> entityField = _addEntities[position.getX][position.getY];
+    List<Entity> entityField = _addEntities[position.getX][position.getY].getEntities;
     entityField.add(entity);
   }
 
@@ -40,45 +41,45 @@ class Modificator {
     return false;
   }
 
-  void executeChangesTo(List<List<List<Entity>>> field) { // TODO rename
+  void executeChangesTo(List<List<FieldNode>> field) { // TODO rename
     _executeAddChangesToList(_addEntities, field);
     _executeRemoveChangesToList(_removeEntities, field);
   }
 
-  void _executeAddChangesToList(List<List<List<Entity>>> changedEntities, List<List<List<Entity>>> listToModify) { // TODO renameS
+  void _executeAddChangesToList(List<List<FieldNode>> changedEntities, List<List<FieldNode>> listToModify) { // TODO renameS
     int fieldWidth = listToModify.length;
     int fieldHeight = listToModify[0].length;
 
     for (int width = 0; width < fieldWidth; width++) {
       for (int height = 0; height < fieldHeight; height++) {
-        List<Entity> currentField = changedEntities[width][height];
+        List<Entity> currentField = changedEntities[width][height].getEntities;
 
         for(Entity entity in currentField) {
-          listToModify[width][height].add(entity);
+          listToModify[width][height].getEntities.add(entity);
         }
       }
     }
   }
 
-  void _executeRemoveChangesToList(List<List<List<Entity>>> changedEntities, List<List<List<Entity>>> listToModify) { // TODO renameS
+  void _executeRemoveChangesToList(List<List< FieldNode >> changedEntities, List<List< FieldNode >> listToModify) { // TODO renameS
     int fieldWidth = listToModify.length;
     int fieldHeight = listToModify[0].length;
 
     for (int width = 0; width < fieldHeight; width++) {
       for (int height = 0; height < fieldHeight; height++) {
-        List<Entity> currentField = changedEntities[width][height];
+        List<Entity> currentField = changedEntities[width][height].getEntities;
 
         for(Entity entity in currentField) {
-          listToModify[width][height].remove(entity);
+          listToModify[width][height].getEntities.remove(entity);
         }
       }
     }
   }
 
-
-  List<List<List<Entity>>> _generateEmptyGameField(int fieldWidth, int fieldHeight) {
+  List<List< FieldNode >> _generateEmptyGameField(int fieldWidth, int fieldHeight) {
     return new Iterable.generate(fieldWidth, (row) {
-      return new Iterable.generate(fieldHeight, (col) => new List<Entity>()).toList();
+      return new Iterable.generate(fieldHeight, (col) => new FieldNode(new Position(row, col)))
+          .toList();
     }).toList();
   }
 }

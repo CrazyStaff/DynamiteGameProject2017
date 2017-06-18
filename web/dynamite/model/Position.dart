@@ -1,8 +1,4 @@
 class Position {
-  static final Position RIGHT = new Position(1, 0);
-  static final Position LEFT = new Position(-1, 0);
-  static final Position DOWN = new Position(0, -1);
-  static final Position UP = new Position(0, 1);
 
   int _x, _y;
 
@@ -10,6 +6,19 @@ class Position {
   int get getY => _y;
 
   Position(this._x, this._y);
+
+  /* Returns the position of one position minus another position */
+  Position operator - (Position other) {
+    return new Position(
+        this.getX - other.getX,
+        this.getY - other.getY);
+  }
+
+  Position operator + (Position other) {
+    return new Position(
+        this.getX + other.getX,
+        this.getY + other.getY);
+  }
 
   void addOffset(int offsetX, int offsetY) {
     this._x += offsetX;
@@ -31,4 +40,12 @@ class Position {
   String toString() {
     return "$_x und $_y";
   }
+
+  Position abs() => new Position(this._x.abs(), this._y.abs());
+
+  bool operator == (Object other) {
+          return (other as Position).getX == this.getX &&
+                 (other as Position).getY == this.getY;
+  }
+
 }

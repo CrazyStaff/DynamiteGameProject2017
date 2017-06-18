@@ -1,5 +1,6 @@
 import 'Entity.dart';
 import 'Position.dart';
+import 'pathfinding/FieldNode.dart';
 
 class Player extends Entity {
   static final ENTITY_TYPE = "PLAYER";
@@ -21,7 +22,7 @@ class Player extends Entity {
   }
 
   @override
-  Position getNextMove(List<List< List<Entity>>> gameField) {
+  Position getNextMove(List<List< FieldNode >> gameField) {
     // TODO: 'gameField' not neccessary?!!
     return nextPosition;
   }

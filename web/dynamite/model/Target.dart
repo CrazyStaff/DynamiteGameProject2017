@@ -1,5 +1,7 @@
 import 'Entity.dart';
 import 'Position.dart';
+import 'pathfinding/FieldNode.dart';
+import 'pathfinding/PathFinder.dart';
 
 class Target {
   Position lastViewedTargetPosition;
@@ -11,10 +13,18 @@ class Target {
       pathToLastViewTargetPosition = new List<Position>();
   }
 
+  void setTarget(Entity target) {
+    if(target == null) return;
+
+    currentTarget = target;
+    lastViewedTargetPosition = currentTarget.position;
+  }
+
   Position nextStepToTarget() {
       if(hasPathToTarget()) {
-        return pathToLastViewTargetPosition.removeLast(); // TODO: removeLast? oder removeFirst?
+        return pathToLastViewTargetPosition.removeAt(0);
       }
+      resetTarget();
       return null;
   }
 
@@ -34,4 +44,25 @@ class Target {
     lastViewedTargetPosition = null;
     pathToLastViewTargetPosition.clear();
   }
+
+  void setPathToTargetFrom(Entity originEntity, List<List< FieldNode >> gameField) {
+      if(!hasTarget()) {
+        print("Target:setPathToTarget - You need a target!");
+        return;
+      }
+
+      FieldNode originFieldNode = gameField[originEntity.position.getX][originEntity.position.getY];
+      FieldNode destinationFieldNode = gameField[lastViewedTargetPosition.getX][lastViewedTargetPosition.getY];
+      List<Position> pathToTarget = PathFinder.findPath(gameField, originEntity, originFieldNode, destinationFieldNode);
+
+      if(pathToTarget != null) {
+        print(" ---S path to target ---");
+        for(Position pos in pathToTarget) {
+          print("TP: $pos");
+        }
+        print(" ---E path to target ---");
+
+        this.pathToLastViewTargetPosition = pathToTarget;
+      }
+    }
 }

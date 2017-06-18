@@ -7,6 +7,7 @@ import 'blocks/DestroyableBlock.dart';
 import 'blocks/Dynamite.dart';
 import 'items/Portal.dart';
 import 'monster/Monster.dart';
+import 'pathfinding/FieldNode.dart';
 
 class DynamiteGame {
 
@@ -18,7 +19,7 @@ class DynamiteGame {
   int _fieldWidth;
   int _fieldHeight;
 
-  List<List<List<Entity>>> _gameField;
+  List<List<FieldNode>> _gameField; // List<Entity>
   Player _player;
 
   bool _isStopped;
@@ -36,9 +37,9 @@ class DynamiteGame {
     int currentTime = new DateTime.now().millisecondsSinceEpoch;
     int offsetAddTime = currentTime - pausedGameAtTime;
 
-    for (List<List<Entity>> allPositions in _gameField) {
-      for (List<Entity> allFieldEntities in allPositions) {
-        for (Entity entity in allFieldEntities) {
+    for (List<FieldNode> allPositions in _gameField) {
+      for (FieldNode field in allPositions) {
+        for (Entity entity in field.getEntities) {
             entity.updateTimes(offsetAddTime);
         }
       }
@@ -61,12 +62,12 @@ class DynamiteGame {
   /* Init empty List */
   void _generateEmptyGameField() {
     _gameField = new Iterable.generate(_fieldWidth, (row) {
-      return new Iterable.generate(_fieldHeight, (col) => new List<Entity>())
+      return new Iterable.generate(_fieldHeight, (col) => new FieldNode(new Position(row, col))) // TODO richtig rum?
           .toList();
     }).toList();
   }
 
-  List<List<List<Entity>>> get getGameField => _gameField;
+  List<List<FieldNode>> get getGameField => _gameField;
 
   // TODO make own class of level -> auslagern des Codes
   void initLevel(List gameField, int fieldWidth, int fieldHeight) {
@@ -81,7 +82,7 @@ class DynamiteGame {
       int yPos = (idElement / fieldWidth).toInt();
       Position currentPosition = new Position(xPos, yPos);
 
-      List<Entity> currentField = _gameField[xPos][yPos];
+      List<Entity> currentField = _gameField[xPos][yPos].getEntities;
 
       // clear old field state
       currentField.clear();
@@ -120,12 +121,12 @@ class DynamiteGame {
     if (!_player.isAlive){
       gameStatus = 0;
     }
-    for (List<List<Entity>> allPositions in _gameField) {
-      for (List<Entity> allFieldEntities in allPositions) {
+    for (List<FieldNode> allPositions in _gameField) {
+      for (FieldNode field in allPositions) {
         var toRemove = [];
         List<Modificator> toModificate = new List<Modificator>();
 
-        for (Entity entity in allFieldEntities) { // TODO iterator statt for each =>  removen und adden nur mit iterator aufrufbar
+        for (Entity entity in field.getEntities) { // TODO iterator statt for each =>  removen und adden nur mit iterator aufrufbar
           if (!entity.isAlive) { // Wenn nicht lebend => löschen
             Modificator mod = entity.atDestroy(_gameField);
             if (mod != null) {
@@ -142,7 +143,7 @@ class DynamiteGame {
                 entity.standStillStrategy();
             } else { // if there is a move to another field
               if(_proofIfNextPositionIsValid(nextMove)) {
-                List<Entity> nextField = _gameField[nextMove.getX][nextMove.getY];
+                List<Entity> nextField = _gameField[nextMove.getX][nextMove.getY].getEntities;
 
                 if (entity.isMovePossible(nextField)) {
                   // First of all remove entity from currentField
@@ -167,7 +168,7 @@ class DynamiteGame {
         toModificate.clear();
 
         // Modify entity list only after iteration
-        allFieldEntities.removeWhere((e) => toRemove.contains(e));
+        field.getEntities.removeWhere((e) => toRemove.contains(e));
       }
     }
   }
@@ -192,7 +193,7 @@ class DynamiteGame {
     for (int height = 0; height < _fieldHeight; height++) {
       html += "<tr>";
       for (int width = 0; width < _fieldWidth; width++) {
-        List<Entity> currentField = _gameField[width][height];
+        List<Entity> currentField = _gameField[width][height].getEntities;
 
         //final assignment = field[row][col];
         final pos = "field_${width}_${height}";
@@ -212,7 +213,7 @@ class DynamiteGame {
   String _getHTMLEntities(List<Entity> allEntities) {
     String htmlEntities = " class='";
     for (Entity entity in allEntities) {
-      htmlEntities += "${entity.getType()} ";
+      htmlEntities += "${entity.getType()} ${entity.getExtensionType()} ";
     }
     htmlEntities += "'";
     return htmlEntities;
@@ -220,7 +221,7 @@ class DynamiteGame {
 
   void placeDynamite() {
     Position pos = _player.position;
-    List<Entity> gameField = _gameField[pos.getX][pos.getY];
+    List<Entity> gameField = _gameField[pos.getX][pos.getY].getEntities;
     gameField.add(new Dynamite(pos));
   }
 }

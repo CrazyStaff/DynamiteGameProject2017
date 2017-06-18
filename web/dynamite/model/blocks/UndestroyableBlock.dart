@@ -1,6 +1,7 @@
 import '../Entity.dart';
 import '../Modificator.dart';
 import '../Position.dart';
+import '../pathfinding/FieldNode.dart';
 import 'Block.dart';
 
 class UndestroyableBlock extends Block {
@@ -10,7 +11,7 @@ class UndestroyableBlock extends Block {
   UndestroyableBlock(Position position) : super(ENTITY_TYPE, position);
 
   @override
-  Modificator atDestroy(List<List<List<Entity>>> gameField) {
+  Modificator atDestroy(List<List< FieldNode >> gameField) {
     return null;
   }
 }

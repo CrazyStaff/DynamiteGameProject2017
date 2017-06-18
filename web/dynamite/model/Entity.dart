@@ -1,15 +1,16 @@
 import 'Modificator.dart';
 import 'Position.dart';
 import 'DynamiteGame.dart';
+import 'pathfinding/FieldNode.dart';
 
 abstract class Entity {
   static int destroyableBlockCount = 0;
   static int monsterCounter = 0;
 
-
   Position _position;
   Position nextPosition;
-  String _type;
+  String type;
+  String extensionType;
   int lastMoveTime; // TODO: should be long? => no long in dart
   int lastActionTime;
   int walkingSpeed;
@@ -17,9 +18,7 @@ abstract class Entity {
   int strength;
 
   bool _alive;
-  bool isWalkable = false; // dont change - collision baut auf isWalkable auf!!
-
-  String getHTMLClass() => "class='$_type'";
+  bool isWalkable;
 
   void updateLastMoveTime() {
     this.lastMoveTime = new DateTime.now().millisecondsSinceEpoch;
@@ -54,11 +53,13 @@ abstract class Entity {
   Position get position => _position;
 
   Entity(String type, Position position) {
-    this._type = type;
+    this.type = type;
     this._position = position;
     this._alive = true;
     this.strength = 0;
     this.team = 0;
+    this.isWalkable = false; // dont change - collision baut auf isWalkable auf!!
+    this.extensionType = "";
   }
 
   /**
@@ -90,10 +91,8 @@ abstract class Entity {
 
   if(this.getType() == "MONSTER" || this.getType() == "PLAYER") {
     for (Entity otherEntities in entityField) {
-        print("Collision with: ${otherEntities.getType()}" );
       if (this.collision(otherEntities)) {
-        // TODO Entities die auf diesem Feld stehen und strength_enemy < self => enemy töten
-        this.setAlive(false);
+         this.setAlive(false);
       }
       if(otherEntities.collision(this)) {
         otherEntities.setAlive(false);;
@@ -108,7 +107,7 @@ abstract class Entity {
    * Calculate the next position
    * @return NULL indicates that the position stays the same
    */
-  Position getNextMove(List<List< List<Entity>>> gameField) {
+  Position getNextMove(List<List< FieldNode >> gameField) {
     return null; // DO NOT CHANGE TO "position"
   }
 
@@ -116,7 +115,6 @@ abstract class Entity {
    * Other entity is not in my team and is stronger than me
    */
   bool collision(Entity entity) {
-    print(Entity.monsterCounter);
       if(entity.team != this.team) {
         // Entities are enemies
         if (this.getType() == "PLAYER" && entity.getType() == "PORTAL" && Entity.monsterCounter == 0){
@@ -140,16 +138,20 @@ abstract class Entity {
   }
 
   String getType() {
-    return this._type;
+    return this.type;
+  }
+
+  String getExtensionType() {
+    return this.extensionType;
   }
 
   // need to be overriden by implementation
-  Modificator atDestroy(List<List<List<Entity>>> gameField) {
+  Modificator atDestroy(List<List< FieldNode >> gameField) {
     return null;
   }
 
    // need to be override by implementation
-  void action(List<List< List<Entity>>> _gameField, int time) {
+  void action(List<List< FieldNode >> _gameField, int time) {
   }
 
   /* this strategy decides what to do if the entity is not moving

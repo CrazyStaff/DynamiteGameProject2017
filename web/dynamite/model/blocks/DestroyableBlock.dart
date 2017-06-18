@@ -2,6 +2,7 @@ import '../Entity.dart';
 import '../Modificator.dart';
 import '../Position.dart';
 import '../items/Portal.dart';
+import '../pathfinding/FieldNode.dart';
 import 'Block.dart';
 import '../items/Item.dart';
 import '../items/SpeedBuff.dart';
@@ -17,7 +18,7 @@ class DestroyableBlock extends Block {
   }
 
   @override
-  Modificator atDestroy(List<List<List<Entity>>> gameField) {
+  Modificator atDestroy(List<List< FieldNode >> gameField) {
     Modificator mod = Modificator.buildModificator(gameField);
     Entity.destroyableBlockCount -= 1;
     if (Entity.destroyableBlockCount == 0){

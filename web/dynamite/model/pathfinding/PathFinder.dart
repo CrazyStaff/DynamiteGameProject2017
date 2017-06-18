@@ -1,79 +1,90 @@
 
 import '../Entity.dart';
+import '../Movement.dart';
 import '../Position.dart';
+import 'FieldNode.dart';
 import 'dart:collection';
-import 'dart:html' hide Node; // TODO no use of Node?
 import 'Heap.dart';
 
 class PathFinder {
 
-  static List<Position> findPath(List<List<List<Entity>>> gameField, Position start, Position target) {
-    /*int startTime = new DateTime.now().millisecondsSinceEpoch;
-    Heap<Position> openSet = new Heap<Position>(1000); // notVisitedNodes
-    HashSet<Node> closedSet = new HashSet<Node>(); // closedSet
-    openSet.add(startNode);
+  static List<Position> findPath(List<List< FieldNode >> gameField, Entity originEntity, FieldNode startFieldNode, FieldNode targetFieldNode) {
+    int startTime = new DateTime.now().millisecondsSinceEpoch;
+    Heap<FieldNode> openSet = new Heap<FieldNode>(1000); // notVisitedFieldNodes
+    HashSet<FieldNode> closedSet = new HashSet<FieldNode>(); // closedSet
+    openSet.add(startFieldNode);
 
     while(openSet.length > 0) {
-      Node currentNode = openSet.removeFirst();
-      //currentNode = getLowestFCostNodeFromEvaluatedList(openSet, currentNode);
+      FieldNode currentFieldNode = openSet.removeFirst();
+      //currentFieldNode = getLowestFCostFieldNodeFromEvaluatedList(openSet, currentFieldNode);
 
-      closedSet.add(currentNode);
+      closedSet.add(currentFieldNode);
 
-      if(currentNode == targetNode)  {
+      if(currentFieldNode == targetFieldNode)  {
         // Found the path
-
-        print("Founyd path in ${new DateTime.now().millisecondsSinceEpoch-startTime} ms");
-        return buildFinalPath(startNode, targetNode);
+        print("Found path in ${new DateTime.now().millisecondsSinceEpoch-startTime} ms");
+        return _buildFinalPath(startFieldNode, targetFieldNode);
       }
 
-      for(Node neighbour in _gameField.getNeighbours(currentNode)) {
-        if(!neighbour.isWalkable || closedSet.contains(neighbour)) {
+      for(FieldNode neighbour in _getNeighbours(currentFieldNode, gameField)) {
+        if(!neighbour.isWalkableFor(originEntity) || closedSet.contains(neighbour)) {
           continue;
         }
 
-        int newMovementCostToNeighbour = currentNode.gCost + getDistance(currentNode, neighbour);
+        int newMovementCostToNeighbour = currentFieldNode.gCost + _getDistance(currentFieldNode, neighbour);
         if(newMovementCostToNeighbour < neighbour.gCost || !openSet.contains(neighbour)) {
           neighbour.gCost = newMovementCostToNeighbour;
-          neighbour.hCost = getDistance(neighbour, targetNode);
-          neighbour.parent = currentNode;
+          neighbour.hCost = _getDistance(neighbour, targetFieldNode);
+          neighbour.parent = currentFieldNode;
 
-          /* if(neighbour == targetNode)  {
-              return buildFinalPath(startNode, targetNode);
+          /* if(neighbour == targetFieldNode)  {
+              return buildFinalPath(startFieldNode, targetFieldNode);
             }*/
 
           if(!openSet.contains(neighbour)) {
-            Element ele = querySelector("#field_${currentNode.yPosition}_${currentNode.xPosition}");
-            ele.style.background = "green";
+            //Element ele = querySelector("#field_${currentFieldNode.getY}_${currentFieldNode.getX}");
+            //ele.style.background = "green";
             openSet.add(neighbour);
           }
         }
       }
     }
-    querySelector('#output').text = "not found";
+    // PATH NOT FOUND
   }
 
-  List<Node> buildFinalPath(Node startNode, Node endNode) {
-    List<Node> path = new List<Node>();
-    Node currentNode = endNode;
+  static List<Position> _buildFinalPath(FieldNode startFieldNode, FieldNode endFieldNode) {
+    List<Position> path = new List<Position>();
+    FieldNode currentFieldNode = endFieldNode;
 
-    while(currentNode != startNode) {
-      path.add(currentNode);
-      currentNode = currentNode.parent;
+    while(currentFieldNode != startFieldNode) {
+      path.add(currentFieldNode.position);
+      currentFieldNode = currentFieldNode.parent;
     }
     return path.reversed.toList();
   }
 
-  int getDistance(Node fromNode, Node toNode) {
-    int xDistance = (fromNode.getXPos - toNode.getXPos).abs();
-    int yDistance = (fromNode.getYPos - toNode.getYPos).abs();
+  static int _getDistance(FieldNode fromFieldNode, FieldNode toFieldNode) {
+    int xDistance = (fromFieldNode.getX - toFieldNode.getX).abs();
+    int yDistance = (fromFieldNode.getY - toFieldNode.getY).abs();
 
     return xDistance + yDistance; // TODO *10?
   }
 
-  Node getLowestFCostNodeFromEvaluatedList(List<Node> openSet, Node currentNode) {
+  static List<FieldNode> _getNeighbours(FieldNode originFieldNode, List<List< FieldNode >> gameField) {
+    Position origin = originFieldNode.position;
 
-    return currentNode;
-  }*/
+    List< FieldNode > allNeighbours = new List<FieldNode>();
+    for(Position pos in Movement.CORNERS_EXCLUDED) {
+        Position neighbourPos = origin + pos;
+        if(Movement.isMovePossible(neighbourPos, gameField)) {
+          FieldNode fieldNode = gameField[neighbourPos.getX][neighbourPos.getY];
+          allNeighbours.add(fieldNode);
+        }
+    }
+    return allNeighbours;
   }
 
+  static FieldNode _getLowestFCostFieldNodeFromEvaluatedList(List<FieldNode> openSet, FieldNode currentFieldNode) {
+    return currentFieldNode;
+  }
 }

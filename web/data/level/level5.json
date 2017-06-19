@@ -11,5 +11,7 @@
       ],
       "field_width" : "10",
       "field_height" : "7"
-  }
+  },
+  "exp_monster" : "500",
+  "exp_destroyable_block" : "10"
 }

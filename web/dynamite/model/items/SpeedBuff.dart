@@ -4,7 +4,7 @@ import 'Item.dart';
 
 class SpeedBuff extends Item {
 
-  static final ENTITY_TYPE = "SPEEDBUFF";
+  static const ENTITY_TYPE = "SPEEDBUFF";
   static int spawnPercentage = 10;
 
 

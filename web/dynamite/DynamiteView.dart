@@ -11,9 +11,14 @@ class DynamiteView {
   HtmlElement get arrowRight => querySelector('#arrowRight');
   HtmlElement get arrowDynamite => querySelector('#arrowDynamite');
   HtmlElement get tooltip => querySelector('#output');
+  HtmlElement get score => querySelector('#scores div');
 
   void update(String gameField) { //
     game.innerHtml = gameField; // TODO: generate in view
+  }
+
+  void updateScore(double scorePercentage) {
+    score.setAttribute("style", "width: $scorePercentage%;");
   }
 
   void generateField(DynamiteGame model) { // TODO use only model.getHTML

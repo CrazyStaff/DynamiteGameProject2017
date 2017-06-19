@@ -3,7 +3,7 @@ import '../Position.dart';
 
 class Portal extends Entity {
 
-  static final ENTITY_TYPE = "PORTAL";
+  static const ENTITY_TYPE = "PORTAL";
 
   Portal(Position position) : super(ENTITY_TYPE, position) {
     this.isWalkable = true;

@@ -10,7 +10,7 @@ import 'dart:math';
 class Monster extends Entity {
   static const int VIEW_FIELD_RANGE = 4;
 
-  static final ENTITY_TYPE = "MONSTER";
+  static const ENTITY_TYPE = "MONSTER";
 
   Position viewDirection;
   Position nextViewDirection;

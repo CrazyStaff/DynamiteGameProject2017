@@ -3,6 +3,7 @@ import 'Modificator.dart';
 import 'Player.dart';
 import 'Position.dart';
 import './blocks/UndestroyableBlock.dart';
+import 'Score.dart';
 import 'blocks/DestroyableBlock.dart';
 import 'blocks/Dynamite.dart';
 import 'items/Portal.dart';
@@ -21,12 +22,13 @@ class DynamiteGame {
 
   List<List<FieldNode>> _gameField; // List<Entity>
   Player _player;
+  Score _score;
 
   bool _isStopped;
-
   int pausedGameAtTime;
 
   bool get isGameStopped => _isStopped;
+  double getScorePercentage() => _score.calculateScoreInPercentage();
 
   void pauseGame() {
     _isStopped = true;
@@ -56,6 +58,8 @@ class DynamiteGame {
     Entity.monsterCounter = 0;
     Entity.destroyableBlockCount = 0;
     gameStatus = 1;
+
+    _score = new Score();
     _generateEmptyGameField();
   }
 
@@ -127,12 +131,13 @@ class DynamiteGame {
         List<Modificator> toModificate = new List<Modificator>();
 
         for (Entity entity in field.getEntities) { // TODO iterator statt for each =>  removen und adden nur mit iterator aufrufbar
-          if (!entity.isAlive) { // Wenn nicht lebend => löschen
+          if (!entity.isAlive) { // if is not alive remove entity
             Modificator mod = entity.atDestroy(_gameField);
+            _score.updateScore(entity);
             if (mod != null) {
               toModificate.add(mod);
             }
-            toRemove.add(entity); // Lösche entity hier
+            toRemove.add(entity);
             continue;
           }
 
@@ -223,5 +228,12 @@ class DynamiteGame {
     Position pos = _player.position;
     List<Entity> gameField = _gameField[pos.getX][pos.getY].getEntities;
     gameField.add(new Dynamite(pos));
+  }
+
+  void initScore(int expMonster, int expDestroyableBlock) {
+    _score.initScore(Monster.ENTITY_TYPE, expMonster);
+    _score.initScore(DestroyableBlock.ENTITY_TYPE, expDestroyableBlock);
+
+   _score.calculateMaxScore(_gameField);
   }
 }

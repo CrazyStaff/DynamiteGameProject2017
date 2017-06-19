@@ -6,7 +6,7 @@ import 'Block.dart';
 
 class Fire extends Block {
 
-  static final ENTITY_TYPE = "FIRE";
+  static const ENTITY_TYPE = "FIRE";
 
   Fire(Position position) : super(ENTITY_TYPE, position) {
     isWalkable = true;

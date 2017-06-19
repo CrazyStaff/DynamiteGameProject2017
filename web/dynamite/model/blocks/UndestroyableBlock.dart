@@ -6,7 +6,7 @@ import 'Block.dart';
 
 class UndestroyableBlock extends Block {
 
-  static final ENTITY_TYPE = "UNDESTROYABLE_BLOCK";
+  static const ENTITY_TYPE = "UNDESTROYABLE_BLOCK";
 
   UndestroyableBlock(Position position) : super(ENTITY_TYPE, position);
 

@@ -5,7 +5,7 @@ import '../DynamiteGame.dart';
 
 class DynamiteRange extends Item {
 
-  static final ENTITY_TYPE = "DYNAMITERANGE";
+  static const ENTITY_TYPE = "DYNAMITERANGE";
   static int spawnPercentage = 1;
 
 

@@ -11,7 +11,7 @@ import 'dart:math';
 
 class DestroyableBlock extends Block {
 
-  static final ENTITY_TYPE = "DESTROYABLE_BLOCK";
+  static const ENTITY_TYPE = "DESTROYABLE_BLOCK";
 
   DestroyableBlock(Position position) : super(ENTITY_TYPE, position) {
     Entity.destroyableBlockCount += 1;

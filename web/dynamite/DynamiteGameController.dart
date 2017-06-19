@@ -5,7 +5,7 @@ import 'dart:html';
 import 'model/DynamiteGame.dart';
 
 const configFile = "data/config/config.json";
-const configLevel = "data/level/level"; //
+const configLevel = "data/level/level";
 
 class DynamiteGameController {
 
@@ -106,9 +106,21 @@ class DynamiteGameController {
       int fieldWidth = int.parse(parsedMap["level"]["field_width"]);
       int fieldHeight = int.parse(parsedMap["level"]["field_height"]);
       List blocks = parsedMap["level"]["blocks"];
+
       game = new DynamiteGame(fieldWidth, fieldHeight);
       game.initLevel(blocks, fieldWidth, fieldHeight);
       view.update(game.getHTML());
+
+      if(!parsedMap.containsKey("exp_monster") &&
+         !parsedMap.containsKey("exp_destroyable_block")) {
+        throw new Exception("Level $lvl should have an EXP section");
+      }
+      int expMonster = int.parse(parsedMap["exp_monster"]);
+      int expDestroyableBlock = int.parse(parsedMap["exp_destroyable_block"]);
+
+      game.initScore(expMonster, expDestroyableBlock);
+
+      view.updateScore(game.getScorePercentage());
     });
     print("Lvl Geladen");
   }
@@ -117,6 +129,7 @@ class DynamiteGameController {
       if (DynamiteGame.gameStatus == 1) {
         game.moveAllEntites(new DateTime.now().millisecondsSinceEpoch);
         view.update(game.getHTML());
+        view.updateScore(game.getScorePercentage());
       }else if (DynamiteGame.gameStatus == 2){
         nextLvl();
       }else if (DynamiteGame.gameStatus == 0){

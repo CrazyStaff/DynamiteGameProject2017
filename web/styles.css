@@ -24,7 +24,7 @@ html, body {
 #scores div {
     background-color: lightgreen;
     height: 0.5em;
-    width: 40%;
+    width: 0%;
 }
 
 #header table {
@@ -47,7 +47,6 @@ html, body {
     user-select: none;
     user-drag: none;
     cursor:default;
-
 }
 
 .header_lives {
@@ -231,8 +230,6 @@ html, body {
 #arrows {
 
 }
-
-
 
 .emptyField {
     visibility: hidden; /* do not show empty field! */

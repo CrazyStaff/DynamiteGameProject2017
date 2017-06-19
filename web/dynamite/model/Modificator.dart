@@ -6,6 +6,8 @@ class Modificator {
   List<List<FieldNode>> _addEntities;
   List<List<FieldNode>> _removeEntities;
 
+  get getRemovedEntities => _removeEntities;
+
   Modificator._construct(int fieldWidth, int fieldHeight) {
     _addEntities = _generateEmptyGameField(fieldWidth, fieldHeight);
     _removeEntities = _generateEmptyGameField(fieldWidth, fieldHeight);

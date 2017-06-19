@@ -9,7 +9,7 @@ import 'Fire.dart';
 
 class Dynamite extends Block {
 
-  static final ENTITY_TYPE = "DYNAMITE";
+  static const ENTITY_TYPE = "DYNAMITE";
 
   Dynamite(Position position) : super(ENTITY_TYPE, position) {
     updateLastActionTime();

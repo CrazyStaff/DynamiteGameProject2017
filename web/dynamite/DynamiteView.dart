@@ -1,5 +1,6 @@
 import 'dart:html';
 import 'model/DynamiteGame.dart';
+import 'DynamiteGameController.dart';
 
 class DynamiteView {
 
@@ -12,9 +13,13 @@ class DynamiteView {
   HtmlElement get arrowDynamite => querySelector('#arrowDynamite');
   HtmlElement get tooltip => querySelector('#output');
   HtmlElement get score => querySelector('#scores div');
+  HtmlElement get lvl => querySelector('#lvl');
+  HtmlElement get leben => querySelector('#leben');
 
   void update(String gameField) { //
     game.innerHtml = gameField; // TODO: generate in view
+    lvl.innerHtml = DynamiteGameController.lvl.toString();
+    leben.innerHtml = DynamiteGame.leben.toString();
   }
 
   void updateScore(double scorePercentage) {

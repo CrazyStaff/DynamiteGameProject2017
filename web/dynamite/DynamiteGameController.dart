@@ -15,6 +15,8 @@ class DynamiteGameController {
   static DynamiteGame game = new DynamiteGame(1, 1);
   final view = new DynamiteView();
   static int lvl = 1;
+  static int startLvl = 0;
+  static int startLeben = 3;
 
   DynamiteGameController()  {
    /*view.generateField(game);*/
@@ -89,6 +91,9 @@ class DynamiteGameController {
       final configs = JSON.decode(json);
       maxLvl = configs["maxLvl"];
       gameSpeed = new Duration(milliseconds: configs["gameSpeed"]);
+      startLvl = configs["startLvl"];
+      startLeben = configs["startLeben"];
+      DynamiteGame.leben = startLeben;
       return true;
     }).catchError((error) => {
       // return false; // TODO return false
@@ -133,6 +138,13 @@ class DynamiteGameController {
       }else if (DynamiteGame.gameStatus == 2){
         nextLvl();
       }else if (DynamiteGame.gameStatus == 0){
+        DynamiteGame.leben--;
+        if (DynamiteGame.leben < 1){
+          DynamiteGame.leben = startLeben;
+          if (lvl > startLvl) {
+            lvl = startLvl;
+          }
+        }
         retry();
       }else { //Verloren oder so
         noMoreLvl();

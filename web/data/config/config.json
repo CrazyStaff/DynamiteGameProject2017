@@ -1,4 +1,6 @@
 {
   "gameSpeed" : 30,
-  "maxLvl" : 8
+  "maxLvl" : 8,
+  "startLvl" : 5,
+  "startLeben" : 3
 }

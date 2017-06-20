@@ -6,6 +6,7 @@ import 'pathfinding/FieldNode.dart';
 abstract class Entity {
   static int destroyableBlockCount = 0;
   static int monsterCounter = 0;
+  static int portalCount = 0;
 
   Position _position;
   Position nextPosition;

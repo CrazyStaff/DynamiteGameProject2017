@@ -21,7 +21,7 @@ class DestroyableBlock extends Block {
   Modificator atDestroy(List<List< FieldNode >> gameField) {
     Modificator mod = Modificator.buildModificator(gameField);
     Entity.destroyableBlockCount -= 1;
-    if (Entity.destroyableBlockCount == 0){
+    if ((Entity.destroyableBlockCount == 0)&&(Entity.portalCount == 0)){
       Position spawnPosition = position.clone();
       mod.addAddable(new Portal(spawnPosition), spawnPosition);
     }else{//Random Item
@@ -34,6 +34,11 @@ class DestroyableBlock extends Block {
       if (r.nextInt(100) < DynamiteRange.getSpawnRate()){
         Position spawnPosition = position.clone();
         mod.addAddable(new DynamiteRange(spawnPosition), spawnPosition);
+        return mod;
+      }
+      if ((r.nextInt(100) < Portal.getSpawnRate())&&(Entity.portalCount == 0)){
+        Position spawnPosition = position.clone();
+        mod.addAddable(new Portal(spawnPosition), spawnPosition);
         return mod;
       }
     }

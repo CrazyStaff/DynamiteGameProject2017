@@ -23,7 +23,7 @@ class DynamiteView {
   }
 
   void updateScore(double scorePercentage) {
-    score.setAttribute("style", "width: $scorePercentage%;");
+    //score.setAttribute("style", "width: $scorePercentage%;");
   }
 
   void generateField(DynamiteGame model) { // TODO use only model.getHTML

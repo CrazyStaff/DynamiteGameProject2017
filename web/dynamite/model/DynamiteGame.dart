@@ -60,6 +60,8 @@ class DynamiteGame {
     Entity.monsterCounter = 0;
     Entity.destroyableBlockCount = 0;
     gameStatus = GameState.RUNNING;
+    Entity.portalCount = 0;
+    gameStatus = 1;
 
     _score = new Score();
     _generateEmptyGameField();
@@ -228,6 +230,7 @@ class DynamiteGame {
 
   String getScoreHTML() {
     String html;
+    return "";
   }
 
   void placeDynamite() {

@@ -1,79 +1,62 @@
 <!DOCTYPE html>
 
 <!--
-  Copyright (c) 2017, Johan. All rights reserved. Use of this source code
+  Copyright (c) 2017, Johannes, Marco, Erik. All rights reserved. Use of this source code
   is governed by a BSD-style license that can be found in the LICENSE file.
 -->
 
 <html>
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="scaffolded-by" content="https://github.com/google/stagehand">
-    <title>Dynamite Game Alpha</title>
-    <link rel="stylesheet" href="reset.css">
-    <link rel="stylesheet" href="styles.css">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="scaffolded-by" content="https://github.com/google/stagehand">
+        <title>Dynamite Game</title>
+        <link rel="stylesheet" href="reset.css">
+        <link rel="stylesheet" href="styles.css">
 
-    <link rel="stylesheet" media="all and (orientation:portrait) and (min-device-width 600:px)" href="styles_portrait.css">
-    <link rel="stylesheet" media="all and (orientation:landscape)" href="styles_landscape.css">
+        <link rel="stylesheet" media="all and (orientation:portrait) and (min-device-width 600:px)" href="styles_portrait.css">
+        <link rel="stylesheet" media="all and (orientation:landscape)" href="styles_landscape.css">
 
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:700" rel="stylesheet">
-</head>
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:700" rel="stylesheet">
+    </head>
+    <body>
+        <div id="statusBar" class="unselectable">
+            <table>
+                <tr>
+                    <td class="header_level unselectable">Level 1</td>
+                    <td class="header_leftTime">Time 200</td> <!-- 03:00 -->
+                    <td class="header_score">Highscore 000000</td>
+                    <td class="header_lives unselectable">❤ 10</td>
+                </tr>
+            </table>
+        </div>
 
-<body>
-<div id="output">Lade Spiel</div>
+        <div id="gameField">
+        </div>
 
-<div id="header" class="unselectable">
-    <table >
-        <tr >
-            <td class="header_level unselectable">Level <span id="lvl">1</span></td>
-            <td class="header_leftTime"><div class="buttons"><input id="startButton" type="button" value="Start Game"></div></td> <!-- 03:00 -->
-            <td class="header_lives unselectable"><span>❤</span><span id="leben">3</span></td>
-        </tr>
-    </table>
-</div>
-<div id="scores">
-    <div></div> <!-- show score in percentage -->
-</div>
-
-<div id="gameField">
-
-</div>
-
-
-<div id="arrows">
-    <table>
-        <tbody>
-        <tr>
-            <td><input class="emptyField" type="submit" value="💣"></td>
-            <td><input id="arrowUp" type="submit" value="▲"></td>
-            <td><input class="emptyField" type="submit" value="💣"></td>
-        </tr>
-        <tr>
-            <td><input id="arrowLeft" type="submit" value="◀"></td>
-            <td><input id="arrowDynamite" type="submit" value="💣"></td>
-            <td><input id="arrowRight" type="submit" value="▶"></td>
-        </tr>
-        <tr>
-            <td><input class="emptyField" type="submit" value="💣"></td>
-            <td><input id="arrowDown" type="submit" value="▼"></td>
-            <td><input class="emptyField" type="submit" value="💣"></td>
-        </tr>
-        </tbody>
-    </table>
-</div>
-
-<div id="level"> <!-- shows level success -->
-    <div id="level_header">Level completed</div>
-    <div id="level_announcement">Good job!</div>
-    <div id="level_result">2</div>
-    <input id="level_accept" type="submit" value="Next level">
-</div>
-
-<script type="text/javascript"> document.addEventListener('click', function(e) { if(document.activeElement.id == 'startButton'){ document.activeElement.blur(); } }); </script>
-
-<script type="application/dart" src="main.dart" ></script>
-<script src="packages/browser/dart.js"></script>
-</body>
+        <div id="mobileControl">
+            <input id="mStart" class="init" type="button" value="▶">
+            <table>
+                <tr>
+                    <td></td>
+                    <td><input id="mUp" type="button" value="▲"></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td><input id="mLeft" type="button" value="◀"></td>
+                    <td><input id="mDynamite" type="button" value="💥"></td>
+                    <td><input id="mRight" type="button" value="▶"></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><input id="mDown" type="button" value="▼"></td>
+                    <td></td>
+                </tr>
+            </table>
+        </div>
+        <script type="text/javascript"> document.addEventListener('click', function(e) { if(document.activeElement.id == 'startButton'){ document.activeElement.blur(); } }); </script>
+        <script type="application/dart" src="main.dart" ></script>
+        <script src="packages/browser/dart.js"></script>
+    </body>
 </html>

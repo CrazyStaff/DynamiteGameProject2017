@@ -27,10 +27,10 @@ class DynamiteGameController {
     ]).then(_initGame);
   }
 
-  void _initGame(List<bool> result)  {
+  void _initGame(List<bool> result) {
     print("initGame");
-    for(bool r in result) {
-      if(r == false) {
+    for (bool r in result) {
+      if (r == false) {
         // TODO some resources could'nt load properly
         return;
       }
@@ -40,48 +40,60 @@ class DynamiteGameController {
     view.startButton.onClick.listen((_) {
       //if (gameTrigger != null) gameTrigger.cancel();
 
-      switch(view.startButton.getAttribute("value")) {
-        case "Start Game":
-          view.startButton.setAttribute("value", "Pause Game");
+      switch (view.startButton.getAttribute("class")) {
+        case "init":
+          view.startButton.setAttribute("value", "❚❚");
+          view.startButton.setAttribute("class", "running");
           gameTrigger = new Timer.periodic(gameSpeed, (_) => _moveEntities());
           break;
-        case "Pause Game":
-          view.startButton.setAttribute("value", "Continue Game");
+        case "running":
+          view.startButton.setAttribute("value", "▶");
+          view.startButton.setAttribute("class", "paused");
           gameTrigger.cancel();
           pauseGame();
           break;
-        case "Continue Game":
-          view.startButton.setAttribute("value", "Pause Game");
+        case "paused":
+          view.startButton.setAttribute("value", "❚❚");
+          view.startButton.setAttribute("class", "running");
           continueGame();
           gameTrigger = new Timer.periodic(gameSpeed, (_) => _moveEntities());
           break;
       }
 
 
-
       // game.start(); // TODO?? !!!!!!!!!!!!!!!!!
-       view.update(game.getHTML());
+      view.update(game.getHTML());
     });
 
     // move player
     window.onKeyDown.listen((KeyboardEvent ev) {
-       if (game.isGameStopped) return;
+      if (game.isGameStopped) return;
       switch (ev.keyCode) {
-        case KeyCode.LEFT:  left(); break;
-        case KeyCode.RIGHT: right(); break;
-        case KeyCode.UP: up(); break;
-        case KeyCode.DOWN: down(); break;
-        case KeyCode.SPACE: placeDynamite(); break;
+        case KeyCode.LEFT:
+          left();
+          break;
+        case KeyCode.RIGHT:
+          right();
+          break;
+        case KeyCode.UP:
+          up();
+          break;
+        case KeyCode.DOWN:
+          down();
+          break;
+        case KeyCode.SPACE:
+          placeDynamite();
+          break;
       }
     });
 
-    // listen on smartphone arrows
-    view.arrowUp.onClick.listen((_) => up());
-    view.arrowRight.onClick.listen((_) => right());
-    view.arrowDown.onClick.listen((_) => down());
-    view.arrowLeft.onClick.listen((_) => left());
-    view.arrowDynamite.onClick.listen((_) => placeDynamite());
-    view.tooltip.innerHtml = "";
+      // listen on smartphone arrows
+      view.arrowUp.onClick.listen((_) => up());
+      view.arrowRight.onClick.listen((_) => right());
+      view.arrowDown.onClick.listen((_) => down());
+      view.arrowLeft.onClick.listen((_) => left());
+      view.arrowDynamite.onClick.listen((_) => placeDynamite());
+     // view.tooltip.innerHtml = "";
   }
 
   /*
@@ -140,6 +152,7 @@ class DynamiteGameController {
         nextLvl();
       }else if (DynamiteGame.gameStatus == GameState.LOOSE){
         DynamiteGame.leben--;
+        DynamiteGame.DYNAMITE_RADIUS = 1;
         if (DynamiteGame.leben < 1){
           DynamiteGame.leben = startLeben;
           if (lvl > startLvl) {

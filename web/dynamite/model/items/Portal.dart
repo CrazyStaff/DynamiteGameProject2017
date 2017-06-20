@@ -4,7 +4,7 @@ import '../Position.dart';
 class Portal extends Entity {
 
   static const ENTITY_TYPE = "PORTAL";
-  static int spawnPercentage = (100/Entity.destroyableBlockCount).toInt();
+  static int spawnPercentage = (10/Entity.destroyableBlockCount).toInt();
 
   Portal(Position position) : super(ENTITY_TYPE, position) {
     this.isWalkable = true;

@@ -5,13 +5,13 @@ import 'DynamiteGameController.dart';
 class DynamiteView {
 
   final game = querySelector("#gameField");
-  HtmlElement get startButton => querySelector('#startButton');
-  HtmlElement get arrowUp => querySelector('#arrowUp');
-  HtmlElement get arrowDown => querySelector('#arrowDown');
-  HtmlElement get arrowLeft => querySelector('#arrowLeft');
-  HtmlElement get arrowRight => querySelector('#arrowRight');
-  HtmlElement get arrowDynamite => querySelector('#arrowDynamite');
-  HtmlElement get tooltip => querySelector('#output');
+  HtmlElement get startButton => querySelector('#mStart');
+  HtmlElement get arrowUp => querySelector('#mUp');
+  HtmlElement get arrowDown => querySelector('#mDown');
+  HtmlElement get arrowLeft => querySelector('#mLeft');
+  HtmlElement get arrowRight => querySelector('#mRight');
+  HtmlElement get arrowDynamite => querySelector('#mDynamite');
+  //HtmlElement get tooltip => querySelector('#output');
   HtmlElement get score => querySelector('#scores div');
   HtmlElement get lvl => querySelector('#lvl');
   HtmlElement get leben => querySelector('#leben');

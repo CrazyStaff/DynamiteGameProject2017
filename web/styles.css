@@ -83,14 +83,17 @@ html, body {
 
 #gameField table {
     margin: 0 auto;
+    border-collapse: collapse;
 }
 
 #gameField tr {
     line-height: 0;
+    margin: 0 !important;
+
 }
 
 #gameField tr td{
-    border: 1px solid #B64926;
+    border: 0.5px solid #B64926;
     background-color: #FFF0A5;
     width: 2rem;
     height: 2rem;

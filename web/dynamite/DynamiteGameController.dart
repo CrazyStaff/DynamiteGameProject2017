@@ -3,6 +3,7 @@ import 'dart:async';
 import 'dart:convert';
 import 'dart:html';
 import 'model/DynamiteGame.dart';
+import 'model/GameState.dart';
 
 const configFile = "data/config/config.json";
 const configLevel = "data/level/level";
@@ -131,13 +132,13 @@ class DynamiteGameController {
   }
 
   void _moveEntities() {
-      if (DynamiteGame.gameStatus == 1) {
+      if (DynamiteGame.gameStatus == GameState.RUNNING) {
         game.moveAllEntites(new DateTime.now().millisecondsSinceEpoch);
         view.update(game.getHTML());
         view.updateScore(game.getScorePercentage());
-      }else if (DynamiteGame.gameStatus == 2){
+      }else if (DynamiteGame.gameStatus == GameState.WIN){
         nextLvl();
-      }else if (DynamiteGame.gameStatus == 0){
+      }else if (DynamiteGame.gameStatus == GameState.LOOSE){
         DynamiteGame.leben--;
         if (DynamiteGame.leben < 1){
           DynamiteGame.leben = startLeben;
@@ -152,17 +153,17 @@ class DynamiteGameController {
   }
 
   void retry(){
-    DynamiteGame.gameStatus = 1;
+    DynamiteGame.gameStatus = GameState.RUNNING;
     Future.wait([_loadLevel()
     ]).then(_initGame);
   }
 
   void nextLvl() {
-    DynamiteGame.gameStatus = 1;
+    DynamiteGame.gameStatus = GameState.RUNNING;
     lvl+=1;
     if (lvl > maxLvl){
       view.update("<h1 id='gewonnen'>GEWONNEN!</h1>");
-      DynamiteGame.gameStatus = 3;
+      DynamiteGame.gameStatus = GameState.MAX_LEVEL_REACHED;
     }else {
       Future.wait([_loadLevel()
       ]).then(_initGame);

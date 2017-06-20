@@ -1,0 +1,3 @@
+enum GameState {
+  WIN, LOOSE, RUNNING, MAX_LEVEL_REACHED
+}

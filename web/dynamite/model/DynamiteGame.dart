@@ -1,4 +1,5 @@
 import 'Entity.dart';
+import 'GameState.dart';
 import 'Modificator.dart';
 import 'Player.dart';
 import 'Position.dart';
@@ -15,7 +16,7 @@ class DynamiteGame {
   static final int DYNAMITE_EXPLODE_TIME = 4000;
   static final int FIRE_DURATION = 1000;
   static int DYNAMITE_RADIUS = 1;
-  static int gameStatus = 1; //0 Verloren, 1 Läuft, 2 Gewonnen
+  static GameState gameStatus; //0 Verloren, 1 Läuft, 2 Gewonnen
   static int leben = 3;
 
   int _fieldWidth;
@@ -50,7 +51,7 @@ class DynamiteGame {
     _isStopped = false;
   }
 
-  static int getStatus(){
+  static GameState getStatus(){
     return gameStatus;
   }
 
@@ -58,7 +59,7 @@ class DynamiteGame {
   DynamiteGame(this._fieldWidth, this._fieldHeight) {
     Entity.monsterCounter = 0;
     Entity.destroyableBlockCount = 0;
-    gameStatus = 1;
+    gameStatus = GameState.RUNNING;
 
     _score = new Score();
     _generateEmptyGameField();
@@ -124,7 +125,7 @@ class DynamiteGame {
     if(_isStopped) return;
 
     if (!_player.isAlive){
-      gameStatus = 0;
+      gameStatus = GameState.LOOSE;
     }
     for (List<FieldNode> allPositions in _gameField) {
       for (FieldNode field in allPositions) {
@@ -223,6 +224,10 @@ class DynamiteGame {
     }
     htmlEntities += "'";
     return htmlEntities;
+  }
+
+  String getScoreHTML() {
+    String html;
   }
 
   void placeDynamite() {

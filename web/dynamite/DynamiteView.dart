@@ -53,4 +53,8 @@ class DynamiteView {
       }
     }*/
   }
+
+  void showLevelOverview(String scoreHtml) {
+
+  }
 }

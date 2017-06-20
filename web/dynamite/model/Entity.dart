@@ -1,3 +1,4 @@
+import 'GameState.dart';
 import 'Modificator.dart';
 import 'Position.dart';
 import 'DynamiteGame.dart';
@@ -118,10 +119,10 @@ abstract class Entity {
       if(entity.team != this.team) {
         // Entities are enemies
         if (this.getType() == "PLAYER" && entity.getType() == "PORTAL" && Entity.monsterCounter == 0){
-          DynamiteGame.gameStatus = 2;
+          DynamiteGame.gameStatus = GameState.WIN;
         }
         if (this.getType() == "PORTAL" && entity.getType() == "PLAYER" && Entity.monsterCounter == 0){
-          DynamiteGame.gameStatus = 2;
+          DynamiteGame.gameStatus = GameState.WIN;
         }
         if(entity.strength > this.strength) {
           return true;

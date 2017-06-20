@@ -139,6 +139,7 @@ class DynamiteGameController {
         nextLvl();
       }else if (DynamiteGame.gameStatus == 0){
         DynamiteGame.leben--;
+        DynamiteGame.DYNAMITE_RADIUS = 1;
         if (DynamiteGame.leben < 1){
           DynamiteGame.leben = startLeben;
           if (lvl > startLvl) {

@@ -93,7 +93,7 @@ html, body {
 }
 
 #gameField tr td{
-   /* border: 0.5px solid #B64926;*/
+    /* border: 0.5px solid #B64926;*/
     border: none;
     background-color: #FFF0A5;
     width: 2rem;
@@ -193,20 +193,20 @@ html, body {
 
 
 .UNDESTROYABLE_BLOCK{
- /*   background-color: brown !important;*/
+    /*   background-color: brown !important;*/
     background-image: url("nonbreakable.png") !important;
     background-size: cover;
 }
 
 .DESTROYABLE_BLOCK {
-   /* background-color: brown !important;*/
+    /* background-color: brown !important;*/
     background-image: url("brBox.png") !important;
     background-size: cover;
 }
 
 .DYNAMITE {
-  /*  background-color: black !important;*/
-      background-image: url("dynamiteShadow.png") !important;
+    /*  background-color: black !important;*/
+    background-image: url("dynamiteShadow.png") !important;
     background-size: cover;
 
 }

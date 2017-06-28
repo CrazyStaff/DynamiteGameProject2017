@@ -17,12 +17,12 @@ class DynamiteGame {
   static final int FIRE_DURATION = 1000;
   static int DYNAMITE_RADIUS = 1;
   static GameState gameStatus; //0 Verloren, 1 Läuft, 2 Gewonnen
-  static int leben = 3;
+  static int life = 3;
 
   int _fieldWidth;
   int _fieldHeight;
 
-  List<List<FieldNode>> _gameField; // List<Entity>
+  List<List<FieldNode>> _gameField;
   Player _player;
   Score _score;
 

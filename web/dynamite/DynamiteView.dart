@@ -19,7 +19,7 @@ class DynamiteView {
   void update(String gameField) { //
     game.innerHtml = gameField; // TODO: generate in view
     lvl.innerHtml = DynamiteGameController.lvl.toString();
-    leben.innerHtml = DynamiteGame.leben.toString();
+    leben.innerHtml = DynamiteGame.life.toString();
   }
 
   void updateScore(double scorePercentage) {

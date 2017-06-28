@@ -9,7 +9,7 @@ import 'dart:math';
 
 class Monster extends Entity {
   static const int VIEW_FIELD_RANGE = 4;
-
+  static final Position DEFAULT_VIEW_DIRECTION = Movement.RIGHT;
   static const ENTITY_TYPE = "MONSTER";
 
   Position viewDirection;
@@ -24,7 +24,7 @@ class Monster extends Entity {
     this.isWalkable = true;
     this.strength = 50;
     this.team = 2;
-    this.viewDirection = Movement.RIGHT; // change init here
+    this.viewDirection = DEFAULT_VIEW_DIRECTION;
 
     this.setWalkingSpeed(1000);
     this.updateLastMoveTime();

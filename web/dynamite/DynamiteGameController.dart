@@ -18,6 +18,7 @@ class DynamiteGameController {
   static int lvl = 1;
   static int startLvl = 0;
   static int startLife = 3;
+  String levelBeschreibung = "";
 
   DynamiteGameController()  {
    /*view.generateField(game);*/
@@ -124,6 +125,7 @@ class DynamiteGameController {
       int fieldWidth = int.parse(parsedMap["level"]["field_width"]);
       int fieldHeight = int.parse(parsedMap["level"]["field_height"]);
       List blocks = parsedMap["level"]["blocks"];
+      levelBeschreibung = parsedMap["discription"];
 
       game = new DynamiteGame(fieldWidth, fieldHeight);
       game.initLevel(blocks, fieldWidth, fieldHeight);

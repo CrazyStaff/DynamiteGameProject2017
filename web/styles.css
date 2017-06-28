@@ -93,7 +93,8 @@ html, body {
 }
 
 #gameField tr td{
-    border: 0.5px solid #B64926;
+   /* border: 0.5px solid #B64926;*/
+    border: none;
     background-color: #FFF0A5;
     width: 2rem;
     height: 2rem;
@@ -192,15 +193,22 @@ html, body {
 
 
 .UNDESTROYABLE_BLOCK{
-    background-color: green !important;
+ /*   background-color: brown !important;*/
+    background-image: url("nonbreakable.png") !important;
+    background-size: cover;
 }
 
 .DESTROYABLE_BLOCK {
-    background-color: brown !important;
+   /* background-color: brown !important;*/
+    background-image: url("brBox.png") !important;
+    background-size: cover;
 }
 
 .DYNAMITE {
-    background-color: black !important;
+  /*  background-color: black !important;*/
+      background-image: url("dynamiteShadow.png") !important;
+    background-size: cover;
+
 }
 
 .FIRE {
@@ -208,7 +216,8 @@ html, body {
 }
 
 .PORTAL {
-    background-color: lightblue !important;
+    background-image: url("openPortal2.png") !important;
+    background-size: cover;
 }
 
 .MONSTER {

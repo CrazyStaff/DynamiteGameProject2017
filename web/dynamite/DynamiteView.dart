@@ -14,14 +14,14 @@ class DynamiteView {
   //HtmlElement get tooltip => querySelector('#output');
   HtmlElement get score => querySelector('#scores div');
   HtmlElement get lvl => querySelector('#lvl');
-  HtmlElement get leben => querySelector('#leben');
+  HtmlElement get life => querySelector('#life');
   HtmlElement get overviewLevel => querySelector('#level');
   HtmlElement get overviewAccept => querySelector('#level_accept');
 
   void update(String gameField) { //
     game.innerHtml = gameField; // TODO: generate in view
     //lvl.innerHtml = DynamiteGameController.lvl.toString();
-    leben.innerHtml = DynamiteGame.life.toString();
+    //leben.innerHtml = DynamiteGame.life.toString();
   }
 
   void updateScore(double scorePercentage) {

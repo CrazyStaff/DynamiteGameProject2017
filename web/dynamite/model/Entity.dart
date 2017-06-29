@@ -97,7 +97,7 @@ abstract class Entity {
          this.setAlive(false);
       }
       if(otherEntities.collision(this)) {
-        otherEntities.setAlive(false);;
+        otherEntities.setAlive(false);
       }
     }
   }
@@ -119,12 +119,6 @@ abstract class Entity {
   bool collision(Entity entity) {
       if(entity.team != this.team) {
         // Entities are enemies
-        if (this.getType() == "PLAYER" && entity.getType() == "PORTAL" && Entity.monsterCounter == 0){
-          DynamiteGame.gameStatus = GameState.WIN;
-        }
-        if (this.getType() == "PORTAL" && entity.getType() == "PLAYER" && Entity.monsterCounter == 0){
-          DynamiteGame.gameStatus = GameState.WIN;
-        }
         if(entity.strength > this.strength) {
           return true;
         }

@@ -10,12 +10,13 @@ import 'Fire.dart';
 class Dynamite extends Block {
 
   static const ENTITY_TYPE = "DYNAMITE";
+  int _explosionRadius;
 
-  Dynamite(Position position) : super(ENTITY_TYPE, position) {
+
+  Dynamite(Position position, int explosionRadius) : super(ENTITY_TYPE, position) {
+    this._explosionRadius = explosionRadius;
+
     updateLastActionTime();
-    //Dynamite bewegt sich erstmal nicht
-    //updateLastMoveTime();
-    //setSpeed(DynamiteGame.DYNAMITE_EXPLODE_TIME);
   }
 
   @override
@@ -34,7 +35,7 @@ class Dynamite extends Block {
   void _spawnFireInDirection(List<List< FieldNode >> gameField, final Position direction, Modificator modificator) {
     Position pos = position.clone();
 
-    for(int i=1; i <= DynamiteGame.DYNAMITE_RADIUS; i++) {
+    for(int i=1; i <= _explosionRadius; i++) {
       pos.addOffset(direction);
       if(Fire.isSpawnPossible(gameField, pos)) {
         Position positionFire = pos.clone();

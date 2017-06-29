@@ -1,27 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="22a5614c-87a3-4d0b-bb80-0b966c29e495" name="Default" comment="Erste Kommentaare">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/oldcode/Constants.dart" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/oldcode/GameField.dart" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/oldcode/Heap.dart" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/oldcode/Keyboard.dart" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/oldcode/Node.dart" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/oldcode/PathManager.dart" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/oldcode/TerrainType.dart" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/oldcode/levels.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/oldcode/main.dart" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/Dart_SDK.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_SDK.xml" />
+    <list default="true" id="22a5614c-87a3-4d0b-bb80-0b966c29e495" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/dynamite/DynamiteGameController.dart" afterPath="$PROJECT_DIR$/web/dynamite/DynamiteGameController.dart" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/dynamite/DynamiteView.dart" afterPath="$PROJECT_DIR$/web/dynamite/DynamiteView.dart" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/dynamite/model/DynamiteGame.dart" afterPath="$PROJECT_DIR$/web/dynamite/model/DynamiteGame.dart" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/dynamite/model/Entity.dart" afterPath="$PROJECT_DIR$/web/dynamite/model/Entity.dart" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/dynamite/model/GameState.dart" afterPath="$PROJECT_DIR$/web/dynamite/model/GameState.dart" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/dynamite/model/Player.dart" afterPath="$PROJECT_DIR$/web/dynamite/model/Player.dart" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/dynamite/model/blocks/Dynamite.dart" afterPath="$PROJECT_DIR$/web/dynamite/model/blocks/Dynamite.dart" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/dynamite/model/items/DynamiteRange.dart" afterPath="$PROJECT_DIR$/web/dynamite/model/items/DynamiteRange.dart" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/index.html" afterPath="$PROJECT_DIR$/web/index.html" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -813,7 +794,7 @@
       <workItem from="1498672450645" duration="687000" />
       <workItem from="1498674606694" duration="1610000" />
       <workItem from="1498676552830" duration="2127000" />
-      <workItem from="1498754466342" duration="11472000" />
+      <workItem from="1498754466342" duration="11570000" />
     </task>
     <task id="LOCAL-00001" summary="changed kommentar">
       <created>1495737393363</created>
@@ -1102,17 +1083,23 @@
       <option name="project" value="LOCAL" />
       <updated>1498676137390</updated>
     </task>
-    <option name="localTasksCounter" value="42" />
+    <task id="LOCAL-00042" summary="Struktur angepasst (Fehler)">
+      <created>1498765975278</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1498765975278</updated>
+    </task>
+    <option name="localTasksCounter" value="43" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="213381000" />
+    <option name="totallyTimeSpent" value="213479000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1912" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.225" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.225" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3286385" sideWeight="0.5" order="12" side_tool="true" content_ui="tabs" />
       <window_info id="Pub Serve" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3255814" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -1155,7 +1142,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$/web" />
     </ignored-roots>
-    <MESSAGE value="Init" />
     <MESSAGE value="Init Dynamite" />
     <MESSAGE value="Fixed display levels" />
     <MESSAGE value="Fixed dynamite and fire" />
@@ -1180,7 +1166,8 @@
     <MESSAGE value="Fixed Firefox bug monster attention" />
     <MESSAGE value="Lvl beschribung" />
     <MESSAGE value="Erste Kommentaare" />
-    <option name="LAST_COMMIT_MESSAGE" value="Erste Kommentaare" />
+    <MESSAGE value="Struktur angepasst (Fehler)" />
+    <option name="LAST_COMMIT_MESSAGE" value="Struktur angepasst (Fehler)" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

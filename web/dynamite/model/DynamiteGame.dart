@@ -89,6 +89,8 @@ class DynamiteGame {
     _maxLvl = 0;
     _levelDescription = "";
     _dynamiteRadius = 1;
+    _fieldWidth = 1;
+    _fieldHeight = 1;
 
     Entity.portalCount = 0;
     Entity.monsterCounter = 0;

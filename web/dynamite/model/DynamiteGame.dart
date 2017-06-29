@@ -138,6 +138,8 @@ class DynamiteGame {
     this._fieldWidth = fieldWidth;
     this._fieldHeight = fieldHeight;
 
+    _generateEmptyGameField();
+
     Entity.portalCount = 0;
     Entity.monsterCounter = 0;
     Entity.destroyableBlockCount = 0;
@@ -174,10 +176,8 @@ class DynamiteGame {
           break;
         case "P":
         /* starting point of player */
-          if (_player == null) { // TODO only one player currently?
             _player = new Player(currentPosition);
             currentField.add(_player);
-          }
           break;
       }
     }
@@ -185,6 +185,9 @@ class DynamiteGame {
 
   GameState moveAllEntites(int time) {
     if (_gameStatus == GameState.RUNNING) {
+      if (_player.hasWon) {
+        _gameStatus = GameState.WIN;
+      }
       for (List<FieldNode> allPositions in _gameField) {
         for (FieldNode field in allPositions) {
           var toRemove = [];
@@ -238,9 +241,6 @@ class DynamiteGame {
           // Modify entity list only after iteration
           field.getEntities.removeWhere((e) => toRemove.contains(e));
         }
-      }
-      if (_player.hasWon) {
-        _gameStatus = GameState.WIN;
       }
       if (!_player.isAlive) {
         _decrementLife();

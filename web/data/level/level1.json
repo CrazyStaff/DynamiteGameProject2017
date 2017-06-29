@@ -10,5 +10,5 @@
   },
   "exp_monster" : "0",
   "exp_destroyable_block" : "50",
-  "discription" : "<h1>Willkommen im Tutorial</h1>Im ersten Level ist deine aufgabe dich <table><td width=\"10px\" height=\"10px\" class=\"PLAYER\"></td></table> in das Portal <table><td width=\"10px\" height=\"10px\" class=\"PORTAL\"></td></table> zu begeben."
+  "description" : "<h1>Willkommen im Tutorial</h1>Im ersten Level ist deine Aufgabe dich <table><td width=\"10px\" height=\"10px\" class=\"PLAYER\"></td></table> in das Portal <table><td width=\"10px\" height=\"10px\" class=\"PORTAL\"></td></table> zu begeben."
 }

@@ -16,9 +16,9 @@ class Player extends Entity {
 
   // TODO: Constructor with startPosition and other variables of Entity
 
-  void setNextMove(int offsetX, int offsetY) {
+  void setNextMove(Position moveOffset) {
       nextPosition = position.clone(); // immer von aktueller Position ausgehen!
-      nextPosition.addOffset(offsetX, offsetY);
+      nextPosition.addOffset(moveOffset);
   }
 
   @override

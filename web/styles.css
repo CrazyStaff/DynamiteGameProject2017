@@ -16,14 +16,16 @@ html, body {
 
 #scores {
     width: 100%;
-    height: 0.5em;
+    height: 0.8vw;
+    max-height: 0.4em;
     background-color: white;
     border-bottom: 1px #468966 solid;
 }
 
 #scores div {
     background-color: lightgreen;
-    height: 0.5em;
+    height: 0.8vw;
+    max-height: 0.4em;
     width: 0;
 }
 
@@ -93,7 +95,6 @@ html, body {
 }
 
 #gameField tr td{
-    /* border: 0.5px solid #B64926;*/
     border: none;
     background-color: #FFF0A5;
     width: 2rem;
@@ -142,10 +143,10 @@ html, body {
     position: fixed;
     background-color: white;
     border: 1px black solid;
-    top: 25%;
+    top: 50%;
     left: 50%;
-    transform: translateX(-50%);
-    z-index: 1;
+    transform: translate(-50%, -50%);
+    z-index: 99;
 }
 
 #level_header {
@@ -251,17 +252,13 @@ html, body {
 
     html, body {
         overflow: hidden;
-        background: url("Pattern3.png"), repeat;
+        /*background: url("Pattern3.png"), repeat;*/
         background-size: 20vw;
     }
 
     #statusBar {
         height: auto;
         width: auto;
-        background-color: red;
-        border-bottom: solid;
-        border-bottom-color: darkred;
-        border-width: 1vw;
     }
 
     #statusBar td {
@@ -288,11 +285,6 @@ html, body {
         position: fixed;
         width: 100vw;
         bottom: 0;
-        background-color: red;
-
-        border-top: solid;
-        border-top-color: darkred;
-        border-width: 1vw;
     }
 
     #mobileControl table {
@@ -353,10 +345,30 @@ html, body {
     }
 }
 
+#statusBar {
+    background-color: #A31E1A;
+    font-family: "Open Sans", sans-serif;
+    font-size: 16px;
+}
+
+#mobileControl {
+    background-color: #A31E1A;
+    border-left: solid;
+    border-left-color: white;
+    border-width: 1vh;
+}
+#mobileControl table input {
+    background-color: white;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    border-radius: 15px;
+    color: #A31E1A;
+}
+
 @media only screen and (max-height:480px) {
     html, body {
-        background: url("Pattern3.png"), repeat;
-        background-size: 20vh;
+        /*background: url("Pattern3.png"), repeat;*/
+        background-size: 0.9vh;
         overflow: hidden;
     }
 
@@ -367,10 +379,6 @@ html, body {
         right: 0;
         height: auto;
         width: auto;
-        background-color: red;
-        border-bottom: solid;
-        border-bottom-color: darkred;
-        border-width: 1vh;
         z-index: 3;
     }
 
@@ -406,12 +414,7 @@ html, body {
         bottom: 0;
         height: 100vh;
         width: auto;
-        background-color: red;
         z-index: 2;
-
-        border-left: solid;
-        border-left-color: darkred;
-        border-width: 1vh;
     }
 
     #mobileControl table {
@@ -427,14 +430,6 @@ html, body {
         margin: auto;
         height: 20vh;
         width: 20vh;
-        /*
-        border-top: none;
-        border-left: none;
-        border-right-color: black;
-        border-bottom-color: black;
-        background-color: darkred;
-        */
-        color: red;
         font-size: 8vh;
         font-family: 'Open Sans', sans-serif;
         outline: none;

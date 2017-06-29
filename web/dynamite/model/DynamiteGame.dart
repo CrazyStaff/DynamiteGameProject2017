@@ -22,18 +22,19 @@ class DynamiteGame {
   int _fieldWidth;
   int _fieldHeight;
 
+  int currentLevel;
+
+
   List<List<FieldNode>> _gameField;
   Player _player;
   Score _score;
 
-  bool _isStopped;
   int pausedGameAtTime;
 
-  bool get isGameStopped => _isStopped;
   double getScorePercentage() => _score.calculateScoreInPercentage();
 
   void pauseGame() {
-    _isStopped = true;
+    gameStatus = GameState.PAUSED;
     this.pausedGameAtTime = new DateTime.now().millisecondsSinceEpoch;
   }
 
@@ -48,7 +49,7 @@ class DynamiteGame {
         }
       }
     }
-    _isStopped = false;
+    gameStatus = GameState.RUNNING;
   }
 
   static GameState getStatus(){
@@ -56,7 +57,8 @@ class DynamiteGame {
   }
 
 
-  DynamiteGame(this._fieldWidth, this._fieldHeight) {
+  DynamiteGame(this._fieldWidth, this._fieldHeight, int currentLevel) {
+    this.currentLevel = currentLevel;
     Entity.monsterCounter = 0;
     Entity.destroyableBlockCount = 0;
     gameStatus = GameState.RUNNING;
@@ -123,7 +125,7 @@ class DynamiteGame {
   }
 
   void moveAllEntites(int time) {
-    if(_isStopped) return;
+    if(gameStatus == GameState.PAUSED) return;
 
     if (!_player.isAlive){
       gameStatus = GameState.LOOSE;
@@ -192,8 +194,8 @@ class DynamiteGame {
     return false;
   }
 
-  void setNextMovePlayer(int offsetX, int offsetY) {
-    _player.setNextMove(offsetX, offsetY);
+  void setNextMovePlayer(Position offset) {
+    _player.setNextMove(offset);
   }
 
   String getHTML() {
@@ -227,9 +229,42 @@ class DynamiteGame {
     return htmlEntities;
   }
 
-  String getScoreHTML() {
-    String html;
-    return "";
+  Map<String, String> getScoreHTML() {
+    Map<String, String> htmlElements = new Map<String, String>();
+
+    switch(gameStatus) {
+      case GameState.WIN:
+        htmlElements["level_header"] = "Level completed";
+        htmlElements["level_announcement"] = "Good Job!";
+        htmlElements["level_result"] = "${currentLevel+1}";
+        htmlElements["level_accept"] = "Next level";
+        break;
+      case GameState.LOOSE:
+        htmlElements["level_header"] = "You failed";
+        htmlElements["level_announcement"] = "Next Level";
+        htmlElements["level_result"] = "1";
+        htmlElements["level_accept"] = "Try again";
+        break;
+      case GameState.MAX_LEVEL_REACHED:
+        htmlElements["level_header"] = "Game completed";
+        htmlElements["level_announcement"] = "Congratulations! You are a hero!";
+        htmlElements["level_result"] = "";
+        htmlElements["level_accept"] = "Start again";
+        break;
+      default:
+    }
+
+    return htmlElements;
+
+    /*
+        <div id="level"> <!-- shows level success -->
+            <div id="level_header">Level completed</div>
+            <div id="level_announcement">Good job!</div>
+            <div id="level_result">2</div>
+            <input id="level_accept" type="submit" value="Next level">
+        </div>
+     */
+   // return htmlElements;
   }
 
   void placeDynamite() {

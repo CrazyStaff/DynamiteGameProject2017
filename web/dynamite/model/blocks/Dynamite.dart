@@ -35,7 +35,7 @@ class Dynamite extends Block {
     Position pos = position.clone();
 
     for(int i=1; i <= DynamiteGame.DYNAMITE_RADIUS; i++) {
-      pos.addOffset(direction.getX, direction.getY);
+      pos.addOffset(direction);
       if(Fire.isSpawnPossible(gameField, pos)) {
         Position positionFire = pos.clone();
 

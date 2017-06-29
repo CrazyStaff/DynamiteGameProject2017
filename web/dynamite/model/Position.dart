@@ -20,9 +20,9 @@ class Position {
         this.getY + other.getY);
   }
 
-  void addOffset(int offsetX, int offsetY) {
-    this._x += offsetX;
-    this._y += offsetY;
+  void addOffset(Position offset) {
+    this._x += offset.getX;
+    this._y += offset.getY;
   }
 
   bool isPositionDifferentFrom(Position other) {

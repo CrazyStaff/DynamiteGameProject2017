@@ -306,7 +306,7 @@ class DynamiteGame {
       case GameState.WIN:
         htmlElements["level_header"] = "Level completed";
         htmlElements["level_announcement"] = "Good Job!";
-        htmlElements["level_result"] = "${currentLevel+1}";
+        htmlElements["level_result"] = _levelDescription;
         htmlElements["level_accept"] = "Next level";
         break;
       case GameState.LOOSE:

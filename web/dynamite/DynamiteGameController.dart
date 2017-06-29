@@ -48,7 +48,7 @@ class DynamiteGameController {
           view.startButton.setAttribute("value", "▶");
           view.startButton.setAttribute("class", "paused");
           gameTrigger.cancel();
-          pauseGame();
+         pauseGame();
           break;
         case "paused":
           view.startButton.setAttribute("value", "❚❚");
@@ -120,7 +120,7 @@ class DynamiteGameController {
       int fieldWidth = int.parse(parsedMap["level"]["field_width"]);
       int fieldHeight = int.parse(parsedMap["level"]["field_height"]);
       List blocks = parsedMap["level"]["blocks"];
-      game.levelDescription = parsedMap["discription"];
+      game.levelDescription = parsedMap["description"];
 
       print("Lvl geladen. ${game.currentLevel}");
       game.initLevel(blocks, fieldWidth, fieldHeight);
@@ -156,6 +156,7 @@ class DynamiteGameController {
     Show an overview between level states
    */
   void _showLevelOverview() {
+    gameTrigger.cancel();
     view.showLevelOverview(game.getScoreHTML());
     view.overviewAccept.onClick.listen((_) => _finishedOverview()); // listen on nextButton
   }
@@ -175,6 +176,7 @@ class DynamiteGameController {
         break;
       default:
     }
+    gameTrigger = new Timer.periodic(gameSpeed, (_) => _moveEntities());
   }
 
   void retry(){

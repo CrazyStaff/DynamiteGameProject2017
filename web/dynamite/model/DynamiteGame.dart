@@ -62,7 +62,9 @@ class DynamiteGame {
       _gameStatus = GameState.MAX_LEVEL_REACHED;
     }
   }
-  void setInitLife() => this._life = this._startLife;
+  void setInitLife() {
+    this._life = this._startLife;
+  }
 
   void continueGame() {
     int currentTime = new DateTime.now().millisecondsSinceEpoch;

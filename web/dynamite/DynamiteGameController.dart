@@ -11,50 +11,51 @@ const configLevel = "data/level/level";
 
 class DynamiteGameController {
 
-  Timer gameTrigger;
-  static Duration gameSpeed;
   DynamiteGame game;
   final view = new DynamiteView();
+
+  Timer _gameTrigger;
+  Duration _gameSpeed;
 
   DynamiteGameController()  {
     game = new DynamiteGame();
    /*view.generateField(game);*/
-    print("LOAD FILES");
-    Future.wait([ _loadConfigs(),
+
+   // load the files from the server
+    Future.wait([
+      _loadConfigs(),
       _loadLevel()
     ]).then(_initGame);
   }
 
   void _initGame(List<bool> result) {
-    print("initGame");
     for (bool r in result) {
       if (r == false) {
-        // TODO some resources could'nt load properly
+        // some resources could'nt load properly
         return;
       }
     }
     view.generateField(game);
     // New game is started by user
     view.startButton.onClick.listen((_) {
-
       switch (view.startButton.getAttribute("class")) {
         case "init":
           view.startButton.setAttribute("value", "❚❚");
           view.startButton.setAttribute("class", "running");
           game.gameStatus = GameState.RUNNING;
-          gameTrigger = new Timer.periodic(gameSpeed, (_) => _moveEntities());
+          _gameTrigger = new Timer.periodic(_gameSpeed, (_) => _moveEntities());
           break;
         case "running":
           view.startButton.setAttribute("value", "▶");
           view.startButton.setAttribute("class", "paused");
-          gameTrigger.cancel();
+          _gameTrigger.cancel();
          pauseGame();
           break;
         case "paused":
           view.startButton.setAttribute("value", "❚❚");
           view.startButton.setAttribute("class", "running");
           continueGame();
-          gameTrigger = new Timer.periodic(gameSpeed, (_) => _moveEntities());
+          _gameTrigger = new Timer.periodic(_gameSpeed, (_) => _moveEntities());
           break;
       }
 
@@ -99,7 +100,7 @@ class DynamiteGameController {
     HttpRequest.getString(configFile).then((json) {
       final configs = JSON.decode(json);
       game.maxLvl = configs["maxLvl"];
-      gameSpeed = new Duration(milliseconds: configs["gameSpeed"]);
+      _gameSpeed = new Duration(milliseconds: configs["gameSpeed"]);
       game.startLvl = configs["startLvl"];
       game.startLife = configs["startLeben"];
       game.setInitLife();
@@ -110,8 +111,7 @@ class DynamiteGameController {
   }
 
   /*
-      Load first level
-      TODO load next levels later too
+      Load the specific level which is declared as the 'currentLevel' in DynamiteGame ('game')
    */
   Future<bool> _loadLevel() async {
     HttpRequest.getString(configLevel + game.currentLevel.toString() + ".json").then((json) {
@@ -141,6 +141,9 @@ class DynamiteGameController {
     });
   }
 
+  /*
+    Proof if the exp section is set in the level config file
+   */
   bool _proofIfEXPIsSetInLevelConfig(Map parsedMap) {
     if(!parsedMap.containsKey("exp_monster") &&
         !parsedMap.containsKey("exp_destroyable_block")) {
@@ -149,6 +152,9 @@ class DynamiteGameController {
     return true;
   }
 
+  /*
+      Move all entities of the game field
+   */
   void _moveEntities() {
       GameState currentGameState = game.moveAllEntites(new DateTime.now().millisecondsSinceEpoch);
       switch(currentGameState) {
@@ -163,14 +169,17 @@ class DynamiteGameController {
   }
 
   /*
-    Show an overview between level states
+    Show the overview for describing the level purpose
    */
   void _showLevelOverview() {
-    gameTrigger.cancel();
+    _gameTrigger.cancel();
     view.showLevelOverview(game.getScoreHTML());
     view.overviewAccept.onClick.listen((_) => _finishedOverview()); // listen on nextButton
   }
 
+  /*
+    Hide the overview that describes the level purpose
+   */
   void _finishedOverview() {
     view.hideLevelOverview();
 
@@ -189,15 +198,21 @@ class DynamiteGameController {
         break;
       default:
     }
-    gameTrigger = new Timer.periodic(gameSpeed, (_) => _moveEntities());
+    _gameTrigger = new Timer.periodic(_gameSpeed, (_) => _moveEntities());
   }
 
+  /*
+     Set the game state to the beginning (first level)
+   */
   void retry(){
     game.gameStatus = GameState.RUNNING;
     Future.wait([_loadLevel()
     ]).then(_initGame);
   }
 
+  /*
+      Change the game state to the next level
+   */
   void nextLvl() {
     game.gameStatus = GameState.RUNNING;
     game.increaseLevel();

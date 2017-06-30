@@ -16,6 +16,6 @@
   "exp_destroyable_block" : "10",
   "speedBuffSpawnRate" : 10,
   "speedBuffAddSpeed" : 100,
-
+  "dynamiteRangeSpawnRate" : 10,
   "description" : "<h1>Willkommen im letzten Level des Tutorials</h1>Im vierten Level ist deine Aufgabe den Gegner <table><td width=\"10px\" height=\"10px\" class=\"MONSTER\"></td></table> zu töten, denn du kannst erst ins Portal <table><td width=\"10px\" height=\"10px\" class=\"PORTAL\"></td></table> gehen wenn alle besigt sind."
 }

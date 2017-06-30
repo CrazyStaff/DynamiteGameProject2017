@@ -16,6 +16,6 @@
   "exp_destroyable_block" : "10",
   "speedBuffSpawnRate" : 10,
   "speedBuffAddSpeed" : 100,
-
+  "dynamiteRangeSpawnRate" : 10,
   "description" : "<h1>Level 5</h1>Besiege alle Gegner und finde das Portal."
 }

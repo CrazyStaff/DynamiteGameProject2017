@@ -17,4 +17,9 @@ class DynamiteRange extends Item {
   static int getSpawnRate(){
     return spawnPercentage;
   }
+
+  static setSpawnRate(int i) {
+    spawnPercentage = i;
+  }
+
 }

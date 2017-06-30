@@ -9,6 +9,7 @@ import 'blocks/DestroyableBlock.dart';
 import 'blocks/Dynamite.dart';
 import 'items/Portal.dart';
 import 'items/SpeedBuff.dart';
+import 'items/DynamiteRange.dart';
 import 'monster/Monster.dart';
 import 'pathfinding/FieldNode.dart';
 
@@ -338,12 +339,16 @@ class DynamiteGame {
    // return htmlElements;
   }
 
-  void setSpawnRate(int i) {
+  void setSpawnRateSpeedBuff(int i) {
     SpeedBuff.setSpawnRate(i);
   }
 
-  void setSpeedOffset(int i) {
+  void setSpeedOffsetSpeedBuff(int i) {
     SpeedBuff.setSpeedOffset(i);
+  }
+
+  void setSpawnRateDynamiteRange(int i) {
+    DynamiteRange.setSpawnRate(i);
   }
 
   void placeDynamite() {

@@ -16,4 +16,8 @@ class Portal extends Entity {
     return spawnPercentage;
   }
 
+  static setSpawnRate(int i) {
+    spawnPercentage = i;
+  }
+
 }

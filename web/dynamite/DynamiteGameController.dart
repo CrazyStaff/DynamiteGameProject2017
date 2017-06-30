@@ -171,6 +171,9 @@ class DynamiteGameController {
       case GameState.LOOSE:
         retry();
         break;
+      case GameState.LOST_LIFE:
+        retry();
+        break;
       case GameState.MAX_LEVEL_REACHED:
         retry();
         break;

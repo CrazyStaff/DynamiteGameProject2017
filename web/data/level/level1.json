@@ -10,5 +10,7 @@
   },
   "exp_monster" : "0",
   "exp_destroyable_block" : "50",
+  "speedBuffSpawnRate" : 10,
+  "speedBuffAddSpeed" : 100,
   "description" : "<h1>Willkommen im Tutorial</h1>Im ersten Level ist deine Aufgabe dich <table><td width=\"100px\" height=\"100px\" class=\"PLAYER\"></td></table> in das Portal <table><td width=\"100px\" height=\"100px\" class=\"PORTAL\"></td></table> zu begeben."
 }

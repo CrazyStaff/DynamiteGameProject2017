@@ -131,6 +131,8 @@ class DynamiteGameController {
          !parsedMap.containsKey("exp_destroyable_block")) {
         throw new Exception("Level ${game.currentLevel} should have an EXP section");
       }
+      game.setSpawnRate(parsedMap["speedBuffSpawnRate"]);
+      game.setSpeedOffset(parsedMap["speedBuffAddSpeed"]);
       int expMonster = int.parse(parsedMap["exp_monster"]);
       int expDestroyableBlock = int.parse(parsedMap["exp_destroyable_block"]);
 

@@ -5,7 +5,8 @@ import 'Item.dart';
 class SpeedBuff extends Item {
 
   static const ENTITY_TYPE = "SPEEDBUFF";
-  static int spawnPercentage = 10;
+  static int spawnPercentage;
+  static int speedOffset;
 
 
   SpeedBuff(Position position) : super(ENTITY_TYPE, position) {
@@ -25,6 +26,14 @@ class SpeedBuff extends Item {
 
   static int getSpawnRate(){
     return spawnPercentage;
+  }
+
+  static setSpawnRate(int i) {
+    spawnPercentage = i;
+  }
+
+  static setSpeedOffset(int i) {
+  speedOffset = i;
   }
 
 }

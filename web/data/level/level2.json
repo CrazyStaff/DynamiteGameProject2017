@@ -10,5 +10,8 @@
   },
 "exp_monster" : "0",
 "exp_destroyable_block" : "50",
-"description" : "<h1>Willkommen im 2ten Level</h1>Im zweiten Level ist deine aufgabe dich <table><td width=\"10px\" height=\"10px\" class=\"PLAYER\"></td></table> in das Portal <table><td width=\"10px\" height=\"10px\" class=\"PORTAL\"></td></table> zu begeben. Die schwirrigkeit ist nur, das sich dazwischen Kisten befinden, zerstöre sie mit einer Bombe um hindurch zu kommen, aber pass auf, das du dich nicht selbst verletzt."
+  "speedBuffSpawnRate" : 10,
+  "speedBuffAddSpeed" : 100,
+
+  "description" : "<h1>Willkommen im 2ten Level</h1>Im zweiten Level ist deine aufgabe dich <table><td width=\"10px\" height=\"10px\" class=\"PLAYER\"></td></table> in das Portal <table><td width=\"10px\" height=\"10px\" class=\"PORTAL\"></td></table> zu begeben. Die schwirrigkeit ist nur, das sich dazwischen Kisten befinden, zerstöre sie mit einer Bombe um hindurch zu kommen, aber pass auf, das du dich nicht selbst verletzt."
 }

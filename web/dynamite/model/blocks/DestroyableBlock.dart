@@ -9,16 +9,16 @@ import '../items/SpeedBuff.dart';
 import '../items/DynamiteRange.dart';
 import 'dart:math';
 
-class DestroyableBlock extends Block {
+class DestroyableBlock extends Block {  // This Blocks can be destroyed
 
-  static const ENTITY_TYPE = "DESTROYABLE_BLOCK";
+  static const ENTITY_TYPE = "DESTROYABLE_BLOCK"; // The Type identefies the Block as Destroyable
 
   DestroyableBlock(Position position) : super(ENTITY_TYPE, position) {
-    Entity.destroyableBlockCount += 1;
+    Entity.destroyableBlockCount += 1;    // when this Type gets construkted, the Counter gets inceased, so we can see how many blocks are ingame
   }
 
   @override
-  Modificator atDestroy(List<List< FieldNode >> gameField) {
+  Modificator atDestroy(List<List< FieldNode >> gameField) {    // when this block gets destroyed he can spawn items und decrease the Block counter
     Modificator mod = Modificator.buildModificator(gameField);
     Entity.destroyableBlockCount -= 1;
     if ((Entity.destroyableBlockCount == 0)&&(Entity.portalCount == 0)){

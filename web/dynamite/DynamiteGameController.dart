@@ -127,8 +127,7 @@ class DynamiteGameController {
 
       view.update(game.getHTML());
 
-      if(!parsedMap.containsKey("exp_monster") &&
-         !parsedMap.containsKey("exp_destroyable_block")) {
+      if(!_proofIfEXPIsSetInLevelConfig(parsedMap)) {
         throw new Exception("Level ${game.currentLevel} should have an EXP section");
       }
       game.setSpawnRateSpeedBuff(parsedMap["speedBuffSpawnRate"]);
@@ -140,6 +139,14 @@ class DynamiteGameController {
       game.initScore(expMonster, expDestroyableBlock);
       view.updateScore(game.getScorePercentage());
     });
+  }
+
+  bool _proofIfEXPIsSetInLevelConfig(Map parsedMap) {
+    if(!parsedMap.containsKey("exp_monster") &&
+        !parsedMap.containsKey("exp_destroyable_block")) {
+      return false;
+    }
+    return true;
   }
 
   void _moveEntities() {

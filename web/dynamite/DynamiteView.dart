@@ -18,12 +18,30 @@ class DynamiteView {
   HtmlElement get overviewLevel => querySelector('#level');
   HtmlElement get overviewAccept => querySelector('#level_accept');
 
-  void update(String gameField) { //
-    game.innerHtml = gameField; // TODO: generate in view
-    //lvl.innerHtml = DynamiteGameController.lvl.toString();
-    //leben.innerHtml = DynamiteGame.life.toString();
+  /*
+    Update the gamefield
+   */
+  void update(String gameField) {
+    game.innerHtml = gameField;
   }
 
+  /*
+    Update the level count of the player
+   */
+  void updateLevel(String currentLevel) {
+    lvl.innerHtml = currentLevel;
+  }
+
+  /*
+      Update the life of the player
+   */
+  void updateLife(String currentLife) {
+    life.innerHtml = currentLife;
+  }
+
+  /*
+      Update the score of the player
+   */
   void updateScore(double scorePercentage) {
     score.setAttribute("style", "width: $scorePercentage%;");
   }
@@ -56,6 +74,9 @@ class DynamiteView {
     }*/
   }
 
+  /*
+    Make the level description overview visible
+   */
   void showLevelOverview(Map<String, String> levelState) {
     levelState.forEach((key, value){
         if(value.isEmpty) {
@@ -63,12 +84,21 @@ class DynamiteView {
         } else {
           querySelector("#$key").setAttribute("style", "visibility: visible;");
         }
-        querySelector("#$key").innerHtml = value;
+
+        if(key == "level_accept") {
+          // button´s content is controlled over attribute 'value' and not over innerHTML
+          querySelector("#$key").setAttribute("value", value);
+        } else {
+          querySelector("#$key").innerHtml = value;
+        }
     });
 
    overviewLevel.setAttribute("style", "visibility: visible;");
   }
 
+  /*
+      Hide the level description overview
+   */
   void hideLevelOverview() {
     overviewLevel.setAttribute("style", "visibility: hidden;");
     overviewLevel.setAttribute("style", "display: none;");

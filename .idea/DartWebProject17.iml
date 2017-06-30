@@ -17,7 +17,6 @@
       <excludeFolder url="file://$MODULE_DIR$/web/dynamite/model/packages" />
       <excludeFolder url="file://$MODULE_DIR$/web/dynamite/model/pathfinding/packages" />
       <excludeFolder url="file://$MODULE_DIR$/web/dynamite/packages" />
-      <excludeFolder url="file://$MODULE_DIR$/web/oldcode/packages" />
       <excludeFolder url="file://$MODULE_DIR$/web/packages" />
     </content>
     <orderEntry type="inheritedJdk" />

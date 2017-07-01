@@ -35,10 +35,10 @@
     <orderEntry type="module-library">
       <library name="PHP">
         <CLASSES>
-          <root url="file://$MODULE_DIR$/../../../php/pear" />
+          <root url="file://F:/../../php/pear" />
         </CLASSES>
         <SOURCES>
-          <root url="file://$MODULE_DIR$/../../../php/pear" />
+          <root url="file://F:/../../php/pear" />
         </SOURCES>
       </library>
     </orderEntry>

@@ -4,14 +4,14 @@ import 'pathfinding/FieldNode.dart';
 
 class Movement {
 
-  // Position: Horizontal and vertical
+  // Horizontal and vertical position
   static final Position STAY_STILL = new Position(0, 0);
   static final Position RIGHT = new Position(1, 0);
   static final Position LEFT = new Position(-1, 0);
   static final Position DOWN = new Position(0, 1);
   static final Position UP = new Position(0, -1);
 
-  // Position: At an angle
+  // At an angle position
   static final Position ANGLE_TOP_LEFT = new Position(-1, -1);
   static final Position ANGLE_TOP_RIGHT = new Position(1, -1);
   static final Position ANGLE_BOT_LEFT = new Position(-1, 1);
@@ -24,6 +24,9 @@ class Movement {
     ANGLE_BOT_LEFT, ANGLE_BOT_RIGHT
   ];
 
+  /*
+      Proofs if the 'destination' is valid on the game field
+   */
   static bool isMovePossible(Position destination, List<List< FieldNode >> gameField) {
     if(destination == null) return false;
 

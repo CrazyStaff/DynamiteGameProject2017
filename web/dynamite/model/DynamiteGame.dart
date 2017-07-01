@@ -17,44 +17,83 @@ class DynamiteGame {
   static int DYNAMITE_EXPLODE_TIME;
   static int FIRE_DURATION;
 
-  GameState _gameStatus;
-
-  String _levelDescription;
-  int _dynamiteRadius;
-
-  int _startLevel = 0;
+  /*
+      Global information for all levels
+   */
+  int _maxLvl;
+  int _currentLevel;
+  int _startLevel;
   int _startLife = 3;
-  int _life = 3;
 
+  /*
+      Information for the current level
+  */
+  String _levelDescription;
+  GameState _gameStatus;
+  Player _player;
+  Score _score;
+  int _life = 3;
+  int _startLevelTime;
+  int _maxLevelTime;
+  int _dynamiteRadius;
+  int _pausedGameAtTime;
+
+  /*
+      Information about the game field
+   */
+  List<List<FieldNode>> _gameField;
   int _fieldWidth;
   int _fieldHeight;
 
-  int _startLevelTime;
-  int _maxLevelTime;
-
-  int _maxLvl;
-  int _currentLevel;
-
-  List<List<FieldNode>> _gameField;
-  Player _player;
-  Score _score;
-
-  int _pausedGameAtTime;
-
+  /*
+      All setters for the controller
+   */
   set maxLevelTime(int maxLevelTime) => this._maxLevelTime = maxLevelTime;
   set levelDescription(String description) => this._levelDescription = description;
-  set maxLvl(int value) => _maxLvl = value;
+  set maxLvl(int maxLvl) => this._maxLvl = maxLvl;
   set startLife(int startLife) => this._startLife = startLife;
   set startLevel(int startLevel) => this._startLevel = startLevel;
-  get maxLevel => _maxLvl;
-
   set gameStatus(GameState gameState) => this._gameStatus = gameState;
 
-  get getLife => this._life;
-  get currentLevel => this._currentLevel;
-
+  /*
+      All getters for the controller
+   */
+  get maxLevel => _maxLvl;
+  get getLife => _life;
+  get currentLevel => _currentLevel;
+  GameState getStatus() =>  _gameStatus;
+  bool isLevelTimerActive() => _maxLevelTime != -1;
+  List<List<FieldNode>> get getGameField => _gameField;
   double getScorePercentage() => _score.calculateScoreInPercentage();
 
+
+  DynamiteGame() {
+    /*
+        Initialize the default values
+     */
+    _currentLevel = 1;
+    _maxLvl = 0;
+    _pausedGameAtTime = 0;
+    _levelDescription = "";
+    _dynamiteRadius = 1;
+    _fieldWidth = 1;
+    _fieldHeight = 1;
+    _life = 0;
+    _startLevel = 0;
+    _gameStatus = GameState.PAUSED;
+
+    Entity.portalCount = 0;
+    Entity.monsterCounter = 0;
+    Entity.destroyableBlockCount = 0;
+
+    _score = new Score();
+    _generateEmptyGameField();
+  }
+
+  /*
+      Returns the left time of the current level
+      which is displayed in the view
+   */
   int getLevelLeftTime() {
     if(_maxLevelTime == -1) return _maxLevelTime;
     int leftTime = _maxLevelTime - ((new DateTime.now().millisecondsSinceEpoch - _startLevelTime) / 1000).toInt();
@@ -62,17 +101,24 @@ class DynamiteGame {
     return (leftTime <= 0 ? 0 : leftTime);
   }
 
+  /*
+      Proofs if the level timer is already over
+   */
   bool _isLevelTimeOver() {
     return isLevelTimerActive() && getLevelLeftTime() == 0;
   }
 
-  bool isLevelTimerActive() => _maxLevelTime != -1;
-
+  /*
+      Pauses the current level
+   */
   void pauseGame() {
     _gameStatus = GameState.PAUSED;
     this._pausedGameAtTime = new DateTime.now().millisecondsSinceEpoch;
   }
 
+  /*
+      Increase the level if the max level is not already reached
+   */
   void increaseLevel() {
     this._currentLevel += 1;
 
@@ -80,10 +126,17 @@ class DynamiteGame {
       _gameStatus = GameState.MAX_LEVEL_REACHED;
     }
   }
+
+  /*
+      Sets the init life of the current level
+   */
   void setInitLife() {
     this._life = this._startLife;
   }
 
+  /*
+      Continues the current level
+   */
   void continueGame() {
     int currentTime = new DateTime.now().millisecondsSinceEpoch;
     int offsetAddTime = currentTime - _pausedGameAtTime;
@@ -100,30 +153,9 @@ class DynamiteGame {
     _gameStatus = GameState.RUNNING;
   }
 
-  GameState getStatus(){
-    return _gameStatus;
-  }
-
-  DynamiteGame() {
-    _currentLevel = 1;
-    _maxLvl = 0;
-    _pausedGameAtTime = 0;
-    _levelDescription = "";
-    _dynamiteRadius = 1;
-    _fieldWidth = 1;
-    _fieldHeight = 1;
-    _life = 0;
-    _gameStatus = GameState.PAUSED;
-
-    Entity.portalCount = 0;
-    Entity.monsterCounter = 0;
-    Entity.destroyableBlockCount = 0;
-
-    _score = new Score();
-    _generateEmptyGameField();
-  }
-
-  /* Init empty List */
+  /*
+      Initialize the empty game field
+  */
   void _generateEmptyGameField() {
     _gameField = new Iterable.generate(_fieldWidth, (row) {
       return new Iterable.generate(_fieldHeight, (col) => new FieldNode(new Position(row, col))) // TODO richtig rum?
@@ -133,7 +165,7 @@ class DynamiteGame {
 
   /*
       Decrements the life of the player and switch to
-      the new game state LOOSE OR LOST_LIFE
+      the new game state 'LOOSE' or 'LOST_LIFE'
    */
   void _decrementLife() {
     if (_currentLevel >= _startLevel) {
@@ -145,13 +177,14 @@ class DynamiteGame {
         _gameStatus = GameState.LOST_LIFE;
       }
     } else {
-      // no decrement of lifes in tutorial levels
+      // There should be no decrement of lifes in the tutorial levels
       _gameStatus = GameState.LOST_LIFE;
     }
   }
 
   /*
-      Reset the level to a level after the tutorial
+      Reset the level to the level after the tutorial
+      so that the player begins at the first real level
    */
   void resetLevel() {
     this._life = _startLife;
@@ -160,6 +193,9 @@ class DynamiteGame {
     }
   }
 
+  /*
+      Reset the game status for the current level
+   */
   void _resetGame() {
     this._gameStatus = GameState.PAUSED;
 
@@ -168,8 +204,9 @@ class DynamiteGame {
     Entity.destroyableBlockCount = 0;
   }
 
-  List<List<FieldNode>> get getGameField => _gameField;
-
+  /*
+      Initialize the level and the game field
+   */
   void initLevel(List gameField, int fieldWidth, int fieldHeight) {
     this._fieldWidth = fieldWidth;
     this._fieldHeight = fieldHeight;
@@ -180,46 +217,54 @@ class DynamiteGame {
     int fieldSize = fieldWidth * fieldHeight;
 
     for (int idElement = 0; idElement < fieldSize; idElement++) {
-      // calculate the position of each block in 'gameField'
+      // Calculate the position of each block in the game field
       int xPos = idElement % fieldWidth;
       int yPos = (idElement / fieldWidth).toInt();
       Position currentPosition = new Position(xPos, yPos);
 
       List<Entity> currentField = _gameField[xPos][yPos].getEntities;
 
-      // clear old field state
+      // Clear the old entities of the game field from the last level
       currentField.clear();
 
-      // generate level
+      /*
+          Generate the level by the given structure of the level config file
+       */
       switch (gameField[idElement]) {
-        case "E": /* emptyField */
-        // not needed
+        case "E": /* EmptyField */
+          // The empty field is not needed by implementation
           break;
-        case "M": /* monster */
+        case "M": /* Monster */
           currentField.add(new Monster(currentPosition));
           break;
-        case "B": /* block */
+        case "B": /* Block */
           currentField.add(new UndestroyableBlock(currentPosition));
           break;
-        case "D": /* destroyable block */
+        case "D": /* DestroyableBlock */
           currentField.add(new DestroyableBlock(currentPosition));
           break;
         case "Z": /* Portal */
           currentField.add(new Portal(currentPosition));
           break;
-        case "P":
-        /* starting point of player */
-            _player = new Player(currentPosition);
-            currentField.add(_player);
+        case "P": /* Player */
+          _player = new Player(currentPosition);
+          currentField.add(_player);
           break;
       }
     }
 
-    // set start level time and directly pause the game
+    /*
+        Set the start level time and pause time because the game
+        is directly paused after initialization
+     */
     _startLevelTime = new DateTime.now().millisecondsSinceEpoch;
     _pausedGameAtTime = new DateTime.now().millisecondsSinceEpoch;
   }
 
+  /*
+      Move all the entities if they are
+      allowed to move by the given time
+   */
   GameState moveAllEntities(int time) {
     if (_gameStatus == GameState.RUNNING) {
       if (_player.hasWon) {
@@ -232,7 +277,11 @@ class DynamiteGame {
           List<Modificator> toModificate = new List<Modificator>();
 
           for (Entity entity in field.getEntities) {
-            if (!entity.isAlive) { // if is not alive remove entity
+            /*
+                If an enemy isn´t alive anymore
+                remove him from the game field
+             */
+            if (!entity.isAlive) {
               Modificator mod = entity.atDestroy(_gameField);
               _score.updateScore(entity);
               if (mod != null) {
@@ -242,40 +291,48 @@ class DynamiteGame {
               continue;
             }
 
-            if (entity.isAllowedToMove(time)) { // Wenn entity sich bewegen kann => bewege auf nächstes Feld
+            if (entity.isAllowedToMove(time)) {
               Position nextMove = entity.getNextMove(_gameField);
 
-              if (nextMove == null) { // if there is not a next move
+              // If there is not a next move
+              if (nextMove == null) {
                 entity.standStillStrategy();
-              } else { // if there is a move to another field
+              } else {
+                // If there is a move to another field
+
                 if (_proofIfNextPositionIsValid(nextMove)) {
                   List<Entity> nextField = _gameField[nextMove.getX][nextMove
                       .getY].getEntities;
 
                   if (entity.isMovePossible(nextField)) {
-                    // First of all remove entity from currentField
+                    // First of all remove the entity after moving to the next field
                     toRemove.add(entity);
                     entity.moveTo(nextField);
                   }
                 }
               }
             }
-            // auch während des Bewegens darf die Action ausgeführt werden?! =>  sonst else
+            // Call the entity action for special innovations by entity
             entity.action(_gameField, time);
           }
 
-          // Modify entity list only after iteration
+          /*
+            Modify the game field because it is only allowed
+            to change the game field after the for loop iteration
+          */
           for (Modificator mod in toModificate) {
             if (mod != null) {
               mod.executeChangesTo(_gameField);
             }
           }
+          // Clear the list of all modified field for next loops
           toModificate.clear();
 
-          // Modify entity list only after iteration
+          // Modify the entity list only after the for loop iteration
           field.getEntities.removeWhere((e) => toRemove.contains(e));
         }
       }
+
       if (!_player.isAlive || _isLevelTimeOver()) {
         _decrementLife();
       }
@@ -283,6 +340,9 @@ class DynamiteGame {
     return _gameStatus;
   }
 
+  /*
+      Proofs if the 'position' is valid on the game field
+   */
   bool _proofIfNextPositionIsValid(Position position) {
     if(position == null) return false;
 
@@ -294,12 +354,18 @@ class DynamiteGame {
     return false;
   }
 
+  /*
+    Store the next move of the player
+   */
   void setNextMovePlayer(Position offset) {
     if(_gameStatus == GameState.RUNNING) {
       _player.setNextMove(offset);
     }
   }
 
+  /*
+      Get the html table structure of the game field
+   */
   String getHTML() {
     String html = "<table>";
     for (int height = 0; height < _fieldHeight; height++) {
@@ -307,20 +373,20 @@ class DynamiteGame {
       for (int width = 0; width < _fieldWidth; width++) {
         List<Entity> currentField = _gameField[width][height].getEntities;
 
-        //final assignment = field[row][col];
         final pos = "field_${width}_${height}";
         var entityClasses = _getHTMLEntities(currentField);
-        html += "<td id='$pos'$entityClasses></td>"; //  class='$assignment'
+        html += "<td id='$pos'$entityClasses></td>";
       }
       html += "</tr>";
     }
-    print("------  html ----------");
     html += "</table>";
     return html;
   }
 
   /*
-      Return all Entity classes
+      Get all the classes for each entity
+      It is used for showing the pictures
+      of enemies in the view
    */
   String _getHTMLEntities(List<Entity> allEntities) {
     String htmlEntities = " class='";
@@ -357,30 +423,32 @@ class DynamiteGame {
     }
 
     return htmlElements;
-
-    /*
-        <div id="level"> <!-- shows level success -->
-            <div id="level_header">Level completed</div>
-            <div id="level_announcement">Good job!</div>
-            <div id="level_result">2</div>
-            <input id="level_accept" type="submit" value="Next level">
-        </div>
-     */
-   // return htmlElements;
   }
 
-  void setSpawnRateSpeedBuff(int i) {
-    SpeedBuff.setSpawnRate(i);
+  /*
+      Set the spawn rate of the item 'SpeedBuff'
+   */
+  void setSpawnRateSpeedBuff(int spawnRate) {
+    SpeedBuff.setSpawnRate(spawnRate);
   }
 
-  void setSpeedOffsetSpeedBuff(int i) {
-    SpeedBuff.setSpeedOffset(i);
+  /*
+      Set the movement speed of the 'SpeedBuff' item
+   */
+  void setSpeedOffsetSpeedBuff(int spawnRate) {
+    SpeedBuff.setSpeedOffset(spawnRate);
   }
 
-  void setSpawnRateDynamiteRange(int i) {
-    DynamiteRange.setSpawnRate(i);
+  /*
+      Set the spawn rate of the item 'DynamiteRange'
+   */
+  void setSpawnRateDynamiteRange(int spawnRate) {
+    DynamiteRange.setSpawnRate(spawnRate);
   }
 
+  /*
+      Place dynamite above the position of the player
+   */
   void placeDynamite() {
     if(_gameStatus == GameState.RUNNING) {
       Position pos = _player.position;
@@ -389,6 +457,9 @@ class DynamiteGame {
     }
   }
 
+  /*
+      Initialize the score for the current level
+   */
   void initScore(int expMonster, int expDestroyableBlock) {
     _score.resetScore();
     _score.initScore(Monster.ENTITY_TYPE, expMonster);

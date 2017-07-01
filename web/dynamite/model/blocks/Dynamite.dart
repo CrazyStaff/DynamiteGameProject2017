@@ -7,18 +7,34 @@ import '../pathfinding/FieldNode.dart';
 import 'Block.dart';
 import 'Fire.dart';
 
+/*
+    This type of block can explode and causes fire around the destroyed dynamite
+ */
 class Dynamite extends Block {
 
+  // The entity type identifies the block as dynamite
   static const ENTITY_TYPE = "DYNAMITE";
+
+  /*
+    The explosion radius creates fire on the field itself and based on this range in explosionRadius
+    to the vertical and horizontal fields next to the position of dynamite
+   */
   int _explosionRadius;
 
 
   Dynamite(Position position, int explosionRadius) : super(ENTITY_TYPE, position) {
     this._explosionRadius = explosionRadius;
 
+    /*
+      this updates the time of the last action so that the action method
+      can be called from 'DynamiteGame'
+    */
     updateLastActionTime();
   }
 
+  /*
+      Spawns fire based on the 'explosionRadius'
+   */
   @override
   Modificator atDestroy(List<List< FieldNode >> gameField) {
     Modificator mod = Modificator.buildModificator(gameField);
@@ -32,6 +48,10 @@ class Dynamite extends Block {
     return mod;
   }
 
+  /*
+      Spawns fire in a specialized direction
+      The fire is created based on the range of 'explosionRadius' in this direction
+   */
   void _spawnFireInDirection(List<List< FieldNode >> gameField, final Position direction, Modificator modificator) {
     Position pos = position.clone();
 
@@ -50,8 +70,8 @@ class Dynamite extends Block {
     }
   }
 
-  /**
-   * Do collision on fire spawning field directly after fire is spawned
+  /*
+   * Proof collisions on fire spawning field directly after fire is spawned
    */
   void _collisionWithEntities(Fire fire, List<List< FieldNode >> gameField, Position pos) {
     List<Entity> allFieldEntities = gameField[pos.getX][pos.getY].getEntities;
@@ -62,6 +82,9 @@ class Dynamite extends Block {
     }
   }
 
+  /*
+      Sets the dynamite to not alive if the dynamite is exploded
+   */
   @override
   void action(List<List< FieldNode >> gameField, int time) {
     if ((this.lastActionTime + DynamiteGame.DYNAMITE_EXPLODE_TIME) < time){

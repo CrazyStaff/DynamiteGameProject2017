@@ -1,13 +1,9 @@
 import '../Entity.dart';
 import '../Position.dart';
 
-
-class Item extends Entity {
-
-  //static const ENTITY_TYPE = "ITEM";
-
-  Item(String type, Position position) : super(type, position){
-
-  }
-
+/*
+    This is the abstract class of all items
+ */
+abstract class Item extends Entity {
+  Item(String type, Position position) : super(type, position);
 }

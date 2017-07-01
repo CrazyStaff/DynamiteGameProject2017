@@ -4,23 +4,59 @@ import 'Position.dart';
 import 'DynamiteGame.dart';
 import 'pathfinding/FieldNode.dart';
 
+/*
+   This is the abstract class of all entities in the game
+ */
 abstract class Entity {
+  /*
+      Global information about the specified entities
+   */
   static int destroyableBlockCount = 0;
   static int monsterCounter = 0;
   static int portalCount = 0;
 
-  Position _position;
-  Position nextPosition;
+  /*
+    Information about the type of the entity
+    The extension type is used for extra information
+    f.e. that the monster has the attention mode on
+   */
   String type;
   String extensionType;
-  int lastMoveTime; // TODO: should be long? => no long in dart
+
+  /*
+      The position and next calculated position of the entity
+   */
+  Position _position;
+  Position nextPosition;
+
+  /*
+      The times are used for the consistently update
+      of moves and actions of the entity
+   */
+  int lastMoveTime;
   int lastActionTime;
+
+  /*
+      Basic information about the entity
+   */
   int walkingSpeed;
   int team;
   int strength;
-
   bool _alive;
   bool isWalkable;
+
+  bool get isAlive => this._alive;
+  Position get position => _position;
+
+  Entity(String type, Position position) {
+    this.type = type;
+    this._position = position;
+    this._alive = true;
+    this.strength = 0;
+    this.team = 0;
+    this.isWalkable = false;
+    this.extensionType = "";
+  }
 
   void updateLastMoveTime() {
     this.lastMoveTime = new DateTime.now().millisecondsSinceEpoch;
@@ -43,29 +79,15 @@ abstract class Entity {
   }
 
   /*
-   * Checks ONLY if it is allowed to move based on the given time
+     Checks ONLY if it is allowed to move based on the given time
    */
   bool isAllowedToMove(int time) {
     if(lastMoveTime == null) return false;
     return lastMoveTime + walkingSpeed <= time;
   }
 
-  bool get isAlive => this._alive;
-
-  Position get position => _position;
-
-  Entity(String type, Position position) {
-    this.type = type;
-    this._position = position;
-    this._alive = true;
-    this.strength = 0;
-    this.team = 0;
-    this.isWalkable = false; // dont change - collision baut auf isWalkable auf!!
-    this.extensionType = "";
-  }
-
   /**
-   * Proofs if 'entityField' is walkable
+     Proofs if 'entityField' is walkable
    */
   bool isMovePossible(List<Entity> entityField) {
     if(!isAlive) return false; // TODO: notwendig?
@@ -78,47 +100,52 @@ abstract class Entity {
     return true;
   }
 
-  /* Should only move to a DIFFERENT field */
+  /*
+      Moves the player to another field
+   */
   void moveTo(List<Entity> entityField) {
     if(this.position == this.nextPosition) {
       throw new Exception("FATAL - Entity.moveTo: nextPosition should BE 'NULL' if you dont move."
           "=> dont give the 'nextPosition' the same position like 'position'"
           "=> it causes concurrencyException!!");
     }
-      // Move to the new field
+      // Moves to the new field
       entityField.add(this);
 
       _position = nextPosition;
-      nextPosition = null; // nextPosition ist jetzt nicht mehr vorhanden
+      nextPosition = null;
 
-  if(this.getType() == "MONSTER" || this.getType() == "PLAYER") {
-    for (Entity otherEntities in entityField) {
-      if (this.collision(otherEntities)) {
-         this.setAlive(false);
-      }
-      if(otherEntities.collision(this)) {
-        otherEntities.setAlive(false);
+    if(this.getType() == "MONSTER" || this.getType() == "PLAYER") {
+      for (Entity otherEntities in entityField) {
+        if (this.collision(otherEntities)) {
+          this.setAlive(false);
+        }
+        if(otherEntities.collision(this)) {
+          otherEntities.setAlive(false);
+        }
       }
     }
-  }
-      lastMoveTime = new DateTime.now().millisecondsSinceEpoch;
+    // Updates the last move time
+    lastMoveTime = new DateTime.now().millisecondsSinceEpoch;
   }
 
-  // need to be override by implementation
+
   /**
-   * Calculate the next position
+   * Calculate the next position of the entity
+   * Needs to be overriden by the implementation
    * @return NULL indicates that the position stays the same
    */
   Position getNextMove(List<List< FieldNode >> gameField) {
-    return null; // DO NOT CHANGE TO "position"
+    return null;
   }
 
   /**
-   * Other entity is not in my team and is stronger than me
+      Proofs if there is a collision with another entity
+      There is a collision if the other entity
+      is not in my team and is stronger than me
    */
   bool collision(Entity entity) {
       if(entity.team != this.team) {
-        // Entities are enemies
         if(entity.strength > this.strength) {
           return true;
         }
@@ -141,12 +168,21 @@ abstract class Entity {
     return this.extensionType;
   }
 
-  // need to be overriden by implementation
+  /*
+      This method can be used to specify what happens
+      after this entity is destroyed
+      Needs to be overriden by the implementation
+  */
   Modificator atDestroy(List<List< FieldNode >> gameField) {
     return null;
   }
 
-   // need to be override by implementation
+   /*
+      This method can be used to specify an special
+      action for the entity
+      Needs to be override by the implementation
+      Use 'updateLastTimeAction()' in constructor of the inherited class to use this method
+   */
   void action(List<List< FieldNode >> _gameField, int time) {
   }
 
@@ -154,7 +190,7 @@ abstract class Entity {
      1) in this method implemented:
         -> stand still for "walkingSpeed" time => so standing still is like a real move
      2) override method empty!
-        -> allow entity (f.e. player) to move directly in the game tact after f.e. no input of user
+        -> allow entity (f.e. player) to move directly in the game tact after there is f.e. no input of user
    */
   void standStillStrategy() {
     this.updateLastMoveTime();

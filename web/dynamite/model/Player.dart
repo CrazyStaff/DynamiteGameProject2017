@@ -2,7 +2,12 @@ import 'Entity.dart';
 import 'Position.dart';
 import 'pathfinding/FieldNode.dart';
 
+/*
+    The player that is controlled by the user
+ */
 class Player extends Entity {
+
+  // The entity type identifies the entity as player
   static final ENTITY_TYPE = "PLAYER";
 
   bool _hasWon;
@@ -15,15 +20,20 @@ class Player extends Entity {
       this.strength = 42;
       this.isWalkable = true;
 
-      updateLastMoveTime();
       setWalkingSpeed(300);
+      /*
+          this updates the time of the last action so that the action method
+          can be called from 'DynamiteGame'
+      */
+      updateLastMoveTime();
   }
 
   get hasWon => this._hasWon;
   get dynamiteRangeOffset => this._dynamiteRangeOffset;
 
   void setNextMove(Position moveOffset) {
-      nextPosition = position.clone(); // immer von aktueller Position ausgehen!
+      // go every time from the current position
+      nextPosition = position.clone();
       nextPosition.addOffset(moveOffset);
   }
 
@@ -43,7 +53,6 @@ class Player extends Entity {
 
   @override
   Position getNextMove(List<List< FieldNode >> gameField) {
-    // TODO: 'gameField' not neccessary?!!
     return nextPosition;
   }
 

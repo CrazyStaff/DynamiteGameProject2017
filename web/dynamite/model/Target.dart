@@ -56,12 +56,6 @@ class Target {
       List<Position> pathToTarget = PathFinder.findPath(gameField, originEntity, originFieldNode, destinationFieldNode);
 
       if(pathToTarget != null) {
-        print(" ---S path to target ---");
-        for(Position pos in pathToTarget) {
-          print("TP: $pos");
-        }
-        print(" ---E path to target ---");
-
         this.pathToLastViewTargetPosition = pathToTarget;
       }
     }

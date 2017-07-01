@@ -19,7 +19,6 @@ class DynamiteGameController {
 
   DynamiteGameController()  {
     game = new DynamiteGame();
-   /*view.generateField(game);*/
 
    // load the files from the server
     Future.wait([

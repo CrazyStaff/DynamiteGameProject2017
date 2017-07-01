@@ -10,7 +10,9 @@
       <excludeFolder url="file://$MODULE_DIR$/tmp" />
       <excludeFolder url="file://$MODULE_DIR$/web/data/config/packages" />
       <excludeFolder url="file://$MODULE_DIR$/web/data/images/large/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/web/data/images/mobile/packages" />
       <excludeFolder url="file://$MODULE_DIR$/web/data/images/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/web/data/images/small/packages" />
       <excludeFolder url="file://$MODULE_DIR$/web/data/level/packages" />
       <excludeFolder url="file://$MODULE_DIR$/web/data/packages" />
       <excludeFolder url="file://$MODULE_DIR$/web/dynamite/model/blocks/packages" />

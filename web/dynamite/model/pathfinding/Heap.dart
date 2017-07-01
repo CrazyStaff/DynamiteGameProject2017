@@ -1,3 +1,6 @@
+/*
+    The heap is needed for the path finding optimization
+ */
 class Heap <T extends IHeapItem<T>> {
 
   List<T> items;
@@ -9,34 +12,50 @@ class Heap <T extends IHeapItem<T>> {
 
   get length => _countItems;
 
+  /*
+     Add a new item to the heap tree
+     and resort the heap tree
+   */
   void add(T item) {
     item.heapIndex = _countItems;
     items[_countItems] = item;
-    sortUp(item);
+    _sortUp(item);
     _countItems++;
   }
 
-  T removeFirst() { // TODO 0 vorhanden?
+  /*
+      Remove the first item of the heap tree
+      and resort the heap tree
+   */
+  T removeFirst() {
     T firstItem = items[0];
     _countItems--;
     items[0] = items[_countItems];
     items[0].heapIndex = 0;
-    sortDown(items[0]);
+    _sortDown(items[0]);
     return firstItem;
   }
 
+  /*
+     Updates the position of the item in the heap tree
+   */
   void updateItem(T item) {
-      sortUp(item);
+      _sortUp(item);
   }
 
   int get countElements => _countItems;
 
-
-  bool contains(T item) { // TODO equals statt == ????
+  /*
+    Proof if the item is contained in the heap tree
+   */
+  bool contains(T item) {
     return items[item.getHeapIndex] == item;
   }
 
-  void sortDown(T item) {
+  /*
+      Sorts the heap tree in the direction of the childs
+   */
+  void _sortDown(T item) {
     while(true) {
       int childIndexLeft = item.getHeapIndex * 2 + 1;
       int childIndexRight = item.getHeapIndex * 2 + 2;
@@ -62,7 +81,10 @@ class Heap <T extends IHeapItem<T>> {
     }
   }
 
-  void sortUp(T item) {
+  /*
+      Sorts the heap tree in the direction to the parent
+   */
+  void _sortUp(T item) {
       int parentIndex = ((item.getHeapIndex-1)/2).toInt();
 
       while(true) {
@@ -84,13 +106,11 @@ class Heap <T extends IHeapItem<T>> {
     itemA.heapIndex = itemB.getHeapIndex;
     itemB.heapIndex = itemAIndex;
   }
-
-  @override
-  int compareTo(T other) {
-
-  }
 }
 
+/*
+    This interface is need for the class FieldNode
+ */
 abstract class IHeapItem<T> extends Comparable<T> {
   int _heapIndex = 0;
 

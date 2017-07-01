@@ -3,10 +3,15 @@ import '../Modificator.dart';
 import '../Position.dart';
 import '../pathfinding/FieldNode.dart';
 
-abstract class Block extends Entity { // Interface for all Type of Blocks
+/*
+   Abstract class for all type of blocks
+ */
+abstract class Block extends Entity {
 
-   Block(String type, Position position) : super(type, position); // no changing on the Construktor
+   Block(String type, Position position) : super(type, position);
 
-   // needs to be overriden by each superclass of 'Block'
-   Modificator atDestroy(List<List< FieldNode >> gameField);  // Bloks can have an action @ destroy
+   // Needs to be overriden by each superclass of 'Block'
+   Modificator atDestroy(List<List< FieldNode >> gameField);
+
+   // Blocks could override an action
 }

@@ -36,8 +36,8 @@ class DynamiteView {
   /*
       Update the life of the player
    */
-  void updateLife(String currentLife) {
-    life.innerHtml = currentLife;
+  void updateLife(int currentLife) {
+    life.innerHtml = "$currentLife";
   }
 
   /*

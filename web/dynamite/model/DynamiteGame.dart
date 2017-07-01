@@ -150,6 +150,9 @@ class DynamiteGame {
     }
   }
 
+  /*
+      Reset the level to a level after the tutorial
+   */
   void resetLevel() {
     this._life = _startLife;
     if (_currentLevel > _startLevel) {

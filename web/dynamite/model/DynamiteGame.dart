@@ -131,6 +131,10 @@ class DynamiteGame {
     }).toList();
   }
 
+  /*
+      Decrements the life of the player and switch to
+      the new game state LOOSE OR LOST_LIFE
+   */
   void _decrementLife() {
     if (_currentLevel >= _startLevel) {
       _life--;

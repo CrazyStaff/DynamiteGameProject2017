@@ -52,4 +52,22 @@ class Player extends Entity {
     // needs to be empty implemented!
     // -> allow player to move directly in the game tact after no input of user
   }
+
+  @override
+  void action(List<List<FieldNode>> _gameField, int time) {
+    _checkIfAlreadyOverPortal(_gameField);
+  }
+
+  /*
+      Proof if the player is already over the portal than make sure he has won
+   */
+  void _checkIfAlreadyOverPortal(List<List<FieldNode>> _gameField) {
+    FieldNode myPosition = _gameField[position.getX][position.getY];
+
+    for(Entity entity in myPosition.getEntities) {
+      if (entity.getType() == "PORTAL" && Entity.monsterCounter == 0){
+        _hasWon = true;
+      }
+    }
+  }
 }

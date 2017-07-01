@@ -12,6 +12,10 @@ class Score {
   int _maxScore;
 
   Score() {
+    resetScore();
+  }
+
+  void resetScore() {
     _entityScore = new Map<String, int>();
     _currentScore = 0;
     _maxScore = 0;

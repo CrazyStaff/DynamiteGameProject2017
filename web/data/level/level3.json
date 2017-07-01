@@ -13,5 +13,6 @@
   "speedBuffSpawnRate" : 10,
   "speedBuffAddSpeed" : 100,
   "dynamiteRangeSpawnRate" : 10,
-  "description" : "<h1>Willkommen im dritten Level</h1>Im dritten Level ist deine aufgabe das Portal <table><td width=\"10px\" height=\"10px\" class=\"PORTAL\"></td></table> zu finden. Dieses liegt in den folgenden Leveln fast immer zufällig unter den Kisten."
+  "description" : "<h1>Willkommen im dritten Level</h1>Im dritten Level ist deine aufgabe das Portal <table><td width=\"10px\" height=\"10px\" class=\"PORTAL\"></td></table> zu finden. Dieses liegt in den folgenden Leveln fast immer zufällig unter den Kisten.",
+  "maxLevelTime" : 30
 }

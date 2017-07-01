@@ -15,6 +15,7 @@ class DynamiteView {
   HtmlElement get score => querySelector('#scores div');
   HtmlElement get lvl => querySelector('#lvl');
   HtmlElement get life => querySelector('#life');
+  HtmlElement get leftTime => querySelector("#leftTime");
   HtmlElement get overviewLevel => querySelector('#level');
   HtmlElement get overviewAccept => querySelector('#level_accept');
 
@@ -40,6 +41,33 @@ class DynamiteView {
   }
 
   /*
+      Update the left time of the level
+   */
+  void updateLeftTime(int leftTimeOfLevel) {
+    leftTime.innerHtml = _convertTimeView(leftTimeOfLevel);
+  }
+
+  void setLeftTimeVisibility(bool visible) {
+    if(visible) {
+      _showElement(leftTime);
+    } else {
+      _hideElement(leftTime);
+    }
+  }
+
+  /*
+     Change the view format of the left time
+   */
+  String _convertTimeView(int leftTime) {
+    int min = (leftTime / 60).toInt();
+    int sec = leftTime % 60;
+
+    String minutes = (min < 10 ? "0$min" : min);
+    String seconds = (sec < 10 ? "0$sec" : sec);
+    return "$minutes:$seconds";
+  }
+
+  /*
       Update the score of the player
    */
   void updateScore(double scorePercentage) {
@@ -52,26 +80,14 @@ class DynamiteView {
     for (int row = 0; row < field.length; row++) {
       table += "<tr>";
       for (int col = 0; col < field[row].length; col++) {
-        //final assignment = field[row][col];
         final pos = "field_${row}_${col}";
-        table += "<td id='$pos' ></td>"; //  class='$assignment'
+        table += "<td id='$pos' ></td>";
       }
       table += "</tr>";
     }
     table += "</table>";
 
     game.innerHtml = table;
-
-    // Saves all generated TD elements in field to
-    // avoid time intensive querySelector calls in update().
-    // Thanks to Johannes Gosch, SoSe 2015.
-    /*fields = new List<List<HtmlElement>>(field.length);
-    for (int row = 0; row < field.length; row++) {
-      fields[row] = [];
-      for (int col = 0; col < field[row].length; col++) {
-        fields[row].add(game.querySelector("#field_${row}_${col}"));
-      }
-    }*/
   }
 
   /*
@@ -93,14 +109,28 @@ class DynamiteView {
         }
     });
 
-   overviewLevel.setAttribute("style", "visibility: visible;");
+    _showElement(overviewLevel);
   }
 
   /*
       Hide the level description overview
    */
   void hideLevelOverview() {
-    overviewLevel.setAttribute("style", "visibility: hidden;");
-    overviewLevel.setAttribute("style", "display: none;");
+    _hideElement(overviewLevel);
+  }
+
+  /*
+    Don´t show the html element in the view
+   */
+  void _hideElement(HtmlElement element) {
+    element.setAttribute("style", "visibility: hidden;");
+    element.setAttribute("style", "display: none;");
+  }
+
+  /*
+    Show the html element in the view
+   */
+  void _showElement(HtmlElement element) {
+    element.setAttribute("style", "visibility: visible;");
   }
 }

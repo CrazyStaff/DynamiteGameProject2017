@@ -2,5 +2,7 @@
   "gameSpeed" : 100,
   "maxLvl" : 8,
   "startLvl" : 5,
-  "startLeben" : 3
+  "startLife" : 3,
+  "dynamiteExplosionTime" : 4000,
+  "fireDuration" : 1000
 }

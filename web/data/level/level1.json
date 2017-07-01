@@ -13,5 +13,6 @@
   "speedBuffSpawnRate" : 10,
   "speedBuffAddSpeed" : 100,
   "dynamiteRangeSpawnRate" : 10,
-  "description" : "<h1>Willkommen im Tutorial</h1>Im ersten Level ist deine Aufgabe dich <table><td width=\"60px\" height=\"60px\" class=\"PLAYER\"></td></table> in das Portal <table><td width=\"60px\" height=\"60px\" class=\"PORTAL\"></td></table> zu begeben."
+  "description" : "Your task for the first level is <table><td width=\"60px\" height=\"60px\" class=\"PLAYER\"></td></table> to go through the portal <table><td width=\"60px\" height=\"60px\" class=\"PORTAL\"></td></table>",
+  "maxLevelTime" : -1
 }

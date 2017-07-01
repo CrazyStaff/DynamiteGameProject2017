@@ -14,22 +14,23 @@ import 'monster/Monster.dart';
 import 'pathfinding/FieldNode.dart';
 
 class DynamiteGame {
+  static int DYNAMITE_EXPLODE_TIME;
+  static int FIRE_DURATION;
 
-  static final int DYNAMITE_EXPLODE_TIME = 4000;
-  static final int FIRE_DURATION = 1000;
-
-  GameState _gameStatus; //0 Verloren, 1 Läuft, 2 Gewonnen
+  GameState _gameStatus;
 
   String _levelDescription;
   int _dynamiteRadius;
 
-  int _startLvl = 0;
+  int _startLevel = 0;
   int _startLife = 3;
   int _life = 3;
 
-
   int _fieldWidth;
   int _fieldHeight;
+
+  int _startLevelTime;
+  int _maxLevelTime;
 
   int _maxLvl;
   int _currentLevel;
@@ -38,23 +39,38 @@ class DynamiteGame {
   Player _player;
   Score _score;
 
-  int pausedGameAtTime;
+  int _pausedGameAtTime;
 
+  set maxLevelTime(int maxLevelTime) => this._maxLevelTime = maxLevelTime;
   set levelDescription(String description) => this._levelDescription = description;
   set maxLvl(int value) => _maxLvl = value;
   set startLife(int startLife) => this._startLife = startLife;
-  set startLvl(int startLvl) => this._startLvl = startLvl;
+  set startLevel(int startLevel) => this._startLevel = startLevel;
   get maxLevel => _maxLvl;
 
   set gameStatus(GameState gameState) => this._gameStatus = gameState;
 
+  get getLife => this._life;
   get currentLevel => this._currentLevel;
 
   double getScorePercentage() => _score.calculateScoreInPercentage();
 
+  int getLevelLeftTime() {
+    if(_maxLevelTime == -1) return _maxLevelTime;
+    int leftTime = _maxLevelTime - ((new DateTime.now().millisecondsSinceEpoch - _startLevelTime) / 1000).toInt();
+
+    return (leftTime <= 0 ? 0 : leftTime);
+  }
+
+  bool _isLevelTimeOver() {
+    return isLevelTimerActive() && getLevelLeftTime() == 0;
+  }
+
+  bool isLevelTimerActive() => _maxLevelTime != -1;
+
   void pauseGame() {
     _gameStatus = GameState.PAUSED;
-    this.pausedGameAtTime = new DateTime.now().millisecondsSinceEpoch;
+    this._pausedGameAtTime = new DateTime.now().millisecondsSinceEpoch;
   }
 
   void increaseLevel() {
@@ -70,7 +86,9 @@ class DynamiteGame {
 
   void continueGame() {
     int currentTime = new DateTime.now().millisecondsSinceEpoch;
-    int offsetAddTime = currentTime - pausedGameAtTime;
+    int offsetAddTime = currentTime - _pausedGameAtTime;
+
+    _startLevelTime += offsetAddTime;
 
     for (List<FieldNode> allPositions in _gameField) {
       for (FieldNode field in allPositions) {
@@ -86,15 +104,16 @@ class DynamiteGame {
     return _gameStatus;
   }
 
-
   DynamiteGame() {
-    this._currentLevel = 1;
-    _gameStatus = GameState.PAUSED;
+    _currentLevel = 1;
     _maxLvl = 0;
+    _pausedGameAtTime = 0;
     _levelDescription = "";
     _dynamiteRadius = 1;
     _fieldWidth = 1;
     _fieldHeight = 1;
+    _life = 0;
+    _gameStatus = GameState.PAUSED;
 
     Entity.portalCount = 0;
     Entity.monsterCounter = 0;
@@ -113,7 +132,7 @@ class DynamiteGame {
   }
 
   void _decrementLife() {
-    if (_currentLevel > _startLvl) {
+    if (_currentLevel > _startLevel) {
       _life--;
       _dynamiteRadius = 1;
       if (_life < 1) {
@@ -122,31 +141,34 @@ class DynamiteGame {
         _gameStatus = GameState.LOST_LIFE;
       }
     } else {
-      // no decrement lifes in tutorial levels
+      // no decrement of lifes in tutorial levels
       _gameStatus = GameState.LOST_LIFE;
     }
   }
 
-  void _reset() {
-    _life = _startLife;
+  void _resetGame() {
+    this._gameStatus = GameState.PAUSED;
+
+    Entity.portalCount = 0;
+    Entity.monsterCounter = 0;
+    Entity.destroyableBlockCount = 0;
+
+
+    /*_life = _startLife;
     if (_currentLevel > _startLvl) {
       _currentLevel = _startLvl;
-    }
+    }*/
   }
 
   List<List<FieldNode>> get getGameField => _gameField;
 
   // TODO make own class of level -> auslagern des Codes
   void initLevel(List gameField, int fieldWidth, int fieldHeight) {
-    this._gameStatus = GameState.PAUSED;
     this._fieldWidth = fieldWidth;
     this._fieldHeight = fieldHeight;
 
     _generateEmptyGameField();
-
-    Entity.portalCount = 0;
-    Entity.monsterCounter = 0;
-    Entity.destroyableBlockCount = 0;
+    _resetGame();
 
     int fieldSize = fieldWidth * fieldHeight;
 
@@ -185,20 +207,24 @@ class DynamiteGame {
           break;
       }
     }
+
+    // set start level time and directly pause the game
+    _startLevelTime = new DateTime.now().millisecondsSinceEpoch;
+    _pausedGameAtTime = new DateTime.now().millisecondsSinceEpoch;
   }
 
-  GameState moveAllEntites(int time) {
+  GameState moveAllEntities(int time) {
     if (_gameStatus == GameState.RUNNING) {
       if (_player.hasWon) {
         _gameStatus = GameState.WIN;
       }
+
       for (List<FieldNode> allPositions in _gameField) {
         for (FieldNode field in allPositions) {
           var toRemove = [];
           List<Modificator> toModificate = new List<Modificator>();
 
-          for (Entity entity in field
-              .getEntities) { // TODO iterator statt for each =>  removen und adden nur mit iterator aufrufbar
+          for (Entity entity in field.getEntities) {
             if (!entity.isAlive) { // if is not alive remove entity
               Modificator mod = entity.atDestroy(_gameField);
               _score.updateScore(entity);
@@ -224,8 +250,6 @@ class DynamiteGame {
                     // First of all remove entity from currentField
                     toRemove.add(entity);
                     entity.moveTo(nextField);
-                  } else {
-                    // TODO: nextField move not possible
                   }
                 }
               }
@@ -246,7 +270,7 @@ class DynamiteGame {
           field.getEntities.removeWhere((e) => toRemove.contains(e));
         }
       }
-      if (!_player.isAlive) {
+      if (!_player.isAlive || _isLevelTimeOver()) {
         _decrementLife();
       }
     }
@@ -305,11 +329,11 @@ class DynamiteGame {
     Map<String, String> htmlElements = new Map<String, String>();
 
     switch(_gameStatus) {
-      case GameState.WIN:
-        htmlElements["level_header"] = "Level completed";
-        htmlElements["level_announcement"] = "Good Job!";
+      case GameState.PAUSED:
+        htmlElements["level_header"] = "Welcome to the tutorial";
+        htmlElements["level_announcement"] = "";
         htmlElements["level_result"] = _levelDescription;
-        htmlElements["level_accept"] = "Next level";
+        htmlElements["level_accept"] = "Start Tutorial";
         break;
       case GameState.LOOSE:
         htmlElements["level_header"] = "You failed";
@@ -360,6 +384,7 @@ class DynamiteGame {
   }
 
   void initScore(int expMonster, int expDestroyableBlock) {
+    _score.resetScore();
     _score.initScore(Monster.ENTITY_TYPE, expMonster);
     _score.initScore(DestroyableBlock.ENTITY_TYPE, expDestroyableBlock);
 

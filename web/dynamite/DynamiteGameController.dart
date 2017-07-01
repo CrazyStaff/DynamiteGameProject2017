@@ -25,10 +25,14 @@ class DynamiteGameController {
     Future.wait([
       _loadConfigs(),
       _loadLevel()
-    ]).then(_initGame);
+    ]).then(_initGameListeners);
   }
 
-  void _initGame(List<bool> result) {
+  /*
+     Initialize all the game listeners
+     needs to called only once
+   */
+  void _initGameListeners(List<bool> result) {
     for (bool r in result) {
       if (r == false) {
         // some resources could'nt load properly
@@ -40,26 +44,16 @@ class DynamiteGameController {
     view.startButton.onClick.listen((_) {
       switch (view.startButton.getAttribute("class")) {
         case "init":
-          view.startButton.setAttribute("value", "❚❚");
-          view.startButton.setAttribute("class", "running");
-          game.gameStatus = GameState.RUNNING;
-          _gameTrigger = new Timer.periodic(_gameSpeed, (_) => _moveEntities());
+          _startGame();
           break;
         case "running":
-          view.startButton.setAttribute("value", "▶");
-          view.startButton.setAttribute("class", "paused");
-          _gameTrigger.cancel();
-         pauseGame();
+          _pauseGame();
           break;
         case "paused":
-          view.startButton.setAttribute("value", "❚❚");
-          view.startButton.setAttribute("class", "running");
-          continueGame();
-          _gameTrigger = new Timer.periodic(_gameSpeed, (_) => _moveEntities());
+          print("Clicked pause");
+          _continueGame();
           break;
       }
-
-      // game.start(); // TODO?? !!!!!!!!!!!!!!!!!
       view.update(game.getHTML());
     });
 
@@ -84,13 +78,41 @@ class DynamiteGameController {
       }
     });
 
+      // listen on level overviews next button
+      view.overviewAccept.onClick.listen((_) => _finishedOverview());
+
       // listen on smartphone arrows
       view.arrowUp.onClick.listen((_) => up());
       view.arrowRight.onClick.listen((_) => right());
       view.arrowDown.onClick.listen((_) => down());
       view.arrowLeft.onClick.listen((_) => left());
       view.arrowDynamite.onClick.listen((_) => placeDynamite());
-     // view.tooltip.innerHtml = "";
+  }
+
+  void _startGame() {
+    view.startButton.setAttribute("value", "❚❚");
+    view.startButton.setAttribute("class", "running");
+    game.gameStatus = GameState.RUNNING;
+    _gameTrigger = new Timer.periodic(_gameSpeed, (_) => _moveEntities());
+  }
+
+  void _pauseGame() {
+    view.startButton.setAttribute("value", "▶");
+    view.startButton.setAttribute("class", "paused");
+    if(_gameTrigger != null) {
+      _gameTrigger.cancel();
+    }
+    game.pauseGame();
+  }
+
+  void _continueGame() {
+    print("CG1");
+    game.continueGame();
+    _gameTrigger = new Timer.periodic(_gameSpeed, (_) => _moveEntities());
+
+    view.startButton.setAttribute("value", "❚❚");
+    view.startButton.setAttribute("class", "running");
+    print("CG2");
   }
 
   /*
@@ -101,12 +123,14 @@ class DynamiteGameController {
       final configs = JSON.decode(json);
       game.maxLvl = configs["maxLvl"];
       _gameSpeed = new Duration(milliseconds: configs["gameSpeed"]);
-      game.startLvl = configs["startLvl"];
-      game.startLife = configs["startLeben"];
+      game.startLevel = configs["startLvl"];
+      game.startLife = configs["startLife"];
+      DynamiteGame.DYNAMITE_EXPLODE_TIME = configs["dynamiteExplosionTime"];
+      DynamiteGame.FIRE_DURATION = configs["fireDuration"];
       game.setInitLife();
       return true;
     }).catchError((error) => {
-      // return false; // TODO return false
+      // catch the error
     });
   }
 
@@ -115,17 +139,17 @@ class DynamiteGameController {
    */
   Future<bool> _loadLevel() async {
     HttpRequest.getString(configLevel + game.currentLevel.toString() + ".json").then((json) {
+      print("Lvl geladen. ${game.currentLevel}");
       Map parsedMap = JSON.decode(json);
 
       int fieldWidth = int.parse(parsedMap["level"]["field_width"]);
       int fieldHeight = int.parse(parsedMap["level"]["field_height"]);
-      List blocks = parsedMap["level"]["blocks"];
-      game.levelDescription = parsedMap["description"];
 
-      print("Lvl geladen. ${game.currentLevel}");
+      List blocks = parsedMap["level"]["blocks"];
       game.initLevel(blocks, fieldWidth, fieldHeight);
 
-      view.update(game.getHTML());
+      game.levelDescription = parsedMap["description"];
+      game.maxLevelTime = parsedMap["maxLevelTime"];
 
       if(!_proofIfEXPIsSetInLevelConfig(parsedMap)) {
         throw new Exception("Level ${game.currentLevel} should have an EXP section");
@@ -133,16 +157,19 @@ class DynamiteGameController {
       game.setSpawnRateSpeedBuff(parsedMap["speedBuffSpawnRate"]);
       game.setSpeedOffsetSpeedBuff(parsedMap["speedBuffAddSpeed"]);
       game.setSpawnRateDynamiteRange(parsedMap["dynamiteRangeSpawnRate"]);
+
       int expMonster = int.parse(parsedMap["exp_monster"]);
       int expDestroyableBlock = int.parse(parsedMap["exp_destroyable_block"]);
-
       game.initScore(expMonster, expDestroyableBlock);
-      view.updateScore(game.getScorePercentage());
+
+      _updateView();
+
+      _showLevelOverview();
     });
   }
 
   /*
-    Proof if the exp section is set in the level config file
+      Proof if the exp section is set in the level config file
    */
   bool _proofIfEXPIsSetInLevelConfig(Map parsedMap) {
     if(!parsedMap.containsKey("exp_monster") &&
@@ -153,52 +180,73 @@ class DynamiteGameController {
   }
 
   /*
+      Update the view that the game state is refreshed in the view
+   */
+  _updateView() {
+    view.update(game.getHTML());
+    view.updateScore(game.getScorePercentage());
+    view.updateLevel(game.currentLevel);
+    view.updateLife(game.getLife);
+    view.updateLeftTime(game.getLevelLeftTime());
+    view.setLeftTimeVisibility(game.isLevelTimerActive());
+  }
+
+  /*
       Move all entities of the game field
    */
   void _moveEntities() {
-      GameState currentGameState = game.moveAllEntites(new DateTime.now().millisecondsSinceEpoch);
+      GameState currentGameState = game.moveAllEntities(new DateTime.now().millisecondsSinceEpoch);
       switch(currentGameState) {
         case GameState.RUNNING:
-          view.update(game.getHTML());
-          view.updateScore(game.getScorePercentage());
+          _updateView();
           break;
         case GameState.PAUSED: break;
         default:
-          _showLevelOverview();
+          // Level is over
+          print("Game state changed");
+          _gameTrigger.cancel();
+          _chooseNextLevel();
     }
   }
 
-  /*
-    Show the overview for describing the level purpose
-   */
-  void _showLevelOverview() {
-    _gameTrigger.cancel();
-    view.showLevelOverview(game.getScoreHTML());
-    view.overviewAccept.onClick.listen((_) => _finishedOverview()); // listen on nextButton
-  }
-
-  /*
-    Hide the overview that describes the level purpose
-   */
-  void _finishedOverview() {
-    view.hideLevelOverview();
-
+  void _chooseNextLevel() {
     switch(game.getStatus()) {
       case GameState.WIN:
+        print("next level");
         nextLvl();
         break;
       case GameState.LOOSE:
+        print("retry level");
         retry();
         break;
       case GameState.LOST_LIFE:
+        print("lost life");
         retry();
         break;
       case GameState.MAX_LEVEL_REACHED:
+        print("max level reached");
         retry();
-        break;
+        return;
       default:
+        print("FO: default");
     }
-    _gameTrigger = new Timer.periodic(_gameSpeed, (_) => _moveEntities());
+  }
+
+  /*
+      Show the overview for describing the level purpose
+   */
+  void _showLevelOverview() {
+    _pauseGame();
+    view.showLevelOverview(game.getScoreHTML());
+  }
+
+  /*
+      Hide the overview that describes the level purpose
+   */
+  void _finishedOverview() {
+    print("finished Overview");
+    view.hideLevelOverview();
+    _continueGame();
   }
 
   /*
@@ -207,7 +255,7 @@ class DynamiteGameController {
   void retry(){
     game.gameStatus = GameState.RUNNING;
     Future.wait([_loadLevel()
-    ]).then(_initGame);
+    ]).then((b) => view.generateField(game));
   }
 
   /*
@@ -217,7 +265,7 @@ class DynamiteGameController {
     game.gameStatus = GameState.RUNNING;
     game.increaseLevel();
       Future.wait([_loadLevel()
-      ]).then(_initGame);
+      ]).then((b) => view.generateField(game));
   }
 
   void up() {
@@ -234,14 +282,6 @@ class DynamiteGameController {
 
   void right() {
     game.setNextMovePlayer(Movement.RIGHT);
-  }
-
-  void pauseGame() {
-    game.pauseGame();
-  }
-
-  void continueGame() {
-    game.continueGame();
   }
 
   void placeDynamite() {

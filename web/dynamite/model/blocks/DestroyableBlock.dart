@@ -25,7 +25,7 @@ class DestroyableBlock extends Block {  // This Blocks can be destroyed
       Position spawnPosition = position.clone();
       mod.addAddable(new Portal(spawnPosition), spawnPosition);
     }else{//Random Item
-      Random r = new Random();
+      Random r = new Random.secure();
       if (r.nextInt(100) < SpeedBuff.getSpawnRate()){
         Position spawnPosition = position.clone();
         mod.addAddable(new SpeedBuff(spawnPosition), spawnPosition);

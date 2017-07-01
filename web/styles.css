@@ -195,19 +195,19 @@ html, body {
 
 .UNDESTROYABLE_BLOCK{
     /*   background-color: brown !important;*/
-    background-image: url("nonbreakable.png") !important;
+    background-image: url("data/images/large/nonbreakable.png") !important;
     background-size: cover;
 }
 
 .DESTROYABLE_BLOCK {
     /* background-color: brown !important;*/
-    background-image: url("brBox.png") !important;
+    background-image: url("data/images/large/brBox.png") !important;
     background-size: cover;
 }
 
 .DYNAMITE {
     /*  background-color: black !important;*/
-    background-image: url("dynamiteShadow.png") !important;
+    background-image: url("data/images/large/dynamiteShadow.png") !important;
     background-size: cover;
 
 }
@@ -217,12 +217,12 @@ html, body {
 }
 
 .PORTAL {
-    background-image: url("openPortal2.png");
+    background-image: url("data/images/large/openPortal2.png");
     background-size: cover;
 }
 
 .PORTAL_CLOSED {
-    background-image: url("closedPortal.png") !important;
+    background-image: url("data/images/large/closedPortal.png") !important;
     background-size: cover;
 }
 

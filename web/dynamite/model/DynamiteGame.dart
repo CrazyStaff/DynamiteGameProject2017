@@ -132,7 +132,7 @@ class DynamiteGame {
   }
 
   void _decrementLife() {
-    if (_currentLevel > _startLevel) {
+    if (_currentLevel >= _startLevel) {
       _life--;
       _dynamiteRadius = 1;
       if (_life < 1) {
@@ -146,18 +146,19 @@ class DynamiteGame {
     }
   }
 
+  void resetLevel() {
+    this._life = _startLife;
+    if (_currentLevel > _startLevel) {
+      _currentLevel = _startLevel;
+    }
+  }
+
   void _resetGame() {
     this._gameStatus = GameState.PAUSED;
 
     Entity.portalCount = 0;
     Entity.monsterCounter = 0;
     Entity.destroyableBlockCount = 0;
-
-
-    /*_life = _startLife;
-    if (_currentLevel > _startLvl) {
-      _currentLevel = _startLvl;
-    }*/
   }
 
   List<List<FieldNode>> get getGameField => _gameField;

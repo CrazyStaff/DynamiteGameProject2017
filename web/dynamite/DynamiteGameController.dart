@@ -163,7 +163,6 @@ class DynamiteGameController {
       game.initScore(expMonster, expDestroyableBlock);
 
       _updateView();
-
       _showLevelOverview();
     });
   }
@@ -217,7 +216,7 @@ class DynamiteGameController {
         break;
       case GameState.LOOSE:
         print("retry level");
-        retry();
+        resetLevel();
         break;
       case GameState.LOST_LIFE:
         print("lost life");
@@ -250,10 +249,20 @@ class DynamiteGameController {
   }
 
   /*
-     Set the game state to the beginning (first level)
+     Set the game state to the same level to try this level again
    */
   void retry(){
     game.gameStatus = GameState.RUNNING;
+    Future.wait([_loadLevel()
+    ]).then((b) => view.generateField(game));
+  }
+
+  /*
+      Set the game state to the beginning (first level)
+   */
+  void resetLevel(){
+    game.gameStatus = GameState.RUNNING;
+    game.resetLevel();
     Future.wait([_loadLevel()
     ]).then((b) => view.generateField(game));
   }

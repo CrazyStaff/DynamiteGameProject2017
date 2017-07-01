@@ -29,8 +29,8 @@ class DynamiteView {
   /*
     Update the level count of the player
    */
-  void updateLevel(String currentLevel) {
-    lvl.innerHtml = currentLevel;
+  void updateLevel(int currentLevel) {
+    lvl.innerHtml = "$currentLevel";
   }
 
   /*

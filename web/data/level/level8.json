@@ -1,13 +1,13 @@
 {
   "level": {
       "blocks" : [
-                 "P","D","E","E","E","E","E","E","E","E",
-                 "E","B","E","B","E","B","E","B","E","E",
-                 "E","E","E","E","M","E","M","E","E","E",
-                 "E","B","E","B","E","B","E","B","M","E",
-                 "E","E","M","E","E","E","E","E","E","E",
-                 "E","B","E","B","E","B","E","B","E","E",
-                 "E","E","E","E","M","E","E","E","E","M"
+                 "D","D","D","D","D","D","D","D","D","D",
+                 "D","P","E","D","E","E","E","E","E","D",
+                 "D","E","B","D","E","E","M","E","E","D",
+                 "D","E","D","D","D","D","E","E","E","D",
+                 "D","D","M","D","E","E","E","E","E","D",
+                 "D","E","B","E","E","D","B","E","E","D",
+                 "D","D","D","D","D","D","D","D","D","D"
       ],
       "field_width" : "10",
       "field_height" : "7"
@@ -17,6 +17,6 @@
   "speedBuffSpawnRate" : 10,
   "speedBuffAddSpeed" : 100,
   "dynamiteRangeSpawnRate" : 10,
-  "description" : "<h1>Level 8</h1>Besiege alle Gegner und finde das Portal.",
+  "description" : "<h1>Level 7</h1>Besiege alle Gegner und finde das Portal.",
   "maxLevelTime" : 180
 }

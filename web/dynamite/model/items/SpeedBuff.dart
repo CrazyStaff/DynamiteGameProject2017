@@ -18,7 +18,7 @@ class SpeedBuff extends Item {
   bool collision(Entity entity) {
     if (this.team != entity.team) {
       print(entity.getType() + " collect Item");
-      entity.setWalkingSpeed(entity.getWalkingSpeed() - 100);
+      entity.setWalkingSpeed(entity.getWalkingSpeed() - speedOffset);
       return true;
     }
     return false;

@@ -57,7 +57,7 @@ class Dynamite extends Block {
     List<Entity> allFieldEntities = gameField[pos.getX][pos.getY].getEntities;
     for(Entity entity in allFieldEntities) {
         if (entity.collision(fire)) {
-          entity.setAlive(false);
+          entity.setAlive(false, "Dynamite killes you");
         }
     }
   }
@@ -65,7 +65,7 @@ class Dynamite extends Block {
   @override
   void action(List<List< FieldNode >> gameField, int time) {
     if ((this.lastActionTime + DynamiteGame.DYNAMITE_EXPLODE_TIME) < time){
-      setAlive(false);
+      setAlive(false, "Dynamite killes you");
     }
   }
 }

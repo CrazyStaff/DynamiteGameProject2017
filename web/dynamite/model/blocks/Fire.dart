@@ -39,7 +39,7 @@ class Fire extends Block {
   @override
   void action(List<List< FieldNode >> gameField, int time) {
     if ((this.lastActionTime + DynamiteGame.FIRE_DURATION) < time){
-      setAlive(false);
+      setAlive(false, "Burned to ash");
     }
   }
 }

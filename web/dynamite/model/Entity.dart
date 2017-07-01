@@ -13,6 +13,7 @@ abstract class Entity {
   Position nextPosition;
   String type;
   String extensionType;
+  String dieReason;
   int lastMoveTime; // TODO: should be long? => no long in dart
   int lastActionTime;
   int walkingSpeed;
@@ -62,6 +63,7 @@ abstract class Entity {
     this.team = 0;
     this.isWalkable = false; // dont change - collision baut auf isWalkable auf!!
     this.extensionType = "";
+    this.dieReason = "Timeout";
   }
 
   /**
@@ -94,10 +96,10 @@ abstract class Entity {
   if(this.getType() == "MONSTER" || this.getType() == "PLAYER") {
     for (Entity otherEntities in entityField) {
       if (this.collision(otherEntities)) {
-         this.setAlive(false);
+         this.setAlive(false, "Collision with " + otherEntities.getType());
       }
       if(otherEntities.collision(this)) {
-        otherEntities.setAlive(false);
+        otherEntities.setAlive(false, "Collision with " + this.getType());
       }
     }
   }
@@ -126,10 +128,11 @@ abstract class Entity {
       return false;
   }
 
-  void setAlive(bool alive) {
+  void setAlive(bool alive, String reason) {
     if (this.getType() == "PORTAL") {
       return;
     }
+    this.dieReason = reason;
     this._alive = alive;
   }
 

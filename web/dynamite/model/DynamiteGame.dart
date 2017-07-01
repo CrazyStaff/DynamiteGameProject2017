@@ -162,7 +162,6 @@ class DynamiteGame {
 
   List<List<FieldNode>> get getGameField => _gameField;
 
-  // TODO make own class of level -> auslagern des Codes
   void initLevel(List gameField, int fieldWidth, int fieldHeight) {
     this._fieldWidth = fieldWidth;
     this._fieldHeight = fieldHeight;
@@ -235,8 +234,7 @@ class DynamiteGame {
               continue;
             }
 
-            if (entity.isAllowedToMove(
-                time)) { // Wenn entity sich bewegen kann => bewege auf nächstes Feld
+            if (entity.isAllowedToMove(time)) { // Wenn entity sich bewegen kann => bewege auf nächstes Feld
               Position nextMove = entity.getNextMove(_gameField);
 
               if (nextMove == null) { // if there is not a next move

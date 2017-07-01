@@ -217,7 +217,12 @@ html, body {
 }
 
 .PORTAL {
-    background-image: url("openPortal2.png") !important;
+    background-image: url("openPortal2.png");
+    background-size: cover;
+}
+
+.PORTAL_CLOSED {
+    background-image: url("closedPortal.png") !important;
     background-size: cover;
 }
 

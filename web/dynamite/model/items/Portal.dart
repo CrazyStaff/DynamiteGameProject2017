@@ -1,5 +1,6 @@
 import '../Entity.dart';
 import '../Position.dart';
+import '../pathfinding/FieldNode.dart';
 
 class Portal extends Entity {
 
@@ -9,7 +10,6 @@ class Portal extends Entity {
   Portal(Position position) : super(ENTITY_TYPE, position) {
     this.isWalkable = true;
     Entity.portalCount += 1;
-    // team = friendly to all
   }
 
   static int getSpawnRate(){
@@ -20,4 +20,14 @@ class Portal extends Entity {
     spawnPercentage = i;
   }
 
+  @override
+  void action(List<List<FieldNode>> _gameField, int time) {
+    /* Show only a closed portal */
+    if(Entity.monsterCounter >= 1) {
+      this.extensionType = "PORTAL_CLOSED";
+    } else {
+      // now portal is open
+      this.extensionType = "";
+    }
+  }
 }

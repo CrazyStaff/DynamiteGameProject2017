@@ -31,7 +31,7 @@ class SpeedBuff extends Item {
    */
   bool collision(Entity entity) {
     if (this.team != entity.team) {
-      entity.setWalkingSpeed(entity.getWalkingSpeed() - 100);
+      entity.setWalkingSpeed(entity.getWalkingSpeed() - speedOffset);
       return true;
     }
     return false;
@@ -41,14 +41,14 @@ class SpeedBuff extends Item {
     return spawnPercentage;
   }
 
-  static setSpawnRate(int i) {
-    spawnPercentage = i;
+  static setSpawnRate(int spawnRate) {
+    spawnPercentage = spawnRate;
   }
 
   /*
       Set the offset of the movement speed for the player
    */
-  static setSpeedOffset(int i) {
-    speedOffset = i;
+  static setSpeedOffset(int offset) {
+    speedOffset = offset;
   }
 }

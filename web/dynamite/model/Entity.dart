@@ -44,6 +44,7 @@ abstract class Entity {
   int strength;
   bool _alive;
   bool isWalkable;
+  String dieReason;
 
   bool get isAlive => this._alive;
   Position get position => _position;
@@ -56,6 +57,7 @@ abstract class Entity {
     this.team = 0;
     this.isWalkable = false;
     this.extensionType = "";
+    this.dieReason = "Timeout";
   }
 
   void updateLastMoveTime() {
@@ -118,17 +120,16 @@ abstract class Entity {
     if(this.getType() == "MONSTER" || this.getType() == "PLAYER") {
       for (Entity otherEntities in entityField) {
         if (this.collision(otherEntities)) {
-          this.setAlive(false);
+          this.setAlive(false, "Collision with " + otherEntities.getType());
         }
         if(otherEntities.collision(this)) {
-          otherEntities.setAlive(false);
+          otherEntities.setAlive(false, "Collision with " + this.getType());
         }
       }
     }
     // Updates the last move time
     lastMoveTime = new DateTime.now().millisecondsSinceEpoch;
   }
-
 
   /**
    * Calculate the next position of the entity
@@ -153,10 +154,11 @@ abstract class Entity {
       return false;
   }
 
-  void setAlive(bool alive) {
+  void setAlive(bool alive, String reason) {
     if (this.getType() == "PORTAL") {
       return;
     }
+    this.dieReason = reason;
     this._alive = alive;
   }
 

@@ -1,22 +1,22 @@
 {
   "level": {
       "blocks" : [
-                 "E","D","D","D","D","D","D","D","D","D",
-                 "E","P","E","D","E","E","E","E","E","D",
-                 "D","E","E","D","E","E","E","M","E","D",
+                 "D","D","D","D","D","D","D","D","D","D",
+                 "D","P","E","D","E","E","E","E","E","D",
+                 "D","E","B","D","E","E","B","E","E","D",
                  "D","E","D","D","D","D","E","E","E","D",
-                 "D","E","M","D","E","E","E","E","M","D",
-                 "D","E","E","E","M","B","E","E","M","D",
+                 "D","E","M","D","E","E","E","E","E","D",
+                 "D","E","B","E","E","B","B","E","E","D",
                  "D","D","D","D","D","D","D","D","D","D"
       ],
       "field_width" : "10",
       "field_height" : "7"
   },
-  "exp_monster" : "90",
+  "exp_monster" : "500",
   "exp_destroyable_block" : "10",
   "speedBuffSpawnRate" : 10,
   "speedBuffAddSpeed" : 100,
   "dynamiteRangeSpawnRate" : 10,
-  "description" : "<h1>Level 6</h1>Besiege alle Gegner und finde das Portal.",
-  "maxLevelTime" : 60
+  "description" : "<h1>Level 5</h1>Besiege alle Gegner und finde das Portal.",
+  "maxLevelTime" : 90
 }

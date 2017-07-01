@@ -1,0 +1,22 @@
+{
+  "level": {
+      "blocks" : [
+                 "P","D","E","E","E","E","E","E","E","E",
+                 "E","B","E","B","E","B","E","B","E","E",
+                 "E","E","E","E","M","E","M","E","E","E",
+                 "E","B","E","B","E","B","E","B","M","E",
+                 "E","E","M","E","E","E","E","E","E","E",
+                 "E","B","E","B","E","B","E","B","E","E",
+                 "E","E","E","E","M","E","E","E","E","M"
+      ],
+      "field_width" : "10",
+      "field_height" : "7"
+  },
+  "exp_monster" : "90",
+  "exp_destroyable_block" : "10",
+  "speedBuffSpawnRate" : 10,
+  "speedBuffAddSpeed" : 100,
+  "dynamiteRangeSpawnRate" : 10,
+  "description" : "<h1>Level 8</h1>Besiege alle Gegner und finde das Portal.",
+  "maxLevelTime" : 180
+}

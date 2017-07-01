@@ -246,6 +246,12 @@ class DynamiteGame {
         case "Z": /* Portal */
           currentField.add(new Portal(currentPosition));
           break;
+        case "S": /* Portal */
+          currentField.add(new SpeedBuff(currentPosition));
+          break;
+        case "R": /* Portal */
+          currentField.add(new DynamiteRange(currentPosition));
+          break;
         case "P": /* Player */
           _player = new Player(currentPosition);
           currentField.add(_player);

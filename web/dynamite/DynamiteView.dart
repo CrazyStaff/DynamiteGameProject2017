@@ -62,8 +62,8 @@ class DynamiteView {
     int min = (leftTime / 60).toInt();
     int sec = leftTime % 60;
 
-    String minutes = (min < 10 ? "0$min" : min);
-    String seconds = (sec < 10 ? "0$sec" : sec);
+    String minutes = (min < 10 ? "0$min" : "$min");
+    String seconds = (sec < 10 ? "0$sec" : "$sec");
     return "$minutes:$seconds";
   }
 

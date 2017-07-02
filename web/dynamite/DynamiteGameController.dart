@@ -40,17 +40,22 @@ class DynamiteGameController {
     }
     view.generateField(game);
     // New game is started by user
+    print("Cur ${view.startButton.getAttribute("class")}");
     view.startButton.onClick.listen((_) {
       switch (view.startButton.getAttribute("class")) {
         case "init":
+          print("start game");
           _startGame();
           break;
         case "running":
+          print("start run");
           _pauseGame();
           break;
         case "paused":
           print("Clicked pause");
-          _continueGame();
+          if(!view.isOverviewShown()) {
+            _continueGame();
+          }
           break;
       }
       view.update(game.getHTML());
@@ -105,13 +110,11 @@ class DynamiteGameController {
   }
 
   void _continueGame() {
-    print("CG1");
-    game.continueGame();
-    _gameTrigger = new Timer.periodic(_gameSpeed, (_) => _moveEntities());
+      game.continueGame();
+      _gameTrigger = new Timer.periodic(_gameSpeed, (_) => _moveEntities());
 
-    view.startButton.setAttribute("value", "❚❚");
-    view.startButton.setAttribute("class", "running");
-    print("CG2");
+      view.startButton.setAttribute("value", "❚❚");
+      view.startButton.setAttribute("class", "running");
   }
 
   /*
@@ -183,7 +186,8 @@ class DynamiteGameController {
   _updateView() {
     view.update(game.getHTML());
     view.updateScore(game.getScorePercentage());
-    view.updateLevel(game.currentLevel - game.startLevel + 1);
+    view.updateLevelType(game.getLevelTypeHTML());
+    view.updateLevel(game.getLevelHTML());
     view.updateLife(game.getLife);
     view.updateLeftTime(game.getLevelLeftTime());
     view.setLeftTimeVisibility(game.isLevelTimerActive());

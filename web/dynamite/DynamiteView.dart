@@ -11,26 +11,33 @@ class DynamiteView {
   HtmlElement get arrowLeft => querySelector('#mLeft');
   HtmlElement get arrowRight => querySelector('#mRight');
   HtmlElement get arrowDynamite => querySelector('#mDynamite');
-  //HtmlElement get tooltip => querySelector('#output');
   HtmlElement get score => querySelector('#scores div');
   HtmlElement get lvl => querySelector('#lvl');
+  HtmlElement get lvlType => querySelector("#lvlType");
   HtmlElement get life => querySelector('#life');
   HtmlElement get leftTime => querySelector("#leftTime");
   HtmlElement get overviewLevel => querySelector('#level');
   HtmlElement get overviewAccept => querySelector('#level_accept');
 
   /*
-    Update the gamefield
+      Update the game field
    */
   void update(String gameField) {
     game.innerHtml = gameField;
   }
 
   /*
-    Update the level count of the player
+      Update the level type
    */
-  void updateLevel(int currentLevel) {
-    lvl.innerHtml = "$currentLevel";
+  void updateLevelType(String type) {
+    lvlType.innerHtml = type;
+  }
+
+  /*
+      Update the current level count
+   */
+  void updateLevel(String currentLevel) {
+    lvl.innerHtml = currentLevel;
   }
 
   /*
@@ -74,7 +81,7 @@ class DynamiteView {
     score.setAttribute("style", "width: $scorePercentage%;");
   }
 
-  void generateField(DynamiteGame model) { // TODO use only model.getHTML
+  void generateField(DynamiteGame model) {
     final field = model.getGameField;
     String table = "<table>";
     for (int row = 0; row < field.length; row++) {
@@ -102,7 +109,7 @@ class DynamiteView {
         }
 
         if(key == "level_accept") {
-          // button´s content is controlled over attribute 'value' and not over innerHTML
+          // Button´s content is controlled over attribute 'value' and not over innerHTML
           querySelector("#$key").setAttribute("value", value);
         } else {
           querySelector("#$key").innerHtml = value;
@@ -110,6 +117,16 @@ class DynamiteView {
     });
 
     _showElement(overviewLevel);
+  }
+
+  /*
+      Proofs if the overview is shown
+   */
+  bool isOverviewShown() {
+    if(overviewLevel.getAttribute("style") == "visibility: visible;") {
+      return true;
+    }
+    return false;
   }
 
   /*

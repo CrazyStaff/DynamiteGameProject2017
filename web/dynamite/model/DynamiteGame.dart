@@ -410,6 +410,14 @@ class DynamiteGame {
     return htmlEntities;
   }
 
+  String getLevelTypeHTML() {
+    return (_currentLevel < _startLevel ? "Tutorial" : "Level");
+  }
+
+  String getLevelHTML() {
+    return (_currentLevel < _startLevel ? "${_currentLevel}" : "${_startLevel - _currentLevel + 1}");
+  }
+
   Map<String, String> getScoreHTML() {
     Map<String, String> htmlElements = new Map<String, String>();
 

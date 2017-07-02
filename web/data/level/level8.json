@@ -14,7 +14,7 @@
   },
   "exp_monster" : "90",
   "exp_destroyable_block" : "10",
-  "speedBuffSpawnRate" : 40,
+  "speedBuffSpawnRate" : 30,
   "speedBuffAddSpeed" : 100,
   "dynamiteRangeSpawnRate" : 20,
   "description" : "Maybe you have seen it, but some Monsters can jump over your Dynamite",

@@ -30,6 +30,7 @@ class Player extends Entity {
 
   get hasWon => this._hasWon;
   get dynamiteRangeOffset => this._dynamiteRangeOffset;
+  set dynamiteRangeOffset(int offset) => this._dynamiteRangeOffset = offset;
 
   void setNextMove(Position moveOffset) {
       // go every time from the current position

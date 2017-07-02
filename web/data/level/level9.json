@@ -1,13 +1,13 @@
 {
   "level": {
       "blocks" : [
-                 "P","D","E","E","E","E","E","E","E","E",
-                 "E","B","E","B","E","B","E","B","E","E",
-                 "E","E","E","E","M","E","M","E","E","E",
-                 "E","B","E","B","E","B","E","B","M","E",
+                 "P","D","E","E","E","E","E","E","E","D",
+                 "E","B","M","B","E","B","E","B","E","E",
+                 "E","D","E","E","M","E","M","E","E","E",
+                 "D","B","E","B","E","B","E","B","M","E",
                  "E","E","M","E","E","E","E","E","E","E",
                  "E","B","E","B","E","B","E","B","E","E",
-                 "E","E","E","E","M","E","E","E","E","M"
+                 "D","E","M","E","M","E","E","E","M","D"
       ],
       "field_width" : "10",
       "field_height" : "7"
@@ -15,8 +15,8 @@
   "exp_monster" : "90",
   "exp_destroyable_block" : "10",
   "speedBuffSpawnRate" : 10,
-  "speedBuffAddSpeed" : 100,
-  "dynamiteRangeSpawnRate" : 10,
-  "description" : "<h1>Level 8</h1>Besiege alle Gegner und finde das Portal.",
+  "speedBuffAddSpeed" : 1000,
+  "dynamiteRangeSpawnRate" : 50,
+  "description" : "I think to find the Portal is not the Problem, but kill the enemys is hard. ",
   "maxLevelTime" : 180
 }

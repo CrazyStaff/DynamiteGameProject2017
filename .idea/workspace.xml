@@ -3,9 +3,12 @@
   <component name="ChangeListManager">
     <list default="true" id="22a5614c-87a3-4d0b-bb80-0b966c29e495" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/data/level/level4.json" afterPath="$PROJECT_DIR$/web/data/level/level4.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/data/level/level5.json" afterPath="$PROJECT_DIR$/web/data/level/level5.json" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/data/level/level6.json" afterPath="$PROJECT_DIR$/web/data/level/level6.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/data/level/level7.json" afterPath="$PROJECT_DIR$/web/data/level/level7.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/data/level/level8.json" afterPath="$PROJECT_DIR$/web/data/level/level8.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/data/level/level9.json" afterPath="$PROJECT_DIR$/web/data/level/level9.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/dynamite/model/DynamiteGame.dart" afterPath="$PROJECT_DIR$/web/dynamite/model/DynamiteGame.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/dynamite/model/Player.dart" afterPath="$PROJECT_DIR$/web/dynamite/model/Player.dart" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -31,34 +34,34 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="DynamiteGame.dart" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/web/dynamite/model/DynamiteGame.dart">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="184">
+              <caret line="125" column="7" lean-forward="false" selection-start-line="125" selection-start-column="7" selection-end-line="125" selection-end-column="7" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Player.dart" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/dynamite/model/Player.dart">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="201">
+              <caret line="37" column="41" lean-forward="true" selection-start-line="37" selection-start-column="41" selection-end-line="37" selection-end-column="41" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="DynamiteGameController.dart" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web/dynamite/DynamiteGameController.dart">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="185" column="60" lean-forward="false" selection-start-line="185" selection-start-column="60" selection-end-line="185" selection-end-column="60" />
+            <state relative-caret-position="227">
+              <caret line="273" column="19" lean-forward="false" selection-start-line="273" selection-start-column="19" selection-end-line="273" selection-end-column="19" />
               <folding>
                 <element signature="e#0#27#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="level1.json" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/data/level/level1.json">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="14" column="29" lean-forward="false" selection-start-line="14" selection-start-column="29" selection-end-line="14" selection-end-column="29" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="level2.json" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/data/level/level2.json">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="15" column="80" lean-forward="false" selection-start-line="15" selection-start-column="80" selection-end-line="15" selection-end-column="80" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -93,11 +96,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="level6.json" pinned="false" current-in-tab="true">
+      <file leaf-file-name="level6.json" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web/data/level/level6.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="19" column="199" lean-forward="false" selection-start-line="19" selection-start-column="199" selection-end-line="19" selection-end-column="199" />
+            <state relative-caret-position="153">
+              <caret line="9" column="51" lean-forward="false" selection-start-line="9" selection-start-column="51" selection-end-line="9" selection-end-column="51" />
               <folding />
             </state>
           </provider>
@@ -106,8 +109,8 @@
       <file leaf-file-name="level7.json" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web/data/level/level7.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="19" column="30" lean-forward="false" selection-start-line="19" selection-start-column="30" selection-end-line="19" selection-end-column="30" />
+            <state relative-caret-position="153">
+              <caret line="9" column="39" lean-forward="false" selection-start-line="9" selection-start-column="39" selection-end-line="9" selection-end-column="39" />
               <folding />
             </state>
           </provider>
@@ -116,8 +119,8 @@
       <file leaf-file-name="level8.json" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web/data/level/level8.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="19" column="30" lean-forward="false" selection-start-line="19" selection-start-column="30" selection-end-line="19" selection-end-column="30" />
+            <state relative-caret-position="272">
+              <caret line="16" column="26" lean-forward="false" selection-start-line="16" selection-start-column="26" selection-end-line="16" selection-end-column="26" />
               <folding />
             </state>
           </provider>
@@ -126,8 +129,8 @@
       <file leaf-file-name="level9.json" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web/data/level/level9.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="374">
-              <caret line="22" column="0" lean-forward="false" selection-start-line="19" selection-start-column="78" selection-end-line="22" selection-end-column="0" />
+            <state relative-caret-position="136">
+              <caret line="8" column="29" lean-forward="false" selection-start-line="8" selection-start-column="29" selection-end-line="8" selection-end-column="29" />
               <folding />
             </state>
           </provider>
@@ -164,6 +167,8 @@
       <find>player</find>
       <find>leben</find>
       <find>startLevel</find>
+      <find>set</find>
+      <find>lost</find>
     </findStrings>
     <replaceStrings>
       <replace>openSet</replace>
@@ -200,7 +205,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/web/dynamite/model/ADynamiteGame.dart" />
         <option value="$PROJECT_DIR$/web/dynamite/dynamiteClient.dart" />
         <option value="$PROJECT_DIR$/web/dynamiteClient.dart" />
         <option value="$PROJECT_DIR$/web/DynamiteView.dart" />
@@ -213,8 +217,6 @@
         <option value="$PROJECT_DIR$/web/styles_portrait.css" />
         <option value="$PROJECT_DIR$/web/oldcode/Keyboard.dart" />
         <option value="$PROJECT_DIR$/web/index.html" />
-        <option value="$PROJECT_DIR$/web/data/level/level7.json" />
-        <option value="$PROJECT_DIR$/web/data/level/level8.json" />
         <option value="$PROJECT_DIR$/web/dynamite/DynamiteView.dart" />
         <option value="$USER_HOME$/Desktop/Programmieren/Webprogrammierung/DynamiteGame Grunt/Gruntfile.js" />
         <option value="$USER_HOME$/Desktop/Programmieren/Webprogrammierung/Grunt/Gruntfile.js" />
@@ -237,20 +239,23 @@
         <option value="$PROJECT_DIR$/web/dynamite/model/GameState.dart" />
         <option value="$PROJECT_DIR$/web/dynamite/model/Modificator.dart" />
         <option value="$PROJECT_DIR$/web/dynamite/model/Movement.dart" />
-        <option value="$PROJECT_DIR$/web/dynamite/model/Player.dart" />
         <option value="$PROJECT_DIR$/web/dynamite/model/Position.dart" />
         <option value="$PROJECT_DIR$/web/data/level/level-4.json" />
         <option value="$PROJECT_DIR$/web/data/level/level-3.json" />
         <option value="$PROJECT_DIR$/web/data/level/level1.json" />
         <option value="$PROJECT_DIR$/web/data/config/config.json" />
         <option value="$PROJECT_DIR$/web/dynamite/model/Score.dart" />
-        <option value="$PROJECT_DIR$/web/dynamite/model/DynamiteGame.dart" />
         <option value="$PROJECT_DIR$/web/dynamite/DynamiteGameController.dart" />
         <option value="$PROJECT_DIR$/web/data/level/level2.json" />
         <option value="$PROJECT_DIR$/web/data/level/level3.json" />
         <option value="$PROJECT_DIR$/web/data/level/level4.json" />
         <option value="$PROJECT_DIR$/web/data/level/level5.json" />
         <option value="$PROJECT_DIR$/web/data/level/level6.json" />
+        <option value="$PROJECT_DIR$/web/data/level/level7.json" />
+        <option value="$PROJECT_DIR$/web/data/level/level8.json" />
+        <option value="$PROJECT_DIR$/web/data/level/level9.json" />
+        <option value="$PROJECT_DIR$/web/dynamite/model/Player.dart" />
+        <option value="$PROJECT_DIR$/web/dynamite/model/DynamiteGame.dart" />
       </list>
     </option>
   </component>
@@ -739,14 +744,7 @@
       <workItem from="1498897406534" duration="6549000" />
       <workItem from="1498917112689" duration="6564000" />
       <workItem from="1498943813898" duration="92000" />
-      <workItem from="1498993282525" duration="7474000" />
-    </task>
-    <task id="LOCAL-00011" summary="Buxxy mit feuer und momben">
-      <created>1497342614596</created>
-      <option name="number" value="00011" />
-      <option name="presentableId" value="LOCAL-00011" />
-      <option name="project" value="LOCAL" />
-      <updated>1497342614596</updated>
+      <workItem from="1498993282525" duration="10405000" />
     </task>
     <task id="LOCAL-00012" summary="Buxxy mit feuer und momben">
       <created>1497342690702</created>
@@ -1084,11 +1082,18 @@
       <option name="project" value="LOCAL" />
       <updated>1499000734248</updated>
     </task>
-    <option name="localTasksCounter" value="60" />
+    <task id="LOCAL-00060" summary="level texte">
+      <created>1499001128558</created>
+      <option name="number" value="00060" />
+      <option name="presentableId" value="LOCAL-00060" />
+      <option name="project" value="LOCAL" />
+      <updated>1499001128558</updated>
+    </task>
+    <option name="localTasksCounter" value="61" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="274956000" />
+    <option name="totallyTimeSpent" value="277887000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -1318,13 +1323,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/dynamite/model/Player.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-382">
-          <caret line="54" column="59" lean-forward="false" selection-start-line="54" selection-start-column="59" selection-end-line="54" selection-end-column="59" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/web/dynamite/model/blocks/Block.dart">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
@@ -1438,24 +1436,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/dynamite/model/DynamiteGame.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="68" column="48" lean-forward="false" selection-start-line="68" selection-start-column="48" selection-end-line="68" selection-end-column="48" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/dynamite/DynamiteGameController.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="185" column="60" lean-forward="false" selection-start-line="185" selection-start-column="60" selection-end-line="185" selection-end-column="60" />
-          <folding>
-            <element signature="e#0#27#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/web/styles.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="358">
@@ -1468,30 +1448,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
           <caret line="14" column="29" lean-forward="false" selection-start-line="14" selection-start-column="29" selection-end-line="14" selection-end-column="29" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/data/level/level7.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="19" column="30" lean-forward="false" selection-start-line="19" selection-start-column="30" selection-end-line="19" selection-end-column="30" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/data/level/level8.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="19" column="30" lean-forward="false" selection-start-line="19" selection-start-column="30" selection-end-line="19" selection-end-column="30" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/data/level/level9.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="22" column="0" lean-forward="false" selection-start-line="19" selection-start-column="78" selection-end-line="22" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -1530,8 +1486,58 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/web/data/level/level6.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="19" column="199" lean-forward="false" selection-start-line="19" selection-start-column="199" selection-end-line="19" selection-end-column="199" />
+        <state relative-caret-position="153">
+          <caret line="9" column="51" lean-forward="false" selection-start-line="9" selection-start-column="51" selection-end-line="9" selection-end-column="51" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/data/level/level7.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="39" lean-forward="false" selection-start-line="9" selection-start-column="39" selection-end-line="9" selection-end-column="39" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/data/level/level8.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="16" column="26" lean-forward="false" selection-start-line="16" selection-start-column="26" selection-end-line="16" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/data/level/level9.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="29" lean-forward="false" selection-start-line="8" selection-start-column="29" selection-end-line="8" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/dynamite/model/Player.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="201">
+          <caret line="37" column="41" lean-forward="true" selection-start-line="37" selection-start-column="41" selection-end-line="37" selection-end-column="41" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/dynamite/DynamiteGameController.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="227">
+          <caret line="273" column="19" lean-forward="false" selection-start-line="273" selection-start-column="19" selection-end-line="273" selection-end-column="19" />
+          <folding>
+            <element signature="e#0#27#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/dynamite/model/DynamiteGame.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="184">
+          <caret line="125" column="7" lean-forward="false" selection-start-line="125" selection-start-column="7" selection-end-line="125" selection-end-column="7" />
           <folding />
         </state>
       </provider>

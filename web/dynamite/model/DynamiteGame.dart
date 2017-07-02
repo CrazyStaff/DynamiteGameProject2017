@@ -172,6 +172,7 @@ class DynamiteGame {
       the new game state 'LOOSE' or 'LOST_LIFE'
    */
   void _decrementLife() {
+    _player.dynamiteRangeOffset = 0;
     if (_currentLevel >= _startLevel) {
       _life--;
       _dynamiteRadius = _startLevel;
@@ -260,6 +261,7 @@ class DynamiteGame {
           currentField.add(new DynamiteRange(currentPosition));
           break;
         case "P": /* Player */
+          _player = null;
           _player = new Player(currentPosition);
           currentField.add(_player);
           break;

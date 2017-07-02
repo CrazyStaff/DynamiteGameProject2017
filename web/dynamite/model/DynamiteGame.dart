@@ -162,7 +162,7 @@ class DynamiteGame {
   */
   void _generateEmptyGameField() {
     _gameField = new Iterable.generate(_fieldWidth, (row) {
-      return new Iterable.generate(_fieldHeight, (col) => new FieldNode(new Position(row, col))) // TODO richtig rum?
+      return new Iterable.generate(_fieldHeight, (col) => new FieldNode(new Position(row, col)))
           .toList();
     }).toList();
   }
@@ -175,7 +175,6 @@ class DynamiteGame {
     _player.dynamiteRangeOffset = 0;
     if (_currentLevel >= _startLevel) {
       _life--;
-      _dynamiteRadius = _startLevel;
       if (_life < 1) {
         _gameStatus = GameState.LOOSE;
       } else {
@@ -204,6 +203,7 @@ class DynamiteGame {
   void _resetGame() {
     this._gameStatus = GameState.PAUSED;
 
+    _dynamiteRadius = 1;
     Entity.portalCount = 0;
     Entity.monsterCounter = 0;
     Entity.destroyableBlockCount = 0;
@@ -261,7 +261,6 @@ class DynamiteGame {
           currentField.add(new DynamiteRange(currentPosition));
           break;
         case "P": /* Player */
-          _player = null;
           _player = new Player(currentPosition);
           currentField.add(_player);
           break;

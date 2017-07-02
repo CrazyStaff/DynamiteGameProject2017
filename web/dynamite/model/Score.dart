@@ -51,7 +51,7 @@ class Score {
       Updates the score based on the given entity 'removeEntity'
    */
   void updateScore(Entity removedEntity) {
-    switch(removedEntity) {
+    switch(removedEntity.getType()) {
       case DestroyableBlock.ENTITY_TYPE:
         _currentScore += _entityScore[DestroyableBlock.ENTITY_TYPE];
         break;

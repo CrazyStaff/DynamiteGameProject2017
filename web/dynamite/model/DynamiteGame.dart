@@ -64,7 +64,7 @@ class DynamiteGame {
   get maxLevel => _maxLvl;
   get getLife => _life;
   get currentLevel => _currentLevel;
-  get startLevel => startLevel;
+  get startLevel => _startLevel;
   GameState getStatus() =>  _gameStatus;
   bool isLevelTimerActive() => _maxLevelTime != -1;
   List<List<FieldNode>> get getGameField => _gameField;

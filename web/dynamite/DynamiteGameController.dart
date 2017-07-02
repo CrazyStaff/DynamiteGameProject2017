@@ -123,6 +123,7 @@ class DynamiteGameController {
       game.maxLvl = configs["maxLvl"];
       _gameSpeed = new Duration(milliseconds: configs["gameSpeed"]);
       game.startLevel = configs["startLvl"];
+      game.currentLevel = configs["startLvl"];
       game.startLife = configs["startLife"];
       DynamiteGame.DYNAMITE_EXPLODE_TIME = configs["dynamiteExplosionTime"];
       DynamiteGame.FIRE_DURATION = configs["fireDuration"];
@@ -137,6 +138,7 @@ class DynamiteGameController {
       Load the specific level which is declared as the 'currentLevel' in DynamiteGame ('game')
    */
   Future<bool> _loadLevel() async {
+    print("Lvl geladen. ${game.currentLevel}");
     HttpRequest.getString(configLevel + game.currentLevel.toString() + ".json").then((json) {
       print("Lvl geladen. ${game.currentLevel}");
       Map parsedMap = JSON.decode(json);

@@ -55,6 +55,7 @@ class DynamiteGame {
   set maxLvl(int maxLvl) => this._maxLvl = maxLvl;
   set startLife(int startLife) => this._startLife = startLife;
   set startLevel(int startLevel) => this._startLevel = startLevel;
+  set currentLevel(int currentLevel) => this._currentLevel = currentLevel;
   set gameStatus(GameState gameState) => this._gameStatus = gameState;
 
   /*
@@ -73,7 +74,7 @@ class DynamiteGame {
     /*
         Initialize the default values
      */
-    _currentLevel = 1;
+    _currentLevel = 8;
     _maxLvl = 0;
     _pausedGameAtTime = 0;
     _levelDescription = "";
@@ -170,7 +171,7 @@ class DynamiteGame {
       the new game state 'LOOSE' or 'LOST_LIFE'
    */
   void _decrementLife() {
-    if (_currentLevel >= _startLevel) {
+    if (_currentLevel >= 1) {
       _life--;
       _dynamiteRadius = 1;
       if (_life < 1) {
@@ -190,8 +191,8 @@ class DynamiteGame {
    */
   void resetLevel() {
     this._life = _startLife;
-    if (_currentLevel > _startLevel) {
-      _currentLevel = _startLevel;
+    if (_currentLevel > 1) {
+      _currentLevel = 1;
     }
   }
 

@@ -17,6 +17,6 @@
   "speedBuffSpawnRate" : 0,
   "speedBuffAddSpeed" : 100,
   "dynamiteRangeSpawnRate" : 0,
-  "description" : "<h1>Willkommen im letzten Level des Tutorials</h1>Im vierten Level ist deine Aufgabe den Gegner <table><td width=\"10px\" height=\"10px\" class=\"MONSTER\"></td></table> zu töten, denn du kannst erst ins Portal <table><td width=\"10px\" height=\"10px\" class=\"PORTAL\"></td></table> gehen wenn alle besigt sind.",
+  "description" : "You found it!<br>But care, we are not alone. There are Enemys.",
   "maxLevelTime" : 60
 }

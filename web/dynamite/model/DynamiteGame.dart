@@ -64,6 +64,7 @@ class DynamiteGame {
   get maxLevel => _maxLvl;
   get getLife => _life;
   get currentLevel => _currentLevel;
+  get startLevel => startLevel;
   GameState getStatus() =>  _gameStatus;
   bool isLevelTimerActive() => _maxLevelTime != -1;
   List<List<FieldNode>> get getGameField => _gameField;
@@ -74,7 +75,7 @@ class DynamiteGame {
     /*
         Initialize the default values
      */
-    _currentLevel = 8;
+    _currentLevel = 1;
     _maxLvl = 0;
     _pausedGameAtTime = 0;
     _levelDescription = "";
@@ -171,9 +172,9 @@ class DynamiteGame {
       the new game state 'LOOSE' or 'LOST_LIFE'
    */
   void _decrementLife() {
-    if (_currentLevel >= 1) {
+    if (_currentLevel >= _startLevel) {
       _life--;
-      _dynamiteRadius = 1;
+      _dynamiteRadius = _startLevel;
       if (_life < 1) {
         _gameStatus = GameState.LOOSE;
       } else {
@@ -191,8 +192,8 @@ class DynamiteGame {
    */
   void resetLevel() {
     this._life = _startLife;
-    if (_currentLevel > 1) {
-      _currentLevel = 1;
+    if (_currentLevel > _startLevel) {
+      _currentLevel = _startLevel;
     }
   }
 

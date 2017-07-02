@@ -92,7 +92,7 @@ abstract class Entity {
      Proofs if 'entityField' is walkable
    */
   bool isMovePossible(List<Entity> entityField) {
-    if(!isAlive) return false; // TODO: notwendig?
+    if(!isAlive) return false;
 
     for(Entity otherEntity in entityField) {
       if(!otherEntity.isWalkable) {
@@ -117,7 +117,7 @@ abstract class Entity {
       _position = nextPosition;
       nextPosition = null;
 
-    if(this.getType() == "MONSTER" || this.getType() == "PLAYER") {
+    if(this.getType() == "FRIDOLIN" || this.getType() == "FASTELLE" || this.getType() == "PLAYER") {
       for (Entity otherEntities in entityField) {
         if (this.collision(otherEntities)) {
           this.setAlive(false, "Collision with " + otherEntities.getType());

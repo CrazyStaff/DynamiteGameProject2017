@@ -226,8 +226,13 @@ html, body {
     background-size: cover;
 }
 
-.MONSTER {
+.FRIDOLIN {
     background-color: purple !important;
+    color: red;
+}
+
+.FASTELLE {
+    background-color: gainsboro !important;
     color: red;
 }
 

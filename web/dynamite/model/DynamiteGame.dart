@@ -10,6 +10,8 @@ import 'blocks/Dynamite.dart';
 import 'items/Portal.dart';
 import 'items/SpeedBuff.dart';
 import 'items/DynamiteRange.dart';
+import 'monster/Fastelle.dart';
+import 'monster/Fridolin.dart';
 import 'monster/Monster.dart';
 import 'pathfinding/FieldNode.dart';
 
@@ -235,7 +237,10 @@ class DynamiteGame {
           // The empty field is not needed by implementation
           break;
         case "M": /* Monster */
-          currentField.add(new Monster(currentPosition));
+          currentField.add(new Fridolin(currentPosition));
+          break;
+        case "F": /* Monster with rage mode */
+          currentField.add(new Fastelle(currentPosition));
           break;
         case "B": /* Block */
           currentField.add(new UndestroyableBlock(currentPosition));
@@ -468,7 +473,8 @@ class DynamiteGame {
    */
   void initScore(int expMonster, int expDestroyableBlock) {
     _score.resetScore();
-    _score.initScore(Monster.ENTITY_TYPE, expMonster);
+    _score.initScore(Fastelle.ENTITY_TYPE, expMonster);
+    _score.initScore(Fridolin.ENTITY_TYPE, expMonster);
     _score.initScore(DestroyableBlock.ENTITY_TYPE, expDestroyableBlock);
 
    _score.calculateMaxScore(_gameField);

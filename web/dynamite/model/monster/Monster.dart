@@ -12,10 +12,7 @@ import 'dart:math';
     If the monster sees an enemy of himself (f.e. the player)
     it will chase the enemy with the help of path finding
  */
-class Monster extends Entity {
-
-  // The entity type identifies the entity as monster
-  static const ENTITY_TYPE = "MONSTER";
+abstract class Monster extends Entity {
 
   // The front view range of the monster
   static const int VIEW_FIELD_RANGE = 4;
@@ -37,24 +34,19 @@ class Monster extends Entity {
      It moves to the last seen position of the enemy which
      will be stored in target if the enemy is sighted
    */
-  Target _target;
+  Target target;
 
-  Monster(Position position) : super(ENTITY_TYPE, position) {
+  Monster(String type, Position position) : super(type, position) {
     // Increase the counter of all enemies
     Entity.monsterCounter += 1;
 
-    this._target = new Target();
+    this.target = new Target();
     this.isWalkable = true;
     this.strength = 50;
     this.team = 2;
     this.viewDirection = DEFAULT_VIEW_DIRECTION;
 
     this.setWalkingSpeed(1000);
-
-    /*
-      this updates the time of the last action so that the action method
-      can be called from 'DynamiteGame'
-    */
     this.updateLastMoveTime();
   }
 
@@ -102,12 +94,12 @@ class Monster extends Entity {
   Position getNextMove(List<List< FieldNode >> gameField) {
     _registerEnemiesInViewRange(gameField);
 
-    if(!_target.hasPathToTarget()) {
+    if(!target.hasPathToTarget()) {
       // Move randomly
       nextPosition = moveRandomly(gameField);
     } else {
       // Move to the position where you have seen the target at last
-      nextPosition = _target.nextStepToTarget();
+      nextPosition = target.nextStepToTarget();
     }
 
       /*
@@ -133,7 +125,7 @@ class Monster extends Entity {
         If the monster don´t have a target there shouldn´t
         be a attention warning of the monster in the view
      */
-    if(!_target.hasPathToTarget()) {
+    if(!target.hasPathToTarget()) {
       this.extensionType = "";
     }
 
@@ -163,8 +155,8 @@ class Monster extends Entity {
                 otherwise the monster can´t see the enemy
              */
             if (!_proofIfObstaclesInView(walkableViewRange, entity, gameField)) {
-              _target.setTarget(entity);
-              _target.setPathToTargetFrom(this, gameField);
+              target.setTarget(entity);
+              target.setPathToTargetFrom(this, gameField);
 
               // Show in the view that the monster has sighted the enemy
               this.extensionType = "ENTITY_ATTENTION";
@@ -238,8 +230,8 @@ class Monster extends Entity {
         move path of the monster to the enemy
      */
     if(killEntity != null) {
-      _target.setTarget(killEntity);
-      _target.setPathToTargetFrom(this, gameField);
+      target.setTarget(killEntity);
+      target.setPathToTargetFrom(this, gameField);
       return true;
     }
     return false;

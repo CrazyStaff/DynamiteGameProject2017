@@ -2,6 +2,8 @@ import 'Entity.dart';
 import 'blocks/DestroyableBlock.dart';
 import 'dart:collection';
 import 'items/Portal.dart';
+import 'monster/Fastelle.dart';
+import 'monster/Fridolin.dart';
 import 'monster/Monster.dart';
 import 'pathfinding/FieldNode.dart';
 
@@ -49,12 +51,15 @@ class Score {
       Updates the score based on the given entity 'removeEntity'
    */
   void updateScore(Entity removedEntity) {
-    switch(removedEntity.type) {
+    switch(removedEntity) {
       case DestroyableBlock.ENTITY_TYPE:
         _currentScore += _entityScore[DestroyableBlock.ENTITY_TYPE];
         break;
-      case Monster.ENTITY_TYPE: // TODO other monsters => specialization classses too
-        _currentScore += _entityScore[Monster.ENTITY_TYPE];
+      case Fridolin.ENTITY_TYPE:
+        _currentScore += _entityScore[Fridolin.ENTITY_TYPE];
+        break;
+      case Fastelle.ENTITY_TYPE:
+        _currentScore += _entityScore[Fastelle.ENTITY_TYPE];
         break;
     }
   }
@@ -70,8 +75,11 @@ class Score {
             case DestroyableBlock.ENTITY_TYPE:
               _maxScore += _entityScore[DestroyableBlock.ENTITY_TYPE];
               break;
-            case Monster.ENTITY_TYPE: // TODO other monsters => specialization classes too
-              _maxScore += _entityScore[Monster.ENTITY_TYPE];
+            case Fridolin.ENTITY_TYPE:
+              _maxScore += _entityScore[Fridolin.ENTITY_TYPE];
+              break;
+            case Fastelle.ENTITY_TYPE:
+              _maxScore += _entityScore[Fastelle.ENTITY_TYPE];
               break;
           }
         }

@@ -183,7 +183,7 @@ class DynamiteGameController {
   _updateView() {
     view.update(game.getHTML());
     view.updateScore(game.getScorePercentage());
-    view.updateLevel(game.currentLevel - game.startLevel);
+    view.updateLevel(game.currentLevel - game.startLevel + 1);
     view.updateLife(game.getLife);
     view.updateLeftTime(game.getLevelLeftTime());
     view.setLeftTimeVisibility(game.isLevelTimerActive());

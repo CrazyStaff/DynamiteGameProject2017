@@ -41,12 +41,13 @@ class Player extends Entity {
   @override
   bool collision(Entity  otherEntity) {
     if (otherEntity.getType() == "PORTAL" && Entity.monsterCounter == 0){
+      _dynamiteRangeOffset = 0;
       _hasWon = true;
     }
 
     if (otherEntity.getType() == "DYNAMITERANGE") {
       print(otherEntity.getType() + " collect Item");
-      _dynamiteRangeOffset++;
+      this._dynamiteRangeOffset = this._dynamiteRangeOffset + 1;
     }
 
     return super.collision(otherEntity);

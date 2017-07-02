@@ -13,6 +13,6 @@
   "speedBuffSpawnRate" : 0,
   "speedBuffAddSpeed" : 100,
   "dynamiteRangeSpawnRate" : 0,
-  "description" : "Grate, you got it <br> now the way to the portal <img src=\"/PORTAL_IMAGE\"> is blocked by boxes <div id=\"BR_BOX_IMAGE\"> <br>You can destroy it with Dynamite <div id=\"BR_BOX_IMAGE\">, but take care of the explosion.",
+  "description" : "Greate, you got it. <br> Now the way to the portal <img src=\"/PORTAL_IMAGE\"> is blocked by boxes. <div id=\"BR_BOX_IMAGE\"> <br>You can destroy them with Dynamite, <div id=\"BR_BOX_IMAGE\"> but take care of the explosion.",
   "maxLevelTime" : 20
 }

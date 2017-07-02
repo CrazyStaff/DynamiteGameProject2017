@@ -13,6 +13,6 @@
   "speedBuffSpawnRate" : 0,
   "speedBuffAddSpeed" : 100,
   "dynamiteRangeSpawnRate" : 0,
-  "description" : "Congratulations!<br>Now we must find the Portal in a Box.",
+  "description" : "Congratulations!<br>Now you must find the Portal inside a Box.",
   "maxLevelTime" : 30
 }

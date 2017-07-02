@@ -17,6 +17,6 @@
   "speedBuffSpawnRate" : 10,
   "speedBuffAddSpeed" : 100,
   "dynamiteRangeSpawnRate" : 10,
-  "description" : "Realy good!<br>Now care about the a Special Monster, if it see you, he is realy fast.",
+  "description" : "Really good!<br>Now care about the Special Monster, if it sees you, it moves in your direction really fast.",
   "maxLevelTime" : 60
 }

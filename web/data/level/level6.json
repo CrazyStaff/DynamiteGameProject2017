@@ -17,6 +17,6 @@
   "speedBuffSpawnRate" : 30,
   "speedBuffAddSpeed" : 100,
   "dynamiteRangeSpawnRate" : 5,
-  "description" : "Now wa are in the first real level. Care, if you die, you los an live and if you dont have a live left, you start at this level.<br>Kill all Enemys and find the Portal, care about the Time.",
+  "description" : "Now you are in the first real level. Watch out, if you die, you lose a live and if you don't have any lives left, you start at this level again.<br>Kill all enemies and find the Portal, before the time expired.",
   "maxLevelTime" : 90
 }

@@ -17,6 +17,6 @@
   "speedBuffSpawnRate" : 0,
   "speedBuffAddSpeed" : 100,
   "dynamiteRangeSpawnRate" : 0,
-  "description" : "You found it!<br>But care, we are not alone. There are enemys. Kill all enemys to unlock the portal",
+  "description" : "You found it!<br>But beware, you are not alone. There are enemies. Kill all of them to unlock the portal.",
   "maxLevelTime" : 60
 }

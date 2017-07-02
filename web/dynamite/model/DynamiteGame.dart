@@ -31,6 +31,7 @@ class DynamiteGame {
       Information for the current level
   */
   String _levelDescription;
+  String _dieReason = "";
   GameState _gameStatus;
   Player _player;
   Score _score;
@@ -129,6 +130,7 @@ class DynamiteGame {
     if (_currentLevel > _maxLvl){
       _gameStatus = GameState.MAX_LEVEL_REACHED;
     }
+    _dieReason = "";
   }
 
   /*
@@ -184,6 +186,8 @@ class DynamiteGame {
       // There should be no decrement of lifes in the tutorial levels
       _gameStatus = GameState.LOST_LIFE;
     }
+    print("Die: " + _dieReason);
+    _dieReason = _player.dieReason;
   }
 
   /*
@@ -426,8 +430,13 @@ class DynamiteGame {
       case GameState.PAUSED:
         htmlElements["level_header"] = "Welcome to the tutorial";
         htmlElements["level_announcement"] = "";
-        htmlElements["level_result"] = _levelDescription;
-        htmlElements["level_accept"] = "Start Tutorial";
+        if (_dieReason == "") {
+          htmlElements["level_result"] = _levelDescription;
+          htmlElements["level_accept"] = "Start Tutorial";
+        }else{
+          htmlElements["level_result"] = "Cause of death: " + _dieReason + "<br><br>" + _levelDescription;
+          htmlElements["level_accept"] = "Restart Tutorial";
+        }
         break;
       case GameState.LOOSE:
         htmlElements["level_header"] = "You failed";

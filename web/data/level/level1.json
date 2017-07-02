@@ -15,4 +15,5 @@
   "dynamiteRangeSpawnRate" : 0,
   "description" : "Welcome to DynamiteMan <br> The goal is bringing the Player <table><td width=\"60px\" height=\"60px\" class=\"PLAYER\"></td></table> through the portal. <table><td width=\"60px\" height=\"60px\" class=\"PORTAL\"></td></table>",
   "maxLevelTime" : -1
+
 }

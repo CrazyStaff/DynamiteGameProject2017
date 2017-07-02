@@ -3,6 +3,7 @@ import '../Entity.dart';
 import '../Modificator.dart';
 import '../Movement.dart';
 import '../Position.dart';
+import '../Team.dart';
 import '../pathfinding/FieldNode.dart';
 import 'Block.dart';
 import 'Fire.dart';
@@ -21,6 +22,10 @@ class Dynamite extends Block {
    */
   int _explosionRadius;
 
+  /*
+    All Teams which are not harmed by the fire and dynamite
+   */
+   List<Team> teamsNotToHarm;
 
   Dynamite(Position position, int explosionRadius) : super(ENTITY_TYPE, position) {
     this._explosionRadius = explosionRadius;
@@ -30,6 +35,13 @@ class Dynamite extends Block {
       can be called from 'DynamiteGame'
     */
     updateLastActionTime();
+  }
+
+  /*
+      Set all teams which shouldn´t get harmed by the fire of this dynamite
+   */
+  void doNotHarmThisTeamsByFire(List<Team> teamsNotToHarm) {
+      this.teamsNotToHarm = teamsNotToHarm;
   }
 
   /*
@@ -61,6 +73,11 @@ class Dynamite extends Block {
         Position positionFire = pos.clone();
 
         Fire fire = new Fire(positionFire);
+        if(teamsNotToHarm != null) {
+          for(Team notToHarm in teamsNotToHarm) {
+            fire.addToTeam(notToHarm);
+          }
+        }
         modificator.addAddable(fire, positionFire);
 
         _collisionWithEntities(fire, gameField, pos);
@@ -86,9 +103,10 @@ class Dynamite extends Block {
       Sets the dynamite to not alive if the dynamite is exploded
    */
   @override
-  void action(List<List< FieldNode >> gameField, int time) {
+  Modificator action(List<List< FieldNode >> gameField, int time) {
     if ((this.lastActionTime + DynamiteGame.DYNAMITE_EXPLODE_TIME) < time){
       setAlive(false, "Dynamite killes you");
     }
+    return null;
   }
 }

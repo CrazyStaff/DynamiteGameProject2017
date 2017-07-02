@@ -3,6 +3,7 @@ import '../Modificator.dart';
 import '../Movement.dart';
 import '../Position.dart';
 import '../Target.dart';
+import '../Team.dart';
 import '../items/Portal.dart';
 import '../pathfinding/FieldNode.dart';
 import 'dart:math';
@@ -43,7 +44,7 @@ abstract class Monster extends Entity {
     this.target = new Target();
     this.isWalkable = true;
     this.strength = 50;
-    this.team = 2;
+    this.setAbsolutelyNewTeam(Team.MONSTERS);
     this.viewDirection = DEFAULT_VIEW_DIRECTION;
 
     this.setWalkingSpeed(1000);
@@ -242,7 +243,7 @@ abstract class Monster extends Entity {
    */
   bool _isWeakerEnemy(Entity entity, List<Entity> entityField) {
     if (isMovePossible(entityField)) {
-      if (entity.team != this.team) {
+      if (!proofIfEntitiesInSameTeam(entity)) {
         if (this.strength > entity.strength) {
           if (entity.type != Portal.ENTITY_TYPE) {
             return true;

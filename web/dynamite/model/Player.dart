@@ -1,5 +1,7 @@
 import 'Entity.dart';
+import 'Modificator.dart';
 import 'Position.dart';
+import 'Team.dart';
 import 'pathfinding/FieldNode.dart';
 
 /*
@@ -16,7 +18,7 @@ class Player extends Entity {
   Player(Position position) : super(ENTITY_TYPE, position) {
       this._dynamiteRangeOffset = 0;
       this._hasWon = false;
-      this.team = 1;
+      this.setAbsolutelyNewTeam(Team.PLAYER);
       this.strength = 42;
       this.isWalkable = true;
 
@@ -65,8 +67,9 @@ class Player extends Entity {
   }
 
   @override
-  void action(List<List<FieldNode>> _gameField, int time) {
+  Modificator action(List<List<FieldNode>> _gameField, int time) {
     _checkIfAlreadyOverPortal(_gameField);
+    return null;
   }
 
   /*

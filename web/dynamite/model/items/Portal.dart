@@ -1,4 +1,5 @@
 import '../Entity.dart';
+import '../Modificator.dart';
 import '../Position.dart';
 import '../pathfinding/FieldNode.dart';
 
@@ -41,7 +42,7 @@ class Portal extends Entity {
       The portal is closed if there are still enemies
    */
   @override
-  void action(List<List<FieldNode>> _gameField, int time) {
+  Modificator action(List<List<FieldNode>> _gameField, int time) {
     // The portal should be closed if there is still an enemy
     if(Entity.monsterCounter >= 1) {
       this.extensionType = "PORTAL_CLOSED";

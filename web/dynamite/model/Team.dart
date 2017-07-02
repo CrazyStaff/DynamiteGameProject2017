@@ -1,0 +1,3 @@
+enum Team {
+  ITEMS, MONSTERS, PLAYER, BLOCKS, OTHER
+}

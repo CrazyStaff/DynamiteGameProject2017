@@ -1,3 +1,4 @@
+import '../Modificator.dart';
 import '../Position.dart';
 import '../pathfinding/FieldNode.dart';
 import 'Monster.dart';
@@ -36,7 +37,7 @@ class Fastelle extends Monster {
       detects an enemy in his view range
    */
   @override
-  void action(List<List<FieldNode>> _gameField, int time) {
+  Modificator action(List<List<FieldNode>> _gameField, int time) {
     if(!target.hasPathToTarget() && isInRageMode) {
       isInRageMode = false;
       setWalkingSpeed(getWalkingSpeed() + rageMovementSpeed);
@@ -44,5 +45,6 @@ class Fastelle extends Monster {
       isInRageMode = true;
       setWalkingSpeed(getWalkingSpeed() - rageMovementSpeed);
     }
+    return null;
   }
 }

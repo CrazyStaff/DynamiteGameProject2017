@@ -12,6 +12,7 @@ import 'items/SpeedBuff.dart';
 import 'items/DynamiteRange.dart';
 import 'monster/Fastelle.dart';
 import 'monster/Fridolin.dart';
+import 'monster/Maya.dart';
 import 'monster/Monster.dart';
 import 'pathfinding/FieldNode.dart';
 
@@ -249,6 +250,9 @@ class DynamiteGame {
         case "F": /* Monster with rage mode */
           currentField.add(new Fastelle(currentPosition));
           break;
+        case "N": /* Monster which drops dynamite */
+          currentField.add(new Maya(currentPosition));
+          break;
         case "B": /* Block */
           currentField.add(new UndestroyableBlock(currentPosition));
           break;
@@ -331,7 +335,10 @@ class DynamiteGame {
               }
             }
             // Call the entity action for special innovations by entity
-            entity.action(_gameField, time);
+            Modificator mod = entity.action(_gameField, time);
+            if (mod != null) {
+              toModificate.add(mod);
+            }
           }
 
           /*

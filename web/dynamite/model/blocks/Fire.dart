@@ -1,6 +1,8 @@
 import '../DynamiteGame.dart';
 import '../Entity.dart';
+import '../Modificator.dart';
 import '../Position.dart';
+import '../Team.dart';
 import '../pathfinding/FieldNode.dart';
 import 'Block.dart';
 
@@ -14,7 +16,7 @@ class Fire extends Block {
 
   Fire(Position position) : super(ENTITY_TYPE, position) {
     isWalkable = true;
-    team = 3;
+    setAbsolutelyNewTeam(Team.ITEMS);
     strength = 99;
 
     /*
@@ -52,9 +54,10 @@ class Fire extends Block {
       Sets the fire to not alive if the duration of fire is over
    */
   @override
-  void action(List<List< FieldNode >> gameField, int time) {
+  Modificator action(List<List< FieldNode >> gameField, int time) {
     if ((this.lastActionTime + DynamiteGame.FIRE_DURATION) < time){
       setAlive(false, "Burned to ash");
     }
+    return null;
   }
 }

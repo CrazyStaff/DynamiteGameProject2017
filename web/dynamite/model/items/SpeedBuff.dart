@@ -1,5 +1,6 @@
 import '../Entity.dart';
 import '../Position.dart';
+import '../Team.dart';
 import 'Item.dart';
 
 /*
@@ -20,7 +21,7 @@ class SpeedBuff extends Item {
 
   SpeedBuff(Position position) : super(ENTITY_TYPE, position) {
     this.isWalkable = true;
-    this.team = 3;
+    setAbsolutelyNewTeam(Team.ITEMS);
 
     // This item could be taken by any other entity
     this.strength = 0;
@@ -30,7 +31,7 @@ class SpeedBuff extends Item {
       Set a higher speed to the entity which is colliding with this item
    */
   bool collision(Entity entity) {
-    if (this.team != entity.team) {
+    if (!proofIfEntitiesInSameTeam(entity)) {
       entity.setWalkingSpeed(entity.getWalkingSpeed() - speedOffset);
       return true;
     }

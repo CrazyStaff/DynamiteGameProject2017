@@ -1,5 +1,6 @@
 import '../Entity.dart';
 import '../Position.dart';
+import '../Team.dart';
 import 'Item.dart';
 import '../DynamiteGame.dart';
 
@@ -18,7 +19,7 @@ class DynamiteRange extends Item {
 
   DynamiteRange(Position position) : super(ENTITY_TYPE, position) {
     this.isWalkable = true;
-    this.team = 3;
+    this.setAbsolutelyNewTeam(Team.ITEMS);
 
     // this item could be taken by any other entity
     this.strength = 0;

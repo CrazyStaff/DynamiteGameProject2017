@@ -2,6 +2,7 @@ import 'GameState.dart';
 import 'Modificator.dart';
 import 'Position.dart';
 import 'DynamiteGame.dart';
+import 'Team.dart';
 import 'pathfinding/FieldNode.dart';
 
 /*
@@ -40,7 +41,7 @@ abstract class Entity {
       Basic information about the entity
    */
   int walkingSpeed;
-  int team;
+  List<Team> teams;
   int strength;
   bool _alive;
   bool isWalkable;
@@ -54,7 +55,8 @@ abstract class Entity {
     this._position = position;
     this._alive = true;
     this.strength = 0;
-    this.team = 0;
+    this.teams = new List<Team>();
+    this.teams.add(Team.OTHER);
     this.isWalkable = false;
     this.extensionType = "";
     this.dieReason = "Timeout";
@@ -78,6 +80,21 @@ abstract class Entity {
 
   int getWalkingSpeed() {
     return walkingSpeed;
+  }
+
+  /*
+      Initialize new team list and add then the new team to it
+   */
+  void setAbsolutelyNewTeam(Team team) {
+    this.teams = new List<Team>();
+    addToTeam(team);
+  }
+
+  /*
+      Add the team to the existing team list
+   */
+  void addToTeam(Team team) {
+    this.teams.add(team);
   }
 
   /*
@@ -146,12 +163,25 @@ abstract class Entity {
       is not in my team and is stronger than me
    */
   bool collision(Entity entity) {
-      if(entity.team != this.team) {
+      if(!proofIfEntitiesInSameTeam(entity)) {
         if(entity.strength > this.strength) {
           return true;
         }
       }
       return false;
+  }
+
+  /*
+      Proofs if the other entity has one team in which this entity is too
+   */
+  bool proofIfEntitiesInSameTeam(Entity otherEntity) {
+    bool sameTeam = false;
+    for(Team team in teams) {
+      if(otherEntity.teams.contains(team)) {
+        return true;
+      }
+    }
+    return false;
   }
 
   void setAlive(bool alive, String reason) {
@@ -185,7 +215,8 @@ abstract class Entity {
       Needs to be override by the implementation
       Use 'updateLastTimeAction()' in constructor of the inherited class to use this method
    */
-  void action(List<List< FieldNode >> _gameField, int time) {
+  Modificator action(List<List< FieldNode >> _gameField, int time) {
+    return null;
   }
 
   /* this strategy decides what to do if the entity is not moving

@@ -236,6 +236,11 @@ html, body {
     color: red;
 }
 
+.MAYA {
+    background-color: coral !important;
+    color: red;
+}
+
 .PLAYER {
     background-color: orange !important;
 }

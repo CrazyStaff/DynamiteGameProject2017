@@ -17,6 +17,6 @@
   "speedBuffSpawnRate" : 30,
   "speedBuffAddSpeed" : 100,
   "dynamiteRangeSpawnRate" : 5,
-  "description" : "<h1>Level 5</h1>Besiege alle Gegner und finde das Portal.",
+  "description" : "Now wa are in the first real level. Care, if you die, you los an live and if you dont have a live left, you start at this level.<br>Kill all Enemys and find the Portal, care about the Time.",
   "maxLevelTime" : 90
 }

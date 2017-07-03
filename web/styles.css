@@ -210,12 +210,14 @@ html, body {
 }
 
 .FRIDOLIN {
-    background-color: purple !important;
+    background-image: url("data/images/small/MRotL.jpeg") !important;
+    background-size: cover;
     color: red;
 }
 
 .FASTELLE {
-    background-color: gainsboro !important;
+    background-image: url("data/images/small/mGruenL.jpeg") !important;
+    background-size: cover;
     color: red;
 }
 

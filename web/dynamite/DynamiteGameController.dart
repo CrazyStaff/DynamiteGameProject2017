@@ -40,19 +40,15 @@ class DynamiteGameController {
     }
     view.generateField(game);
     // New game is started by user
-    print("Cur ${view.startButton.getAttribute("class")}");
     view.startButton.onClick.listen((_) {
       switch (view.startButton.getAttribute("class")) {
         case "init":
-          print("start game");
           _startGame();
           break;
         case "running":
-          print("start run");
           _pauseGame();
           break;
         case "paused":
-          print("Clicked pause");
           if(!view.isOverviewShown()) {
             _continueGame();
           }

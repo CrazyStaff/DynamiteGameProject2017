@@ -114,10 +114,6 @@ abstract class Entity {
       viewDirection = nextViewDirection;
     }
     _updateViewDirectionInExtensionTypes();
-
-    print("currentView: $viewDirection");
-    print("nextView: $nextViewDirection");
-
   }
 
   /*
@@ -290,7 +286,6 @@ abstract class Entity {
     for(String extensionType in extensionTypes) {
       extTypes += extensionType + " ";
     }
-    print("EXT " + extTypes);
     return extTypes;
   }
 

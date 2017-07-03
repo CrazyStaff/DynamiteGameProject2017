@@ -195,14 +195,7 @@ html, body {
 
 }
 
-.FIRE {
-    background-color: red !important;
-}
 
-.PORTAL {
-    background-image: url("data/images/small/openPortal2.png");
-    background-size: cover;
-}
 
 .PORTAL_CLOSED {
     background-image: url("data/images/small/closedPortal.png") !important;
@@ -236,6 +229,16 @@ html, body {
 
 .MAYA_LEFT {
     background-image: url("data/images/mobile/greenLeft.png") !important;
+    background-size: cover;
+}
+
+.FIRE {
+    background-image: url("data/images/mobile/fire2.png");
+    background-size: cover;
+}
+
+.PORTAL {
+    background-image: url("data/images/mobile/openPortal2.png");
     background-size: cover;
 }
 
@@ -275,7 +278,7 @@ html, body {
     font-size: 1.2rem;
     text-align: right;
     padding-right: 2px;
-    color: red;
+    color: black;
 }
 
 @media only screen and (max-device-width:480px) {

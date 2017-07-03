@@ -98,7 +98,7 @@ abstract class Monster extends Entity {
         be a attention warning of the monster in the view
      */
     if(!target.hasPathToTarget()) {
-      this.extensionType = "";
+      this.extensionTypes.remove("ENTITY_ATTENTION");
     }
 
     /*
@@ -131,7 +131,7 @@ abstract class Monster extends Entity {
               target.setPathToTargetFrom(this, gameField);
 
               // Show in the view that the monster has sighted the enemy
-              this.extensionType = "ENTITY_ATTENTION";
+              this.extensionTypes.add("ENTITY_ATTENTION");
               return;
             }
           }

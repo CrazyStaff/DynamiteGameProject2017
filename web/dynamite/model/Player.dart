@@ -22,6 +22,11 @@ class Player extends Entity {
       this.strength = 42;
       this.isWalkable = true;
 
+      /*
+          Player supports all images front, back, left and right in the view
+       */
+      this.supportMultiViewDirection = true;
+
       setWalkingSpeed(300);
       /*
           this updates the time of the last action so that the action method

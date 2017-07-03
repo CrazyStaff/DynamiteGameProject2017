@@ -209,26 +209,56 @@ html, body {
     background-size: cover;
 }
 
-.FRIDOLIN {
-    background-image: url("data/images/small/MRotL.jpeg") !important;
+.FRIDOLIN_LEFT {
+    background-image: url("data/images/mobile/redLeft.png") !important;
     background-size: cover;
-    color: red;
 }
 
-.FASTELLE {
-    background-image: url("data/images/small/mGruenL.jpeg") !important;
+.FRIDOLIN_RIGHT {
+    background-image: url("data/images/mobile/redRight.png") !important;
     background-size: cover;
-    color: red;
 }
 
-.MAYA {
-    background-color: coral !important;
-    color: red;
+.FASTELLE_RIGHT {
+    background-image: url("data/images/mobile/greenRight.png") !important;
+    background-size: cover;
 }
 
-.PLAYER {
-    background-color: orange !important;
+.FASTELLE_LEFT {
+    background-image: url("data/images/mobile/greenLeft.png") !important;
+    background-size: cover;
 }
+
+.MAYA_RIGHT {
+     background-image: url("data/images/mobile/greenRight.png") !important;
+     background-size: cover;
+ }
+
+.MAYA_LEFT {
+    background-image: url("data/images/mobile/greenLeft.png") !important;
+    background-size: cover;
+}
+
+.PLAYER_UP {
+    background-image: url("data/images/mobile/playerUp.png") !important;
+    background-size: cover;
+}
+
+.PLAYER_DOWN {
+    background-image: url("data/images/mobile/playerDown.png") !important;
+    background-size: cover;
+}
+
+.PLAYER_RIGHT {
+    background-image: url("data/images/mobile/playerRight.png") !important;
+    background-size: cover;
+}
+
+.PLAYER_LEFT {
+    background-image: url("data/images/mobile/playerLeft.png") !important;
+    background-size: cover;
+}
+
 
 .DYNAMITERANGE {
     background-color: darksalmon !important;

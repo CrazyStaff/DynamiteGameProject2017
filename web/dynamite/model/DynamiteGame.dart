@@ -416,7 +416,7 @@ class DynamiteGame {
   String _getHTMLEntities(List<Entity> allEntities) {
     String htmlEntities = " class='";
     for (Entity entity in allEntities) {
-      htmlEntities += "${entity.getType()} ${entity.getExtensionType()} ";
+      htmlEntities += "${entity.getType()} ${entity.getExtensionTypes()} ";
     }
     htmlEntities += "'";
     return htmlEntities;

@@ -14,6 +14,11 @@ class Portal extends Entity {
   static const ENTITY_TYPE = "PORTAL";
 
   /*
+      Extension type that the portal is closed
+  */
+  final String PORTAL_CLOSED = "PORTAL_CLOSED";
+
+  /*
       The spawn percentage of this item
       The portal should not spawn directly after destroying the first destroyable block
    */
@@ -45,10 +50,12 @@ class Portal extends Entity {
   Modificator action(List<List<FieldNode>> _gameField, int time) {
     // The portal should be closed if there is still an enemy
     if(Entity.monsterCounter >= 1) {
-      this.extensionType = "PORTAL_CLOSED";
+      if(!extensionTypes.contains(PORTAL_CLOSED)) {
+        this.extensionTypes.add(PORTAL_CLOSED);
+      }
     } else {
       // Now the portal should be open
-      this.extensionType = "";
+      this.extensionTypes.remove(PORTAL_CLOSED);
     }
   }
 }

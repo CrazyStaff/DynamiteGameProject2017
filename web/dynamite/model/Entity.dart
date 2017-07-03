@@ -22,11 +22,12 @@ abstract class Entity {
 
   /*
     Information about the type of the entity
-    The extension type is used for extra information
+    The extension types is used for extra information
     f.e. that the monster has the attention mode on
+    or the view direction of the entity
    */
   String type;
-  String extensionType;
+  List<String> extensionTypes;
 
   /*
       The position and next calculated position of the entity
@@ -60,6 +61,12 @@ abstract class Entity {
   bool isWalkable;
   String dieReason;
 
+  /*
+      If defined as true the entity has view images for front, back, left and right (f.e. player)
+      If defined as false the entity has only view images for left and right (f.e. monsters)
+   */
+  bool supportMultiViewDirection;
+
   bool get isAlive => this._alive;
   Position get position => _position;
 
@@ -71,9 +78,12 @@ abstract class Entity {
     this.teams = new List<Team>();
     this.teams.add(Team.OTHER);
     this.isWalkable = false;
-    this.extensionType = "";
+    this.extensionTypes = new List<String>();
     this.dieReason = "Timeout";
+    this.supportMultiViewDirection = false;
     this.viewDirection = DEFAULT_VIEW_DIRECTION;
+
+    setViewDirection();
   }
 
   void updateLastMoveTime() {
@@ -99,14 +109,61 @@ abstract class Entity {
   /*
       Set the view direction to the calculated next view direction
    */
-  setViewDirection() {
-    viewDirection = nextViewDirection;
+  void setViewDirection() {
+    if(nextViewDirection != null) {
+      viewDirection = nextViewDirection;
+    }
+    _updateViewDirectionInExtensionTypes();
+
+    print("currentView: $viewDirection");
+    print("nextView: $nextViewDirection");
+
+  }
+
+  /*
+      Updates the view direction in extension types
+   */
+  void _updateViewDirectionInExtensionTypes() {
+    String up = type +  "_UP";
+    String down = type +  "_DOWN";
+    String right = type +  "_RIGHT";
+    String left = type +  "_LEFT";
+
+    extensionTypes.remove(up);
+    extensionTypes.remove(down);
+
+    if(supportMultiViewDirection) {
+      extensionTypes.remove(left);
+      extensionTypes.remove(right);
+    }
+
+    /*
+        View directions up and down don´t change anything
+        while only left and right images are supported
+     */
+    if(supportMultiViewDirection) {
+      if (viewDirection == Movement.UP) {
+        extensionTypes.add(up);
+      } else if (viewDirection == Movement.DOWN) {
+        extensionTypes.add(down);
+      }
+    }
+
+    if(viewDirection == Movement.LEFT) {
+      extensionTypes.remove(left);
+      extensionTypes.remove(right);
+      extensionTypes.add(left);
+    } else if(viewDirection == Movement.RIGHT) {
+      extensionTypes.remove(left);
+      extensionTypes.remove(right);
+      extensionTypes.add(right);
+    }
   }
 
   /*
       Set the new view direction based on the next moving position of monster
    */
-  setNextViewDirection() {
+  void setNextViewDirection() {
     if(nextPosition == null) return;
     this.nextViewDirection = nextPosition - position;
   }
@@ -160,8 +217,10 @@ abstract class Entity {
       // Moves to the new field
       entityField.add(this);
 
+      setNextViewDirection();
       _position = nextPosition;
       nextPosition = null;
+      setViewDirection();
 
     if(this.getType() == "FRIDOLIN" || this.getType() == "FASTELLE" || this.getType() == "PLAYER") {
       for (Entity otherEntities in entityField) {
@@ -173,6 +232,7 @@ abstract class Entity {
         }
       }
     }
+
     // Updates the last move time
     lastMoveTime = new DateTime.now().millisecondsSinceEpoch;
   }
@@ -225,8 +285,13 @@ abstract class Entity {
     return this.type;
   }
 
-  String getExtensionType() {
-    return this.extensionType;
+  String getExtensionTypes() {
+    String extTypes = "";
+    for(String extensionType in extensionTypes) {
+      extTypes += extensionType + " ";
+    }
+    print("EXT " + extTypes);
+    return extTypes;
   }
 
   /*

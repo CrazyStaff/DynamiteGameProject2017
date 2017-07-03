@@ -130,6 +130,7 @@ class DynamiteGame {
 
     if (_currentLevel > _maxLvl){
       _gameStatus = GameState.MAX_LEVEL_REACHED;
+      this._currentLevel = 0;
     }
     _dieReason = "";
   }
@@ -509,5 +510,9 @@ class DynamiteGame {
     _score.initScore(DestroyableBlock.ENTITY_TYPE, expDestroyableBlock);
 
    _score.calculateMaxScore(_gameField);
+  }
+
+  void setEinLevel() {
+    _currentLevel = 0;
   }
 }

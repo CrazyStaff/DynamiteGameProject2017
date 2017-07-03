@@ -437,7 +437,7 @@ class DynamiteGame {
     switch(_gameStatus) {
       case GameState.PAUSED:
         if(currentLevel == 1) {
-          htmlElements["level_accept"] = "Start tutorial";
+          htmlElements["level_accept"] = "Start Tutorial";
         } else {
           htmlElements["level_accept"] = "Next Level";
         }

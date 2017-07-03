@@ -3,8 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="22a5614c-87a3-4d0b-bb80-0b966c29e495" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/dynamite/DynamiteGameController.dart" afterPath="$PROJECT_DIR$/web/dynamite/DynamiteGameController.dart" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/dynamite/model/Entity.dart" afterPath="$PROJECT_DIR$/web/dynamite/model/Entity.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/data/level/level1.json" afterPath="$PROJECT_DIR$/web/data/level/level1.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/dynamite/model/DynamiteGame.dart" afterPath="$PROJECT_DIR$/web/dynamite/model/DynamiteGame.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/main.dart" afterPath="$PROJECT_DIR$/web/main.dart" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -30,31 +31,90 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="styles.css" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/styles.css">
+      <file leaf-file-name="JavaScript-modules-diagram/C:/xampp/htdocs/DartColl/DynamiteGameProject2017-master" pinned="false" current-in-tab="false">
+        <entry file="uml://JavaScript-modules-diagram/C:/xampp/htdocs/DartColl/DynamiteGameProject2017-master">
+          <provider selected="true" editor-type-id="UmlEditorProvider">
+            <state>
+              <ID>JavaScript-modules-diagram</ID>
+              <OriginalElement>$PROJECT_DIR$</OriginalElement>
+              <nodes>
+                <node x="185.0" y="160.0">$PROJECT_DIR$/web/index.html</node>
+                <node x="2.0" y="102.0">$PROJECT_DIR$/web/main.dart</node>
+                <node x="128.0" y="0.0">$PROJECT_DIR$/web/reset.css</node>
+                <node x="374.0" y="107.0">$PROJECT_DIR$/web/styles.css</node>
+                <node x="151.0" y="365.0">$PROJECT_DIR$/web/styles_landscape.css</node>
+                <node x="0.0" y="281.0">$PROJECT_DIR$/web/styles_portrait.css</node>
+                <node x="318.0" y="288.0">https://fonts.googleapis.com/css?family=Open+Sans:700</node>
+                <node x="303.0" y="29.0">packages/browser/dart.js</node>
+              </nodes>
+              <notes />
+              <edges>
+                <edge source="$PROJECT_DIR$/web/index.html" target="packages/browser/dart.js">
+                  <point x="0.0" y="0.0" />
+                  <point x="0.0" y="0.0" />
+                </edge>
+                <edge source="$PROJECT_DIR$/web/index.html" target="$PROJECT_DIR$/web/styles_portrait.css">
+                  <point x="0.0" y="0.0" />
+                  <point x="0.0" y="0.0" />
+                </edge>
+                <edge source="$PROJECT_DIR$/web/index.html" target="$PROJECT_DIR$/web/styles.css">
+                  <point x="0.0" y="0.0" />
+                  <point x="0.0" y="0.0" />
+                </edge>
+                <edge source="$PROJECT_DIR$/web/index.html" target="$PROJECT_DIR$/web/styles_landscape.css">
+                  <point x="0.0" y="0.0" />
+                  <point x="0.0" y="0.0" />
+                </edge>
+                <edge source="$PROJECT_DIR$/web/index.html" target="$PROJECT_DIR$/web/reset.css">
+                  <point x="0.0" y="0.0" />
+                  <point x="0.0" y="0.0" />
+                </edge>
+                <edge source="$PROJECT_DIR$/web/index.html" target="https://fonts.googleapis.com/css?family=Open+Sans:700">
+                  <point x="0.0" y="0.0" />
+                  <point x="0.0" y="0.0" />
+                </edge>
+                <edge source="$PROJECT_DIR$/web/index.html" target="$PROJECT_DIR$/web/main.dart">
+                  <point x="0.0" y="0.0" />
+                  <point x="0.0" y="0.0" />
+                </edge>
+              </edges>
+              <settings layout="Hierarchic Group" zoom="1.0" x="-257.0" y="189.5" />
+              <SelectedNodes>
+                <node>packages/browser/dart.js</node>
+              </SelectedNodes>
+              <Categories>
+                <Category>All</Category>
+              </Categories>
+              <VISIBILITY>Details</VISIBILITY>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DynamiteGameController.dart" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/dynamite/DynamiteGameController.dart">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="438">
-              <caret line="280" column="16" lean-forward="false" selection-start-line="280" selection-start-column="16" selection-end-line="280" selection-end-column="16" />
+            <state relative-caret-position="133">
+              <caret line="41" column="34" lean-forward="false" selection-start-line="41" selection-start-column="34" selection-end-line="41" selection-end-column="34" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="level0.json" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/data/level/level0.json">
+      <file leaf-file-name="main.dart" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/main.dart">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="174">
-              <caret line="15" column="33" lean-forward="true" selection-start-line="15" selection-start-column="33" selection-end-line="15" selection-end-column="33" />
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="level6.json" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/data/level/level6.json">
+      <file leaf-file-name="level1.json" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/web/data/level/level1.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="125">
-              <caret line="4" column="36" lean-forward="false" selection-start-line="4" selection-start-column="36" selection-end-line="4" selection-end-column="36" />
+            <state relative-caret-position="302">
+              <caret line="15" column="139" lean-forward="false" selection-start-line="15" selection-start-column="139" selection-end-line="15" selection-end-column="139" />
               <folding />
             </state>
           </provider>
@@ -63,70 +123,8 @@
       <file leaf-file-name="DynamiteGame.dart" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web/dynamite/model/DynamiteGame.dart">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1500">
-              <caret line="272" column="14" lean-forward="false" selection-start-line="272" selection-start-column="14" selection-end-line="272" selection-end-column="14" />
-              <folding>
-                <marker date="1499091362271" expanded="true" signature="3281:3400" ph="{...}" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="level1.json" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/data/level/level1.json">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="297">
-              <caret line="15" column="134" lean-forward="false" selection-start-line="15" selection-start-column="134" selection-end-line="15" selection-end-column="134" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Fridolin.dart" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/dynamite/model/monster/Fridolin.dart">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="343">
-              <caret line="13" column="1" lean-forward="true" selection-start-line="13" selection-start-column="1" selection-end-line="13" selection-end-column="1" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Player.dart" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/dynamite/model/Player.dart">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1848">
-              <caret line="17" column="33" lean-forward="false" selection-start-line="17" selection-start-column="33" selection-end-line="17" selection-end-column="33" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Monster.dart" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/dynamite/model/monster/Monster.dart">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="759">
-              <caret line="133" column="57" lean-forward="false" selection-start-line="133" selection-start-column="57" selection-end-line="133" selection-end-column="57" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Entity.dart" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/dynamite/model/Entity.dart">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="133">
-              <caret line="23" column="13" lean-forward="false" selection-start-line="23" selection-start-column="13" selection-end-line="23" selection-end-column="13" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DynamiteGameController.dart" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/web/dynamite/DynamiteGameController.dart">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="133">
-              <caret line="41" column="34" lean-forward="false" selection-start-line="41" selection-start-column="34" selection-end-line="41" selection-end-column="34" />
+            <state relative-caret-position="-307">
+              <caret line="439" column="49" lean-forward="false" selection-start-line="439" selection-start-column="49" selection-end-line="439" selection-end-column="49" />
               <folding />
             </state>
           </provider>
@@ -209,13 +207,11 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/web/oldcode/test.html" />
         <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/web/dynamite/model/items/BombRange.dart" />
         <option value="$PROJECT_DIR$/web/styles_landscape.css" />
         <option value="$PROJECT_DIR$/web/styles_portrait.css" />
         <option value="$PROJECT_DIR$/web/oldcode/Keyboard.dart" />
-        <option value="$PROJECT_DIR$/web/dynamite/DynamiteView.dart" />
         <option value="$USER_HOME$/Desktop/Programmieren/Webprogrammierung/DynamiteGame Grunt/Gruntfile.js" />
         <option value="$USER_HOME$/Desktop/Programmieren/Webprogrammierung/Grunt/Gruntfile.js" />
         <option value="$PROJECT_DIR$/web/dynamite/model/blocks/UndestroyableBlock.dart" />
@@ -253,13 +249,15 @@
         <option value="$PROJECT_DIR$/web/data/level/level6.json" />
         <option value="$PROJECT_DIR$/web/data/level/level7.json" />
         <option value="$PROJECT_DIR$/web/data/level/levelWIN.json" />
-        <option value="$PROJECT_DIR$/web/dynamite/model/DynamiteGame.dart" />
         <option value="$PROJECT_DIR$/web/data/level/level0.json" />
         <option value="$PROJECT_DIR$/web/data/config/config.json" />
         <option value="$PROJECT_DIR$/web/styles.css" />
-        <option value="$PROJECT_DIR$/web/data/level/level1.json" />
         <option value="$PROJECT_DIR$/web/dynamite/model/Entity.dart" />
         <option value="$PROJECT_DIR$/web/dynamite/DynamiteGameController.dart" />
+        <option value="$PROJECT_DIR$/web/dynamite/DynamiteView.dart" />
+        <option value="$PROJECT_DIR$/web/main.dart" />
+        <option value="$PROJECT_DIR$/web/dynamite/model/DynamiteGame.dart" />
+        <option value="$PROJECT_DIR$/web/data/level/level1.json" />
       </list>
     </option>
   </component>
@@ -279,9 +277,10 @@
     </include_path>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-8" />
+    <option name="x" value="84" />
+    <option name="y" value="12" />
     <option name="width" value="1932" />
-    <option name="height" value="1038" />
+    <option name="height" value="1032" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -380,110 +379,6 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="dynamite" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="model" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="pathfinding" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="DynamiteGameProject2017-master" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="DynamiteGameProject2017-master" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="web" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="dynamite" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="model" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="monster" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="DynamiteGameProject2017-master" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="DynamiteGameProject2017-master" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="web" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="dynamite" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="model" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="items" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="DynamiteGameProject2017-master" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="DynamiteGameProject2017-master" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="web" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="dynamite" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="model" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="blocks" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="DynamiteGameProject2017-master" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="DynamiteGameProject2017-master" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="web" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="data" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -507,32 +402,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="data" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="images" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="DynamiteGameProject2017-master" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="DynamiteGameProject2017-master" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="web" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="data" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="config" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -570,11 +439,11 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\DartColl\DynamiteGameProject2017-master\web" />
       <recent name="F:\DynamiteGameProject2017-master\web\data\images" />
       <recent name="C:\xampp\htdocs\DartColl\DynamiteGameProject2017-master\web\data\images" />
       <recent name="C:\xampp\htdocs\DartColl\DynamiteGameProject2017-master\web\data\images\large" />
       <recent name="C:\xampp\htdocs\DartColl\DartWebProject17 - Backup 2017_05_22\web\data\level" />
-      <recent name="C:\xampp\htdocs\DartColl\DartWebProject17 - Backup 2017_05_22\web" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="F:\DynamiteGameProject2017-master\web\data\level" />
@@ -2027,10 +1896,10 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="314574000" />
+    <option name="totallyTimeSpent" value="314794000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="0" width="1932" height="1038" extended-state="0" />
+    <frame x="84" y="12" width="1932" height="1032" extended-state="0" />
     <layout>
       <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1938349" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -2039,10 +1908,10 @@
       <window_info id="Pub Serve" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3255814" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Dart Analysis" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3082353" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39217758" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.30866808" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.30795074" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.36040044" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.36282194" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -2138,11 +2007,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/web/data/images/large/Pattern3.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/web/oldcode/Keyboard.dart" />
     <entry file="file://$USER_HOME$/Desktop/Programmieren/Webprogrammierung/DynamiteGame Grunt/Gruntfile.js" />
     <entry file="file://$USER_HOME$/Desktop/Programmieren/Webprogrammierung/Grunt/Gruntfile.js" />
@@ -2154,13 +2018,6 @@
     <entry file="file://$PROJECT_DIR$/web/data/images/large/box2.png">
       <provider selected="true" editor-type-id="images">
         <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/main.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/web/dynamite/model/pathfinding/FieldNode.dart">
@@ -2408,16 +2265,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/dynamite/model/DynamiteGame.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1500">
-          <caret line="272" column="14" lean-forward="false" selection-start-line="272" selection-start-column="14" selection-end-line="272" selection-end-column="14" />
-          <folding>
-            <marker date="1499091362271" expanded="true" signature="3281:3400" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/web/data/level/level5.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="323">
@@ -2448,14 +2295,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/data/level/level1.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="297">
-          <caret line="15" column="134" lean-forward="false" selection-start-line="15" selection-start-column="134" selection-end-line="15" selection-end-column="134" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/web/dynamite/model/monster/Monster.dart">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="759">
@@ -2472,10 +2311,91 @@
         </state>
       </provider>
     </entry>
+    <entry file="uml://JavaScript-modules-diagram/C:/xampp/htdocs/DartColl/DynamiteGameProject2017-master">
+      <provider selected="true" editor-type-id="UmlEditorProvider">
+        <state>
+          <ID>JavaScript-modules-diagram</ID>
+          <OriginalElement>$PROJECT_DIR$</OriginalElement>
+          <nodes>
+            <node x="185.0" y="160.0">$PROJECT_DIR$/web/index.html</node>
+            <node x="2.0" y="102.0">$PROJECT_DIR$/web/main.dart</node>
+            <node x="128.0" y="0.0">$PROJECT_DIR$/web/reset.css</node>
+            <node x="374.0" y="107.0">$PROJECT_DIR$/web/styles.css</node>
+            <node x="151.0" y="365.0">$PROJECT_DIR$/web/styles_landscape.css</node>
+            <node x="0.0" y="281.0">$PROJECT_DIR$/web/styles_portrait.css</node>
+            <node x="318.0" y="288.0">https://fonts.googleapis.com/css?family=Open+Sans:700</node>
+            <node x="303.0" y="29.0">packages/browser/dart.js</node>
+          </nodes>
+          <notes />
+          <edges>
+            <edge source="$PROJECT_DIR$/web/index.html" target="packages/browser/dart.js">
+              <point x="0.0" y="0.0" />
+              <point x="0.0" y="0.0" />
+            </edge>
+            <edge source="$PROJECT_DIR$/web/index.html" target="$PROJECT_DIR$/web/styles_portrait.css">
+              <point x="0.0" y="0.0" />
+              <point x="0.0" y="0.0" />
+            </edge>
+            <edge source="$PROJECT_DIR$/web/index.html" target="$PROJECT_DIR$/web/styles.css">
+              <point x="0.0" y="0.0" />
+              <point x="0.0" y="0.0" />
+            </edge>
+            <edge source="$PROJECT_DIR$/web/index.html" target="$PROJECT_DIR$/web/styles_landscape.css">
+              <point x="0.0" y="0.0" />
+              <point x="0.0" y="0.0" />
+            </edge>
+            <edge source="$PROJECT_DIR$/web/index.html" target="$PROJECT_DIR$/web/reset.css">
+              <point x="0.0" y="0.0" />
+              <point x="0.0" y="0.0" />
+            </edge>
+            <edge source="$PROJECT_DIR$/web/index.html" target="https://fonts.googleapis.com/css?family=Open+Sans:700">
+              <point x="0.0" y="0.0" />
+              <point x="0.0" y="0.0" />
+            </edge>
+            <edge source="$PROJECT_DIR$/web/index.html" target="$PROJECT_DIR$/web/main.dart">
+              <point x="0.0" y="0.0" />
+              <point x="0.0" y="0.0" />
+            </edge>
+          </edges>
+          <settings layout="Hierarchic Group" zoom="1.0" x="-257.0" y="189.5" />
+          <SelectedNodes>
+            <node>packages/browser/dart.js</node>
+          </SelectedNodes>
+          <Categories>
+            <Category>All</Category>
+          </Categories>
+          <VISIBILITY>Details</VISIBILITY>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/web/dynamite/DynamiteGameController.dart">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="133">
           <caret line="41" column="34" lean-forward="false" selection-start-line="41" selection-start-column="34" selection-end-line="41" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/main.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/dynamite/model/DynamiteGame.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-307">
+          <caret line="439" column="49" lean-forward="false" selection-start-line="439" selection-start-column="49" selection-end-line="439" selection-end-column="49" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/data/level/level1.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="302">
+          <caret line="15" column="139" lean-forward="false" selection-start-line="15" selection-start-column="139" selection-end-line="15" selection-end-column="139" />
           <folding />
         </state>
       </provider>

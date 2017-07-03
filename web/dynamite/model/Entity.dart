@@ -1,5 +1,6 @@
 import 'GameState.dart';
 import 'Modificator.dart';
+import 'Movement.dart';
 import 'Position.dart';
 import 'DynamiteGame.dart';
 import 'Team.dart';
@@ -16,6 +17,9 @@ abstract class Entity {
   static int monsterCounter = 0;
   static int portalCount = 0;
 
+  // The default view direction of the entity
+  final Position DEFAULT_VIEW_DIRECTION = Movement.RIGHT;
+
   /*
     Information about the type of the entity
     The extension type is used for extra information
@@ -29,6 +33,15 @@ abstract class Entity {
    */
   Position _position;
   Position nextPosition;
+
+  // The current view Direction of the entity
+  Position viewDirection;
+
+  /*
+     For path finding it is needed to have
+     the next view direction of the entity
+  */
+  Position nextViewDirection;
 
   /*
       The times are used for the consistently update
@@ -60,6 +73,7 @@ abstract class Entity {
     this.isWalkable = false;
     this.extensionType = "";
     this.dieReason = "Timeout";
+    this.viewDirection = DEFAULT_VIEW_DIRECTION;
   }
 
   void updateLastMoveTime() {
@@ -80,6 +94,21 @@ abstract class Entity {
 
   int getWalkingSpeed() {
     return walkingSpeed;
+  }
+
+  /*
+      Set the view direction to the calculated next view direction
+   */
+  setViewDirection() {
+    viewDirection = nextViewDirection;
+  }
+
+  /*
+      Set the new view direction based on the next moving position of monster
+   */
+  setNextViewDirection() {
+    if(nextPosition == null) return;
+    this.nextViewDirection = nextPosition - position;
   }
 
   /*

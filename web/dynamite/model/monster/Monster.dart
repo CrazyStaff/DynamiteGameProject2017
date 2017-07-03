@@ -18,18 +18,6 @@ abstract class Monster extends Entity {
   // The front view range of the monster
   static const int VIEW_FIELD_RANGE = 4;
 
-  // The default view direction of the monster
-  final Position DEFAULT_VIEW_DIRECTION = Movement.RIGHT;
-
-  // The current view Direction of the monster
-  Position viewDirection;
-
-  /*
-     For path finding it is needed to have
-     the next view direction of monster calculated
-  */
-  Position nextViewDirection;
-
   /*
      The monster can store only one target at a time
      It moves to the last seen position of the enemy which
@@ -45,8 +33,6 @@ abstract class Monster extends Entity {
     this.isWalkable = true;
     this.strength = 50;
     this.setAbsolutelyNewTeam(Team.MONSTERS);
-    this.viewDirection = DEFAULT_VIEW_DIRECTION;
-
     this.setWalkingSpeed(1000);
     this.updateLastMoveTime();
   }
@@ -57,7 +43,7 @@ abstract class Monster extends Entity {
   @override
   void moveTo(List<Entity> entityField) {
       super.moveTo(entityField);
-      _setViewDirection();
+      setViewDirection();
   }
 
   /*
@@ -68,21 +54,6 @@ abstract class Monster extends Entity {
       // Decrease the counter of all monsters
       Entity.monsterCounter -= 1;
       return null;
-  }
-
-  /*
-      Set the view direction to the calculated next view direction
-   */
-  _setViewDirection() {
-      viewDirection = nextViewDirection;
-  }
-
-  /*
-      Set the new view direction based on the next moving position of monster
-   */
-  _setNextViewDirection() {
-    if(nextPosition == null) return;
-    this.nextViewDirection = nextPosition - position;
   }
 
   /*
@@ -107,7 +78,7 @@ abstract class Monster extends Entity {
           Determines the next view direction based on
           the next calculated position of the monster
        */
-    _setNextViewDirection();
+    setNextViewDirection();
     return nextPosition;
   }
 

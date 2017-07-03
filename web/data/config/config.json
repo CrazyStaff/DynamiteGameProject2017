@@ -4,5 +4,19 @@
   "startLvl" : 6,
   "startLife" : 3,
   "dynamiteExplosionTime" : 4000,
-  "fireDuration" : 1000
+  "fireDuration" : 1000,
+  "images_path" : "data/images/small/",
+  "viewOrder" : [
+    "SPEEDBUFF",
+    "DYNAMITERANGE",
+    "PLAYER",
+    "PORTAL",
+    "FIRE",
+    "MAYA",
+    "FASTELLE",
+    "FRIDOLIN",
+    "DYNAMITE",
+    "DESTROYABLE_BLOCK",
+    "UNDESTROYABLE_BLOCK"
+  ]
 }

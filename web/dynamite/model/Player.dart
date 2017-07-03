@@ -33,6 +33,9 @@ class Player extends Entity {
           can be called from 'DynamiteGame'
       */
       updateLastMoveTime();
+
+      this.viewDirection = DEFAULT_VIEW_DIRECTION;
+      setViewDirection();
   }
 
   get hasWon => this._hasWon;
@@ -88,5 +91,9 @@ class Player extends Entity {
         _hasWon = true;
       }
     }
+  }
+  @override
+  int getViewOrder() {
+    return 90;
   }
 }

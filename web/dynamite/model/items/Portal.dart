@@ -16,7 +16,7 @@ class Portal extends Entity {
   /*
       Extension type that the portal is closed
   */
-  final String PORTAL_CLOSED = "PORTAL_CLOSED";
+  static const String PORTAL_CLOSED = "PORTAL_CLOSED";
 
   /*
       The spawn percentage of this item
@@ -57,5 +57,10 @@ class Portal extends Entity {
       // Now the portal should be open
       this.extensionTypes.remove(PORTAL_CLOSED);
     }
+  }
+
+  @override
+  int getViewOrder() {
+    return 80;
   }
 }

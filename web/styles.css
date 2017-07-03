@@ -102,6 +102,7 @@ html, body {
     line-height: normal;
     overflow: hidden;
     display: inline-block;
+    background-size: cover;
 }
 
 #level {
@@ -168,97 +169,13 @@ html, body {
     outline:none;
 }
 
-
-/*
-<div id="level_header">Level completed</div>
-    <div id="level_announcement">Good job!</div>
-    <div id="level_result">2</div>
-    <input id="level_accept" type="submit" value="Start Game">*/
-
-
-.UNDESTROYABLE_BLOCK{
-    /*   background-color: brown !important;*/
-    background-image: url("data/images/small/nonbreakable.png") !important;
-    background-size: cover;
-}
-
-.DESTROYABLE_BLOCK {
-    /* background-color: brown !important;*/
-    background-image: url("data/images/small/brBox.png") !important;
-    background-size: cover;
-}
-
-.DYNAMITE {
-    /*  background-color: black !important;*/
-    background-image: url("data/images/small/dynamiteShadow.png") !important;
-    background-size: cover;
-
-}
-
-
-
-.PORTAL_CLOSED {
-    background-image: url("data/images/small/closedPortal.png") !important;
-    background-size: cover;
-}
-
-.FRIDOLIN_LEFT {
-    background-image: url("data/images/mobile/redLeft.png") !important;
-    background-size: cover;
-}
-
-.FRIDOLIN_RIGHT {
-    background-image: url("data/images/mobile/redRight.png") !important;
-    background-size: cover;
-}
-
-.FASTELLE_RIGHT {
-    background-image: url("data/images/mobile/greenRight.png") !important;
-    background-size: cover;
-}
-
-.FASTELLE_LEFT {
-    background-image: url("data/images/mobile/greenLeft.png") !important;
-    background-size: cover;
-}
-
-.MAYA_RIGHT {
-     background-image: url("data/images/mobile/greenRight.png") !important;
-     background-size: cover;
- }
-
-.MAYA_LEFT {
-    background-image: url("data/images/mobile/greenLeft.png") !important;
-    background-size: cover;
-}
-
-.FIRE {
-    background-image: url("data/images/mobile/fire2.png");
-    background-size: cover;
-}
-
 .PORTAL {
-    background-image: url("data/images/mobile/openPortal2.png");
-    background-size: cover;
-}
-
-.PLAYER_UP {
-    background-image: url("data/images/mobile/playerUp.png") !important;
+    background-image: url("data/images/mobile/PORTAL.png");
     background-size: cover;
 }
 
 .PLAYER_DOWN {
-    background-image: url("data/images/mobile/playerDown.png") !important;
-    background-size: cover;
-}
-
-.PLAYER_RIGHT {
-    background-image: url("data/images/mobile/playerRight.png") !important;
-    background-size: cover;
-}
-
-.PLAYER_LEFT {
-    background-image: url("data/images/mobile/playerLeft.png") !important;
+    background-image: url("data/images/mobile/PLAYER_DOWN.png") !important;
     background-size: cover;
 }
 

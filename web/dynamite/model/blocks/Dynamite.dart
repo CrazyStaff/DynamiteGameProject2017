@@ -109,4 +109,9 @@ class Dynamite extends Block {
     }
     return null;
   }
+
+  @override
+  int getViewOrder() {
+    return 30;
+  }
 }

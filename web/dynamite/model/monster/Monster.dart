@@ -18,6 +18,9 @@ abstract class Monster extends Entity {
   // The front view range of the monster
   static const int VIEW_FIELD_RANGE = 4;
 
+  // The extension mode that monster saw an enemy
+  static const String ATTENTION_MODE = "ENTITY_ATTENTION";
+
   /*
      The monster can store only one target at a time
      It moves to the last seen position of the enemy which
@@ -35,6 +38,9 @@ abstract class Monster extends Entity {
     this.setAbsolutelyNewTeam(Team.MONSTERS);
     this.setWalkingSpeed(1000);
     this.updateLastMoveTime();
+
+    this.viewDirection = DEFAULT_VIEW_DIRECTION;
+    setViewDirection();
   }
 
   /*
@@ -98,7 +104,7 @@ abstract class Monster extends Entity {
         be a attention warning of the monster in the view
      */
     if(!target.hasPathToTarget()) {
-      this.extensionTypes.remove("ENTITY_ATTENTION");
+      this.extensionTypes.remove(ATTENTION_MODE);
     }
 
     /*
@@ -131,7 +137,7 @@ abstract class Monster extends Entity {
               target.setPathToTargetFrom(this, gameField);
 
               // Show in the view that the monster has sighted the enemy
-              this.extensionTypes.add("ENTITY_ATTENTION");
+              this.extensionTypes.add(ATTENTION_MODE);
               return;
             }
           }

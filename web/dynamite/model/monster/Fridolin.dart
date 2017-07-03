@@ -11,4 +11,9 @@ class Fridolin extends Monster {
   static const ENTITY_TYPE = "FRIDOLIN";
 
   Fridolin(Position position) : super(ENTITY_TYPE, position);
+
+  @override
+  int getViewOrder() {
+    return 40;
+  }
 }

@@ -22,4 +22,9 @@ class UndestroyableBlock extends Block {
   Modificator atDestroy(List<List< FieldNode >> gameField) {
     return null;
   }
+
+  @override
+  int getViewOrder() {
+    return 10;
+  }
 }

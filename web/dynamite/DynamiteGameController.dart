@@ -123,6 +123,8 @@ class DynamiteGameController {
       _gameSpeed = new Duration(milliseconds: configs["gameSpeed"]);
       game.startLevel = configs["startLvl"];
       game.startLife = configs["startLife"];
+      game.imagesPath = configs["images_path"];
+      game.viewStackOrder = configs["viewOrder"];
       DynamiteGame.DYNAMITE_EXPLODE_TIME = configs["dynamiteExplosionTime"];
       DynamiteGame.FIRE_DURATION = configs["fireDuration"];
       game.setInitLife();

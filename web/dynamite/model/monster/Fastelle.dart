@@ -47,4 +47,9 @@ class Fastelle extends Monster {
     }
     return null;
   }
+
+  @override
+  int getViewOrder() {
+    return 50;
+  }
 }

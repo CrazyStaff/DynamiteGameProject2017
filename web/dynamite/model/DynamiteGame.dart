@@ -42,12 +42,24 @@ class DynamiteGame {
   int _dynamiteRadius;
   int _pausedGameAtTime;
 
+
+
   /*
       Information about the game field
    */
   List<List<FieldNode>> _gameField;
   int _fieldWidth;
   int _fieldHeight;
+
+  /*
+      The list of entities and there stack order in the view
+   */
+  List<String> _viewStackOrder;
+
+  /*
+      Informations for data paths
+  */
+  String _imagesPath;
 
   /*
       All setters for the controller
@@ -59,6 +71,8 @@ class DynamiteGame {
   set startLevel(int startLevel) => this._startLevel = startLevel;
   set currentLevel(int currentLevel) => this._currentLevel = currentLevel;
   set gameStatus(GameState gameState) => this._gameStatus = gameState;
+  set imagesPath(String imagesPath) => this._imagesPath = imagesPath;
+  set viewStackOrder(List<String> viewStackOrder) => this._viewStackOrder = viewStackOrder;
 
   /*
       All getters for the controller
@@ -324,8 +338,7 @@ class DynamiteGame {
                 // If there is a move to another field
 
                 if (_proofIfNextPositionIsValid(nextMove)) {
-                  List<Entity> nextField = _gameField[nextMove.getX][nextMove
-                      .getY].getEntities;
+                  List<Entity> nextField = _gameField[nextMove.getX][nextMove.getY].getEntities;
 
                   if (entity.isMovePossible(nextField)) {
                     // First of all remove the entity after moving to the next field
@@ -400,8 +413,8 @@ class DynamiteGame {
         List<Entity> currentField = _gameField[width][height].getEntities;
 
         final pos = "field_${width}_${height}";
-        var entityClasses = _getHTMLEntities(currentField);
-        html += "<td id='$pos'$entityClasses></td>";
+        var entityAttributes = _getHTMLEntities(currentField);
+        html += "<td id='$pos' $entityAttributes></td>";
       }
       html += "</tr>";
     }
@@ -410,16 +423,56 @@ class DynamiteGame {
   }
 
   /*
-      Get all the classes for each entity
+      Get all the attributes for each entity
       It is used for showing the pictures
       of enemies in the view
    */
   String _getHTMLEntities(List<Entity> allEntities) {
-    String htmlEntities = " class='";
-    for (Entity entity in allEntities) {
-      htmlEntities += "${entity.getType()} ${entity.getExtensionTypes()} ";
+    String htmlEntities = "style=\"background-image: ";
+
+    /* <Entity.type, urls> */
+    Map<String, String> attributesForEntity = new Map<String, String>();
+
+    bool addedAttribute = false;
+    for (int j=0; j < allEntities.length; j++) {
+      Entity entity = allEntities[j];
+      List<String> allAttributes = entity.getAllAttributes();
+
+      /*
+          Concats for the entity the resources paths
+       */
+      String entityAttributes = "";
+      for(int i=0; i < allAttributes.length; i++) {
+        String attribute = allAttributes[i];
+        entityAttributes += "url('$_imagesPath$attribute.png'),";
+        addedAttribute = true;
+      }
+      // Delete last ',' delimiter
+      entityAttributes = entityAttributes.substring(0, entityAttributes.length-1);
+      attributesForEntity.putIfAbsent(entity.getType(), () => entityAttributes);
     }
-    htmlEntities += "'";
+
+    /*
+        If there are no attributs for the whole game field
+        than nothing have to be added to the html
+     */
+    if(!addedAttribute) return "";
+
+    Map<String, String> sortedMap = new Map<String, String>();
+    for(String entityOrdered in _viewStackOrder) {
+      String attributesOfEntity = attributesForEntity[entityOrdered];
+      sortedMap.putIfAbsent(entityOrdered, () => attributesOfEntity);
+    }
+
+    for(String entityType in sortedMap.keys) {
+      String value = sortedMap[entityType];
+      if(value != null) {
+        htmlEntities += value + ",";
+      }
+    }
+
+    htmlEntities = htmlEntities.substring(0, htmlEntities.length-1);
+    htmlEntities += "\"";
     return htmlEntities;
   }
 

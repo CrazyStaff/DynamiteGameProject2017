@@ -19,11 +19,13 @@ class DynamiteView {
   HtmlElement get overviewLevel => querySelector('#level');
   HtmlElement get overviewAccept => querySelector('#level_accept');
 
+  final TrustedNodeValidator trustedValidotor = new TrustedNodeValidator();
+
   /*
       Update the game field
    */
   void update(String gameField) {
-    game.innerHtml = gameField;
+    game.setInnerHtml(gameField, validator: trustedValidotor);
   }
 
   /*
@@ -150,4 +152,9 @@ class DynamiteView {
   void _showElement(HtmlElement element) {
     element.setAttribute("style", "visibility: visible;");
   }
+}
+
+class TrustedNodeValidator implements NodeValidator {
+  bool allowsElement(Element element) => true;
+  bool allowsAttribute(element, attributeName, value) => true;
 }

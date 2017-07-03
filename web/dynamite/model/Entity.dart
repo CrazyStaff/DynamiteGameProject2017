@@ -4,6 +4,8 @@ import 'Movement.dart';
 import 'Position.dart';
 import 'DynamiteGame.dart';
 import 'Team.dart';
+import 'items/Portal.dart';
+import 'monster/Monster.dart';
 import 'pathfinding/FieldNode.dart';
 
 /*
@@ -81,9 +83,6 @@ abstract class Entity {
     this.extensionTypes = new List<String>();
     this.dieReason = "Timeout";
     this.supportMultiViewDirection = false;
-    this.viewDirection = DEFAULT_VIEW_DIRECTION;
-
-    setViewDirection();
   }
 
   void updateLastMoveTime() {
@@ -104,6 +103,51 @@ abstract class Entity {
 
   int getWalkingSpeed() {
     return walkingSpeed;
+  }
+
+  /*
+
+   */
+  List<String> getAllAttributes() {
+    List<String> allAttributes = new List<String>();
+
+
+    /*
+        First of all there needs be the attention mode
+        because it has the highest priority to be shown
+     */
+    _addAttributeToListIfExist(allAttributes, Monster.ATTENTION_MODE);
+
+    bool upAdded = _addAttributeToListIfExist(allAttributes, type + "_UP");
+    bool downAdded = _addAttributeToListIfExist(allAttributes, type + "_DOWN");
+    bool rightAdded = _addAttributeToListIfExist(allAttributes, type + "_RIGHT");
+    bool leftAdded = _addAttributeToListIfExist(allAttributes, type + "_LEFT");
+
+    bool portalAdded = _addAttributeToListIfExist(allAttributes, Portal.PORTAL_CLOSED);
+
+    /*
+        Proof if the no view direction than
+        take the fallback for the image view
+     */
+    if(viewDirection == null &&
+    !upAdded && !downAdded && !rightAdded && !leftAdded && !portalAdded) {
+      allAttributes.add(type);
+    }
+
+    return allAttributes;
+  }
+
+  /*
+       Adds an attribute to the given list if
+       the extension list contains it
+       Returns if the element 'toAdd' was added to the list
+  */
+  bool _addAttributeToListIfExist(List<String> list, String toAdd) {
+    if(extensionTypes.contains(toAdd)) {
+      list.add(toAdd);
+      return true;
+    }
+    return false;
   }
 
   /*
@@ -317,6 +361,12 @@ abstract class Entity {
   void standStillStrategy() {
     this.updateLastMoveTime();
   }
+
+  /*
+      Returns the stack order of an element in the view
+      Needs to be overriden by inherited classes
+   */
+  int getViewOrder();
 
   /*
       Update all the times used by entity to guarantee a pause method

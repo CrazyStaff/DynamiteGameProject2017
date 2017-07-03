@@ -1,18 +1,22 @@
 {
   "level": {
     "blocks" : [
-      "E","E","E","E","E","E","E",
-      "E","P","E","B","E","Z","E",
-      "E","E","E","E","E","E","E"
+      "E","E","E","E","E","E","E","E","E","E",
+      "E","P","E","E","E","E","E","E","M","E",
+      "E","E","E","E","E","E","E","E","E","E",
+      "E","E","E","E","E","E","E","E","E","E",
+      "E","E","E","E","E","E","E","E","E","E",
+      "E","E","E","E","E","E","E","E","Z","E",
+      "E","E","E","E","E","E","E","E","E","E"
     ],
-    "field_width" : "7",
-    "field_height" : "3"
+    "field_width" : "10",
+    "field_height" : "7"
   },
-  "exp_monster" : "0",
-  "exp_destroyable_block" : "50",
+  "exp_monster" : "100",
+  "exp_destroyable_block" : "10",
   "speedBuffSpawnRate" : 0,
   "speedBuffAddSpeed" : 100,
   "dynamiteRangeSpawnRate" : 0,
-  "description" : "Welcome to DynamiteMan!<br>The goal is to carry the player <table><td width=\"35px\" height=\"35px\" class=\"PLAYER_DOWN\"></td></table> through the portal <table><td width=\"35px\" height=\"35px\" class=\"PORTAL\"></td></table>",
-  "maxLevelTime" : -1
+  "description" : "You found it!<br>But beware, you are not alone. There are enemies. Kill all of them to unlock the portal",
+  "maxLevelTime" : 60
 }

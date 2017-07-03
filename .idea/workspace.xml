@@ -2,98 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="22a5614c-87a3-4d0b-bb80-0b966c29e495" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/mobile/DESTROYABLE_BLOCK.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/mobile/DYNAMITE.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/mobile/FASTELLE_LEFT.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/mobile/FASTELLE_RIGHT.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/mobile/FIRE.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/mobile/FRIDOLIN_LEFT.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/mobile/FRIDOLIN_RIGHT.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/mobile/MAYA_LEFT.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/mobile/MAYA_RIGHT.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/mobile/PLAYER_DOWN.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/mobile/PLAYER_LEFT.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/mobile/PLAYER_RIGHT.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/mobile/PLAYER_UP.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/mobile/PORTAL.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/mobile/PORTAL_CLOSED.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/mobile/UNDESTROYABLE_BLOCK.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/small/DESTROYABLE_BLOCK.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/small/DYNAMITE.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/small/ENTITY_ATTENTION.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/small/FASTELLE_LEFT.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/small/FASTELLE_RIGHT.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/small/FIRE.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/small/FRIDOLIN_LEFT.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/small/FRIDOLIN_RIGHT.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/small/MAYA_LEFT.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/small/MAYA_RIGHT.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/small/PLAYER_DOWN.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/small/PLAYER_LEFT.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/small/PLAYER_RIGHT.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/small/PLAYER_UP.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/small/PORTAL.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/small/PORTAL_CLOSED.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/small/UNDESTROYABLE_BLOCK.png" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/data/images/mobile/blueRight.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/data/images/mobile/box2.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/data/images/mobile/brBox.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/data/images/mobile/breakableBox.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/data/images/mobile/closedPortal.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/data/images/mobile/dynamiteShadow.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/data/images/mobile/fire.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/data/images/mobile/fire2.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/data/images/mobile/greenLeft.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/data/images/mobile/greenRight.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/data/images/mobile/leftBlue.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/data/images/mobile/nonbreakable.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/data/images/mobile/openPortal2.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/data/images/mobile/playerDown.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/data/images/mobile/playerLeft.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/data/images/mobile/playerRight.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/data/images/mobile/playerUp.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/data/images/mobile/redLeft.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/data/images/mobile/redRight.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/data/images/small/blueRight.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/data/images/small/box2.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/data/images/small/brBox.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/data/images/small/breakableBox.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/data/images/small/closedPortal.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/data/images/small/dynamiteShadow.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/data/images/small/fire.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/data/images/small/fire2.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/data/images/small/greenLeft.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/data/images/small/greenRight.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/data/images/small/leftBlue.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/data/images/small/mGruenL.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/data/images/small/nonbreakable.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/data/images/small/openPortal2.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/data/images/small/playerDown.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/data/images/small/playerLeft.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/data/images/small/playerRight.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/data/images/small/playerUp.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/data/images/small/redLeft.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/data/images/small/redRight.png" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/data/config/config.json" afterPath="$PROJECT_DIR$/web/data/config/config.json" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/data/level/level1.json" afterPath="$PROJECT_DIR$/web/data/level/level1.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/data/level/level2.json" afterPath="$PROJECT_DIR$/web/data/level/level2.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/dynamite/DynamiteGameController.dart" afterPath="$PROJECT_DIR$/web/dynamite/DynamiteGameController.dart" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/dynamite/DynamiteView.dart" afterPath="$PROJECT_DIR$/web/dynamite/DynamiteView.dart" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/dynamite/model/DynamiteGame.dart" afterPath="$PROJECT_DIR$/web/dynamite/model/DynamiteGame.dart" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/dynamite/model/Entity.dart" afterPath="$PROJECT_DIR$/web/dynamite/model/Entity.dart" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/dynamite/model/Player.dart" afterPath="$PROJECT_DIR$/web/dynamite/model/Player.dart" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/dynamite/model/blocks/DestroyableBlock.dart" afterPath="$PROJECT_DIR$/web/dynamite/model/blocks/DestroyableBlock.dart" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/dynamite/model/blocks/Dynamite.dart" afterPath="$PROJECT_DIR$/web/dynamite/model/blocks/Dynamite.dart" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/dynamite/model/blocks/Fire.dart" afterPath="$PROJECT_DIR$/web/dynamite/model/blocks/Fire.dart" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/dynamite/model/blocks/UndestroyableBlock.dart" afterPath="$PROJECT_DIR$/web/dynamite/model/blocks/UndestroyableBlock.dart" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/dynamite/model/items/DynamiteRange.dart" afterPath="$PROJECT_DIR$/web/dynamite/model/items/DynamiteRange.dart" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/dynamite/model/items/Portal.dart" afterPath="$PROJECT_DIR$/web/dynamite/model/items/Portal.dart" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/dynamite/model/items/SpeedBuff.dart" afterPath="$PROJECT_DIR$/web/dynamite/model/items/SpeedBuff.dart" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/dynamite/model/monster/Fastelle.dart" afterPath="$PROJECT_DIR$/web/dynamite/model/monster/Fastelle.dart" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/dynamite/model/monster/Fridolin.dart" afterPath="$PROJECT_DIR$/web/dynamite/model/monster/Fridolin.dart" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/dynamite/model/monster/Monster.dart" afterPath="$PROJECT_DIR$/web/dynamite/model/monster/Monster.dart" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/styles.css" afterPath="$PROJECT_DIR$/web/styles.css" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -153,7 +63,7 @@
         <entry file="file://$PROJECT_DIR$/web/data/level/level1.json">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="420">
-              <caret line="22" column="0" lean-forward="true" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
+              <caret line="17" column="1" lean-forward="false" selection-start-line="17" selection-start-column="1" selection-end-line="17" selection-end-column="1" />
               <folding />
             </state>
           </provider>
@@ -1737,13 +1647,6 @@
       <workItem from="1499012095378" duration="1955000" />
       <workItem from="1499055511764" duration="10583000" />
     </task>
-    <task id="LOCAL-00019" summary="Maximale LVL anzahl eingeben">
-      <created>1497457392416</created>
-      <option name="number" value="00019" />
-      <option name="presentableId" value="LOCAL-00019" />
-      <option name="project" value="LOCAL" />
-      <updated>1497457392416</updated>
-    </task>
     <task id="LOCAL-00020" summary="Lvl Nachträglich erst laden">
       <created>1497457645652</created>
       <option name="number" value="00020" />
@@ -2080,11 +1983,18 @@
       <option name="project" value="LOCAL" />
       <updated>1499092202797</updated>
     </task>
-    <option name="localTasksCounter" value="68" />
+    <task id="LOCAL-00068" summary="Added more possible images on the field">
+      <created>1499117977889</created>
+      <option name="number" value="00068" />
+      <option name="presentableId" value="LOCAL-00068" />
+      <option name="project" value="LOCAL" />
+      <updated>1499117977889</updated>
+    </task>
+    <option name="localTasksCounter" value="69" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="329878000" />
+    <option name="totallyTimeSpent" value="330331000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-30" y="0" width="1932" height="1032" extended-state="0" />
@@ -2145,7 +2055,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$/web" />
     </ignored-roots>
-    <MESSAGE value="Fixed Firefox bug monster attention" />
     <MESSAGE value="Lvl beschribung" />
     <MESSAGE value="Erste Kommentaare" />
     <MESSAGE value="Struktur angepasst (Fehler)" />
@@ -2170,7 +2079,8 @@
     <MESSAGE value="Fridolin 1 Spydy Lvl2" />
     <MESSAGE value="WinLevel" />
     <MESSAGE value="Bug fixes show direction images" />
-    <option name="LAST_COMMIT_MESSAGE" value="Bug fixes show direction images" />
+    <MESSAGE value="Added more possible images on the field" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added more possible images on the field" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -2614,7 +2524,7 @@
     <entry file="file://$PROJECT_DIR$/web/data/level/level1.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="420">
-          <caret line="22" column="0" lean-forward="true" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
+          <caret line="17" column="1" lean-forward="false" selection-start-line="17" selection-start-column="1" selection-end-line="17" selection-end-column="1" />
           <folding />
         </state>
       </provider>

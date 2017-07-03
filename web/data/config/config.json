@@ -1,6 +1,6 @@
 {
   "gameSpeed" : 100,
-  "maxLvl" : 8,
+  "maxLvl" : 9,
   "startLvl" : 6,
   "startLife" : 3,
   "dynamiteExplosionTime" : 4000,

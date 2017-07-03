@@ -18,5 +18,5 @@
   "speedBuffAddSpeed" : 1000,
   "dynamiteRangeSpawnRate" : 20,
   "description" : "You Win!",
-  "maxLevelTime" : 180
+  "maxLevelTime" : -1
 }

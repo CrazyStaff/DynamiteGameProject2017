@@ -17,6 +17,6 @@
   "speedBuffSpawnRate" : 30,
   "speedBuffAddSpeed" : 100,
   "dynamiteRangeSpawnRate" : 20,
-  "description" : "Maybe you have seen it, but some Monsters can jump over your Dynamite",
+  "description" : "Maybe you have seen it, but some monsters can jump over your dynamite",
   "maxLevelTime" : 180
 }

@@ -17,6 +17,6 @@
   "speedBuffSpawnRate" : 50,
   "speedBuffAddSpeed" : 100,
   "dynamiteRangeSpawnRate" : 50,
-  "description" : "This Level is a Special Level. You can see the speedbuffs and dynamite range extentions, collect them and kill the enemies easier",
+  "description" : "This Level is a special Level. You can see the speed buffs and dynamite range extentions, collect them and kill the enemies easier",
   "maxLevelTime" : 60
 }

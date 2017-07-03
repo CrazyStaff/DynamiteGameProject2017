@@ -435,25 +435,29 @@ class DynamiteGame {
 
     switch(_gameStatus) {
       case GameState.PAUSED:
-        htmlElements["level_header"] = "Welcome to the tutorial";
+        if(currentLevel == 1) {
+          htmlElements["level_accept"] = "Start tutorial";
+        } else {
+          htmlElements["level_accept"] = "Next Level";
+        }
+
+         if(_currentLevel < _startLevel) {
+          htmlElements["level_header"] = "Welcome to the Tutorial";
+        } else {
+          htmlElements["level_header"] = "Welcome";
+        }
+
         htmlElements["level_announcement"] = "";
         if (_dieReason == "") {
           htmlElements["level_result"] = _levelDescription;
-          htmlElements["level_accept"] = "Start Tutorial";
         }else{
           htmlElements["level_result"] = "Cause of death: " + _dieReason + "<br><br>" + _levelDescription;
           htmlElements["level_accept"] = "Restart Tutorial";
         }
         break;
-      case GameState.LOOSE:
-        htmlElements["level_header"] = "You failed";
-        htmlElements["level_announcement"] = "Next Level";
-        htmlElements["level_result"] = "1";
-        htmlElements["level_accept"] = "Try again";
-        break;
       case GameState.MAX_LEVEL_REACHED:
         htmlElements["level_header"] = "Game completed";
-        htmlElements["level_announcement"] = "Congratulations! You are a hero!";
+        htmlElements["level_announcement"] = "Congratulations!<br>You are a hero!";
         htmlElements["level_result"] = "";
         htmlElements["level_accept"] = "Start again";
         break;

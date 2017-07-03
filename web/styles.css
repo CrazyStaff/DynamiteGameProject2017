@@ -102,42 +102,8 @@ html, body {
     line-height: normal;
     overflow: hidden;
     display: inline-block;
-    /*margin-right: -1px;
-    margin-bottom: -1px;*/
-}
-/*
-.buttons input {
-    display: block;
-    padding: 0.5em 0.5em;
-    background: #468966;
-    color: white;
-    font-family: 'Open Sans', sans-serif;
-    border: none;
-    outline: none;
 }
 
-#arrows {
-    display: none;
-}
-
-#arrows table {
-    margin-left: auto;
-    margin-right: auto;
-}
-
-#arrows input {
-    display: block;
-    margin: 0 auto;
-    padding: 10px;
-    height: 100%;
-    width: 100%;
-    font-size: 1em;
-    background: #468966;
-    color: white;
-    font-family: 'Open Sans', sans-serif;
-    border: none;
-}
-*/
 #level {
     visibility: hidden; /* remove here */
     position: fixed;
@@ -149,14 +115,30 @@ html, body {
     z-index: 99;
 }
 
+#level_content {
+    padding: 0 1rem;
+}
+
+#level_content img {
+    display: block;
+}
+
+#level_content table, #level_content img {
+    margin: 0.5rem auto;
+    text-align: center;
+}
+
+
 #level_header {
+    display:block;
     background-color: #468966;
     color: white;
     font-family: 'Open Sans', sans-serif;
     font-size: 1rem;
     text-align: center;
     vertical-align: middle;
-    padding: 1em 0;
+    padding: 1rem 2rem;
+    white-space: nowrap;
 }
 
 #level_announcement {
@@ -171,7 +153,8 @@ html, body {
 #level_result  {
     font-size: 1rem;
     text-align: center;
-    margin-top: 2rem;
+    margin-top: 1rem;
+    line-height: 1.2;
 }
 
 #level_accept {
@@ -284,6 +267,7 @@ html, body {
         margin: auto;
         padding-top: 1vw;
         padding-bottom: 1vw;
+        white-space: nowrap;
     }
 
     #gameField {

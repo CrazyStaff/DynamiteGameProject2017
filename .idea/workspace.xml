@@ -2,8 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="22a5614c-87a3-4d0b-bb80-0b966c29e495" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/small/DYNAMITERANGE.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/images/small/SPEEDBUFF.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/Dart_SDK.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_SDK.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/dynamite/model/Entity.dart" afterPath="$PROJECT_DIR$/web/dynamite/model/Entity.dart" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -28,42 +31,107 @@
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="Entity.dart" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/web/dynamite/model/Entity.dart">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="Player.dart" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/dynamite/model/Player.dart">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="310">
-              <caret line="270" column="5" lean-forward="false" selection-start-line="270" selection-start-column="5" selection-end-line="270" selection-end-column="5" />
+            <state relative-caret-position="1088">
+              <caret line="71" column="27" lean-forward="false" selection-start-line="71" selection-start-column="27" selection-end-line="71" selection-end-column="27" />
+              <folding>
+                <marker date="1499157493066" expanded="true" signature="412:1000" ph="{...}" />
+                <marker date="1499157493066" expanded="true" signature="1206:1341" ph="{...}" />
+                <marker date="1499157493066" expanded="true" signature="1393:1752" ph="{...}" />
+                <marker date="1499157493066" expanded="true" signature="1902:2015" ph="//..." />
+                <marker date="1499157493066" expanded="true" signature="2167:2254" ph="/*...*/" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Block.dart" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/dynamite/model/blocks/Block.dart">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="119">
+              <caret line="10" column="45" lean-forward="false" selection-start-line="10" selection-start-column="45" selection-end-line="10" selection-end-column="45" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DynamiteGame.dart" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/dynamite/model/DynamiteGame.dart">
+      <file leaf-file-name="DestroyableBlock.dart" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/dynamite/model/blocks/DestroyableBlock.dart">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="93" column="21" lean-forward="false" selection-start-line="93" selection-start-column="21" selection-end-line="93" selection-end-column="21" />
+            <state relative-caret-position="527">
+              <caret line="40" column="0" lean-forward="false" selection-start-line="40" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="level1.json" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/data/level/level1.json">
+      <file leaf-file-name="Fire.dart" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/dynamite/model/blocks/Fire.dart">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="165">
-              <caret line="5" column="32" lean-forward="false" selection-start-line="5" selection-start-column="32" selection-end-line="5" selection-end-column="32" />
+            <state relative-caret-position="748">
+              <caret line="50" column="3" lean-forward="false" selection-start-line="50" selection-start-column="3" selection-end-line="50" selection-end-column="3" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Maya.dart" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/dynamite/model/monster/Maya.dart">
+      <file leaf-file-name="UndestroyableBlock.dart" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/dynamite/model/blocks/UndestroyableBlock.dart">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="231">
-              <caret line="19" column="29" lean-forward="false" selection-start-line="19" selection-start-column="18" selection-end-line="19" selection-end-column="29" />
+            <state relative-caret-position="221">
+              <caret line="17" column="2" lean-forward="false" selection-start-line="17" selection-start-column="2" selection-end-line="19" selection-end-column="5" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Item.dart" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/dynamite/model/items/Item.dart">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="17">
+              <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DynamiteRange.dart" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/dynamite/model/items/DynamiteRange.dart">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="408">
+              <caret line="28" column="26" lean-forward="false" selection-start-line="28" selection-start-column="11" selection-end-line="28" selection-end-column="26" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Portal.dart" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/dynamite/model/items/Portal.dart">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="578">
+              <caret line="37" column="26" lean-forward="false" selection-start-line="37" selection-start-column="11" selection-end-line="37" selection-end-column="26" />
+              <folding>
+                <marker date="1499157493076" expanded="true" signature="355:1672" ph="{...}" />
+                <marker date="1499157493076" expanded="true" signature="566:702" ph="/*...*/" />
+                <marker date="1499157493076" expanded="true" signature="837:1030" ph="{...}" />
+                <marker date="1499157493076" expanded="true" signature="872:997" ph="/*...*/" />
+                <marker date="1499157493076" expanded="true" signature="1059:1092" ph="{...}" />
+                <marker date="1499157493076" expanded="true" signature="1123:1153" ph="{...}" />
+                <marker date="1499157493076" expanded="true" signature="1157:1273" ph="/*...*/" />
+                <marker date="1499157493076" expanded="true" signature="1351:1670" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SpeedBuff.dart" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/web/dynamite/model/items/SpeedBuff.dart">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="399">
+              <caret line="30" column="14" lean-forward="false" selection-start-line="30" selection-start-column="14" selection-end-line="30" selection-end-column="14" />
               <folding />
             </state>
           </provider>
@@ -72,58 +140,8 @@
       <file leaf-file-name="Dynamite.dart" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web/dynamite/model/blocks/Dynamite.dart">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="345">
-              <caret line="77" column="26" lean-forward="false" selection-start-line="77" selection-start-column="17" selection-end-line="77" selection-end-column="26" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Player.dart" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/dynamite/model/Player.dart">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="211">
-              <caret line="21" column="6" lean-forward="false" selection-start-line="21" selection-start-column="6" selection-end-line="21" selection-end-column="6" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="config.json" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/data/config/config.json">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="264">
-              <caret line="14" column="11" lean-forward="false" selection-start-line="14" selection-start-column="11" selection-end-line="14" selection-end-column="11" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Team.dart" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/dynamite/model/Team.dart">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="5" lean-forward="false" selection-start-line="0" selection-start-column="5" selection-end-line="0" selection-end-column="5" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Fastelle.dart" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/dynamite/model/monster/Fastelle.dart">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-297">
-              <caret line="9" column="6" lean-forward="false" selection-start-line="9" selection-start-column="6" selection-end-line="9" selection-end-column="6" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="level8.json" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/data/level/level8.json">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="660">
-              <caret line="20" column="22" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
+            <state relative-caret-position="1428">
+              <caret line="92" column="29" lean-forward="false" selection-start-line="92" selection-start-column="7" selection-end-line="92" selection-end-column="29" />
               <folding />
             </state>
           </provider>
@@ -279,9 +297,9 @@
   </component>
   <component name="ProjectFrameBounds">
     <option name="x" value="-8" />
-    <option name="y" value="6" />
-    <option name="width" value="1932" />
-    <option name="height" value="1032" />
+    <option name="y" value="-8" />
+    <option name="width" value="1936" />
+    <option name="height" value="1056" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -460,10 +478,6 @@
               <option name="myItemId" value="data" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="level" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -505,28 +519,18 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="config" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="DynamiteGameProject2017-master" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="DynamiteGameProject2017-master" />
+              <option name="myItemId" value="images" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="lib" />
+              <option name="myItemId" value="small" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scratches" />
       <pane id="Scope" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -543,6 +547,11 @@
     <property name="list.type.of.created.stylesheet" value="CSS" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="F:\DynamiteGameProject2017-master\web\data\level" />
+      <recent name="C:\xampp\htdocs\DartColl\DartWebProject17 - Backup 2017_05_22\web\data\level" />
+      <recent name="C:\xampp\htdocs\DartColl\DartWebProject17 - Backup 2017_05_22\web\dynamite\model\pathfinding" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\xampp\htdocs\DartColl\DynamiteGameProject2017-master\web" />
       <recent name="F:\DynamiteGameProject2017-master\web\data\images" />
@@ -550,11 +559,200 @@
       <recent name="C:\xampp\htdocs\DartColl\DynamiteGameProject2017-master\web\data\images\large" />
       <recent name="C:\xampp\htdocs\DartColl\DartWebProject17 - Backup 2017_05_22\web\data\level" />
     </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="F:\DynamiteGameProject2017-master\web\data\level" />
-      <recent name="C:\xampp\htdocs\DartColl\DartWebProject17 - Backup 2017_05_22\web\data\level" />
-      <recent name="C:\xampp\htdocs\DartColl\DartWebProject17 - Backup 2017_05_22\web\dynamite\model\pathfinding" />
-    </key>
+  </component>
+  <component name="RestoreUpdateTree" date="Moments ago" ActionInfo="_Update">
+    <UpdatedFiles>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Updated from server" />
+        <option name="myStatusName" value="Changed on server" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="CHANGED_ON_SERVER" />
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Updated" />
+          <option name="myStatusName" value="Changed" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="UPDATED" />
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/.idea/workspace.xml</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/web/data/config/config.json</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/web/data/level/level2.json</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/web/dynamite/DynamiteGameController.dart</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/web/dynamite/DynamiteView.dart</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/web/dynamite/model/DynamiteGame.dart</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/web/dynamite/model/Entity.dart</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/web/dynamite/model/Player.dart</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/web/dynamite/model/items/Portal.dart</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/web/dynamite/model/monster/Maya.dart</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/web/dynamite/model/monster/Monster.dart</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/web/styles.css</PATH>
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Created" />
+          <option name="myStatusName" value="Created" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="CREATED" />
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/web/data/images/mobile/DESTROYABLE_BLOCK.png</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/web/data/images/mobile/DYNAMITE.png</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/web/data/images/mobile/FASTELLE_LEFT.png</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/web/data/images/mobile/FASTELLE_RIGHT.png</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/web/data/images/mobile/FIRE.png</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/web/data/images/mobile/FRIDOLIN_LEFT.png</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/web/data/images/mobile/FRIDOLIN_RIGHT.png</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/web/data/images/mobile/MAYA_LEFT.png</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/web/data/images/mobile/MAYA_RIGHT.png</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/web/data/images/mobile/PLAYER_DOWN.png</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/web/data/images/mobile/PLAYER_LEFT.png</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/web/data/images/mobile/PLAYER_RIGHT.png</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/web/data/images/mobile/PLAYER_UP.png</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/web/data/images/mobile/PORTAL.png</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/web/data/images/mobile/PORTAL_CLOSED.png</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/web/data/images/mobile/UNDESTROYABLE_BLOCK.png</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/web/data/images/small/DESTROYABLE_BLOCK.png</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/web/data/images/small/DYNAMITE.png</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/web/data/images/small/ENTITY_ATTENTION.png</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/web/data/images/small/FASTELLE_LEFT.png</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/web/data/images/small/FASTELLE_RIGHT.png</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/web/data/images/small/FIRE.png</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/web/data/images/small/FRIDOLIN_LEFT.png</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/web/data/images/small/FRIDOLIN_RIGHT.png</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/web/data/images/small/MAYA_LEFT.png</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/web/data/images/small/MAYA_RIGHT.png</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/web/data/images/small/PLAYER_DOWN.png</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/web/data/images/small/PLAYER_LEFT.png</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/web/data/images/small/PLAYER_RIGHT.png</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/web/data/images/small/PLAYER_UP.png</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/web/data/images/small/PORTAL.png</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/web/data/images/small/PORTAL_CLOSED.png</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/web/data/images/small/UNDESTROYABLE_BLOCK.png</PATH>
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Deleted" />
+          <option name="myStatusName" value="Deleted" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="true" />
+          <option name="myId" value="REMOVED_FROM_REPOSITORY" />
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/web/data/images/mobile/blueRight.png</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/web/data/images/mobile/box2.png</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/web/data/images/mobile/brBox.png</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/web/data/images/mobile/breakableBox.png</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/web/data/images/mobile/closedPortal.png</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/web/data/images/mobile/dynamiteShadow.png</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/web/data/images/mobile/fire.jpeg</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/web/data/images/mobile/fire2.png</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/web/data/images/mobile/greenLeft.png</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/web/data/images/mobile/greenRight.png</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/web/data/images/mobile/leftBlue.png</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/web/data/images/mobile/nonbreakable.png</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/web/data/images/mobile/openPortal2.png</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/web/data/images/mobile/playerDown.png</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/web/data/images/mobile/playerLeft.png</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/web/data/images/mobile/playerRight.png</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/web/data/images/mobile/playerUp.png</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/web/data/images/mobile/redLeft.png</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/web/data/images/mobile/redRight.png</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/web/data/images/small/blueRight.png</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/web/data/images/small/box2.png</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/web/data/images/small/brBox.png</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/web/data/images/small/breakableBox.png</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/web/data/images/small/closedPortal.png</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/web/data/images/small/dynamiteShadow.png</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/web/data/images/small/fire.jpeg</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/web/data/images/small/fire2.png</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/web/data/images/small/greenLeft.png</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/web/data/images/small/greenRight.png</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/web/data/images/small/leftBlue.png</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/web/data/images/small/mGruenL.jpeg</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/web/data/images/small/nonbreakable.png</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/web/data/images/small/openPortal2.png</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/web/data/images/small/playerDown.png</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/web/data/images/small/playerLeft.png</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/web/data/images/small/playerRight.png</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/web/data/images/small/playerUp.png</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/web/data/images/small/redLeft.png</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/web/data/images/small/redRight.png</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/web/data/level/level0.json</PATH>
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Restored" />
+          <option name="myStatusName" value="Will be restored" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="RESTORED" />
+        </FILE-GROUP>
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Modified" />
+        <option name="myStatusName" value="Modified" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MODIFIED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Skipped" />
+        <option name="myStatusName" value="Skipped" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="SKIPPED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Merged with conflicts" />
+        <option name="myStatusName" value="Will be merged with conflicts" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MERGED_WITH_CONFLICTS" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Merged with tree conflicts" />
+        <option name="myStatusName" value="Merged with tree conflicts" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MERGED_WITH_TREE_CONFLICT" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Merged with property conflicts" />
+        <option name="myStatusName" value="Will be merged with property conflicts" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MERGED_WITH_PROPERTY_CONFLICT" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Merged" />
+        <option name="myStatusName" value="Will be merged" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MERGED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Not in repository" />
+        <option name="myStatusName" value="Not in repository" />
+        <option name="mySupportsDeletion" value="true" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="UNKNOWN" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Locally added" />
+        <option name="myStatusName" value="Locally added" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="LOCALLY_ADDED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Locally removed" />
+        <option name="myStatusName" value="Locally removed" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="LOCALLY_REMOVED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Switched" />
+        <option name="myStatusName" value="Switched" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="SWITCHED" />
+      </FILE-GROUP>
+    </UpdatedFiles>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -1079,29 +1277,28 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="340320000" />
+    <option name="totallyTimeSpent" value="341153000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="6" width="1932" height="1032" extended-state="0" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <layout>
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22361547" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20416667" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.27252504" sideWeight="0.49815693" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3286385" sideWeight="0.5" order="12" side_tool="true" content_ui="tabs" />
       <window_info id="Pub Serve" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3255814" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Dart Analysis" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3082353" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.30866808" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.30843115" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39217758" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.35610303" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.35200846" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.27252504" sideWeight="0.49815693" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3286385" sideWeight="0.5" order="12" side_tool="true" content_ui="tabs" />
-      <window_info id="Pub Serve" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3255814" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Dart Analysis" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3082353" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.30866808" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
@@ -1271,15 +1468,15 @@
               <point x="0.0" y="0.0" />
               <point x="0.0" y="0.0" />
             </edge>
-            <edge source="$PROJECT_DIR$/web/index.html" target="$PROJECT_DIR$/web/styles.css">
-              <point x="0.0" y="0.0" />
-              <point x="0.0" y="0.0" />
-            </edge>
-            <edge source="$PROJECT_DIR$/web/index.html" target="$PROJECT_DIR$/web/styles_landscape.css">
-              <point x="0.0" y="0.0" />
-              <point x="0.0" y="0.0" />
-            </edge>
             <edge source="$PROJECT_DIR$/web/index.html" target="$PROJECT_DIR$/web/reset.css">
+              <point x="0.0" y="0.0" />
+              <point x="0.0" y="0.0" />
+            </edge>
+            <edge source="$PROJECT_DIR$/web/index.html" target="$PROJECT_DIR$/web/main.dart">
+              <point x="0.0" y="0.0" />
+              <point x="0.0" y="0.0" />
+            </edge>
+            <edge source="$PROJECT_DIR$/web/index.html" target="$PROJECT_DIR$/web/styles.css">
               <point x="0.0" y="0.0" />
               <point x="0.0" y="0.0" />
             </edge>
@@ -1287,7 +1484,7 @@
               <point x="0.0" y="0.0" />
               <point x="0.0" y="0.0" />
             </edge>
-            <edge source="$PROJECT_DIR$/web/index.html" target="$PROJECT_DIR$/web/main.dart">
+            <edge source="$PROJECT_DIR$/web/index.html" target="$PROJECT_DIR$/web/styles_landscape.css">
               <point x="0.0" y="0.0" />
               <point x="0.0" y="0.0" />
             </edge>
@@ -1316,20 +1513,8 @@
     <entry file="file://$PROJECT_DIR$/web/data/images/mobile/greenLeft.png" />
     <entry file="file://$PROJECT_DIR$/web/data/images/mobile/fire2.png" />
     <entry file="file://$PROJECT_DIR$/web/data/images/mobile/fire.jpeg" />
-    <entry file="file://C:/Program Files/Dart/dart-sdk/lib/core/list.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="194">
-          <caret line="192" column="7" lean-forward="false" selection-start-line="192" selection-start-column="7" selection-end-line="192" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://C:/Program Files/Dart/dart-sdk/lib/html/dart2js/html_dart2js.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="178">
-          <caret line="14010" column="7" lean-forward="false" selection-start-line="14010" selection-start-column="7" selection-end-line="14010" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://C:/Program Files/Dart/dart-sdk/lib/core/list.dart" />
+    <entry file="file://C:/Program Files/Dart/dart-sdk/lib/html/dart2js/html_dart2js.dart" />
     <entry file="file://$PROJECT_DIR$/web/dynamite/DynamiteView.dart">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="429">
@@ -1339,13 +1524,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/web/data/config/imagePaths.json" />
     <entry file="file://$PROJECT_DIR$/web/data/config/entityViewOrder.json" />
-    <entry file="file://C:/Program Files/Dart/dart-sdk/lib/core/map.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="358">
-          <caret line="37" column="19" lean-forward="false" selection-start-line="37" selection-start-column="19" selection-end-line="37" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://C:/Program Files/Dart/dart-sdk/lib/core/map.dart" />
     <entry file="file://$PROJECT_DIR$/web/data/level/level2.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="495">
@@ -1372,7 +1551,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="55">
           <caret line="117" column="0" lean-forward="true" selection-start-line="117" selection-start-column="0" selection-end-line="117" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1401,7 +1579,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="81">
           <caret line="30" column="2" lean-forward="false" selection-start-line="30" selection-start-column="2" selection-end-line="30" selection-end-column="2" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1409,29 +1586,37 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="310">
           <caret line="12" column="61" lean-forward="false" selection-start-line="12" selection-start-column="61" selection-end-line="12" selection-end-column="61" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/web/dynamite/model/items/SpeedBuff.dart">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="310">
-          <caret line="53" column="3" lean-forward="false" selection-start-line="53" selection-start-column="3" selection-end-line="53" selection-end-column="3" />
+        <state relative-caret-position="399">
+          <caret line="30" column="14" lean-forward="false" selection-start-line="30" selection-start-column="14" selection-end-line="30" selection-end-column="14" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/web/dynamite/model/items/Portal.dart">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="310">
-          <caret line="59" column="3" lean-forward="false" selection-start-line="59" selection-start-column="3" selection-end-line="59" selection-end-column="3" />
-          <folding />
+        <state relative-caret-position="578">
+          <caret line="37" column="26" lean-forward="false" selection-start-line="37" selection-start-column="11" selection-end-line="37" selection-end-column="26" />
+          <folding>
+            <marker date="1499157493076" expanded="true" signature="355:1672" ph="{...}" />
+            <marker date="1499157493076" expanded="true" signature="566:702" ph="/*...*/" />
+            <marker date="1499157493076" expanded="true" signature="837:1030" ph="{...}" />
+            <marker date="1499157493076" expanded="true" signature="872:997" ph="/*...*/" />
+            <marker date="1499157493076" expanded="true" signature="1059:1092" ph="{...}" />
+            <marker date="1499157493076" expanded="true" signature="1123:1153" ph="{...}" />
+            <marker date="1499157493076" expanded="true" signature="1157:1273" ph="/*...*/" />
+            <marker date="1499157493076" expanded="true" signature="1351:1670" ph="{...}" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/web/dynamite/model/items/Item.dart">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="33">
+        <state relative-caret-position="17">
           <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
           <folding />
         </state>
@@ -1439,40 +1624,40 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/web/dynamite/model/items/DynamiteRange.dart">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="310">
-          <caret line="33" column="3" lean-forward="false" selection-start-line="33" selection-start-column="3" selection-end-line="33" selection-end-column="3" />
+        <state relative-caret-position="408">
+          <caret line="28" column="26" lean-forward="false" selection-start-line="28" selection-start-column="11" selection-end-line="28" selection-end-column="26" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/web/dynamite/model/blocks/Block.dart">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="183">
-          <caret line="10" column="45" lean-forward="true" selection-start-line="10" selection-start-column="45" selection-end-line="10" selection-end-column="45" />
+        <state relative-caret-position="119">
+          <caret line="10" column="45" lean-forward="false" selection-start-line="10" selection-start-column="45" selection-end-line="10" selection-end-column="45" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/web/dynamite/model/blocks/DestroyableBlock.dart">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="310">
-          <caret line="63" column="3" lean-forward="false" selection-start-line="63" selection-start-column="3" selection-end-line="63" selection-end-column="3" />
+        <state relative-caret-position="527">
+          <caret line="40" column="0" lean-forward="false" selection-start-line="40" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/web/dynamite/model/blocks/Fire.dart">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="292">
-          <caret line="61" column="3" lean-forward="false" selection-start-line="61" selection-start-column="3" selection-end-line="61" selection-end-column="3" />
+        <state relative-caret-position="748">
+          <caret line="50" column="3" lean-forward="false" selection-start-line="50" selection-start-column="3" selection-end-line="50" selection-end-column="3" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/web/dynamite/model/blocks/UndestroyableBlock.dart">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="660">
-          <caret line="24" column="1" lean-forward="true" selection-start-line="24" selection-start-column="1" selection-end-line="24" selection-end-column="1" />
+        <state relative-caret-position="221">
+          <caret line="17" column="2" lean-forward="false" selection-start-line="17" selection-start-column="2" selection-end-line="19" selection-end-column="5" />
           <folding />
         </state>
       </provider>
@@ -1481,7 +1666,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
           <caret line="93" column="21" lean-forward="false" selection-start-line="93" selection-start-column="21" selection-end-line="93" selection-end-column="21" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1489,7 +1673,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-297">
           <caret line="9" column="6" lean-forward="false" selection-start-line="9" selection-start-column="6" selection-end-line="9" selection-end-column="6" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1497,22 +1680,27 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="5" lean-forward="false" selection-start-line="0" selection-start-column="5" selection-end-line="0" selection-end-column="5" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/web/dynamite/model/Player.dart">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="211">
-          <caret line="21" column="6" lean-forward="false" selection-start-line="21" selection-start-column="6" selection-end-line="21" selection-end-column="6" />
-          <folding />
+        <state relative-caret-position="1088">
+          <caret line="71" column="27" lean-forward="false" selection-start-line="71" selection-start-column="27" selection-end-line="71" selection-end-column="27" />
+          <folding>
+            <marker date="1499157493066" expanded="true" signature="412:1000" ph="{...}" />
+            <marker date="1499157493066" expanded="true" signature="1206:1341" ph="{...}" />
+            <marker date="1499157493066" expanded="true" signature="1393:1752" ph="{...}" />
+            <marker date="1499157493066" expanded="true" signature="1902:2015" ph="//..." />
+            <marker date="1499157493066" expanded="true" signature="2167:2254" ph="/*...*/" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/web/dynamite/model/blocks/Dynamite.dart">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="77" column="26" lean-forward="false" selection-start-line="77" selection-start-column="17" selection-end-line="77" selection-end-column="26" />
+        <state relative-caret-position="1428">
+          <caret line="92" column="29" lean-forward="false" selection-start-line="92" selection-start-column="7" selection-end-line="92" selection-end-column="29" />
           <folding />
         </state>
       </provider>
@@ -1521,7 +1709,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="231">
           <caret line="19" column="29" lean-forward="false" selection-start-line="19" selection-start-column="18" selection-end-line="19" selection-end-column="29" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1529,7 +1716,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="264">
           <caret line="14" column="11" lean-forward="false" selection-start-line="14" selection-start-column="11" selection-end-line="14" selection-end-column="11" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1537,7 +1723,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="660">
           <caret line="20" column="22" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1545,7 +1730,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="165">
           <caret line="5" column="32" lean-forward="false" selection-start-line="5" selection-start-column="32" selection-end-line="5" selection-end-column="32" />
-          <folding />
         </state>
       </provider>
     </entry>

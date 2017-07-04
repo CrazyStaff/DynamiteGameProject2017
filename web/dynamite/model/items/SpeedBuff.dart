@@ -52,9 +52,4 @@ class SpeedBuff extends Item {
   static setSpeedOffset(int offset) {
     speedOffset = offset;
   }
-
-  @override
-  int getViewOrder() {
-    return 110;
-  }
 }

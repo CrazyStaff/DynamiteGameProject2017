@@ -60,9 +60,4 @@ class Fire extends Block {
     }
     return null;
   }
-
-  @override
-  int getViewOrder() {
-    return 70;
-  }
 }

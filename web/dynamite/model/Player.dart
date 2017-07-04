@@ -92,8 +92,4 @@ class Player extends Entity {
       }
     }
   }
-  @override
-  int getViewOrder() {
-    return 90;
-  }
 }

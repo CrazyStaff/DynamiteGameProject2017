@@ -58,9 +58,4 @@ class Portal extends Entity {
       this.extensionTypes.remove(PORTAL_CLOSED);
     }
   }
-
-  @override
-  int getViewOrder() {
-    return 80;
-  }
 }

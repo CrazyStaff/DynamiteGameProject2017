@@ -198,6 +198,58 @@ html, body {
     color: black;
 }
 
+
+@media only screen and (min-width:400px) {
+    #statusBar table {
+        margin: 0 auto;
+    }
+
+    #statusBar td {
+        color: white;
+        font-size: 3.5vw;
+        text-align: center;
+        width: 25vw;
+        margin: auto;
+        padding-top: 1vw;
+        padding-bottom: 1vw;
+        white-space: nowrap;
+    }
+}
+
+@media only screen and (min-width:600px) {
+    #statusBar table {
+        margin: 0 auto;
+    }
+
+    #statusBar td {
+        color: white;
+        font-size: 3vw;
+        text-align: center;
+        width: 25vw;
+        margin: auto;
+        padding-top: 1vw;
+        padding-bottom: 1vw;
+        white-space: nowrap;
+    }
+}
+
+@media only screen and (min-width:800px) {
+    #statusBar table {
+        margin: 0 auto;
+    }
+
+    #statusBar td {
+        color: white;
+        font-size: 2.5vw;
+        text-align: center;
+        width: 25vw;
+        margin: auto;
+        padding-top: 1vw;
+        padding-bottom: 1vw;
+        white-space: nowrap;
+    }
+}
+
 @media only screen and (max-device-width:480px) {
 
     html, body {
@@ -321,6 +373,10 @@ html, body {
         /*background: url("Pattern3.png"), repeat;*/
         background-size: 0.9vh;
         overflow: hidden;
+    }
+
+    #level_content table, #level_content img {
+        display:none; /* dont show images in landscape mode */
     }
 
     #statusBar {

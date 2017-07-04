@@ -32,9 +32,4 @@ class DynamiteRange extends Item {
   static setSpawnRate(int i) {
     spawnPercentage = i;
   }
-
-  @override
-  int getViewOrder() {
-    return 100;
-  }
 }

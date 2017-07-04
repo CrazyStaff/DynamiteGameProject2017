@@ -147,9 +147,8 @@ class DynamiteGame {
   void increaseLevel() {
     this._currentLevel += 1;
 
-    if (_currentLevel > _maxLvl){
+    if (_currentLevel >= _maxLvl){
       _gameStatus = GameState.MAX_LEVEL_REACHED;
-      this._currentLevel = 0;
     }
     _dieReason = "";
   }
@@ -462,7 +461,9 @@ class DynamiteGame {
         addedAttribute = true;
       }
       // Delete last ',' delimiter
-      entityAttributes = entityAttributes.substring(0, entityAttributes.length-1);
+      if(entityAttributes.length > 0) {
+        entityAttributes = entityAttributes.substring(0, entityAttributes.length - 1);
+      }
       attributesForEntity.putIfAbsent(entity.getType(), () => entityAttributes);
     }
 
@@ -470,7 +471,7 @@ class DynamiteGame {
         If there are no attributs for the whole game field
         than nothing have to be added to the html
      */
-    if(!addedAttribute) return "";
+    if(!addedAttribute || _viewStackOrder == null) return "";
 
     Map<String, String> sortedMap = new Map<String, String>();
     for(String entityOrdered in _viewStackOrder) {
@@ -495,7 +496,7 @@ class DynamiteGame {
   }
 
   String getLevelHTML() {
-    return (_currentLevel < _startLevel ? "${_currentLevel}" : "${_startLevel - _currentLevel + 1}");
+    return (_currentLevel < _startLevel ? "${_currentLevel}" : "${_currentLevel - _startLevel  + 1}");
   }
 
   Map<String, String> getScoreHTML() {
@@ -577,9 +578,5 @@ class DynamiteGame {
     _score.initScore(DestroyableBlock.ENTITY_TYPE, expDestroyableBlock);
 
    _score.calculateMaxScore(_gameField);
-  }
-
-  void setEinLevel() {
-    _currentLevel = 0;
   }
 }

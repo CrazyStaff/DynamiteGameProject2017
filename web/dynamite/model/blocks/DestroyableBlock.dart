@@ -62,9 +62,4 @@ class DestroyableBlock extends Block {
     }
     return mod;
   }
-
-  @override
-  int getViewOrder() {
-    return 20;
-  }
 }

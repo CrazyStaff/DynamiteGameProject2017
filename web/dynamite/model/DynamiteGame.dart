@@ -41,8 +41,7 @@ class DynamiteGame {
   int _maxLevelTime;
   int _dynamiteRadius;
   int _pausedGameAtTime;
-
-
+  int _maxDynamites;
 
   /*
       Information about the game field
@@ -73,6 +72,7 @@ class DynamiteGame {
   set gameStatus(GameState gameState) => this._gameStatus = gameState;
   set imagesPath(String imagesPath) => this._imagesPath = imagesPath;
   set viewStackOrder(List<String> viewStackOrder) => this._viewStackOrder = viewStackOrder;
+  set maxDynamite(int maxDynamites) => this._maxDynamites = maxDynamites;
 
   /*
       All getters for the controller

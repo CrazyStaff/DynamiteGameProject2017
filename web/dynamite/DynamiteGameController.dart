@@ -150,6 +150,7 @@ class DynamiteGameController {
 
       game.levelDescription = parsedMap["description"];
       game.maxLevelTime = parsedMap["maxLevelTime"];
+      game.maxDynamite = parsedMap["maxDynamites"];
 
       if(!_proofIfEXPIsSetInLevelConfig(parsedMap)) {
         throw new Exception("Level ${game.currentLevel} should have an EXP section");

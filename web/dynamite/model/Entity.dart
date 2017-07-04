@@ -18,6 +18,7 @@ abstract class Entity {
   static int destroyableBlockCount = 0;
   static int monsterCounter = 0;
   static int portalCount = 0;
+  static int dynamiteCount = 0;
 
   // The default view direction of the entity
   final Position DEFAULT_VIEW_DIRECTION = Movement.RIGHT;

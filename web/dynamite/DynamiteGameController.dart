@@ -225,7 +225,7 @@ class DynamiteGameController {
         break;
       case GameState.MAX_LEVEL_REACHED:
         print("max level reached");
-        loadWin();
+        retry();
         return;
       default:
         print("FO: default");
@@ -276,13 +276,6 @@ class DynamiteGameController {
     game.increaseLevel();
       Future.wait([_loadLevel()
       ]).then((b) => view.generateField(game));
-  }
-
-  void loadWin() {
-    game.gameStatus = GameState.RUNNING;
-    game.setEinLevel();
-    Future.wait([_loadLevel()
-    ]).then((b) => view.generateField(game));
   }
 
   void up() {

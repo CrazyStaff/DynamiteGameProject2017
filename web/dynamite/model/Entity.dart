@@ -363,12 +363,6 @@ abstract class Entity {
   }
 
   /*
-      Returns the stack order of an element in the view
-      Needs to be overriden by inherited classes
-   */
-  int getViewOrder();
-
-  /*
       Update all the times used by entity to guarantee a pause method
    */
   void updateTimes(int offsetAddTime) {

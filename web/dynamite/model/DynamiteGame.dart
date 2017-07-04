@@ -547,10 +547,13 @@ class DynamiteGame {
       Place dynamite above the position of the player
    */
   void placeDynamite() {
-    if(_gameStatus == GameState.RUNNING) {
-      Position pos = _player.position;
-      List<Entity> gameField = _gameField[pos.getX][pos.getY].getEntities;
-      gameField.add(new Dynamite(pos, _dynamiteRadius + _player.dynamiteRangeOffset));
+    if (maxDynamite >= Entity.dynamiteCount) {
+      if (_gameStatus == GameState.RUNNING) {
+        Position pos = _player.position;
+        List<Entity> gameField = _gameField[pos.getX][pos.getY].getEntities;
+        gameField.add(
+            new Dynamite(pos, _dynamiteRadius + _player.dynamiteRangeOffset));
+      }
     }
   }
 

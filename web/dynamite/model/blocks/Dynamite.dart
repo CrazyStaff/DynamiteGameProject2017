@@ -29,7 +29,7 @@ class Dynamite extends Block {
 
   Dynamite(Position position, int explosionRadius) : super(ENTITY_TYPE, position) {
     this._explosionRadius = explosionRadius;
-
+    Entity.dynamiteCount++;
     /*
       this updates the time of the last action so that the action method
       can be called from 'DynamiteGame'

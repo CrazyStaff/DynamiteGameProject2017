@@ -482,7 +482,7 @@ class DynamiteGame {
   }
 
   String getLevelHTML() {
-    return (_currentLevel < _startLevel ? "${_currentLevel}" : "${_startLevel - _currentLevel + 1}");
+    return (_currentLevel < _startLevel ? "${_currentLevel}" : "${_currentLevel - _startLevel  + 1}");
   }
 
   Map<String, String> getScoreHTML() {

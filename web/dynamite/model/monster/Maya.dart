@@ -18,6 +18,9 @@ class Maya extends Fastelle {
 
   Maya(Position position) : super(position) {
       this.type = ENTITY_TYPE;
+
+      this.viewDirection = DEFAULT_VIEW_DIRECTION;
+      setViewDirection();
   }
 
   /*

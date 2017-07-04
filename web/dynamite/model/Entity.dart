@@ -262,16 +262,15 @@ abstract class Entity {
       nextPosition = null;
       setViewDirection();
 
-    if(this.getType() == "MAYA" || this.getType() == "FRIDOLIN" || this.getType() == "FASTELLE" || this.getType() == "PLAYER") {
-      for (Entity otherEntities in entityField) {
-        if (this.collision(otherEntities)) {
+   for (Entity otherEntities in entityField) {
+     if (this.collision(otherEntities)) {
           this.setAlive(false, "Collision with " + otherEntities.getType());
-        }
-        if(otherEntities.collision(this)) {
-          otherEntities.setAlive(false, "Collision with " + this.getType());
-        }
-      }
-    }
+     }
+     if(otherEntities.collision(this)) {
+       otherEntities.setAlive(false, "Collision with " + this.getType());
+     }
+   }
+
 
     // Updates the last move time
     lastMoveTime = new DateTime.now().millisecondsSinceEpoch;

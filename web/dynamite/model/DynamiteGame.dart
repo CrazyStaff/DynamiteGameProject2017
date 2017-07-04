@@ -221,7 +221,7 @@ class DynamiteGame {
    */
   void _resetGame() {
     this._gameStatus = GameState.PAUSED;
-
+    this._maxDynamites = 9999;
     _dynamiteRadius = 1;
     Entity.portalCount = 0;
     Entity.monsterCounter = 0;
@@ -547,7 +547,7 @@ class DynamiteGame {
       Place dynamite above the position of the player
    */
   void placeDynamite() {
-    if (maxDynamite >= Entity.dynamiteCount) {
+    if (_maxDynamites >= Entity.dynamiteCount+1) {
       if (_gameStatus == GameState.RUNNING) {
         Position pos = _player.position;
         List<Entity> gameField = _gameField[pos.getX][pos.getY].getEntities;

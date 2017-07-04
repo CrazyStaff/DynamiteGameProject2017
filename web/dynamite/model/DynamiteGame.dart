@@ -37,6 +37,7 @@ class DynamiteGame {
   Player _player;
   Score _score;
   int _life = 3;
+  int _maxDynamites;
   int _startLevelTime;
   int _maxLevelTime;
   int _dynamiteRadius;
@@ -68,6 +69,7 @@ class DynamiteGame {
   set levelDescription(String description) => this._levelDescription = description;
   set maxLvl(int maxLvl) => this._maxLvl = maxLvl;
   set startLife(int startLife) => this._startLife = startLife;
+  set maxDynamites(int maxDyn) => this._maxDynamites = maxDyn;
   set startLevel(int startLevel) => this._startLevel = startLevel;
   set currentLevel(int currentLevel) => this._currentLevel = currentLevel;
   set gameStatus(GameState gameState) => this._gameStatus = gameState;
@@ -81,6 +83,7 @@ class DynamiteGame {
   get getLife => _life;
   get currentLevel => _currentLevel;
   get startLevel => _startLevel;
+  get maxDynamites => _maxDynamites;
   GameState getStatus() =>  _gameStatus;
   bool isLevelTimerActive() => _maxLevelTime != -1;
   List<List<FieldNode>> get getGameField => _gameField;
@@ -93,6 +96,7 @@ class DynamiteGame {
      */
     _currentLevel = 1;
     _maxLvl = 0;
+    _maxDynamites = 0;
     _pausedGameAtTime = 0;
     _levelDescription = "";
     _dynamiteRadius = 1;
@@ -105,6 +109,7 @@ class DynamiteGame {
     Entity.portalCount = 0;
     Entity.monsterCounter = 0;
     Entity.destroyableBlockCount = 0;
+    Entity.dynamiteCount = 0;
 
     _score = new Score();
     _generateEmptyGameField();
@@ -207,6 +212,14 @@ class DynamiteGame {
   }
 
   /*
+    Returns the number of remaining dynamites the player can place.
+   */
+  int dynamitesRemaining() {
+    int rem =  maxDynamites - Entity.dynamiteCount;
+    return ( rem < 0 ) ? 0 : rem;
+  }
+
+  /*
       Reset the level to the level after the tutorial
       so that the player begins at the first real level
    */
@@ -227,6 +240,7 @@ class DynamiteGame {
     Entity.portalCount = 0;
     Entity.monsterCounter = 0;
     Entity.destroyableBlockCount = 0;
+    Entity.dynamiteCount = 0;
   }
 
   /*
@@ -546,7 +560,7 @@ class DynamiteGame {
       Place dynamite above the position of the player
    */
   void placeDynamite() {
-    if(_gameStatus == GameState.RUNNING) {
+    if((_gameStatus == GameState.RUNNING) && (dynamitesRemaining() > 0)) {
       Position pos = _player.position;
       List<Entity> gameField = _gameField[pos.getX][pos.getY].getEntities;
       gameField.add(new Dynamite(pos, _dynamiteRadius + _player.dynamiteRangeOffset));

@@ -15,6 +15,8 @@ class DynamiteView {
   HtmlElement get lvl => querySelector('#lvl');
   HtmlElement get lvlType => querySelector("#lvlType");
   HtmlElement get life => querySelector('#life');
+  HtmlElement get dynamites => querySelector('#dynamites');
+  HtmlElement get maxDynamites => querySelector('#maxDynamites');
   HtmlElement get leftTime => querySelector("#leftTime");
   HtmlElement get overviewLevel => querySelector('#level');
   HtmlElement get overviewAccept => querySelector('#level_accept');
@@ -47,6 +49,14 @@ class DynamiteView {
    */
   void updateLife(int currentLife) {
     life.innerHtml = "$currentLife";
+  }
+
+  /*
+    Update remaining dynamites the player can place and his maximum number of dynamites in the HtmlElements
+  */
+  void updateDynamiteInfo(int dynamites, int maxDynamites) {
+    this.dynamites.innerHtml = "$dynamites";
+    this.maxDynamites.innerHtml = "$maxDynamites";
   }
 
   /*

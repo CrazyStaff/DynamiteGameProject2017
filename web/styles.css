@@ -343,6 +343,11 @@ html, body {
         padding-bottom: 1vh;
     }
 
+    #statusBar img {
+        height: 4vw;
+        width: 4vw;
+    }
+
     #gameField {
         position: fixed;
         top: 12vw;

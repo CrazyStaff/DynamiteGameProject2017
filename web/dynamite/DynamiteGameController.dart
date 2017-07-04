@@ -150,6 +150,7 @@ class DynamiteGameController {
 
       game.levelDescription = parsedMap["description"];
       game.maxLevelTime = parsedMap["maxLevelTime"];
+      game.maxDynamites = parsedMap["maxDynamites"];
 
       if(!_proofIfEXPIsSetInLevelConfig(parsedMap)) {
         throw new Exception("Level ${game.currentLevel} should have an EXP section");
@@ -187,6 +188,7 @@ class DynamiteGameController {
     view.updateLevelType(game.getLevelTypeHTML());
     view.updateLevel(game.getLevelHTML());
     view.updateLife(game.getLife);
+    view.updateDynamiteInfo(game.dynamitesRemaining(), game.maxDynamites);
     view.updateLeftTime(game.getLevelLeftTime());
     view.setLeftTimeVisibility(game.isLevelTimerActive());
   }

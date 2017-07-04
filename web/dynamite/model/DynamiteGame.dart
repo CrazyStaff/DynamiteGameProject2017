@@ -91,7 +91,7 @@ class DynamiteGame {
     /*
         Initialize the default values
      */
-    _currentLevel = 8;
+    _currentLevel = 1;
     _maxLvl = 0;
     _pausedGameAtTime = 0;
     _levelDescription = "";

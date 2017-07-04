@@ -1,9 +1,96 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto);
 
 html, body {
-    /*width: 100%;*/
+    width: 100%;
     height: 100%;
     font-family: 'Roboto', sans-serif;
+}
+
+body {
+    display:table;
+}
+
+#statusBar {
+    background: #A31E1A;
+    display:table-row;
+    height:0;
+}
+
+#mobileControl {
+    background: #A31E1A;
+    display:none;
+}
+
+#contentGame {
+    display:table-cell; /* VORHER TABLE ROW */
+    vertical-align: middle;
+    background:seashell;
+}
+
+@media only screen and (max-device-width: 736px) and (orientation: portrait) { /* support until iPhone 6 + in portrait mode */
+
+    #mobileControl { /* show mobile control only in portrait mode on smartphones */
+        display:table-row;
+        height:0;
+    }
+    #mobileControl table {
+        margin: 0 auto;
+    }
+
+    #mobileControl td {
+        padding: 2vw;
+    }
+
+    #mobileControl table input {
+        margin: auto;
+        height: 15vw;
+        width: 15vw;
+        background-color: white;
+        -webkit-border-radius: 15px;
+        -moz-border-radius: 15px;
+        border-radius: 15px;
+        outline: none; /* No access by keyboard */
+    }
+
+    #mUp {
+        background-image: url('data/images/small/BUTTON_UP.png');
+        background-size: cover;
+    }
+
+    #mDown {
+        background-image: url('data/images/small/BUTTON_DOWN.png');
+        background-size: cover;
+    }
+
+    #mRight {
+        background-image: url('data/images/small/BUTTON_RIGHT.png');
+        background-size: cover;
+    }
+
+    #mLeft {
+        background-image: url('data/images/small/BUTTON_LEFT.png');
+        background-size: cover;
+    }
+
+    #mDynamite {
+        background-image: url('data/images/small/BUTTON_DYNAMITE.png');
+        background-size: cover;
+    }
+}
+
+#statusBar table {
+    margin: 0 auto;
+}
+
+#statusBar td {
+    color: white;
+    font-size: 3.5vw;
+    text-align: center;
+    width: 25vw;
+    margin: auto;
+    padding-top: 1vw;
+    padding-bottom: 1vw;
+    white-space: nowrap; /* dont wrap header words*/
 }
 
 #header {
@@ -68,11 +155,6 @@ html, body {
     margin-right: 0.5em;
 }
 
-#gameField {
-    width: 100%;
-    margin: 2em auto 0 auto;
-}
-
 #output {
     position: absolute;
     left: 50%;
@@ -88,17 +170,23 @@ html, body {
     border-collapse: collapse;
 }
 
+#gameField {
+    /*display:table-row;
+    vertical-align: center;*/
+
+    width: 100%;
+    /*margin: 2em auto 0 auto;*/
+}
+
 #gameField tr {
     display: block;
     line-height: 0;
     margin: 0 !important;
 }
 
-#gameField tr td{
+#gameField tr td {
     border: none;
     background-color: #FFF0A5;
-    width: 2rem;
-    height: 2rem;
     line-height: normal;
     overflow: hidden;
     display: inline-block;
@@ -149,6 +237,7 @@ html, body {
     margin-top: 1em;
     margin-left: 3rem;
     margin-right: 3rem;
+    white-space: nowrap;
 }
 
 #level_result  {
@@ -177,298 +266,4 @@ html, body {
 .PLAYER_DOWN {
     background-image: url("data/images/mobile/PLAYER_DOWN.png") !important;
     background-size: cover;
-}
-
-
-.DYNAMITERANGE {
-    background-color: darksalmon !important;
-}
-
-.SPEEDBUFF {
-    background-color: aqua !important;
-}
-
-.ENTITY_ATTENTION::after { /* Attention exclamation mark over field */
-    display: block;
-    content: "!";
-    font-family: 'Open Sans', sans-serif;
-    font-size: 1.2rem;
-    text-align: right;
-    padding-right: 2px;
-    color: black;
-}
-
-
-@media only screen and (min-width:400px) {
-    #statusBar table {
-        margin: 0 auto;
-    }
-
-    #statusBar td {
-        color: white;
-        font-size: 3.5vw;
-        text-align: center;
-        width: 25vw;
-        margin: auto;
-        padding-top: 1vw;
-        padding-bottom: 1vw;
-        white-space: nowrap;
-    }
-}
-
-@media only screen and (min-width:600px) {
-    #statusBar table {
-        margin: 0 auto;
-    }
-
-    #statusBar td {
-        color: white;
-        font-size: 3vw;
-        text-align: center;
-        width: 25vw;
-        margin: auto;
-        padding-top: 1vw;
-        padding-bottom: 1vw;
-        white-space: nowrap;
-    }
-}
-
-@media only screen and (min-width:800px) {
-    #statusBar table {
-        margin: 0 auto;
-    }
-
-    #statusBar td {
-        color: white;
-        font-size: 2.5vw;
-        text-align: center;
-        width: 25vw;
-        margin: auto;
-        padding-top: 1vw;
-        padding-bottom: 1vw;
-        white-space: nowrap;
-    }
-}
-
-@media only screen and (max-device-width:480px) {
-
-    html, body {
-        overflow: hidden;
-        /*background: url("Pattern3.png"), repeat;*/
-        background-size: 20vw;
-    }
-
-    #statusBar {
-        height: auto;
-        width: auto;
-    }
-
-    #statusBar td {
-        color: white;
-        font-size: 7.5vw;
-        text-align: center;
-        width: 25vw;
-        margin: auto;
-        padding-top: 1vw;
-        padding-bottom: 1vw;
-        white-space: nowrap;
-    }
-
-    #gameField {
-        background: none;
-        height: auto;
-        margin: auto;
-    }
-
-    #gameField table {
-        margin-top: 2vh;
-    }
-
-    #mobileControl {
-        position: fixed;
-        width: 100vw;
-        bottom: 0;
-    }
-
-    #mobileControl table {
-        width: auto;
-        margin-left: 15.5vw;
-        margin-right: 15.5vw;
-    }
-
-    #mobileControl td {
-        padding: 1.5vw;
-    }
-
-    #mobileControl table input {
-        margin: auto;
-        height: 20vw;
-        width: 20vw;
-        /*
-        border-top: none;
-        border-left: none;
-        border-right-color: black;
-        border-bottom-color: black;
-        background-color: darkred;
-        */
-        color: red;
-        font-size: 8vw;
-        font-family: 'Open Sans', sans-serif;
-        outline: none;
-        z-index: 1;
-    }
-
-    #mStart {
-        position: absolute;
-        height: 16.3vw;
-        width: 16.3vw;
-        right: 1.5vw;
-        top: 1.5vw;
-        border-radius: 50%;
-        border-width: 2px;
-        font-size: 7vw;
-        font-family: 'Open Sans', sans-serif;
-        outline: none;
-        z-index: 2;
-    }
-
-    #mStart.init {
-        color: green;
-        background-color: lightgreen;
-    }
-
-    #mStart.running {
-        color: red;
-        background-color: lightcoral;
-    }
-
-    #mStart.paused {
-        color: green;
-        background-color: lightgreen;
-    }
-}
-
-#statusBar {
-    background-color: #A31E1A;
-    font-family: "Open Sans", sans-serif;
-    font-size: 16px;
-}
-
-#mobileControl {
-    background-color: #A31E1A;
-    border-left: solid;
-    border-left-color: white;
-    border-width: 1vh;
-}
-#mobileControl table input {
-    background-color: white;
-    -webkit-border-radius: 15px;
-    -moz-border-radius: 15px;
-    border-radius: 15px;
-    color: #A31E1A;
-}
-
-@media only screen and (max-height:480px) {
-    html, body {
-        /*background: url("Pattern3.png"), repeat;*/
-        background-size: 0.9vh;
-        overflow: hidden;
-    }
-
-    #level_content table, #level_content img {
-        display:none; /* dont show images in landscape mode */
-    }
-
-    #statusBar {
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: auto;
-        width: auto;
-        z-index: 3;
-    }
-
-    #statusBar td {
-        color: white;
-        font-size: 4vw;
-        text-align: center;
-        width: 25vw;
-        margin: auto;
-        padding-top: 1vh;
-        padding-bottom: 1vh;
-    }
-
-    #gameField {
-        position: fixed;
-        top: 12vw;
-        left: 0;
-        bottom: 0;
-        width: 60vw;
-        height: auto;
-        margin: auto;
-        z-index: 1;
-    }
-
-    #gameField table {
-        margin-top: 2vh;
-    }
-
-    #mobileControl {
-        position: fixed;
-        float: right;
-        right: 0;
-        bottom: 0;
-        height: 100vh;
-        width: auto;
-        z-index: 2;
-    }
-
-    #mobileControl table {
-        width: auto;
-        margin-top: 31vh;
-    }
-
-    #mobileControl td {
-        padding: 1.5vh;
-    }
-
-    #mobileControl table input {
-        margin: auto;
-        height: 20vh;
-        width: 20vh;
-        font-size: 8vh;
-        font-family: 'Open Sans', sans-serif;
-        outline: none;
-        z-index: 1;
-    }
-
-    #mStart {
-        position: absolute;
-        height: 16.3vh;
-        width: 16.3vh;
-        right: 1.5vh;
-        top: 22.5vh;
-        border-radius: 50%;
-        border-width: 2px;
-        font-size: 7vh;
-        font-family: 'Open Sans', sans-serif;
-        outline: none;
-        z-index: 2;
-    }
-
-    #mStart.init {
-        color: green;
-        background-color: lightgreen;
-    }
-
-    #mStart.running {
-        color: red;
-        background-color: lightcoral;
-    }
-
-    #mStart.paused {
-        color: green;
-        background-color: lightgreen;
-    }
 }

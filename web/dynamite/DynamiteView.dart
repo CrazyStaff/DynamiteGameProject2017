@@ -1,10 +1,12 @@
 import 'dart:html';
 import 'model/DynamiteGame.dart';
+import 'dart:math';
 import 'DynamiteGameController.dart';
 
 class DynamiteView {
 
   final game = querySelector("#gameField");
+  final gameElement = querySelector("#gameField td");
   HtmlElement get startButton => querySelector('#mStart');
   HtmlElement get arrowUp => querySelector('#mUp');
   HtmlElement get arrowDown => querySelector('#mDown');
@@ -19,7 +21,15 @@ class DynamiteView {
   HtmlElement get overviewLevel => querySelector('#level');
   HtmlElement get overviewAccept => querySelector('#level_accept');
 
+  HtmlElement get contentGame => querySelector("#contentGame");
+
   final TrustedNodeValidator trustedValidotor = new TrustedNodeValidator();
+
+  /*
+        Stores the determined field size so that there
+        isn´t needed a refreshing of DynamiteGame every time
+   */
+  double _lastFieldSize = 0.0;
 
   /*
       Update the game field
@@ -27,6 +37,39 @@ class DynamiteView {
   void update(String gameField) {
     game.setInnerHtml(gameField, validator: trustedValidotor);
   }
+
+  /*
+      Calculates the maximum field size which is possible
+      Returns -1 when field size didn´t change to the last calculation
+   */
+  double calculateMaxFieldSize(int fieldWidth, int fieldHeight) {
+    HtmlElement gameEle = querySelector("#gameField td");
+
+    if(gameEle != null) {
+      //num.parse(n.toStringAsFixed(2));
+      //print("device pixel ration ${window.devicePixelRatio}");
+      double maxFieldSize = min(
+          num.parse((contentGame.clientWidth / fieldWidth).toStringAsFixed(4)).toDouble(),
+          num.parse((contentGame.clientHeight / fieldHeight).toStringAsFixed(4)).toDouble());
+
+     // maxFieldSize = maxFieldSize/window.devicePixelRatio;
+
+      if (maxFieldSize != _lastFieldSize) {
+        _lastFieldSize = maxFieldSize;
+        //print("MaxWidth: ${(contentGame.clientWidth / fieldWidth)};"
+        //    "width:${contentGame.clientWidth} Height: ${contentGame.clientHeight}; fH: $fieldHeight MaxHeight: ${(contentGame.clientHeight / fieldHeight)}");
+        return maxFieldSize;
+      }
+    }
+    return -1.0;
+  }
+
+  /*
+  gameEle.setAttribute(
+            "style", "width=${maxFieldSize}px; height=${maxFieldSize}px;");
+
+            print("${contentGame.clientWidth} : ${contentGame.clientHeight}");
+   */
 
   /*
       Update the level type

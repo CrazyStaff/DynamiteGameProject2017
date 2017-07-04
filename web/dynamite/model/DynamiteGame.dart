@@ -13,7 +13,7 @@ import 'items/DynamiteRange.dart';
 import 'monster/Fastelle.dart';
 import 'monster/Fridolin.dart';
 import 'monster/Maya.dart';
-import 'monster/Monster.dart';
+import 'dart:math';
 import 'pathfinding/FieldNode.dart';
 
 class DynamiteGame {
@@ -49,6 +49,7 @@ class DynamiteGame {
   List<List<FieldNode>> _gameField;
   int _fieldWidth;
   int _fieldHeight;
+  double _maxFieldSize;
 
   /*
       The list of entities and there stack order in the view
@@ -73,6 +74,7 @@ class DynamiteGame {
   set imagesPath(String imagesPath) => this._imagesPath = imagesPath;
   set viewStackOrder(List<String> viewStackOrder) => this._viewStackOrder = viewStackOrder;
   set maxDynamite(int maxDynamites) => this._maxDynamites = maxDynamites;
+  set maxFieldSize(double maxFieldSize) => this._maxFieldSize = maxFieldSize;
 
   /*
       All getters for the controller
@@ -81,6 +83,8 @@ class DynamiteGame {
   get getLife => _life;
   get currentLevel => _currentLevel;
   get startLevel => _startLevel;
+  get fieldWidth => _fieldWidth;
+  get fieldHeight => _fieldHeight;
   GameState getStatus() =>  _gameStatus;
   bool isLevelTimerActive() => _maxLevelTime != -1;
   List<List<FieldNode>> get getGameField => _gameField;
@@ -413,6 +417,7 @@ class DynamiteGame {
 
         final pos = "field_${width}_${height}";
         var entityAttributes = _getHTMLEntities(currentField);
+
         html += "<td id='$pos' $entityAttributes></td>";
       }
       html += "</tr>";
@@ -427,7 +432,9 @@ class DynamiteGame {
       of enemies in the view
    */
   String _getHTMLEntities(List<Entity> allEntities) {
-    String htmlEntities = "style=\"background-image: ";
+    var fieldSize = "width:${(_maxFieldSize).toInt()}px; height:${(_maxFieldSize).toInt()}px;";
+
+    String htmlEntities = "style=\"${fieldSize}; background-image: ";
 
     /* <Entity.type, urls> */
     Map<String, String> attributesForEntity = new Map<String, String>();
@@ -457,7 +464,11 @@ class DynamiteGame {
         If there are no attributs for the whole game field
         than nothing have to be added to the html
      */
-    if(!addedAttribute || _viewStackOrder == null) return "";
+    if(!addedAttribute || _viewStackOrder == null) {
+        var fieldSize = "width:${(_maxFieldSize).toInt()}px; height:${(_maxFieldSize).toInt()}px;";
+        return "style=\"${fieldSize};\"";
+    }
+
 
     Map<String, String> sortedMap = new Map<String, String>();
     for(String entityOrdered in _viewStackOrder) {

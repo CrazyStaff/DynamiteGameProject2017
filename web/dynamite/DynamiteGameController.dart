@@ -54,6 +54,7 @@ class DynamiteGameController {
           }
           break;
       }
+      // only if game is created
       view.update(game.getHTML());
     });
 
@@ -185,6 +186,14 @@ class DynamiteGameController {
       Update the view that the game state is refreshed in the view
    */
   _updateView() {
+    double maxFieldSize = view.calculateMaxFieldSize(game.fieldWidth, game.fieldHeight);
+    /*
+        Proof if there is a new maxFieldSize
+     */
+    if(maxFieldSize != -1.0) {
+      game.maxFieldSize = maxFieldSize;
+    }
+
     view.update(game.getHTML());
     view.updateScore(game.getScorePercentage());
     view.updateLevelType(game.getLevelTypeHTML());

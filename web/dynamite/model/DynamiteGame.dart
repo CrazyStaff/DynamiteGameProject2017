@@ -74,7 +74,7 @@ class DynamiteGame {
   set gameStatus(GameState gameState) => this._gameStatus = gameState;
   set imagesPath(String imagesPath) => this._imagesPath = imagesPath;
   set viewStackOrder(List<String> viewStackOrder) => this._viewStackOrder = viewStackOrder;
-  set maxDynamite(int maxDynamites) => this._maxDynamites = maxDynamites;
+  set maxDynamites(int maxDynamites) => this._maxDynamites = maxDynamites;
   set maxFieldSize(double maxFieldSize) => this._maxFieldSize = maxFieldSize;
 
   /*

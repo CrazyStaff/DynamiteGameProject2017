@@ -20,10 +20,12 @@ class DynamiteView {
   HtmlElement get leftTime => querySelector("#leftTime");
   HtmlElement get overviewLevel => querySelector('#level');
   HtmlElement get overviewAccept => querySelector('#level_accept');
-
   HtmlElement get contentGame => querySelector("#contentGame");
 
-  final TrustedNodeValidator trustedValidotor = new TrustedNodeValidator();
+  /*
+      Trust all elements and attributes to be updated in the view
+   */
+  final TrustedNodeValidator trustedValidator = new TrustedNodeValidator();
 
   /*
         Stores the determined field size so that there
@@ -35,7 +37,7 @@ class DynamiteView {
       Update the game field
    */
   void update(String gameField) {
-    game.setInnerHtml(gameField, validator: trustedValidotor);
+    game.setInnerHtml(gameField, validator: trustedValidator);
   }
 
   /*
@@ -46,18 +48,31 @@ class DynamiteView {
     HtmlElement gameEle = querySelector("#gameField td");
 
     if(gameEle != null) {
-      //num.parse(n.toStringAsFixed(2));
-      //print("device pixel ration ${window.devicePixelRatio}");
-      double maxFieldSize = min(
-          num.parse((contentGame.clientWidth / fieldWidth).toStringAsFixed(4)).toDouble(),
-          num.parse((contentGame.clientHeight / fieldHeight).toStringAsFixed(4)).toDouble());
+      double fieldSizePossibleWidth = num.parse((contentGame.clientWidth / fieldWidth).toStringAsFixed(4)).toDouble();
+      double fieldSizePossibleHeight = num.parse((contentGame.clientHeight / fieldHeight).toStringAsFixed(4)).toDouble();
+      double maxFieldSize = min(fieldSizePossibleWidth, fieldSizePossibleHeight);
 
-     // maxFieldSize = maxFieldSize/window.devicePixelRatio;
+      /*
+          For a greater experience in the view
+      */
+      if(maxFieldSize >= 100) {
+        maxFieldSize = 100.0;
+      } else if(maxFieldSize <= 25.0) {
+        maxFieldSize = 25.0;
+      }
+
+      /*
+         Prevention of browsers wrong pixel calculation in table rows
+      */
+      maxFieldSize-= 0.1;
+
+
+
 
       if (maxFieldSize != _lastFieldSize) {
         _lastFieldSize = maxFieldSize;
-        //print("MaxWidth: ${(contentGame.clientWidth / fieldWidth)};"
-        //    "width:${contentGame.clientWidth} Height: ${contentGame.clientHeight}; fH: $fieldHeight MaxHeight: ${(contentGame.clientHeight / fieldHeight)}");
+        print("MaxWidth: ${(contentGame.clientWidth / fieldWidth)};"
+            "width:${contentGame.clientWidth} Height: ${contentGame.clientHeight}; fH: $fieldHeight MaxHeight: ${(contentGame.clientHeight / fieldHeight)}");
         return maxFieldSize;
       }
     }
@@ -196,8 +211,11 @@ class DynamiteView {
     element.setAttribute("style", "visibility: visible;");
   }
 }
-
+/*
+    Class is used to trust all elements and attributes
+    to be manipulated in the DOM-Tree
+ */
 class TrustedNodeValidator implements NodeValidator {
-  bool allowsElement(Element element) => true;
-  bool allowsAttribute(element, attributeName, value) => true;
+    bool allowsElement(Element element) => true;
+    bool allowsAttribute(element, attributeName, value) => true;
 }

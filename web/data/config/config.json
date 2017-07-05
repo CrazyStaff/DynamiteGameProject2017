@@ -5,7 +5,7 @@
   "startLife" : 3,
   "dynamiteExplosionTime" : 4000,
   "fireDuration" : 1000,
-  "images_path" : "data/images/small/",
+  "images_path" : "data/images/",
   "viewOrder" : [
     "SPEEDBUFF",
     "DYNAMITERANGE",

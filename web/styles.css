@@ -16,68 +16,6 @@ body {
     height:0;
 }
 
-#mobileControl {
-    background: #A31E1A;
-    display:none;
-}
-
-#contentGame {
-    display:table-cell; /* VORHER TABLE ROW */
-    vertical-align: middle;
-    background:seashell;
-}
-
-@media only screen and (max-device-width: 736px) and (orientation: portrait) { /* support until iPhone 6 + in portrait mode */
-
-    #mobileControl { /* show mobile control only in portrait mode on smartphones */
-        display:table-row;
-        height:0;
-    }
-    #mobileControl table {
-        margin: 0 auto;
-    }
-
-    #mobileControl td {
-        padding: 2vw;
-    }
-
-    #mobileControl table input {
-        margin: auto;
-        height: 15vw;
-        width: 15vw;
-        background-color: white;
-        -webkit-border-radius: 15px;
-        -moz-border-radius: 15px;
-        border-radius: 15px;
-        outline: none; /* No access by keyboard */
-    }
-
-    #mUp {
-        background-image: url('data/images/small/BUTTON_UP.png');
-        background-size: cover;
-    }
-
-    #mDown {
-        background-image: url('data/images/small/BUTTON_DOWN.png');
-        background-size: cover;
-    }
-
-    #mRight {
-        background-image: url('data/images/small/BUTTON_RIGHT.png');
-        background-size: cover;
-    }
-
-    #mLeft {
-        background-image: url('data/images/small/BUTTON_LEFT.png');
-        background-size: cover;
-    }
-
-    #mDynamite {
-        background-image: url('data/images/small/BUTTON_DYNAMITE.png');
-        background-size: cover;
-    }
-}
-
 #statusBar table {
     margin: 0 auto;
 }
@@ -93,12 +31,29 @@ body {
     white-space: nowrap; /* dont wrap header words*/
 }
 
-#header {
-    width: 100%;
-    height: 10%;
-    padding: 1em 0;
-    background-color: #468966;
-    color: white;
+#mobileControl {
+    background: #A31E1A;
+    display:none;
+}
+
+#contentGame {
+    display:table-cell; /* VORHER TABLE ROW */
+    vertical-align: middle;
+    background:seashell;
+}
+
+#mStart {
+    visibility: hidden;
+}
+
+#mStart.running {
+    color: red;
+    background-color: lightcoral;
+}
+
+#mStart.paused {
+    color: green;
+    background-color: lightgreen;
 }
 
 #scores {
@@ -114,6 +69,14 @@ body {
     height: 0.8vw;
     max-height: 0.4em;
     width: 0;
+}
+
+#header {
+    width: 100%;
+    height: 10%;
+    padding: 1em 0;
+    background-color: #468966;
+    color: white;
 }
 
 #header table {
@@ -266,4 +229,162 @@ body {
 .PLAYER_DOWN {
     background-image: url("data/images/mobile/PLAYER_DOWN.png") !important;
     background-size: cover;
+}
+
+@media only screen and (max-device-width: 736px) and (orientation: portrait) { /* support until iPhone 6 + in portrait mode */
+
+    #scores {
+        height: 3vw;
+    }
+
+    #scores div {
+        height: 3vw;
+    }
+
+    #statusBar td {
+        color: white;
+        font-size: 7.5vw;
+        text-align: center;
+        width: 25vw;
+        margin: auto;
+        padding-top: 1vw;
+        padding-bottom: 1vw;
+        white-space: nowrap;
+    }
+
+    #mobileControl { /* show mobile control only in portrait mode on smartphones */
+        display:table-row;
+        height:0;
+    }
+    #mobileControl table {
+        margin: 0 auto;
+    }
+
+    #mobileControl td {
+        padding: 2vw;
+    }
+
+    #mobileControl table input {
+        margin: auto;
+        height: 15vw;
+        width: 15vw;
+        background-color: white;
+        -webkit-border-radius: 15px;
+        -moz-border-radius: 15px;
+        border-radius: 15px;
+        outline: none; /* No access by keyboard */
+    }
+
+    #mStart {
+        visibility: visible;
+    }
+
+    #mUp {
+        background-image: url('data/images/small/BUTTON_UP.png');
+        background-size: cover;
+    }
+
+    #mDown {
+        background-image: url('data/images/small/BUTTON_DOWN.png');
+        background-size: cover;
+    }
+
+    #mRight {
+        background-image: url('data/images/small/BUTTON_RIGHT.png');
+        background-size: cover;
+    }
+
+    #mLeft {
+        background-image: url('data/images/small/BUTTON_LEFT.png');
+        background-size: cover;
+    }
+
+    #mDynamite {
+        background-image: url('data/images/small/BUTTON_DYNAMITE.png');
+        background-size: cover;
+    }
+
+    #mStart {
+        position: absolute;
+        height: 16.3vw;
+        width: 16.3vw;
+        right: 1.5vw;
+        bottom: 3.5vw;
+        border-radius: 50%;
+        border-width: 2px;
+        font-size: 7vw;
+        font-family: 'Open Sans', sans-serif;
+        outline: none;
+        z-index: 2;
+    }
+}
+
+@media only screen and (max-device-width: 1280px) and (orientation: landscape) { /* support until Kidle Fire */
+
+    #level_content table, #level_content img {
+        display:none;
+    }
+
+    #mobileControl {
+        display: inline;
+        position:absolute;
+
+        bottom: 0.5vw;
+        right: 0.5vw;
+        background: none;
+    }
+
+    #mobileControl td {
+        padding: 0.5vw;
+    }
+
+    #mobileControl table input {
+        height: 7vw;
+        width: 7vw;
+        background-color: white;
+        -webkit-border-radius: 15px;
+        -moz-border-radius: 15px;
+        border-radius: 15px;
+        outline: none; /* No access by keyboard */
+    }
+
+    #mStart {
+        visibility: visible;
+        position: absolute;
+        height: 8vw;
+        width: 8vw;
+        right: 1vw;
+        top: 1vw;
+        border-radius: 50%;
+        border-width: 2px;
+        font-size: 1rem;
+        font-family: 'Open Sans', sans-serif;
+        outline: none;
+        z-index: 99;
+    }
+    #mUp {
+        background-image: url('data/images/small/BUTTON_UP.png');
+        background-size: cover;
+    }
+
+    #mDown {
+        background-image: url('data/images/small/BUTTON_DOWN.png');
+        background-size: cover;
+    }
+
+    #mRight {
+        background-image: url('data/images/small/BUTTON_RIGHT.png');
+        background-size: cover;
+    }
+
+    #mLeft {
+        background-image: url('data/images/small/BUTTON_LEFT.png');
+        background-size: cover;
+    }
+
+    #mDynamite {
+        background-image: url('data/images/small/BUTTON_DYNAMITE.png');
+        background-size: cover;
+    }
+
 }

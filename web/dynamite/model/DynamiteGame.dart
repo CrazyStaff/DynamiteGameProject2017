@@ -148,6 +148,8 @@ class DynamiteGame {
 
     if (_currentLevel >= _maxLvl){
       _gameStatus = GameState.MAX_LEVEL_REACHED;
+
+
     }
     _dieReason = "";
   }
@@ -445,12 +447,20 @@ class DynamiteGame {
       List<String> allAttributes = entity.getAllAttributes();
 
       /*
+          Choose image quality
+       */
+      String imageQuality = "small/";
+      if(_maxFieldSize >= 50 )  {
+        imageQuality = "middle/";
+      }
+
+      /*
           Concats for the entity the resources paths
        */
       String entityAttributes = "";
       for(int i=0; i < allAttributes.length; i++) {
         String attribute = allAttributes[i];
-        entityAttributes += "url('$_imagesPath$attribute.png'),";
+        entityAttributes += "url('$_imagesPath$imageQuality$attribute.png'),";
         addedAttribute = true;
       }
       // Delete last ',' delimiter

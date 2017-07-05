@@ -16,7 +16,7 @@ import 'dart:math';
 abstract class Monster extends Entity {
 
   // The front view range of the monster
-  static const int VIEW_FIELD_RANGE = 4;
+  final int VIEW_FIELD_RANGE = 4;
 
   // The extension mode that monster saw an enemy
   static const String ATTENTION_MODE = "ENTITY_ATTENTION";

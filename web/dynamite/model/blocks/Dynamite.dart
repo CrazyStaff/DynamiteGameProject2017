@@ -17,13 +17,13 @@ class Dynamite extends Block {
   static const ENTITY_TYPE = "DYNAMITE";
 
   /*
-    The explosion radius creates fire on the field itself and based on this range in explosionRadius
-    to the vertical and horizontal fields next to the position of dynamite
+      The explosion radius creates fire on the field itself and based on this range in explosionRadius
+      to the vertical and horizontal fields next to the position of dynamite
    */
   int _explosionRadius;
 
   /*
-    All Teams which are not harmed by the fire and dynamite
+      All Teams which are not harmed by the fire and dynamite
    */
    List<Team> teamsNotToHarm;
 

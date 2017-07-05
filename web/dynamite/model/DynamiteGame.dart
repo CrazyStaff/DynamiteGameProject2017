@@ -13,6 +13,7 @@ import 'items/DynamiteRange.dart';
 import 'monster/Fastelle.dart';
 import 'monster/Fridolin.dart';
 import 'monster/Maya.dart';
+import 'monster/Monster.dart';
 import 'dart:math';
 import 'pathfinding/FieldNode.dart';
 
@@ -85,6 +86,7 @@ class DynamiteGame {
   get startLevel => _startLevel;
   get fieldWidth => _fieldWidth;
   get fieldHeight => _fieldHeight;
+  get maxDynamites => _maxDynamites;
   GameState getStatus() =>  _gameStatus;
   bool isLevelTimerActive() => _maxLevelTime != -1;
   List<List<FieldNode>> get getGameField => _gameField;
@@ -97,6 +99,7 @@ class DynamiteGame {
      */
     _currentLevel = 1;
     _maxLvl = 0;
+    _maxDynamites = 0;
     _pausedGameAtTime = 0;
     _levelDescription = "";
     _dynamiteRadius = 1;
@@ -109,6 +112,7 @@ class DynamiteGame {
     Entity.portalCount = 0;
     Entity.monsterCounter = 0;
     Entity.destroyableBlockCount = 0;
+    Entity.dynamiteCount = 0;
 
     _score = new Score();
     _generateEmptyGameField();
@@ -148,8 +152,6 @@ class DynamiteGame {
 
     if (_currentLevel >= _maxLvl){
       _gameStatus = GameState.MAX_LEVEL_REACHED;
-
-
     }
     _dieReason = "";
   }
@@ -212,6 +214,14 @@ class DynamiteGame {
   }
 
   /*
+    Returns the number of remaining dynamites the player can place.
+   */
+  int dynamitesRemaining() {
+    int rem =  maxDynamites - Entity.dynamiteCount;
+    return ( rem < 0 ) ? 0 : rem;
+  }
+
+  /*
       Reset the level to the level after the tutorial
       so that the player begins at the first real level
    */
@@ -227,11 +237,11 @@ class DynamiteGame {
    */
   void _resetGame() {
     this._gameStatus = GameState.PAUSED;
-    this._maxDynamites = 9999;
     _dynamiteRadius = 1;
     Entity.portalCount = 0;
     Entity.monsterCounter = 0;
     Entity.destroyableBlockCount = 0;
+    Entity.dynamiteCount = 0;
   }
 
   /*
@@ -419,7 +429,6 @@ class DynamiteGame {
 
         final pos = "field_${width}_${height}";
         var entityAttributes = _getHTMLEntities(currentField);
-
         html += "<td id='$pos' $entityAttributes></td>";
       }
       html += "</tr>";
@@ -568,13 +577,10 @@ class DynamiteGame {
       Place dynamite above the position of the player
    */
   void placeDynamite() {
-    if (_maxDynamites >= Entity.dynamiteCount+1) {
-      if (_gameStatus == GameState.RUNNING) {
-        Position pos = _player.position;
-        List<Entity> gameField = _gameField[pos.getX][pos.getY].getEntities;
-        gameField.add(
-            new Dynamite(pos, _dynamiteRadius + _player.dynamiteRangeOffset));
-      }
+    if((_gameStatus == GameState.RUNNING) && (dynamitesRemaining() > 0)) {
+      Position pos = _player.position;
+      List<Entity> gameField = _gameField[pos.getX][pos.getY].getEntities;
+      gameField.add(new Dynamite(pos, _dynamiteRadius + _player.dynamiteRangeOffset));
     }
   }
 

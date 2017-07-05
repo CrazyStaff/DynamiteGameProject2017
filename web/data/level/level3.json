@@ -8,6 +8,7 @@
       "field_width" : "7",
       "field_height" : "3"
   },
+  "maxDynamites": 4,
   "exp_monster" : "0",
   "exp_destroyable_block" : "50",
   "speedBuffSpawnRate" : 0,

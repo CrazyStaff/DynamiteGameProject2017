@@ -43,7 +43,7 @@ body {
 }
 
 #mStart {
-    visibility: hidden;
+    display: none;
 }
 
 #mStart.running {
@@ -311,6 +311,7 @@ body {
     }
 
     #mStart {
+        display:block;
         position: absolute;
         height: 16.3vw;
         width: 16.3vw;
@@ -355,6 +356,7 @@ body {
     }
 
     #mStart {
+        display:block;
         visibility: visible;
         position: absolute;
         height: 8vw;

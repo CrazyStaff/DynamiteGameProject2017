@@ -9,8 +9,8 @@
       <excludeFolder url="file://$MODULE_DIR$/temp" />
       <excludeFolder url="file://$MODULE_DIR$/tmp" />
       <excludeFolder url="file://$MODULE_DIR$/web/data/config/packages" />
-      <excludeFolder url="file://$MODULE_DIR$/web/data/images/background/packages" />
       <excludeFolder url="file://$MODULE_DIR$/web/data/images/large/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/web/data/images/middle/packages" />
       <excludeFolder url="file://$MODULE_DIR$/web/data/images/mobile/packages" />
       <excludeFolder url="file://$MODULE_DIR$/web/data/images/packages" />
       <excludeFolder url="file://$MODULE_DIR$/web/data/images/small/packages" />

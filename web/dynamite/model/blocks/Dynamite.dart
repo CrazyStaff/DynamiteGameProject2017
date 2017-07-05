@@ -53,7 +53,7 @@ class Dynamite extends Block {
   Modificator atDestroy(List<List< FieldNode >> gameField) {
     Modificator mod = Modificator.buildModificator(gameField);
 
-    Entity.dynamiteCount -= 1;
+    //Entity.dynamiteCount -= 1;
 
     _spawnFireInDirection(gameField, Movement.STAY_STILL, mod);
     _spawnFireInDirection(gameField, Movement.UP, mod);

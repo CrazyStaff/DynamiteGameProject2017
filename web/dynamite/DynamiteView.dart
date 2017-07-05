@@ -68,25 +68,13 @@ class DynamiteView {
       */
       maxFieldSize-= 0.1;
 
-
-
-
       if (maxFieldSize != _lastFieldSize) {
         _lastFieldSize = maxFieldSize;
-        print("MaxWidth: ${(contentGame.clientWidth / fieldWidth)};"
-            "width:${contentGame.clientWidth} Height: ${contentGame.clientHeight}; fH: $fieldHeight MaxHeight: ${(contentGame.clientHeight / fieldHeight)}");
         return maxFieldSize;
       }
     }
     return -1.0;
   }
-
-  /*
-  gameEle.setAttribute(
-            "style", "width=${maxFieldSize}px; height=${maxFieldSize}px;");
-
-            print("${contentGame.clientWidth} : ${contentGame.clientHeight}");
-   */
 
   /*
       Update the level type

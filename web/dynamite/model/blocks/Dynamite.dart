@@ -31,7 +31,7 @@ class Dynamite extends Block {
     this._explosionRadius = explosionRadius;
 
     // Increase the counter of existing Dynamites
-    //Entity.dynamiteCount += 1;
+    Entity.dynamiteCount += 1;
     /*
       this updates the time of the last action so that the action method
       can be called from 'DynamiteGame'
@@ -53,7 +53,7 @@ class Dynamite extends Block {
   Modificator atDestroy(List<List< FieldNode >> gameField) {
     Modificator mod = Modificator.buildModificator(gameField);
 
-    //Entity.dynamiteCount -= 1;
+    Entity.dynamiteCount -= 1;
 
     _spawnFireInDirection(gameField, Movement.STAY_STILL, mod);
     _spawnFireInDirection(gameField, Movement.UP, mod);

@@ -19,6 +19,13 @@ abstract class Entity {
   static int monsterCounter = 0;
   static int portalCount = 0;
   static int dynamiteCount = 0;
+  static int fireCount = 0;
+  /*
+      Setted dynamites by player in total
+   */
+  static int settedDynamiteCount = 0;
+
+
 
   // The default view direction of the entity
   final Position DEFAULT_VIEW_DIRECTION = Movement.RIGHT;

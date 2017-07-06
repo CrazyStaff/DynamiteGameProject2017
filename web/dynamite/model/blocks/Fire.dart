@@ -19,11 +19,22 @@ class Fire extends Block {
     setAbsolutelyNewTeam(Team.ITEMS);
     strength = 99;
 
+    /* Increase the count of fire */
+    Entity.fireCount++;
+
     /*
       this updates the time of the last action so that the action method
       can be called from 'DynamiteGame'
     */
     updateLastActionTime();
+  }
+
+
+  @override
+  Modificator atDestroy(List<List<FieldNode>> gameField) {
+    /* Decrease the of fire by death */
+    Entity.fireCount--;
+    return null;
   }
 
   /*

@@ -16,6 +16,7 @@ import 'monster/Maya.dart';
 import 'monster/Monster.dart';
 import 'dart:math';
 import 'pathfinding/FieldNode.dart';
+import 'pathfinding/PathFinder.dart';
 
 class DynamiteGame {
   static int DYNAMITE_EXPLODE_TIME;
@@ -97,7 +98,7 @@ class DynamiteGame {
     /*
         Initialize the default values
      */
-    _currentLevel = 1;
+    _currentLevel = 10;
     _maxLvl = 0;
     _maxDynamites = 0;
     _pausedGameAtTime = 0;
@@ -112,7 +113,8 @@ class DynamiteGame {
     Entity.portalCount = 0;
     Entity.monsterCounter = 0;
     Entity.destroyableBlockCount = 0;
-    Entity.dynamiteCount = 0;
+    Entity.settedDynamiteCount = 0;
+    Entity.fireCount = 0;
 
     _score = new Score();
     _generateEmptyGameField();
@@ -217,7 +219,7 @@ class DynamiteGame {
     Returns the number of remaining dynamites the player can place.
    */
   int dynamitesRemaining() {
-    int rem =  maxDynamites - Entity.dynamiteCount;
+    int rem =  maxDynamites - Entity.settedDynamiteCount;
     return ( rem < 0 ) ? 0 : rem;
   }
 
@@ -241,6 +243,8 @@ class DynamiteGame {
     Entity.portalCount = 0;
     Entity.monsterCounter = 0;
     Entity.destroyableBlockCount = 0;
+    Entity.settedDynamiteCount = 0;
+    Entity.fireCount = 0;
     Entity.dynamiteCount = 0;
   }
 
@@ -387,11 +391,74 @@ class DynamiteGame {
         }
       }
 
-      if (!_player.isAlive || _isLevelTimeOver()) {
+      if (_isGameOver()) {
         _decrementLife();
       }
     }
     return _gameStatus;
+  }
+
+  /*
+      Proofs if there is a state where the player cannot win or
+      if the player got marked as not alive
+   */
+  bool _isGameOver() {
+    /*
+        If there is no dynamite ramaining test if the player can still win the game
+     */
+    if(dynamitesRemaining() == 0 && Entity.dynamiteCount == 0 && Entity.fireCount == 0) {
+        Portal portal = _getPortal();
+        if(portal != null) {
+          Position portalPosition = portal.position;
+          Position positionPlayer = _player.position;
+
+          /* If there no path from the player to the portal there must be a game over */
+          if(PathFinder.findPath(_gameField, _player, _gameField[positionPlayer.getX][positionPlayer.getY],
+            _gameField[portalPosition.getX][portalPosition.getY]) == null) {
+            /* Path exists from player to portal */
+            _setPlayerHasNoDynamitesReason();
+            return true;
+          }
+
+          if(portal.isPortalClosed()) {
+            _setPlayerHasNoDynamitesReason();
+            return true;
+          }
+        } else {
+          /* there is no portal on the game field */
+          _setPlayerHasNoDynamitesReason();
+          return true;
+        }
+    }
+
+    if (!_player.isAlive || _isLevelTimeOver()) {
+      return true;
+    }
+
+    return false;
+  }
+
+  /*
+      Set the die reason that the player doesn´t have more dynamite
+   */
+  void _setPlayerHasNoDynamitesReason() {
+    _player.dieReason = "No more dynamites";
+  }
+
+  /*
+      Returns the portal if it is at the game field
+   */
+  Portal _getPortal() {
+    for (List<FieldNode> allPositions in _gameField) {
+      for (FieldNode field in allPositions) {
+        for (Entity entity in field.getEntities) {
+            if(entity.getType() == Portal.ENTITY_TYPE) {
+              return entity;
+            }
+        }
+      }
+    }
+    return null;
   }
 
   /*
@@ -578,7 +645,7 @@ class DynamiteGame {
    */
   void placeDynamite() {
     if((_gameStatus == GameState.RUNNING) && (dynamitesRemaining() > 0)) {
-      Entity.dynamiteCount ++;
+      Entity.settedDynamiteCount ++;
       Position pos = _player.position;
       List<Entity> gameField = _gameField[pos.getX][pos.getY].getEntities;
       gameField.add(new Dynamite(pos, _dynamiteRadius + _player.dynamiteRangeOffset));

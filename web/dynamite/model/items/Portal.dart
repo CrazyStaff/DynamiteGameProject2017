@@ -50,12 +50,19 @@ class Portal extends Entity {
   Modificator action(List<List<FieldNode>> _gameField, int time) {
     // The portal should be closed if there is still an enemy
     if(Entity.monsterCounter >= 1) {
-      if(!extensionTypes.contains(PORTAL_CLOSED)) {
+      if(!isPortalClosed()) {
         this.extensionTypes.add(PORTAL_CLOSED);
       }
     } else {
       // Now the portal should be open
       this.extensionTypes.remove(PORTAL_CLOSED);
     }
+  }
+
+  bool isPortalClosed() {
+    if(extensionTypes.contains(PORTAL_CLOSED)) {
+      return true;
+    }
+    return false;
   }
 }

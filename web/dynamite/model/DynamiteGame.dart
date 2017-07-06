@@ -150,8 +150,8 @@ class DynamiteGame {
   void increaseLevel() {
     this._currentLevel += 1;
 
-    if (_currentLevel >= _maxLvl){
-      _gameStatus = GameState.MAX_LEVEL_REACHED;
+    if (_currentLevel > _maxLvl){
+      _currentLevel = 0;
     }
     _dieReason = "";
   }
@@ -521,13 +521,13 @@ class DynamiteGame {
     switch(_gameStatus) {
       case GameState.PAUSED:
         if(currentLevel == 1) {
-          htmlElements["level_accept"] = "Start Tutorial";
+          htmlElements["level_accept"] = "Start " + getLevelTypeHTML();
         } else {
           htmlElements["level_accept"] = "Next Level";
         }
 
          if(_currentLevel < _startLevel) {
-          htmlElements["level_header"] = "Welcome to the Tutorial";
+          htmlElements["level_header"] = "Welcome to the " + getLevelTypeHTML();
         } else {
           htmlElements["level_header"] = "Welcome";
         }
@@ -537,7 +537,7 @@ class DynamiteGame {
           htmlElements["level_result"] = _levelDescription;
         }else{
           htmlElements["level_result"] = "Cause of death: " + _dieReason + "<br><br>" + _levelDescription;
-          htmlElements["level_accept"] = "Restart Tutorial";
+          htmlElements["level_accept"] = "Restart " + getLevelTypeHTML();
         }
         break;
       case GameState.MAX_LEVEL_REACHED:
@@ -578,6 +578,7 @@ class DynamiteGame {
    */
   void placeDynamite() {
     if((_gameStatus == GameState.RUNNING) && (dynamitesRemaining() > 0)) {
+      Entity.dynamiteCount ++;
       Position pos = _player.position;
       List<Entity> gameField = _gameField[pos.getX][pos.getY].getEntities;
       gameField.add(new Dynamite(pos, _dynamiteRadius + _player.dynamiteRangeOffset));

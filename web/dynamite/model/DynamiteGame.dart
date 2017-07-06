@@ -151,6 +151,7 @@ class DynamiteGame {
     this._currentLevel += 1;
 
     if (_currentLevel >= _maxLvl){
+
       _gameStatus = GameState.MAX_LEVEL_REACHED;
     }
     _dieReason = "";
@@ -578,6 +579,7 @@ class DynamiteGame {
    */
   void placeDynamite() {
     if((_gameStatus == GameState.RUNNING) && (dynamitesRemaining() > 0)) {
+      Entity.dynamiteCount ++;
       Position pos = _player.position;
       List<Entity> gameField = _gameField[pos.getX][pos.getY].getEntities;
       gameField.add(new Dynamite(pos, _dynamiteRadius + _player.dynamiteRangeOffset));

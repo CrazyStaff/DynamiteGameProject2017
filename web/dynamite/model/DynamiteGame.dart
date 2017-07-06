@@ -7,6 +7,7 @@ import './blocks/UndestroyableBlock.dart';
 import 'Score.dart';
 import 'blocks/DestroyableBlock.dart';
 import 'blocks/Dynamite.dart';
+import 'items/Life.dart';
 import 'items/Portal.dart';
 import 'items/SpeedBuff.dart';
 import 'items/DynamiteRange.dart';
@@ -98,7 +99,7 @@ class DynamiteGame {
     /*
         Initialize the default values
      */
-    _currentLevel = 10;
+    _currentLevel = 1;
     _maxLvl = 0;
     _maxDynamites = 0;
     _pausedGameAtTime = 0;
@@ -302,6 +303,9 @@ class DynamiteGame {
         case "R": /* Portal */
           currentField.add(new DynamiteRange(currentPosition));
           break;
+        case "L": /* Portal */
+          currentField.add(new Life(currentPosition));
+          break;
         case "P": /* Player */
           _player = new Player(currentPosition);
           currentField.add(_player);
@@ -390,6 +394,9 @@ class DynamiteGame {
           field.getEntities.removeWhere((e) => toRemove.contains(e));
         }
       }
+
+      _life += _player.bonusLife;
+      _player.resetBonusLive();
 
       if (_isGameOver()) {
         _decrementLife();

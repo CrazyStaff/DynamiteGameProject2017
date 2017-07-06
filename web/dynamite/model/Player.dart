@@ -14,6 +14,7 @@ class Player extends Entity {
 
   bool _hasWon;
   int _dynamiteRangeOffset;
+  int _bonusLife;
 
   Player(Position position) : super(ENTITY_TYPE, position) {
       this._dynamiteRangeOffset = 0;
@@ -21,6 +22,7 @@ class Player extends Entity {
       this.setAbsolutelyNewTeam(Team.PLAYER);
       this.strength = 42;
       this.isWalkable = true;
+      this._bonusLife = 0;
 
       /*
           Player supports all images front, back, left and right in the view
@@ -39,8 +41,13 @@ class Player extends Entity {
   }
 
   get hasWon => this._hasWon;
+  get bonusLife => this._bonusLife;
   get dynamiteRangeOffset => this._dynamiteRangeOffset;
   set dynamiteRangeOffset(int offset) => this._dynamiteRangeOffset = offset;
+
+  void resetBonusLive(){
+    this._bonusLife = 0;
+  }
 
   void setNextMove(Position moveOffset) {
       // go every time from the current position
@@ -57,7 +64,12 @@ class Player extends Entity {
 
     if (otherEntity.getType() == "DYNAMITERANGE") {
       print(otherEntity.getType() + " collect Item");
-      this._dynamiteRangeOffset = this._dynamiteRangeOffset + 1;
+      this._dynamiteRangeOffset += 1;
+    }
+
+    if (otherEntity.getType() == "LIFE") {
+      print(otherEntity.getType() + " collect Item");
+      this._bonusLife ++;;
     }
 
     return super.collision(otherEntity);

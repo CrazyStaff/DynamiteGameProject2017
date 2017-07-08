@@ -7,6 +7,7 @@
   "fireDuration" : 1000,
   "images_path" : "data/images/",
   "viewOrder" : [
+    "LIFE",
     "SPEEDBUFF",
     "DYNAMITERANGE",
     "PLAYER",

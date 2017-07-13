@@ -23,6 +23,7 @@ class DynamiteView {
   HtmlElement get overviewLevel => querySelector('#level');
   HtmlElement get overviewAccept => querySelector('#level_accept');
   HtmlElement get contentGame => querySelector("#contentGame");
+  HtmlElement get iconDynamite => querySelector("#icon_dynamite");
 
   /*
       Trust all elements and attributes to be updated in the view
@@ -61,6 +62,10 @@ class DynamiteView {
         maxFieldSize = 100.0;
       } else if(maxFieldSize <= 25.0) {
         maxFieldSize = 25.0;
+      }
+
+      if(contentGame.clientHeight-20 <= maxFieldSize * fieldHeight && maxFieldSize >= 70) {
+        maxFieldSize-= 6;
       }
 
       /*

@@ -38,6 +38,9 @@ class DynamiteGameController {
         return;
       }
     }
+
+    view.iconDynamite.onDoubleClick.listen((_) => nextLvl());
+
     view.generateField(game);
     // New game is started by user
     view.startButton.onClick.listen((_) {

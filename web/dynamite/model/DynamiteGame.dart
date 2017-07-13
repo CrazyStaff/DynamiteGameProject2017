@@ -22,6 +22,7 @@ import 'pathfinding/PathFinder.dart';
 class DynamiteGame {
   static int DYNAMITE_EXPLODE_TIME;
   static int FIRE_DURATION;
+  int waitGameTactsToNextLevel = 10;
 
   /*
       Global information for all levels
@@ -110,6 +111,7 @@ class DynamiteGame {
     _life = 0;
     _startLevel = 0;
     _gameStatus = GameState.PAUSED;
+    waitGameTactsToNextLevel = 10;
 
     Entity.portalCount = 0;
     Entity.monsterCounter = 0;
@@ -241,6 +243,7 @@ class DynamiteGame {
   void _resetGame() {
     this._gameStatus = GameState.PAUSED;
     _dynamiteRadius = 1;
+    waitGameTactsToNextLevel = 10;
     Entity.portalCount = 0;
     Entity.monsterCounter = 0;
     Entity.destroyableBlockCount = 0;
@@ -330,7 +333,7 @@ class DynamiteGame {
       if (_player.hasWon) {
         _gameStatus = GameState.WIN;
       }
-
+      print("move");
       for (List<FieldNode> allPositions in _gameField) {
         for (FieldNode field in allPositions) {
           var toRemove = [];
@@ -652,7 +655,7 @@ class DynamiteGame {
    */
   void placeDynamite() {
     if((_gameStatus == GameState.RUNNING) && (dynamitesRemaining() > 0)) {
-      Entity.settedDynamiteCount ++;
+      Entity.settedDynamiteCount++;
       Position pos = _player.position;
       List<Entity> gameField = _gameField[pos.getX][pos.getY].getEntities;
       gameField.add(new Dynamite(pos, _dynamiteRadius + _player.dynamiteRangeOffset));

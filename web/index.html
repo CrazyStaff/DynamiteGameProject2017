@@ -9,7 +9,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=0">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no">
         <meta name="scaffolded-by" content="https://github.com/google/stagehand">
         <title>Dynamite Game</title>
         <link rel="stylesheet" href="reset.css">
@@ -21,16 +21,16 @@
         <link href="https://fonts.googleapis.com/css?family=Open+Sans:700" rel="stylesheet">
     </head>
     <body>
-        <div id="statusBar" class="unselectable">
+    <div id="statusBar" class="unselectable">
             <table>
                 <tr>
                     <td class="header_level unselectable"><span id="lvlType">Tutorial</span> <span id="lvl"></span></td>
                     <td class="header_leftTime unselectable"><span id="leftTime"></span></td>
                     <td class="header_lives unselectable"><span>❤ </span><span id="life">3</span></td>
-                    <td class="header_dynamites unselectable">
-                        <img src="data/images/icon_dynamite.png" alt="💣">
-                        <span id="dynamites">-</span> /
-                        <span id="maxDynamites">-</span>
+                    <td class="header_dynamites">
+                        <img id="icon_dynamite" src="data/images/icon_dynamite.png" alt="💣">
+                        <span id="dynamites" class="unselectable">-</span> /
+                        <span id="maxDynamites" class="unselectable">-</span>
                     </td>
             </table>
             <div id="scores"><div></div></div>
@@ -51,7 +51,6 @@
         </div>
 
         <input id="mStart" class="init" type="button">
-
         <div id="mobileControl">
             <table>
                 <tr>

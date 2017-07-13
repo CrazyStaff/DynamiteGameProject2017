@@ -164,6 +164,10 @@ body {
     border: 1px black solid;
     top: 50%;
     left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
     z-index: 99;
 }
@@ -394,5 +398,4 @@ body {
         background-image: url('data/images/small/BUTTON_DYNAMITE.png');
         background-size: cover;
     }
-
 }

@@ -2002,22 +2002,6 @@
     },
     TimerImpl: {
       "^": "Object;_once,_inEventLoop,_handle",
-      cancel$0: function() {
-        if (self.setTimeout != null) {
-          if (this._inEventLoop)
-            throw H.wrapException(new P.UnsupportedError("Timer in event loop cannot be canceled."));
-          var t1 = this._handle;
-          if (t1 == null)
-            return;
-          --init.globalState.topEventLoop._activeJsAsyncCount;
-          if (this._once)
-            self.clearTimeout(t1);
-          else
-            self.clearInterval(t1);
-          this._handle = null;
-        } else
-          throw H.wrapException(new P.UnsupportedError("Canceling a timer."));
-      },
       TimerImpl$periodic$2: function(milliseconds, callback) {
         if (self.setTimeout != null) {
           ++init.globalState.topEventLoop._activeJsAsyncCount;
@@ -8876,16 +8860,13 @@
     Dynamite: {
       "^": "Block;_explosionRadius,teamsNotToHarm,DEFAULT_VIEW_DIRECTION,type,extensionTypes,_Entity$_position,nextPosition,viewDirection,nextViewDirection,lastMoveTime,lastActionTime,walkingSpeed,teams,strength,_alive,isWalkable,dieReason,supportMultiViewDirection",
       atDestroy$1: function(gameField) {
-        var mod;
-        P.print("atD1");
-        mod = L.Modificator_buildModificator(gameField);
+        var mod = L.Modificator_buildModificator(gameField);
         $.Entity_dynamiteCount = $.Entity_dynamiteCount - 1;
         this._spawnFireInDirection$3(gameField, $.$get$Movement_STAY_STILL(), mod);
         this._spawnFireInDirection$3(gameField, $.$get$Movement_UP(), mod);
         this._spawnFireInDirection$3(gameField, $.$get$Movement_DOWN(), mod);
         this._spawnFireInDirection$3(gameField, $.$get$Movement_LEFT(), mod);
         this._spawnFireInDirection$3(gameField, $.$get$Movement_RIGHT(), mod);
-        P.print("atD2");
         return mod;
       },
       _spawnFireInDirection$3: function(gameField, direction, modificator) {
@@ -8957,20 +8938,20 @@
   }], ["", "dynamite/model/DynamiteGame.dart",, X, {
     "^": "",
     DynamiteGame: {
-      "^": "Object;waitGameTactsToNextLevel,_maxLvl,_currentLevel,_startLevel,_startLife,_levelDescription,_dieReason,_gameStatus,_player,_score,_life,_startLevelTime,_maxLevelTime,_dynamiteRadius,_pausedGameAtTime,_maxDynamites,_gameField,_fieldWidth,_fieldHeight,_maxFieldSize,_viewStackOrder,_imagesPath",
+      "^": "Object;_maxLvl,_currentLevel,_startLevel,_startLife,_levelDescription,_dieReason,_gameStatus,_player,_score,_life,_startLevelTime,_maxLevelTime,_dynamiteRadius,_pausedGameAtTime,_maxDynamites,_gameField,_fieldWidth,_fieldHeight,_maxFieldSize,_viewStackOrder,_imagesPath",
       get$currentLevel: function() {
         return this._currentLevel;
       },
       getLevelLeftTime$0: function() {
-        var t1, t2, t3, leftTime;
-        if (J.$eq$(this._maxLevelTime, -1))
+        var currentTime, t1, t2, leftTime;
+        if (J.$eq$(this._maxLevelTime, -1) || this._gameStatus === C.GameState_3)
           return this._maxLevelTime;
+        currentTime = this._gameStatus === C.GameState_4 ? this._pausedGameAtTime : Date.now();
         t1 = this._maxLevelTime;
-        t2 = Date.now();
-        t3 = this._startLevelTime;
-        if (typeof t3 !== "number")
-          return H.iae(t3);
-        leftTime = J.$sub$n(t1, C.JSDouble_methods.toInt$0((t2 - t3) / 1000));
+        t2 = this._startLevelTime;
+        if (typeof t2 !== "number")
+          return H.iae(t2);
+        leftTime = J.$sub$n(t1, C.JSDouble_methods.toInt$0((currentTime - t2) / 1000));
         return J.$le$n(leftTime, 0) ? 0 : leftTime;
       },
       continueGame$0: function() {
@@ -8986,7 +8967,7 @@
               t4[_i0].updateTimes$1(offsetAddTime);
         this._gameStatus = C.GameState_2;
       },
-      _DynamiteGame$_generateEmptyGameField$0: function() {
+      _generateEmptyGameField$0: function() {
         this._gameField = P.Iterable_Iterable$generate(this._fieldWidth, new X.DynamiteGame__generateEmptyGameField_closure(this), null).toList$0(0);
       },
       dynamitesRemaining$0: function() {
@@ -8994,13 +8975,12 @@
         return J.$lt$n(rem, 0) ? 0 : rem;
       },
       initLevel$3: function(gameField, fieldWidth, fieldHeight) {
-        var fieldSize, t1, t2, idElement, xPos, yPos, currentPosition, t3, currentField, t4, t5, up, down, right, left;
+        var fieldSize, t1, t2, idElement, xPos, yPos, currentPosition, t3, currentField, t4, t5;
         this._fieldWidth = fieldWidth;
         this._fieldHeight = fieldHeight;
-        this._DynamiteGame$_generateEmptyGameField$0();
+        this._generateEmptyGameField$0();
         this._gameStatus = C.GameState_3;
         this._dynamiteRadius = 1;
-        this.waitGameTactsToNextLevel = 10;
         $.Entity_portalCount = 0;
         $.Entity_monsterCounter = 0;
         $.Entity_destroyableBlockCount = 0;
@@ -9050,29 +9030,10 @@
               t4.lastActionTime = Date.now();
               t4.type = "MAYA";
               t4.viewDirection = t3;
-              t5 = t4.nextViewDirection;
-              if (t5 != null)
-                t4.viewDirection = t5;
-              C.JSArray_methods.remove$1(t4.extensionTypes, "MAYA_UP");
-              C.JSArray_methods.remove$1(t4.extensionTypes, "MAYA_DOWN");
-              if (t4.supportMultiViewDirection) {
-                C.JSArray_methods.remove$1(t4.extensionTypes, "MAYA_LEFT");
-                C.JSArray_methods.remove$1(t4.extensionTypes, "MAYA_RIGHT");
-              }
-              if (t4.supportMultiViewDirection)
-                if (J.$eq$(t4.viewDirection, $.$get$Movement_UP()))
-                  t4.extensionTypes.push("MAYA_UP");
-                else if (J.$eq$(t4.viewDirection, $.$get$Movement_DOWN()))
-                  t4.extensionTypes.push("MAYA_DOWN");
-              if (J.$eq$(t4.viewDirection, $.$get$Movement_LEFT())) {
-                C.JSArray_methods.remove$1(t4.extensionTypes, "MAYA_LEFT");
-                C.JSArray_methods.remove$1(t4.extensionTypes, "MAYA_RIGHT");
-                t4.extensionTypes.push("MAYA_LEFT");
-              } else if (J.$eq$(t4.viewDirection, t3)) {
-                C.JSArray_methods.remove$1(t4.extensionTypes, "MAYA_LEFT");
-                C.JSArray_methods.remove$1(t4.extensionTypes, "MAYA_RIGHT");
-                t4.extensionTypes.push("MAYA_RIGHT");
-              }
+              t3 = t4.nextViewDirection;
+              if (t3 != null)
+                t4.viewDirection = t3;
+              t4._updateViewDirectionInExtensionTypes$0();
               currentField.push(t4);
               break;
             case "B":
@@ -9139,34 +9100,10 @@
               t4.walkingSpeed = 300;
               t4.lastMoveTime = Date.now();
               t4.viewDirection = t3;
-              t5 = t4.nextViewDirection;
-              if (t5 != null)
-                t4.viewDirection = t5;
-              t5 = t4.type;
-              up = t5 + "_UP";
-              down = t5 + "_DOWN";
-              right = t5 + "_RIGHT";
-              left = t5 + "_LEFT";
-              C.JSArray_methods.remove$1(t4.extensionTypes, up);
-              C.JSArray_methods.remove$1(t4.extensionTypes, down);
-              if (t4.supportMultiViewDirection) {
-                C.JSArray_methods.remove$1(t4.extensionTypes, left);
-                C.JSArray_methods.remove$1(t4.extensionTypes, right);
-              }
-              if (t4.supportMultiViewDirection)
-                if (J.$eq$(t4.viewDirection, $.$get$Movement_UP()))
-                  t4.extensionTypes.push(up);
-                else if (J.$eq$(t4.viewDirection, $.$get$Movement_DOWN()))
-                  t4.extensionTypes.push(down);
-              if (J.$eq$(t4.viewDirection, $.$get$Movement_LEFT())) {
-                C.JSArray_methods.remove$1(t4.extensionTypes, left);
-                C.JSArray_methods.remove$1(t4.extensionTypes, right);
-                t4.extensionTypes.push(left);
-              } else if (J.$eq$(t4.viewDirection, t3)) {
-                C.JSArray_methods.remove$1(t4.extensionTypes, left);
-                C.JSArray_methods.remove$1(t4.extensionTypes, right);
-                t4.extensionTypes.push(right);
-              }
+              t3 = t4.nextViewDirection;
+              if (t3 != null)
+                t4.viewDirection = t3;
+              t4._updateViewDirectionInExtensionTypes$0();
               this._player = t4;
               currentField.push(t4);
               break;
@@ -9180,7 +9117,6 @@
         if (this._gameStatus === C.GameState_2) {
           if (this._player._hasWon)
             this._gameStatus = C.GameState_0;
-          P.print("move");
           for (t1 = this._gameField, t2 = t1.length, t3 = [L.Modificator], _i = 0; _i < t1.length; t1.length === t2 || (0, H.throwConcurrentModificationError)(t1), ++_i)
             for (t4 = J.get$iterator$ax(t1[_i]); t4.moveNext$0();) {
               field = t4.get$current();
@@ -9261,9 +9197,9 @@
               if (J.$lt$n(t1, 1))
                 this._gameStatus = C.GameState_1;
               else
-                this._gameStatus = C.GameState_5;
+                this._gameStatus = C.GameState_6;
             } else
-              this._gameStatus = C.GameState_5;
+              this._gameStatus = C.GameState_6;
             P.print("Die: " + this._dieReason);
             this._dieReason = this._player.dieReason;
           }
@@ -9374,8 +9310,8 @@
         return html + "</table>";
       },
       _getHTMLEntities$1: function(allEntities) {
-        var htmlEntities, t1, attributesForEntity, addedAttribute, j, _box_0, entity, allAttributes, t2, imageQuality, i, attribute, entityAttributes, t3, sortedMap, entityOrdered, value;
-        htmlEntities = 'style="' + ("width:" + J.toInt$0$n(this._maxFieldSize) + "px; height:" + J.toInt$0$n(this._maxFieldSize) + "px;") + "; background-image: ";
+        var htmlEntities, t1, attributesForEntity, addedAttribute, j, _box_0, entity, allAttributes, imageQuality, i, t2, attribute, entityAttributes, t3, sortedMap, entityOrdered, value;
+        htmlEntities = 'style="' + ("width:" + C.JSNumber_methods.toInt$0(this._maxFieldSize) + "px; height:" + C.JSNumber_methods.toInt$0(this._maxFieldSize) + "px;") + "; background-image: ";
         t1 = P.String;
         t1 = [t1, t1];
         attributesForEntity = new H.JsLinkedHashMap(0, null, null, null, null, null, 0, t1);
@@ -9383,10 +9319,7 @@
           _box_0 = {};
           entity = allEntities[j];
           allAttributes = entity.getAllAttributes$0();
-          t2 = this._maxFieldSize;
-          if (typeof t2 !== "number")
-            return t2.$ge();
-          imageQuality = t2 >= 50 ? "middle/" : "small/";
+          imageQuality = this._maxFieldSize >= 50 ? "middle/" : "small/";
           _box_0.entityAttributes = "";
           for (i = 0, t2 = ""; i < allAttributes.length; ++i, t2 = entityAttributes, addedAttribute = true) {
             attribute = allAttributes[i];
@@ -9399,7 +9332,7 @@
           attributesForEntity.putIfAbsent$2(entity.type, new X.DynamiteGame__getHTMLEntities_closure(_box_0));
         }
         if (!addedAttribute || this._viewStackOrder == null)
-          return 'style="' + ("width:" + J.toInt$0$n(this._maxFieldSize) + "px; height:" + J.toInt$0$n(this._maxFieldSize) + "px;") + ';"';
+          return 'style="' + ("width:" + C.JSNumber_methods.toInt$0(this._maxFieldSize) + "px; height:" + C.JSNumber_methods.toInt$0(this._maxFieldSize) + "px;") + ';"';
         sortedMap = new H.JsLinkedHashMap(0, null, null, null, null, null, 0, t1);
         for (t1 = J.get$iterator$ax(this._viewStackOrder); t1.moveNext$0();) {
           entityOrdered = t1.get$current();
@@ -9435,8 +9368,8 @@
         this._fieldHeight = 1;
         this._life = 0;
         this._startLevel = 0;
-        this._gameStatus = C.GameState_3;
-        this.waitGameTactsToNextLevel = 10;
+        this._gameStatus = C.GameState_4;
+        this._maxFieldSize = 25;
         $.Entity_portalCount = 0;
         $.Entity_monsterCounter = 0;
         $.Entity_destroyableBlockCount = 0;
@@ -9445,11 +9378,11 @@
         var t1 = new Q.Score(null, null, null);
         t1.resetScore$0();
         this._score = t1;
-        this._DynamiteGame$_generateEmptyGameField$0();
+        this._generateEmptyGameField$0();
       },
       static: {
         DynamiteGame$: function() {
-          var t1 = new X.DynamiteGame(10, null, null, null, 3, null, "", null, null, null, 3, null, null, null, null, null, null, null, null, null, null, null);
+          var t1 = new X.DynamiteGame(null, null, null, 3, null, "", null, null, null, 3, null, null, null, null, null, null, null, null, null, null, null);
           t1.DynamiteGame$0();
           return t1;
         }
@@ -9514,27 +9447,17 @@
         t1 = J.get$onClick$x(t1.querySelector("#mDynamite"));
         W._EventStreamSubscription$(t1._html$_target, t1._eventType, new R.DynamiteGameController__initGameListeners_closure7(this), false, H.getTypeArgumentByIndex(t1, 0));
       }, "call$1", "get$_initGameListeners", 2, 0, 18],
-      _startGame$0: function() {
-        var t1 = document;
-        t1.querySelector("#mStart").setAttribute("value", "\u275a\u275a");
-        t1.querySelector("#mStart").setAttribute("class", "running");
-        this.game._gameStatus = C.GameState_2;
-        this._gameTrigger = P.Timer_Timer$periodic(this._gameSpeed, new R.DynamiteGameController__startGame_closure(this));
-      },
       _pauseGame$0: function() {
         var t1 = document;
         t1.querySelector("#mStart").setAttribute("value", "\u25b6");
         t1.querySelector("#mStart").setAttribute("class", "paused");
-        t1 = this._gameTrigger;
-        if (t1 != null)
-          t1.cancel$0();
         t1 = this.game;
-        t1._gameStatus = C.GameState_3;
+        if (t1._gameStatus !== C.GameState_3)
+          t1._gameStatus = C.GameState_4;
         t1._pausedGameAtTime = Date.now();
       },
       _continueGame$0: function() {
         this.game.continueGame$0();
-        this._gameTrigger = P.Timer_Timer$periodic(this._gameSpeed, new R.DynamiteGameController__continueGame_closure(this));
         var t1 = document;
         t1.querySelector("#mStart").setAttribute("value", "\u275a\u275a");
         t1.querySelector("#mStart").setAttribute("class", "running");
@@ -9623,19 +9546,6 @@
           t1.setAttribute("style", "display: none;");
         }
       },
-      _moveEntities$0: function() {
-        switch (this.game.moveAllEntities$1(Date.now())) {
-          case C.GameState_2:
-            this._updateView$0();
-            break;
-          case C.GameState_3:
-            break;
-          default:
-            P.print("Game state changed");
-            this._gameTrigger.cancel$0();
-            this._chooseNextLevel$0();
-        }
-      },
       _chooseNextLevel$0: function() {
         switch (this.game._gameStatus) {
           case C.GameState_0:
@@ -9646,16 +9556,14 @@
             P.print("retry level");
             this.resetLevel$0();
             break;
-          case C.GameState_5:
+          case C.GameState_6:
             P.print("lost life");
             this.retry$0();
             break;
-          case C.GameState_4:
+          case C.GameState_5:
             P.print("max level reached");
             this.retry$0();
             return;
-          default:
-            P.print("FO: default");
         }
       },
       retry$0: function() {
@@ -9692,9 +9600,12 @@
       "^": "Closure:0;$this",
       call$1: function(_) {
         var t1, t2;
-        switch (document.querySelector("#mStart").getAttribute("class")) {
+        t1 = document;
+        switch (t1.querySelector("#mStart").getAttribute("class")) {
           case "init":
-            this.$this._startGame$0();
+            t1.querySelector("#mStart").setAttribute("value", "\u275a\u275a");
+            t1.querySelector("#mStart").setAttribute("class", "running");
+            this.$this.game._gameStatus = C.GameState_2;
             break;
           case "running":
             this.$this._pauseGame$0();
@@ -9779,18 +9690,6 @@
 
       }
     },
-    DynamiteGameController__startGame_closure: {
-      "^": "Closure:0;$this",
-      call$1: function(_) {
-        return this.$this._moveEntities$0();
-      }
-    },
-    DynamiteGameController__continueGame_closure: {
-      "^": "Closure:0;$this",
-      call$1: function(_) {
-        return this.$this._moveEntities$0();
-      }
-    },
     DynamiteGameController__loadConfigs_closure: {
       "^": "Closure:0;$this",
       call$1: function(json) {
@@ -9806,9 +9705,30 @@
         t1.game._viewStackOrder = t2.$index(configs, "viewOrder");
         $.DynamiteGame_DYNAMITE_EXPLODE_TIME = t2.$index(configs, "dynamiteExplosionTime");
         $.DynamiteGame_FIRE_DURATION = t2.$index(configs, "fireDuration");
-        t1 = t1.game;
-        t1._life = t1._startLife;
+        t2 = t1.game;
+        t2._life = t2._startLife;
+        t2 = t1._gameSpeed;
+        if (t2 != null)
+          t1._gameTrigger = P.Timer_Timer$periodic(t2, new R.DynamiteGameController__loadConfigs__closure(t1));
+        else
+          P.print("no gamespeed");
         return true;
+      }
+    },
+    DynamiteGameController__loadConfigs__closure: {
+      "^": "Closure:0;$this",
+      call$1: function(_) {
+        var t1 = this.$this;
+        switch (t1.game.moveAllEntities$1(Date.now())) {
+          case C.GameState_2:
+            break;
+          case C.GameState_4:
+            break;
+          default:
+            t1._chooseNextLevel$0();
+        }
+        t1._updateView$0();
+
       }
     },
     DynamiteGameController__loadConfigs_closure0: {
@@ -9870,7 +9790,7 @@
               htmlElements.$indexSet(0, "level_accept", "Restart " + (J.$lt$n(t2._currentLevel, t2._startLevel) ? "Tutorial" : "Level"));
             }
             break;
-          case C.GameState_4:
+          case C.GameState_5:
             htmlElements.$indexSet(0, "level_header", "Game completed");
             htmlElements.$indexSet(0, "level_announcement", "Congratulations!<br>You are a hero!");
             htmlElements.$indexSet(0, "level_result", "");
@@ -9946,10 +9866,17 @@
             maxFieldSize = 100;
           else if (maxFieldSize <= 25)
             maxFieldSize = 25;
-          t1 = t1.querySelector("#contentGame").clientHeight;
-          if (typeof t1 !== "number")
-            return t1.$sub();
-          maxFieldSize = (t1 - 20 <= maxFieldSize * fieldHeight && maxFieldSize >= 70 ? maxFieldSize - 6 : maxFieldSize) - 0.1;
+          t2 = window.devicePixelRatio;
+          if (typeof t2 !== "number")
+            return t2.$lt();
+          if (t2 < 2) {
+            t1 = t1.querySelector("#contentGame").clientHeight;
+            if (typeof t1 !== "number")
+              return t1.$sub();
+            t1 = t1 - 20 <= maxFieldSize * fieldHeight && maxFieldSize >= 70;
+          } else
+            t1 = false;
+          maxFieldSize = (t1 ? maxFieldSize - 4 : maxFieldSize) - 0.1;
           if (maxFieldSize !== this._lastFieldSize) {
             this._lastFieldSize = maxFieldSize;
             return maxFieldSize;
@@ -10054,10 +9981,13 @@
         return false;
       },
       setViewDirection$0: function() {
-        var t1, up, down, right, left;
-        t1 = this.nextViewDirection;
+        var t1 = this.nextViewDirection;
         if (t1 != null)
           this.viewDirection = t1;
+        this._updateViewDirectionInExtensionTypes$0();
+      },
+      _updateViewDirectionInExtensionTypes$0: function() {
+        var t1, up, down, right, left;
         t1 = this.type;
         up = t1 + "_UP";
         down = t1 + "_DOWN";
@@ -10527,7 +10457,7 @@
             }
           }
       },
-      _generateEmptyGameField$2: function(fieldWidth, fieldHeight) {
+      _Modificator$_generateEmptyGameField$2: function(fieldWidth, fieldHeight) {
         return P.Iterable_Iterable$generate(fieldWidth, new L.Modificator__generateEmptyGameField_closure(fieldHeight), null).toList$0(0);
       },
       static: {
@@ -10538,8 +10468,8 @@
             return H.ioore(gameField, 0);
           fieldHeight = J.get$length$asx(gameField[0]);
           t1 = new L.Modificator(null, null);
-          t1._addEntities = t1._generateEmptyGameField$2(fieldWidth, fieldHeight);
-          t1._removeEntities = t1._generateEmptyGameField$2(fieldWidth, fieldHeight);
+          t1._addEntities = t1._Modificator$_generateEmptyGameField$2(fieldWidth, fieldHeight);
+          t1._removeEntities = t1._Modificator$_generateEmptyGameField$2(fieldWidth, fieldHeight);
           return t1;
         }
       }
@@ -11563,9 +11493,6 @@
   J.toDouble$0$n = function(receiver) {
     return J.getInterceptor$n(receiver).toDouble$0(receiver);
   };
-  J.toInt$0$n = function(receiver) {
-    return J.getInterceptor$n(receiver).toInt$0(receiver);
-  };
   J.toLowerCase$0$s = function(receiver) {
     return J.getInterceptor$s(receiver).toLowerCase$0(receiver);
   };
@@ -11610,9 +11537,10 @@
   C.GameState_0 = new R.GameState(0, "GameState.WIN");
   C.GameState_1 = new R.GameState(1, "GameState.LOOSE");
   C.GameState_2 = new R.GameState(2, "GameState.RUNNING");
-  C.GameState_3 = new R.GameState(3, "GameState.PAUSED");
-  C.GameState_4 = new R.GameState(4, "GameState.MAX_LEVEL_REACHED");
-  C.GameState_5 = new R.GameState(5, "GameState.LOST_LIFE");
+  C.GameState_3 = new R.GameState(3, "GameState.INIT");
+  C.GameState_4 = new R.GameState(4, "GameState.PAUSED");
+  C.GameState_5 = new R.GameState(5, "GameState.MAX_LEVEL_REACHED");
+  C.GameState_6 = new R.GameState(6, "GameState.LOST_LIFE");
   C.JS_CONST_4IJ = function() {
   var toStringFunction = Object.prototype.toString;
   function getTag(o) {

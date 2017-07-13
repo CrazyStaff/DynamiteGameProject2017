@@ -97,21 +97,18 @@ class DynamiteGameController {
     view.startButton.setAttribute("value", "❚❚");
     view.startButton.setAttribute("class", "running");
     game.gameStatus = GameState.RUNNING;
-    _gameTrigger = new Timer.periodic(_gameSpeed, (_) => _moveEntities());
+    // _gameTrigger = new Timer.periodic(_gameSpeed, (_) => _moveEntities());
   }
 
   void _pauseGame() {
     view.startButton.setAttribute("value", "▶");
     view.startButton.setAttribute("class", "paused");
-    if(_gameTrigger != null) {
-      _gameTrigger.cancel();
-    }
     game.pauseGame();
   }
 
   void _continueGame() {
       game.continueGame();
-      _gameTrigger = new Timer.periodic(_gameSpeed, (_) => _moveEntities());
+      //_gameTrigger = new Timer.periodic(_gameSpeed, (_) => _moveEntities());
 
       view.startButton.setAttribute("value", "❚❚");
       view.startButton.setAttribute("class", "running");
@@ -132,6 +129,16 @@ class DynamiteGameController {
       DynamiteGame.DYNAMITE_EXPLODE_TIME = configs["dynamiteExplosionTime"];
       DynamiteGame.FIRE_DURATION = configs["fireDuration"];
       game.setInitLife();
+
+      /*
+          Start the game timer directly so that smartphone rotation could
+          update the game field size already before the real game had started
+     */
+      if(_gameSpeed != null) {
+        _gameTrigger = new Timer.periodic(_gameSpeed, (_) => _moveEntities());
+      } else {
+        print("no gamespeed");
+      }
       return true;
     }).catchError((error) => {
       // catch the error
@@ -211,16 +218,13 @@ class DynamiteGameController {
   void _moveEntities() {
       GameState currentGameState = game.moveAllEntities(new DateTime.now().millisecondsSinceEpoch);
       switch(currentGameState) {
-        case GameState.RUNNING:
-          _updateView();
-          break;
+        case GameState.RUNNING: break;
         case GameState.PAUSED: break;
         default:
           // Level is over
-          print("Game state changed");
-          _gameTrigger.cancel();
           _chooseNextLevel();
     }
+      _updateView();
   }
 
   void _chooseNextLevel() {
@@ -242,7 +246,7 @@ class DynamiteGameController {
         retry();
         return;
       default:
-        print("FO: default");
+        // print("FO: default");
     }
   }
 

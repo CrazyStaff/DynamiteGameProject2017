@@ -22,7 +22,6 @@ import 'pathfinding/PathFinder.dart';
 class DynamiteGame {
   static int DYNAMITE_EXPLODE_TIME;
   static int FIRE_DURATION;
-  int waitGameTactsToNextLevel = 10;
 
   /*
       Global information for all levels
@@ -111,7 +110,7 @@ class DynamiteGame {
     _life = 0;
     _startLevel = 0;
     _gameStatus = GameState.PAUSED;
-    waitGameTactsToNextLevel = 10;
+    _maxFieldSize = 25.0;
 
     Entity.portalCount = 0;
     Entity.monsterCounter = 0;
@@ -128,8 +127,10 @@ class DynamiteGame {
       which is displayed in the view
    */
   int getLevelLeftTime() {
-    if(_maxLevelTime == -1) return _maxLevelTime;
-    int leftTime = _maxLevelTime - ((new DateTime.now().millisecondsSinceEpoch - _startLevelTime) / 1000).toInt();
+    if(_maxLevelTime == -1 || _gameStatus == GameState.INIT) return _maxLevelTime;
+
+    int currentTime = (_gameStatus == GameState.PAUSED ? _pausedGameAtTime : new DateTime.now().millisecondsSinceEpoch);
+    int leftTime = _maxLevelTime - ((currentTime - _startLevelTime) / 1000).toInt();
 
     return (leftTime <= 0 ? 0 : leftTime);
   }
@@ -145,7 +146,9 @@ class DynamiteGame {
       Pauses the current level
    */
   void pauseGame() {
-    _gameStatus = GameState.PAUSED;
+    if(_gameStatus != GameState.INIT) {
+      _gameStatus = GameState.PAUSED;
+    }
     this._pausedGameAtTime = new DateTime.now().millisecondsSinceEpoch;
   }
 
@@ -241,9 +244,8 @@ class DynamiteGame {
       Reset the game status for the current level
    */
   void _resetGame() {
-    this._gameStatus = GameState.PAUSED;
+    this._gameStatus = GameState.INIT;
     _dynamiteRadius = 1;
-    waitGameTactsToNextLevel = 10;
     Entity.portalCount = 0;
     Entity.monsterCounter = 0;
     Entity.destroyableBlockCount = 0;
@@ -333,7 +335,7 @@ class DynamiteGame {
       if (_player.hasWon) {
         _gameStatus = GameState.WIN;
       }
-      print("move");
+
       for (List<FieldNode> allPositions in _gameField) {
         for (FieldNode field in allPositions) {
           var toRemove = [];
@@ -444,7 +446,6 @@ class DynamiteGame {
     if (!_player.isAlive || _isLevelTimeOver()) {
       return true;
     }
-
     return false;
   }
 
@@ -596,7 +597,7 @@ class DynamiteGame {
     Map<String, String> htmlElements = new Map<String, String>();
 
     switch(_gameStatus) {
-      case GameState.PAUSED:
+      case GameState.INIT:
         if(currentLevel == 1) {
           htmlElements["level_accept"] = "Start " + getLevelTypeHTML();
         } else {

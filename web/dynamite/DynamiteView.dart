@@ -45,7 +45,7 @@ class DynamiteView {
 
   /*
       Calculates the maximum field size which is possible
-      Returns -1 when field size didn´t change to the last calculation
+      Returns -1 when field size hadn´t changed since the last calculation
    */
   double calculateMaxFieldSize(int fieldWidth, int fieldHeight) {
     HtmlElement gameEle = querySelector("#gameField td");
@@ -64,8 +64,14 @@ class DynamiteView {
         maxFieldSize = 25.0;
       }
 
-      if(contentGame.clientHeight-20 <= maxFieldSize * fieldHeight && maxFieldSize >= 70) {
-        maxFieldSize-= 6;
+      /*
+          Prevention of scrolling bar issues on desktop browsers
+          DevicePixelRatio < 2.0 should be targeting only desktop browsers
+          and not smartphone or tablet devices
+       */
+      if(window.devicePixelRatio < 2.0 && contentGame.clientHeight - 20 <= maxFieldSize * fieldHeight
+          && maxFieldSize >= 70) {
+        maxFieldSize-= 4;
       }
 
       /*

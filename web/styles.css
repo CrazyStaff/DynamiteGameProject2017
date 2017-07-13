@@ -236,7 +236,7 @@ body {
     background-size: cover;
 }
 
-@media only screen and (max-device-width: 736px) and (orientation: portrait) { /* support until iPhone 6 + in portrait mode */
+@media only screen and (max-device-width: 1380px) and (orientation: portrait) { /* support until iPhone 6 + in portrait mode */
 
     #scores {
         height: 3vw;
@@ -330,7 +330,32 @@ body {
     }
 }
 
-@media only screen and (max-device-width: 1280px) and (orientation: landscape) { /* support until Kidle Fire */
+@media only screen and (min-device-width: 737px) and (max-device-width: 1400px) and (orientation: portrait) {  /* support until tablets in portrait mode */
+    #mobileControl table input {
+        height: 10vw;
+        width: 10vw;
+    }
+
+    #mobileControl td {
+        padding: 1.5vw;
+    }
+
+    #mStart {
+        height: 10vw;
+        width: 10vw;
+        font-size: 5vw;
+    }
+
+    #level_header, #level_result {
+        font-size: 1.5rem;
+    }
+
+    #level_accept {
+        font-size: 1.2rem;
+    }
+}
+
+@media only screen and (max-device-width: 1380px) and (orientation: landscape) { /* support until Kidle Fire */
 
     #level_content table, #level_content img {
         display:none;
@@ -397,5 +422,30 @@ body {
     #mDynamite {
         background-image: url('data/images/small/BUTTON_DYNAMITE.png');
         background-size: cover;
+    }
+}
+
+@media only screen and (min-device-width: 737px) and (max-device-width: 1400px) and (orientation: landscape) {  /* support tablets in landscape mode */
+    #mobileControl table input {
+        height: 5vw;
+        width: 5vw;
+    }
+
+    #mobileControl td {
+        padding: 0.5vw;
+    }
+
+    #mStart {
+        height: 5vw;
+        width: 5vw;
+        font-size: 2vw;
+    }
+
+    #level_header, #level_result {
+        font-size: 1.5rem;
+    }
+
+    #level_accept {
+        font-size: 1.2rem;
     }
 }

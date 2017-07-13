@@ -14,6 +14,7 @@
   "speedBuffSpawnRate" : 0,
   "speedBuffAddSpeed" : 100,
   "dynamiteRangeSpawnRate" : 0,
+  "lifeSpawnRate" : 0,
   "description" : "Welcome to DynamiteMan!<br>The goal is to carry the player <table><td width=\"35px\" height=\"35px\" class=\"PLAYER_DOWN\"></td></table> through the portal <table><td width=\"35px\" height=\"35px\" class=\"PORTAL\"></td></table>",
   "maxLevelTime" : -1,
   "maxDynamites" : 2

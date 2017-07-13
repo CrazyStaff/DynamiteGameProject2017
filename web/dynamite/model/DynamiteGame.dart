@@ -652,6 +652,13 @@ class DynamiteGame {
   }
 
   /*
+      Set the spawn rate of the item 'Life'
+   */
+  void setSpawnRateLife(int spawnRate) {
+    Life.setSpawnRate(spawnRate);
+  }
+
+  /*
       Place dynamite above the position of the player
    */
   void placeDynamite() {

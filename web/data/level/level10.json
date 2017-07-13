@@ -18,6 +18,7 @@
   "speedBuffSpawnRate" : 10,
   "speedBuffAddSpeed" : 500,
   "dynamiteRangeSpawnRate" : 80,
+  "lifeSpawnRate" : 0,
   "description" : "Care the range of Dynamite.",
   "maxLevelTime" : 200
 }

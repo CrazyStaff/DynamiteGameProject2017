@@ -169,6 +169,7 @@ class DynamiteGameController {
       game.setSpawnRateSpeedBuff(parsedMap["speedBuffSpawnRate"]);
       game.setSpeedOffsetSpeedBuff(parsedMap["speedBuffAddSpeed"]);
       game.setSpawnRateDynamiteRange(parsedMap["dynamiteRangeSpawnRate"]);
+      game.setSpawnRateLife(parsedMap["lifeSpawnRate"]);
 
       int expMonster = int.parse(parsedMap["exp_monster"]);
       int expDestroyableBlock = int.parse(parsedMap["exp_destroyable_block"]);

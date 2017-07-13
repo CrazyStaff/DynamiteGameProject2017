@@ -5,13 +5,13 @@ import 'Item.dart';
 import '../DynamiteGame.dart';
 
 /*
-    This item puts extra fire range for dynamites
+    This item puts extra life to the player
     Monsters are also able to take this item but there is no effect for them
-    Players are able to increase their dynamite range with this item
+    Players are able to increase their life with this item
  */
 class Life extends Item {
 
-  // The entity type identifies the item as dynamite range
+  // The entity type identifies the item as life
   static const ENTITY_TYPE = "LIFE";
 
   // The spawn percentage of this item

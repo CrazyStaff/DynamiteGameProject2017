@@ -1,6 +1,7 @@
 import '../Entity.dart';
 import '../Modificator.dart';
 import '../Position.dart';
+import '../items/Life.dart';
 import '../items/Portal.dart';
 import '../pathfinding/FieldNode.dart';
 import 'Block.dart';
@@ -50,6 +51,13 @@ class DestroyableBlock extends Block {
       if (r.nextInt(100) < DynamiteRange.getSpawnRate()){
         Position spawnPosition = position.clone();
         mod.addAddable(new DynamiteRange(spawnPosition), spawnPosition);
+        return mod;
+      }
+
+      // Drops randomly a life item
+      if (r.nextInt(100) < Life.getSpawnRate()){
+        Position spawnPosition = position.clone();
+        mod.addAddable(new Life(spawnPosition), spawnPosition);
         return mod;
       }
 

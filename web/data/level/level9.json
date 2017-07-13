@@ -18,6 +18,7 @@
   "speedBuffSpawnRate" : 5,
   "speedBuffAddSpeed" : 1000,
   "dynamiteRangeSpawnRate" : 20,
+  "lifeSpawnRate" : 0,
   "description" : "In this Level to find the portal isn't that hard, but killing the enemies is.",
   "maxLevelTime" : 200
 }
